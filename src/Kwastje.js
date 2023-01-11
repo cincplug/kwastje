@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import setupArray from "./_setup.json";
-import "./App.scss";
+import "./Kwastje.scss";
 
-const Plug = () => {
+const Kwastje = () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const initialSetup = {};
@@ -505,4 +505,4 @@ const Plug = () => {
   );
 };
 
-export default Plug;
+export default Kwastje;
