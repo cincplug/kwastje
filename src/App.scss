@@ -1,0 +1,241 @@
+$gutter: 1rem;
+$color-blue: #07a;
+$color-green: #9da200;
+$color-white: #fff;
+$color-black: #222;
+$color-neutral: #888;
+$color-red: #d44;
+$color-dark-blue: #024;
+
+$color-bg: $color-black;
+$color-fg: $color-green;
+$color-brand: $color-green;
+$color-event: $color-white;
+
+$color-input: #aaa;
+$color-input-bg: #222;
+$color-input-border: rgba($color-input, 70%);
+$color-nav: #333;
+
+$handle-size: 4rem;
+$menu-width: 6rem;
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes mhm {
+  20% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(5deg);
+  }
+  30% {
+    transform: rotateZ(0deg);
+  }
+  70% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-5deg);
+  }
+  80% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes read-scroll {
+  0% {
+    transform: translateY(200vh);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+body {
+  background: $color-bg;
+  color: $color-fg;
+  overflow: hidden;
+}
+h1 {
+  font-size: 3rem;
+}
+button {
+  cursor: pointer;
+}
+.wrapper {
+  width: calc(100vw);
+  height: calc(100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__header {
+    background: $color-blue;
+    height: 100%;
+    max-width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &--plug {
+    background: $color-dark-blue;
+  }
+}
+.drawing {
+  @include center;
+  width: 100vw;
+  height: 100vh;
+  cursor: crosshair;
+}
+.no-bg {
+  background: repeating-conic-gradient(
+      $color-neutral 0% 25%,
+      lighten($color-neutral, 1%) 0% 50%
+    )
+    50% / 2rem 2rem;
+}
+.menu {
+  position: absolute;
+  top: 0;
+  width: $menu-width;
+  height: 100vh;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  background: $color-nav;
+  color: $color-white;
+  border: 1px solid rgba($color-input, 30%);
+  transform-origin: 0 0;
+  &--collapsed {
+    height: 3rem;
+    overflow: hidden;
+    justify-content: flex-start;
+    border: none;
+    background: none;
+  }
+  &--controls {
+    left: 0;
+  }
+  &--filters {
+    right: 0;
+    &.menu--collapsed {
+      display: none;
+    }
+  }
+  &__toggle {
+    font-size: 2rem;
+    line-height: 2rem;
+    .menu--collapsed & {
+      color: $color-nav;
+    }
+  }
+}
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &--checkbox {
+    flex-direction: row;
+  }
+  &--color {
+    width: 1.8rem;
+  }
+  &--background {
+    margin-top: -1.5rem;
+    margin-left: 1rem;
+    position: relative;
+    z-index: -1;
+  }
+  &__input {
+    width: 100%;
+    color: $color-input;
+    border: 1px solid $color-input-border;
+    background: $color-input-bg;
+    display: block;
+    border-radius: 0.2rem;
+    padding: 0.3rem 0.4rem;
+    &[type="color"] {
+      padding: 0;
+      background: $color-input;
+      border: none;
+    }
+    &[type="checkbox"] {
+      padding: 0;
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.3rem;
+    }
+    &[type="range"] {
+      padding: 0;
+      appearance: none;
+      height: 0.5rem;
+    }
+    .menu--collapsed & {
+      color: transparent;
+      background: $color-nav;
+      margin-top: 2rem;
+      border: none;
+    }
+  }
+  &__label {
+    color: $color-input;
+    font-size: 0.8rem;
+    margin: 0.2rem auto 0;
+    width: 100%;
+    user-select: none;
+    .menu--collapsed & {
+      display: none;
+    }
+    [type="checkbox"] + & {
+      margin: 0;
+    }
+    [type="color"] + &,
+    [type="range"] + & {
+      display: none;
+    }
+  }
+  &__button {
+    color: $color-white;
+    border: none;
+    border-radius: 12px;
+    &--save {
+      background: $color-green;
+    }
+    &--clear {
+      background: $color-red;
+    }
+  }
+}
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 50rem;
+  padding: 1rem;
+  color: $color-white;
+  font-size: 0.7rem;
+}
