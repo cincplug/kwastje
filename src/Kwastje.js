@@ -10,12 +10,11 @@ const Kwastje = () => {
     initialSetup[item.id] = item.value;
   });
   const [setup, setSetup] = useState(initialSetup);
-  // const setup.dotsCount = 200;
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [count, setCount] = useState(0);
-  const initialPath = setInitialPath();
-  const [pen, setPen] = useState(initialPath);
+  const initialPath = fillPath();
+  const [path, setPath] = useState(initialPath);
   const [isPaused, setIsPaused] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
@@ -50,45 +49,45 @@ const Kwastje = () => {
     setX(event.pageX);
     setY(event.pageY);
     if (isMouseDown && count % setup.latency === 0) {
-      setPen((prevPen) => {
+      setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {
-            prevPen[prevPen.length - 1] = [x, y];
+            prevPath[prevPath.length - 1] = [x, y];
           }
         } else {
           const randomIndex = Math.round(
-            Math.random() * (pen.length - 1) +
+            Math.random() * (path.length - 1) +
               setup.dotsCount / setup.modifier / (setup.dotsCount / setup.modifier + 1)
           );
           switch (setup.kwastje) {
             case 1:
-              prevPen[prevPen.length] = [x, y];
+              prevPath[prevPath.length] = [x, y];
               break;
             case 2:
-              prevPen[Math.min(count, prevPen.length - 1)] = [x, y];
+              prevPath[Math.min(count, prevPath.length - 1)] = [x, y];
               break;
             case 3:
-              const [prevX, prevY] = prevPen[randomIndex];
-              prevPen[randomIndex + 1] = [x, y];
-              prevPen[randomIndex] = [(prevX + x * 5) / 6, (prevY + y * 5) / 6];
+              const [prevX, prevY] = prevPath[randomIndex];
+              prevPath[randomIndex + 1] = [x, y];
+              prevPath[randomIndex] = [(prevX + x * 5) / 6, (prevY + y * 5) / 6];
               break;
             case 4:
-              prevPen[randomIndex] = [x, y];
-              prevPen[randomIndex + 1] = [
+              prevPath[randomIndex] = [x, y];
+              prevPath[randomIndex + 1] = [
                 x * setup.modifier,
                 y * setup.modifier,
               ];
               break;
             default:
-              prevPen[Math.round(count - 1)] = [x, y];
+              prevPath[Math.round(count - 1)] = [x, y];
               break;
           }
         }
-        const nextPen = prevPen.slice(
-          prevPen.length - setup.dotsCount,
-          prevPen.length
+        const nextPath = prevPath.slice(
+          prevPath.length - setup.dotsCount,
+          prevPath.length
         );
-        return nextPen;
+        return nextPath;
       });
       if (setup.isCanvas) {
         const canvas = document.getElementById("canvas");
@@ -98,7 +97,7 @@ const Kwastje = () => {
         ctx.strokeStyle = fgColor;
         ctx.lineWidth = (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
-        const [x1, y1] = pen[pen.length ? pen.length - 1 : [x, y]];
+        const [x1, y1] = path[path.length ? path.length - 1 : [x, y]];
         ctx.moveTo(x1, y1);
         ctx.lineTo(x, y);
         ctx.closePath();
@@ -112,11 +111,11 @@ const Kwastje = () => {
       const { id, value, type } = event.target;
       const nextSetup = { ...prevSetup };
       if (id === "dotsCount") {
-        setPen((prevPen) => {
-          if (prevPen.length > value) {
-            return prevPen.slice(prevPen.length - value);
+        setPath((prevPath) => {
+          if (prevPath.length > value) {
+            return prevPath.slice(prevPath.length - value);
           } else {
-            return prevPen.concat(setInitialPath(value - prevPen.length));
+            return prevPath.concat(fillPath(value - prevPath.length));
           }
         });
       }
@@ -308,11 +307,11 @@ const Kwastje = () => {
       ctx.clearRect(0, 0, w, h);
       setCount(0);
     }
-    const initialPath = setInitialPath();
-    setPen(initialPath);
+    const initialPath = fillPath();
+    setPath(initialPath);
   }
 
-  function setInitialPath(length = setup.dotsCount, defaultValue = [w / 2, h / 2]) {
+  function fillPath(length = setup.dotsCount, defaultValue = [w / 2, h / 2]) {
     return new Array(length + 1).fill(defaultValue);
   }
 
@@ -499,12 +498,12 @@ const Kwastje = () => {
                   />
                 </filter>
               )}
-              {getPath(pen)}
+              {getPath(path)}
             </g>
           </svg>
         )}
       </div>
-      {/* <div className="info">{JSON.stringify(pen, null, 4)}</div> */}
+      {/* <div className="info">{JSON.stringify(path, null, 4)}</div> */}
     </div>
   );
 };
