@@ -57,7 +57,9 @@ const Kwastje = () => {
         } else {
           const randomIndex = Math.round(
             Math.random() * (path.length - 1) +
-              setup.dotsCount / setup.modifier / (setup.dotsCount / setup.modifier + 1)
+              setup.dotsCount /
+                setup.modifier /
+                (setup.dotsCount / setup.modifier + 1)
           );
           switch (setup.kwastje) {
             case 1:
@@ -69,7 +71,10 @@ const Kwastje = () => {
             case 3:
               const [prevX, prevY] = prevPath[randomIndex];
               prevPath[randomIndex + 1] = [x, y];
-              prevPath[randomIndex] = [(prevX + x * 5) / 6, (prevY + y * 5) / 6];
+              prevPath[randomIndex] = [
+                (prevX + x * 5) / 6,
+                (prevY + y * 5) / 6,
+              ];
               break;
             case 4:
               prevPath[randomIndex] = [x, y];
@@ -95,7 +100,8 @@ const Kwastje = () => {
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
         ctx.strokeStyle = fgColor;
-        ctx.lineWidth = (setup.thickness * count * setup.growth) / setup.dotsCount;
+        ctx.lineWidth =
+          (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
         const [x1, y1] = path[path.length ? path.length - 1 : [x, y]];
         ctx.moveTo(x1, y1);
@@ -142,14 +148,7 @@ const Kwastje = () => {
         >
           <input
             className="control__input"
-            type={type}
-            id={id}
-            value={value}
-            min={min}
-            max={max}
-            step={step}
-            checked={checked}
-            style={style}
+            {...{ type, id, value, min, max, step, checked, style }}
             onChange={(event) => {
               handleInputChange(event);
             }}
