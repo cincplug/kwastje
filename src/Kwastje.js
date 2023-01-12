@@ -10,7 +10,7 @@ const Kwastje = () => {
     initialSetup[item.id] = item.value;
   });
   const [setup, setSetup] = useState(initialSetup);
-  const dotsCount = 200;
+  // const setup.dotsCount = 200;
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [count, setCount] = useState(0);
@@ -24,7 +24,7 @@ const Kwastje = () => {
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
   useAnimationFrame((deltaTime) => {
     setCount((prevCount) =>
-      Math.ceil((prevCount + deltaTime * 0.01) % dotsCount)
+      Math.ceil((prevCount + deltaTime * 0.01) % setup.dotsCount)
     );
   });
 
@@ -40,9 +40,6 @@ const Kwastje = () => {
       requestRef.current = requestAnimationFrame(animate);
     };
     useEffect(() => {
-      document.addEventListener("keyup", function (event) {
-        if (event.key === " ") setIsPaused((prevIsPaused) => !prevIsPaused);
-      });
       requestRef.current = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(requestRef.current);
     }, []);
@@ -61,7 +58,7 @@ const Kwastje = () => {
         } else {
           const randomIndex = Math.round(
             Math.random() * (pen.length - 1) +
-              dotsCount / setup.modifier / (dotsCount / setup.modifier + 1)
+              setup.dotsCount / setup.modifier / (setup.dotsCount / setup.modifier + 1)
           );
           switch (setup.kwastje) {
             case 1:
@@ -88,7 +85,7 @@ const Kwastje = () => {
           }
         }
         const nextPen = prevPen.slice(
-          prevPen.length - dotsCount,
+          prevPen.length - setup.dotsCount,
           prevPen.length
         );
         return nextPen;
@@ -99,7 +96,7 @@ const Kwastje = () => {
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = "high";
         ctx.strokeStyle = fgColor;
-        ctx.lineWidth = (setup.thickness * count * setup.growth) / dotsCount;
+        ctx.lineWidth = (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
         const [x1, y1] = pen[pen.length ? pen.length - 1 : [x, y]];
         ctx.moveTo(x1, y1);
@@ -114,9 +111,14 @@ const Kwastje = () => {
     setSetup((prevSetup) => {
       const { id, value, type } = event.target;
       const nextSetup = { ...prevSetup };
-      if (id === "dots") {
-        console.warn(pen.length);
-        setPen((prevPen) => prevPen.slice(prevPen.length - pen.length - 1));
+      if (id === "dotsCount") {
+        setPen((prevPen) => {
+          if (prevPen.length > value) {
+            return prevPen.slice(prevPen.length - value);
+          } else {
+            return prevPen.concat(setInitialPath(value - prevPen.length));
+          }
+        });
       }
       if (type === "checkbox") {
         nextSetup[id] = !nextSetup[id];
@@ -310,8 +312,8 @@ const Kwastje = () => {
     setPen(initialPath);
   }
 
-  function setInitialPath() {
-    return new Array(dotsCount + 1).fill([w / 2, h / 2]);
+  function setInitialPath(length = setup.dotsCount, defaultValue = [w / 2, h / 2]) {
+    return new Array(length + 1).fill(defaultValue);
   }
 
   function download() {

@@ -13,6 +13,14 @@
     "step": 1
   },
   {
+    "id": "dotsCount",
+    "value": 100,
+    "type": "number",
+    "min": 10,
+    "max": 500,
+    "step": 1
+  },
+  {
     "id": "angle",
     "value": 0,
     "type": "number",
