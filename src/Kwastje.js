@@ -113,16 +113,17 @@ const Kwastje = () => {
   function handleInputChange(event) {
     setSetup((prevSetup) => {
       const { id, value, type } = event.target;
+      const nextSetup = { ...prevSetup };
       if (id === "dots") {
         console.warn(pen.length);
         setPen((prevPen) => prevPen.slice(prevPen.length - pen.length - 1));
       }
       if (type === "checkbox") {
-        prevSetup[id] = !prevSetup[id];
+        nextSetup[id] = !nextSetup[id];
       } else {
-        prevSetup[id] = type === "number" ? parseFloat(value) : value;
+        nextSetup[id] = type === "number" ? parseFloat(value) : value;
       }
-      return prevSetup;
+      return nextSetup;
     });
   }
 
@@ -162,7 +163,8 @@ const Kwastje = () => {
 
   function getPath(path) {
     return path.map((item, index) => {
-      const [x2, y2] = setup.kwastje >= 5 ? [(x * index) / 100, y + index] : item;
+      const [x2, y2] =
+        setup.kwastje >= 5 ? [(x * index) / 100, y + index] : item;
       const [x1, y1] =
         index > 0 ? path[index - 1] : setup.isCentric ? [w / 2, h / 2] : item;
       const stroke = fgColor;
