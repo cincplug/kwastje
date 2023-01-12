@@ -346,9 +346,12 @@ const Kwastje = () => {
           className="menu__toggle"
           onClick={() => setIsMenuVisible(false)}
         >
-          ☰
+          ▲
         </button>
         {getControls(setupArray.filter((control) => !control.isFilter))}
+      </nav>
+      <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
+        {getControls(setupArray.filter((control) => control.isFilter))}
         <div className="control" key="saveSvg">
           <button
             className="control__input control__button control__button--save"
@@ -369,9 +372,6 @@ const Kwastje = () => {
             clear
           </button>
         </div>
-      </nav>
-      <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        {getControls(setupArray.filter((control) => control.isFilter))}
       </nav>
       <div
         onMouseMove={(event) => handleMouseMove(event)}
@@ -430,15 +430,15 @@ const Kwastje = () => {
                   <feTurbulence
                     type="turbulence"
                     baseFrequency={setup.thickness}
-                    numOctaves={setup.displacement}
+                    numOctaves={setup.displace}
                     result="turbulence-filter"
                   />
                 )}
-                {setup.displacement && (
+                {setup.displace && (
                   <feDisplacementMap
                     in2="turbulence-filter"
                     in="SourceGraphic"
-                    scale={setup.displacement}
+                    scale={setup.displace}
                     xChannelSelector="R"
                     yChannelSelector="G"
                   />

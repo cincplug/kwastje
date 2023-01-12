@@ -148,8 +148,10 @@ button {
   &__toggle {
     font-size: 2rem;
     line-height: 2rem;
+    transition: transform 0.2s ease-in-out;
     .menu--collapsed & {
       color: $color-nav;
+      transform: rotateZ(90deg);
     }
   }
 }

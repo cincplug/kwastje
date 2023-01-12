@@ -14,7 +14,7 @@
   },
   {
     "id": "dotsCount",
-    "value": 100,
+    "value": 200,
     "type": "number",
     "min": 10,
     "max": 500,
@@ -109,7 +109,7 @@
     "step": 1
   },
   {
-    "id": "displacement",
+    "id": "displace",
     "value": 0,
     "type": "number",
     "isFilter": true,
