@@ -345,9 +345,8 @@ const Kwastje = () => {
         <button
           className="menu__toggle"
           onClick={() => setIsMenuVisible(false)}
-        >
-          ▲
-        </button>
+          title="toggle"
+        ></button>
         {getControls(setupArray.filter((control) => !control.isFilter))}
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>

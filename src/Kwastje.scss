@@ -1,6 +1,6 @@
 $gutter: 1rem;
 $color-blue: #07a;
-$color-green: #9da200;
+$color-green: #59a200;
 $color-white: #fff;
 $color-black: #222;
 $color-neutral: #888;
@@ -146,13 +146,20 @@ button {
     }
   }
   &__toggle {
-    font-size: 2rem;
-    line-height: 2rem;
-    transition: transform 0.2s ease-in-out;
-    .menu--collapsed & {
-      color: $color-nav;
-      transform: rotateZ(90deg);
-    }
+    height: 1rem;
+    width: 100%;
+    background: linear-gradient(
+      $color-input 0%,
+      $color-input 20%,
+      transparent 20%,
+      transparent 40%,
+      $color-input 40%,
+      $color-input 60%,
+      transparent 60%,
+      transparent 80%,
+      $color-input 80%,
+      $color-input 100%
+    );
   }
 }
 .control {
@@ -196,10 +203,7 @@ button {
       height: 0.5rem;
     }
     .menu--collapsed & {
-      color: transparent;
-      background: $color-nav;
-      margin-top: 2rem;
-      border: none;
+      display: none;
     }
   }
   &__label {
