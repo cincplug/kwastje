@@ -27,36 +27,6 @@ $menu-width: 6rem;
   transform: translate(-50%, -50%);
 }
 
-@keyframes mhm {
-  20% {
-    transform: rotateZ(0deg);
-  }
-  25% {
-    transform: rotateZ(5deg);
-  }
-  30% {
-    transform: rotateZ(0deg);
-  }
-  70% {
-    transform: rotateZ(0deg);
-  }
-  75% {
-    transform: rotateZ(-5deg);
-  }
-  80% {
-    transform: rotateZ(0deg);
-  }
-}
-
-@keyframes read-scroll {
-  0% {
-    transform: translateY(200vh);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
