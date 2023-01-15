@@ -1,5 +1,4 @@
 import React from "react";
-import "./Kwastje.scss";
 
 const Drawing = (props) => {
   const { path, setup, x, y, w, h, fgColor } = props;

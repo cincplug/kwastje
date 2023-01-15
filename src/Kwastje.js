@@ -55,6 +55,7 @@ const Kwastje = () => {
     setIsMouseDown(true);
     setIsPaused(false);
   }
+
   function handleMouseUp(event) {
     event.preventDefault();
     if (!(path[path.length - 1].length > 2) && !setup.isJoint) {
@@ -66,6 +67,7 @@ const Kwastje = () => {
     }
     setIsMouseDown(false);
   }
+
   function handleMouseMove(event) {
     if (isPaused) return null;
     setX(event.pageX);

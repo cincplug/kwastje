@@ -1,6 +1,5 @@
 import React from "react";
 import setupArray from "./_setup.json";
-import "./Kwastje.scss";
 
 const Nav = (props) => {
   const {

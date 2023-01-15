@@ -1,5 +1,4 @@
 import React from "react";
-import "./Kwastje.scss";
 
 const Filters = (props) => {
   const { setup, h, x, y } = props;
