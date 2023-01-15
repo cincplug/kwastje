@@ -20,7 +20,7 @@ const Drawing = (props) => {
       0.5
     );
     return (
-      <>
+      <React.Fragment key={`shp-${index}`}>
         {setup.kwastje === 6 ? (
           <circle
             cx={x1}
@@ -29,7 +29,6 @@ const Drawing = (props) => {
             stroke={stroke}
             fill={fill}
             strokeWidth={strokeWidth}
-            key={`c${index}`}
             style={style}
           />
         ) : setup.kwastje === 7 ? (
@@ -41,7 +40,6 @@ const Drawing = (props) => {
             stroke={stroke}
             fill={fill}
             strokeWidth={strokeWidth}
-            key={`e${index}`}
             style={style}
           />
         ) : setup.kwastje === 8 ? (
@@ -50,7 +48,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pl${index}`}
             style={style}
           />
         ) : setup.kwastje === 9 ? (
@@ -62,7 +59,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pg${index}`}
             style={style}
           />
         ) : setup.kwastje === 10 ? (
@@ -71,7 +67,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pl${index}`}
             style={style}
           />
         ) : setup.kwastje === 11 ? (
@@ -83,7 +78,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pg${index}`}
             style={style}
           />
         ) : setup.kwastje === 12 ? (
@@ -92,7 +86,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pl${index}`}
             style={style}
           />
         ) : setup.kwastje === 13 ? (
@@ -104,7 +97,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pg${index}`}
             style={style}
           />
         ) : setup.kwastje === 14 ? (
@@ -113,7 +105,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pl${index}`}
             style={style}
           />
         ) : setup.kwastje === 15 ? (
@@ -125,7 +116,6 @@ const Drawing = (props) => {
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
-            key={`pg${index}`}
             style={style}
           />
         ) : (
@@ -136,10 +126,9 @@ const Drawing = (props) => {
             y2={y2}
             strokeWidth={strokeWidth}
             stroke={stroke}
-            key={`l${index}`}
           />
         )}
-      </>
+      </React.Fragment>
     );
   });
 };

@@ -168,7 +168,7 @@ const Kwastje = () => {
       return (
         <div
           className={`control control--${type} control--${id}`}
-          key={`${id}rew${index}`}
+          key={`${id}-${index}`}
         >
           <input
             className="control__input"
