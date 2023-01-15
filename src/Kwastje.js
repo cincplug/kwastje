@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import setupArray from "./_setup.json";
 import Nav from "./Nav";
 import Filters from "./Filters";
+import Drawing from "./Drawing";
 import "./Kwastje.scss";
 
 const Kwastje = () => {
@@ -412,7 +413,7 @@ const Kwastje = () => {
               transform-origin={"center"}
             >
               <Filters {...{ h, x, y, setup }} />
-              {getPath(path)}
+              <Drawing {...{ path, setup, x, y, w, h, fgColor }} />
             </g>
           </svg>
         )}
