@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import setupArray from "./_setup.json";
+import Nav from "./Nav";
 import Filters from "./Filters";
 import "./Kwastje.scss";
 
@@ -364,41 +365,18 @@ const Kwastje = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      <nav
-        className={`menu menu--controls menu--${menuVisibilityClass}`}
-        onClick={() => !isMenuVisible && setIsMenuVisible(true)}
-      >
-        <button
-          className="menu__toggle"
-          onClick={() => setIsMenuVisible(false)}
-          title="toggle"
-        ></button>
-        {getControls(setupArray.filter((control) => !control.isFilter))}
-      </nav>
-      <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        {getControls(setupArray.filter((control) => control.isFilter))}
-        <div className="control" key="saveSvg">
-          <button
-            className="control__input control__button control__button--save"
-            onClick={() => {
-              download();
-            }}
-          >
-            save
-          </button>
-        </div>
-        <div className="control" key="clear">
-          <button
-            className="control__input control__button control__button--clear"
-            onClick={() => {
-              clear();
-            }}
-          >
-            clear
-          </button>
-        </div>
-      </nav>
-      <div
+      <Nav
+        {...{
+          isMenuVisible,
+          setIsMenuVisible,
+          menuVisibilityClass,
+          getControls,
+          download,
+          clear,
+        }}
+      />
+      <main
+        className="content"
         onMouseMove={(event) => handleMouseMove(event)}
         onMouseDown={(event) => handleMouseDown(event)}
         onMouseUp={(event) => handleMouseUp(event)}
@@ -438,7 +416,7 @@ const Kwastje = () => {
             </g>
           </svg>
         )}
-      </div>
+      </main>
       {/* <div className="info">{JSON.stringify(path, null, 4)}</div> */}
     </div>
   );
