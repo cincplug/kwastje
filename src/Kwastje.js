@@ -44,6 +44,22 @@ const Kwastje = () => {
     }, []);
   }
 
+  function handleMouseDown(event) {
+    event.preventDefault();
+    setIsMouseDown(true);
+    setIsPaused(false);
+  }
+  function handleMouseUp(event) {
+    event.preventDefault();
+    if (!(path[path.length - 1].length > 2)) {
+      setPath((prevPath) => {
+        const nextPath = prevPath.slice();
+        nextPath[nextPath.length - 1].push("break");
+        return nextPath;
+      });
+    }
+    setIsMouseDown(false);
+  }
   function handleMouseMove(event) {
     if (isPaused) return null;
     setX(event.pageX);
@@ -166,7 +182,13 @@ const Kwastje = () => {
       const [x2, y2] =
         setup.kwastje >= 5 ? [(x * index) / 100, y + index] : item;
       const [x1, y1] =
-        index > 0 ? path[index - 1] : setup.isCentric ? [w / 2, h / 2] : item;
+        index > 0
+          ? path[index - 1].length > 2
+            ? item
+            : path[index - 1]
+          : setup.isCentric
+          ? [w / 2, h / 2]
+          : item;
       const stroke = fgColor;
       const fill = setup.isFilled ? `${setup.fgColor}01` : "none";
       const style = null;
@@ -374,15 +396,8 @@ const Kwastje = () => {
       </nav>
       <div
         onMouseMove={(event) => handleMouseMove(event)}
-        onMouseDown={(event) => {
-          event.preventDefault();
-          setIsMouseDown(true);
-          setIsPaused(false);
-        }}
-        onMouseUp={(event) => {
-          event.preventDefault();
-          setIsMouseDown(false);
-        }}
+        onMouseDown={(event) => handleMouseDown(event)}
+        onMouseUp={(event) => handleMouseUp(event)}
         onDoubleClick={() => setIsPaused(true)}
       >
         <canvas
