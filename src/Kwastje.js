@@ -51,10 +51,10 @@ const Kwastje = () => {
   }
   function handleMouseUp(event) {
     event.preventDefault();
-    if (!(path[path.length - 1].length > 2)) {
+    if (!(path[path.length - 1].length > 2) && !setup.isJoint) {
       setPath((prevPath) => {
         const nextPath = prevPath.slice();
-        nextPath[nextPath.length - 1].push("break");
+        nextPath[nextPath.length - 1].push("end");
         return nextPath;
       });
     }

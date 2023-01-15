@@ -92,7 +92,12 @@
   {
     "id": "isCentric",
     "type": "checkbox",
-    "value": true
+    "value": false
+  },
+  {
+    "id": "isJoint",
+    "type": "checkbox",
+    "value": false
   },
   {
     "id": "isFilled",
