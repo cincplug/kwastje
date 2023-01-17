@@ -122,7 +122,9 @@ const Drawing = (props) => {
           <polyline
             points={`${x1},${y1} ${Math.sin(x1 * index) + w / 2},${
               Math.cos(y1) * index + h / 2
-            } ${x2},${y2} ${Math.abs(Math.sin(x2 * index + w / 2))},${Math.cos(y2) * index + h / 2}`}
+            } ${x2},${y2} ${Math.abs(Math.sin(x2 * index + w / 2))},${
+              Math.cos(y2) * index + h / 2
+            }`}
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
@@ -130,38 +132,92 @@ const Drawing = (props) => {
           />
         ) : setup.kwastje === 17 ? (
           <polygon
-            points={`${x1},${y1} ${Math.sin(x1) + w / 2},${
-              Math.cos(y1)
-            } ${Math.sin(x2 * index) + w / 2},${
-              Math.cos(y2) + h
-            } ${x2},${y2}`}
+            points={`${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(y1)} ${
+              Math.sin(x2 * index) + w / 2
+            },${Math.cos(y2) + h} ${x2},${y2}`}
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
             style={style}
           />
-          ) : setup.kwastje === 18 ? (
-            <polyline
-              points={`${Math.sin(x1 * index) + w / 2},${
-                Math.cos(y1) * 3 * index + h
-              } ${(x1 - y1 / 2)},${(y1 - x1) / 2} ${x2},${y2} ${w / 2},${h / 2} ${Math.cos(y2) * index + h / 2}`}
-              strokeWidth={strokeWidth}
-              stroke={stroke}
-              fill={fill}
-              style={style}
-            />
-          ) : setup.kwastje === 19 ? (
-            <polygon
-              points={`${Math.sin(x2 * index) + w / 2},${
+        ) : setup.kwastje === 18 ? (
+          <polyline
+            points={`${Math.sin(x1 * index) + w / 2},${
+              Math.cos(y1) * 3 * index + h
+            } ${x1 - y1 / 2},${(y1 - x1) / 2} ${x2},${y2} ${w / 2},${h / 2} ${
+              Math.cos(y2) * index + h / 2
+            }`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 19 ? (
+          <polygon
+            points={`${Math.sin(x2 * index) + w / 2},${
+              Math.cos(y2 * index) + h / 2
+            } ${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(
+              y1 + h / 2
+            )} ${x2},${y2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 20 ? (
+          <path
+            d={`M${Math.sin(x2 * index) + w / 2},${
+              Math.cos(y2 * index) + h / 2
+            } Q${x2} ${y2}, ${y1} ${x1} L${Math.cos(y2) * index + h / 2},${x2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 21 ? (
+          <path
+            d={`M${Math.sin(x2 * index) + w},${Math.cos(y2 * index) + h / 2} L${
+              Math.cos(y2) * index + h / 2
+            },${x2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 22 ? (
+          <path
+            d={`M${Math.cos(y2) * index + h / 2},${x2} L${
+              Math.sin(x2 * index) + w * setup.modifier
+            },${Math.cos(y2 * index) + h / 2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 23 ? (
+          <path
+            d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2},${
+              Math.cos(y2 * index) + h / 2
+            } Q${Math.sin(x2 * index) + w * setup.modifier} ${
+              x1 / 2
+            }, ${y2} ${y1}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+          ) : setup.kwastje === 24 ? (
+            <path
+              d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2},${
                 Math.cos(y2 * index) + h / 2
-              } ${x1},${y1} ${Math.sin(x1) + w / 2},${
-                Math.cos(y1 + h / 2)
-              } ${x2},${y2}`}
+              } Q${Math.sin(x2 * index) + w * setup.modifier} ${
+                x1 / 2
+              }, ${y2} ${x1}`}
               strokeWidth={strokeWidth}
               stroke={stroke}
               fill={fill}
               style={style}
-            />
+          />
         ) : (
           <line
             x1={x1}
