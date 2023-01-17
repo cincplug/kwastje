@@ -176,9 +176,9 @@ const Drawing = (props) => {
           />
         ) : setup.kwastje === 21 ? (
           <path
-            d={`M${Math.sin(x2 * index) + w},${Math.cos(y2 * index) + h / 2} L${
-              Math.cos(y2) * index + h / 2
-            },${x2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
+            d={`M${Math.sin(x2 * index) + w / 2}, ${Math.cos(y2 * index) + h / 2} L${
+              h - Math.cos(x2) * index + h / 2
+            },${(x2 + y2) / 2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
             strokeWidth={strokeWidth}
             stroke={stroke}
             fill={fill}
@@ -196,7 +196,7 @@ const Drawing = (props) => {
           />
         ) : setup.kwastje === 23 ? (
           <path
-            d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2},${
+            d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2} ,${
               Math.cos(y2 * index) + h / 2
             } Q${Math.sin(x2 * index) + w * setup.modifier} ${
               x1 / 2
@@ -208,15 +208,29 @@ const Drawing = (props) => {
           />
           ) : setup.kwastje === 24 ? (
             <path
-              d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2},${
-                Math.cos(y2 * index) + h / 2
+              d={`M${Math.cos(y2) * index + h / 2},${y2} L${w / (index)},${
+                Math.cos(y2 * index) + h
               } Q${Math.sin(x2 * index) + w * setup.modifier} ${
                 x1 / 2
-              }, ${y2} ${x1}`}
+              }, ${x2} ${y1}`}
               strokeWidth={strokeWidth}
               stroke={stroke}
               fill={fill}
               style={style}
+          />
+        ) : setup.kwastje === 25 ? (
+          <path
+            d={`M${Math.sin(y2) * index + h / 2},${x2} C${
+              w * setup.modifier
+            } ,${Math.cos(y2 * index) + (h / 2) * setup.modifier} ${
+              Math.cos(x2 * index) + w * setup.modifier
+            }, ${Math.cos(y1 * x1)} ${
+              Math.sin(x2 * index) + w * setup.modifier
+            }, ${Math.sin(x2) - y2 + h}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
           />
         ) : (
           <line
