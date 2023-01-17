@@ -118,6 +118,50 @@ const Drawing = (props) => {
             fill={fill}
             style={style}
           />
+        ) : setup.kwastje === 16 ? (
+          <polyline
+            points={`${x1},${y1} ${Math.sin(x1 * index) + w / 2},${
+              Math.cos(y1) * index + h / 2
+            } ${x2},${y2} ${Math.abs(Math.sin(x2 * index + w / 2))},${Math.cos(y2) * index + h / 2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+        ) : setup.kwastje === 17 ? (
+          <polygon
+            points={`${x1},${y1} ${Math.sin(x1) + w / 2},${
+              Math.cos(y1 + h / 2)
+            } ${Math.sin(x2 * index) + w / 2},${
+              Math.cos(y2) + h / 2
+            } ${x2},${y2}`}
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            style={style}
+          />
+          ) : setup.kwastje === 18 ? (
+            <polyline
+              points={`${Math.sin(x1 * index) + w / 2},${
+                Math.cos(y1) * index + h / 2
+              } ${x1},${y1} ${x2},${y2} ${w / 2},${h / 2} ${Math.cos(y2) * index + h / 2}`}
+              strokeWidth={strokeWidth}
+              stroke={stroke}
+              fill={fill}
+              style={style}
+            />
+          ) : setup.kwastje === 19 ? (
+            <polygon
+              points={`${Math.sin(x2 * index) + w / 2},${
+                Math.cos(y2 * index) + h / 2
+              } ${x1},${y1} ${Math.sin(x1) + w / 2},${
+                Math.cos(y1 + h / 2)
+              } ${x2},${y2}`}
+              strokeWidth={strokeWidth}
+              stroke={stroke}
+              fill={fill}
+              style={style}
+            />
         ) : (
           <line
             x1={x1}
