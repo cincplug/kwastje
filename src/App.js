@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import setupArray from "./_setup.json";
-import Nav from "./Nav";
+import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
-import "./Kwastje.scss";
+import "./App.scss";
 
-const Kwastje = () => {
+const App = () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const initialSetup = {};
@@ -224,7 +224,7 @@ const Kwastje = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      <Nav
+      <Menu
         {...{
           isMenuVisible,
           setIsMenuVisible,
@@ -281,4 +281,4 @@ const Kwastje = () => {
   );
 };
 
-export default Kwastje;
+export default App;

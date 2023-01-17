@@ -1,7 +1,7 @@
 import React from "react";
 import setupArray from "./_setup.json";
 
-const Nav = (props) => {
+const Menu = (props) => {
   const {
     isMenuVisible,
     setIsMenuVisible,
@@ -50,4 +50,4 @@ const Nav = (props) => {
   );
 };
 
-export default Nav;
+export default Menu;

@@ -78,7 +78,7 @@
   },
   {
     "id": "bgColor",
-    "value": "#222222",
+    "value": "#14181a",
     "type": "color",
     "min": 0,
     "max": 100,

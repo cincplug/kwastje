@@ -1,21 +1,23 @@
 $gutter: 1rem;
 $color-blue: #07a;
 $color-green: #59a200;
-$color-white: #fff;
-$color-black: #222;
-$color-neutral: #888;
+$color-white: #f9f8f7;
+$color-dark: #24282a;
+$color-black: #14181a;
+$color-neutral: #919191;
 $color-red: #d44;
 $color-dark-blue: #024;
 
-$color-bg: $color-black;
+$color-bg: $color-dark;
 $color-fg: $color-green;
 $color-brand: $color-green;
 $color-event: $color-white;
+$color-text: $color-neutral;
 
-$color-input: #aaa;
-$color-input-bg: #222;
-$color-input-border: rgba($color-input, 70%);
-$color-nav: #333;
+$color-input: $color-white;
+$color-input-bg: $color-black;
+$color-input-border: rgba($color-input, 30%);
+$color-nav: $color-bg;
 
 $handle-size: 4rem;
 $menu-width: 6rem;
@@ -25,6 +27,15 @@ $menu-width: 6rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+$base-font-family: "Brando Sans";
+@font-face {
+  font-family: $base-font-family;
+  src: url("./fonts/BrandoSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -37,9 +48,13 @@ $menu-width: 6rem;
   font-family: sans-serif;
   font-weight: 300;
   letter-spacing: 0.3px;
+  font-family: $base-font-family;
+}
+html {
+  font-size: 16px;
 }
 body {
-  background: $color-bg;
+  background: $color-bg url(./img/bg-noise.png);
   color: $color-fg;
   overflow: hidden;
 }
@@ -95,9 +110,8 @@ button {
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
-  background: $color-nav;
+  background: $color-nav url(./img/bg-noise.png);
   color: $color-white;
-  border: 1px solid rgba($color-input, 30%);
   transform-origin: 0 0;
   &--collapsed {
     height: 3rem;
@@ -154,8 +168,9 @@ button {
     border: 1px solid $color-input-border;
     background: $color-input-bg;
     display: block;
-    border-radius: 0.2rem;
+    border-radius: 0;
     padding: 0.3rem 0.4rem;
+    font-size: 0.9rem;
     &[type="color"] {
       padding: 0;
       background: $color-input;
@@ -177,11 +192,12 @@ button {
     }
   }
   &__label {
-    color: $color-input;
-    font-size: 0.8rem;
+    color: $color-text;
+    font-size: 0.9rem;
     margin: 0.2rem auto 0;
     width: 100%;
     user-select: none;
+    text-transform: capitalize;
     .menu--collapsed & {
       display: none;
     }
@@ -197,6 +213,10 @@ button {
     color: $color-white;
     border: none;
     border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1rem;
+    height: 1.5rem;
     &--save {
       background: $color-green;
     }
