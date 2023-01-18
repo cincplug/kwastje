@@ -19,6 +19,7 @@ const Drawing = (props) => {
       (setup.thickness * index * setup.growth) / path.length,
       0.5
     );
+    const commonProps = { stroke, strokeWidth, fill, style };
     return (
       <React.Fragment key={`shp-${index}`}>
         {setup.kwastje === 6 ? (
@@ -26,10 +27,7 @@ const Drawing = (props) => {
             cx={x1}
             cy={y1}
             r={Math.abs(y2 - x2 / setup.modifier)}
-            stroke={stroke}
-            fill={fill}
-            strokeWidth={strokeWidth}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 7 ? (
           <ellipse
@@ -37,18 +35,12 @@ const Drawing = (props) => {
             cy={y1}
             rx={x2 / setup.modifier / 2}
             ry={y2 / setup.modifier / 2}
-            stroke={stroke}
-            fill={fill}
-            strokeWidth={strokeWidth}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 8 ? (
           <polyline
             points={`${x1},${y1} ${x2},${y2} ${y1},${x1} ${y2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 9 ? (
           <polygon
@@ -56,18 +48,12 @@ const Drawing = (props) => {
               y1,
               setup.modifier
             )},${Math.pow(x1, setup.modifier)} ${y2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 10 ? (
           <path
             d={`M${x1},${y1} L${x2},${y2} M${y1},${x1} L${y2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 11 ? (
           <path
@@ -75,18 +61,12 @@ const Drawing = (props) => {
               y1,
               setup.modifier
             )},${Math.pow(x1, setup.modifier)} L${y2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 12 ? (
           <path
             d={`M${x1},${y1} C${x2} ${y2}, ${y1} ${x1}, ${y2} ${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 13 ? (
           <path
@@ -94,18 +74,12 @@ const Drawing = (props) => {
               y1,
               setup.modifier
             )} ${Math.pow(x1, setup.modifier)}, ${y2} ${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 14 ? (
           <path
             d={`M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1} L${y2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 15 ? (
           <path
@@ -113,10 +87,7 @@ const Drawing = (props) => {
               x1,
               setup.modifier
             )}, ${y2} ${x2} L${x2},${y2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 16 ? (
           <polyline
@@ -125,20 +96,14 @@ const Drawing = (props) => {
             } ${x2},${y2} ${Math.abs(Math.sin(x2 * index + w / 2))},${
               Math.cos(y2) * index + h / 2
             }`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 17 ? (
           <polygon
             points={`${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(y1)} ${
               Math.sin(x2 * index) + w / 2
             },${Math.cos(y2) + h} ${x2},${y2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 18 ? (
           <polyline
@@ -147,10 +112,7 @@ const Drawing = (props) => {
             } ${x1 - y1 / 2},${(y1 - x1) / 2} ${x2},${y2} ${w / 2},${h / 2} ${
               Math.cos(y2) * index + h / 2
             }`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 19 ? (
           <polygon
@@ -159,40 +121,28 @@ const Drawing = (props) => {
             } ${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(
               y1 + h / 2
             )} ${x2},${y2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 20 ? (
           <path
             d={`M${Math.sin(x2 * index) + w / 2},${
               Math.cos(y2 * index) + h / 2
             } Q${x2} ${y2}, ${y1} ${x1} L${Math.cos(y2) * index + h / 2},${x2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 21 ? (
           <path
             d={`M${Math.sin(x2 * index) + w / 2}, ${Math.cos(y2 * index) + h / 2} L${
               h - Math.cos(x2) * index + h / 2
             },${(x2 + y2) / 2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 22 ? (
           <path
             d={`M${Math.cos(y2) * index + h / 2},${x2} L${
               Math.sin(x2 * index) + w * setup.modifier
             },${Math.cos(y2 * index) + h / 2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : setup.kwastje === 23 ? (
           <path
@@ -201,10 +151,7 @@ const Drawing = (props) => {
             } Q${Math.sin(x2 * index) + w * setup.modifier} ${
               x1 / 2
             }, ${y2} ${y1}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
           ) : setup.kwastje === 24 ? (
             <path
@@ -213,10 +160,7 @@ const Drawing = (props) => {
               } Q${Math.sin(x2 * index) + w * setup.modifier} ${
                 x1 / 2
               }, ${x2} ${y1}`}
-              strokeWidth={strokeWidth}
-              stroke={stroke}
-              fill={fill}
-              style={style}
+              {...commonProps}
           />
         ) : setup.kwastje === 25 ? (
           <path
@@ -227,10 +171,7 @@ const Drawing = (props) => {
             }, ${Math.cos(y1 * x1)} ${
               Math.sin(x2 * index) + w * setup.modifier
             }, ${Math.sin(x2) - y2 + h}`}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
-            fill={fill}
-            style={style}
+            {...commonProps}
           />
         ) : (
           <line
@@ -238,8 +179,7 @@ const Drawing = (props) => {
             y1={y1}
             x2={x2}
             y2={y2}
-            strokeWidth={strokeWidth}
-            stroke={stroke}
+            {...commonProps}
           />
         )}
       </React.Fragment>
