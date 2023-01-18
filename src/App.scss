@@ -4,7 +4,7 @@ $color-green: #59a200;
 $color-white: #f9f8f7;
 $color-dark: #24282a;
 $color-black: #14181a;
-$color-neutral: #919191;
+$color-neutral: #c4c4c4;
 $color-red: #d44;
 $color-dark-blue: #024;
 
@@ -214,6 +214,7 @@ button {
     border: none;
     border-radius: 12px;
     font-weight: bold;
+    font-size: 0.8rem;
     text-transform: uppercase;
     line-height: 1rem;
     height: 1.5rem;

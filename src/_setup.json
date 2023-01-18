@@ -2,10 +2,12 @@
   {
     "id": "isCanvas",
     "type": "checkbox",
+    "description": "Switches to HTML canvas, otherwise we use SVG",
     "value": false
   },
   {
     "id": "kwastje",
+    "description": "Shape and attitude of our graphic tool",
     "value": 1,
     "type": "number",
     "min": 0,
@@ -14,6 +16,7 @@
   },
   {
     "id": "dotsCount",
+    "description": "How many dots make our kwastje",
     "value": 200,
     "type": "number",
     "min": 10,
@@ -22,6 +25,7 @@
   },
   {
     "id": "angle",
+    "description": "Angle of drawing board",
     "value": 0,
     "type": "number",
     "min": 0,
@@ -30,6 +34,7 @@
   },
   {
     "id": "thickness",
+    "description": "Initial thickness of lines in our kwastje",
     "value": 1,
     "type": "number",
     "min": 1,
@@ -38,6 +43,7 @@
   },
   {
     "id": "growth",
+    "description": "Growth factor of lines in the kwastje",
     "value": 4,
     "type": "number",
     "min": 0,
@@ -46,6 +52,7 @@
   },
   {
     "id": "modifier",
+    "description": "Factor modifying behavior of several kwastjes",
     "value": 0.7,
     "type": "number",
     "min": 0,
@@ -54,6 +61,7 @@
   },
   {
     "id": "latency",
+    "description": "Can be used to affect density of lines in the kwastje",
     "value": 1,
     "type": "number",
     "min": 1,
@@ -62,6 +70,7 @@
   },
   {
     "id": "opacity",
+    "description": "Initial opacity of lines in the kwastje",
     "value": 128,
     "type": "range",
     "min": 0,
@@ -70,6 +79,7 @@
   },
   {
     "id": "fgColor",
+    "description": "Foreground color",
     "value": "#aadd44",
     "type": "color",
     "min": 0,
@@ -78,6 +88,7 @@
   },
   {
     "id": "bgColor",
+    "description": "Background color",
     "value": "#14181a",
     "type": "color",
     "min": 0,
@@ -87,25 +98,30 @@
   {
     "id": "hasBg",
     "type": "checkbox",
+    "description": "Turns background on and off",
     "value": true
   },
   {
     "id": "isCentric",
     "type": "checkbox",
+    "description": "Uses center of the image as a base in some kwastjes",
     "value": false
   },
   {
     "id": "isJoint",
     "type": "checkbox",
+    "description": "Connects lines in the kwastje, even after mouse is released",
     "value": false
   },
   {
     "id": "isFilled",
     "type": "checkbox",
+    "description": "Fills closed shapes with minimal opacity of foreground color",
     "value": false
   },
   {
     "id": "turbulence",
+    "description": "SVG turbulence filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -115,6 +131,7 @@
   },
   {
     "id": "displace",
+    "description": "SVG displacement filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -124,6 +141,7 @@
   },
   {
     "id": "erode",
+    "description": "SVG erode filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -133,6 +151,7 @@
   },
   {
     "id": "dilate",
+    "description": "SVG dilate filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -142,6 +161,7 @@
   },
   {
     "id": "specular",
+    "description": "SVG specular light filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -151,6 +171,7 @@
   },
   {
     "id": "diffuse",
+    "description": "SVG diffuse light filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -160,6 +181,7 @@
   },
   {
     "id": "composite",
+    "description": "SVG composite filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -169,6 +191,7 @@
   },
   {
     "id": "blur",
+    "description": "SVG gaussian blur filter",
     "value": 0,
     "type": "number",
     "isFilter": true,
@@ -178,6 +201,7 @@
   },
   {
     "id": "convolve",
+    "description": "SVG convolve filter",
     "value": 0,
     "type": "number",
     "isFilter": true,

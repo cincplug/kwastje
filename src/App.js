@@ -160,15 +160,16 @@ const App = () => {
 
   function getControls(controls) {
     return controls.map((item, index) => {
-      const { id, type, min, max, step } = item;
+      const { id, type, min, max, step, description } = item;
       const value = setup[id] || 0;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
       const checked = value === true;
       const style = type === "range" ? { background: fgColor } : null;
       return (
-        <div
+        <fieldset
           className={`control control--${type} control--${id}`}
           key={`${id}-${index}`}
+          title={description}
         >
           <input
             className="control__input"
@@ -180,7 +181,7 @@ const App = () => {
           <label className="control__label" htmlFor={id}>
             {label}
           </label>
-        </div>
+        </fieldset>
       );
     });
   }
