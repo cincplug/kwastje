@@ -45,6 +45,16 @@ const Menu = (props) => {
             clear
           </button>
         </div>
+        <div className="control" key="reset">
+          <button
+            className="control__input control__button control__button--clear"
+            onClick={() => {
+              localStorage.clear(); window.location.reload();
+            }}
+          >
+            reset
+          </button>
+        </div>
       </nav>
     </>
   );

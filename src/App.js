@@ -14,7 +14,7 @@ const App = () => {
   const storedSetup = storedSetupRaw ? JSON.parse(storedSetupRaw) : null;
   const initialSetup = {};
   defaultSetup.forEach((item) => {
-    initialSetup[item.id] = storedSetup[item.id] || item.value;
+    initialSetup[item.id] = storedSetup ? storedSetup[item.id] : item.value;
   });
   const [setup, setSetup] = useState(initialSetup);
   const [x, setX] = useState(0);
