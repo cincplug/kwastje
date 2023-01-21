@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import setupArray from "./_setup.json";
+import defaultSetup from "./_setup.json";
 import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
@@ -9,9 +9,12 @@ import "./App.scss";
 const App = () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
+  const storageSetupItem = "kwastjeSetup";
+  const storedSetupRaw = localStorage.getItem(storageSetupItem);
+  const storedSetup = storedSetupRaw ? JSON.parse(storedSetupRaw) : null;
   const initialSetup = {};
-  setupArray.forEach((item) => {
-    initialSetup[item.id] = item.value;
+  defaultSetup.forEach((item) => {
+    initialSetup[item.id] = storedSetup[item.id] || item.value;
   });
   const [setup, setSetup] = useState(initialSetup);
   const [x, setX] = useState(0);
@@ -22,7 +25,7 @@ const App = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
-  const [isInfoVisible, setIsInfoVisible] = useState(true);
+  const [isInfoVisible, setIsInfoVisible] = useState(false);
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
@@ -156,6 +159,7 @@ const App = () => {
       } else {
         nextSetup[id] = type === "number" ? parseFloat(value) : value;
       }
+      localStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
     });
   }
