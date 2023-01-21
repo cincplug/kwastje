@@ -3,6 +3,7 @@ import setupArray from "./_setup.json";
 import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
+import Splash from "./Splash";
 import "./App.scss";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+  const [isInfoVisible, setIsInfoVisible] = useState(true);
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
@@ -277,7 +279,11 @@ const App = () => {
           </svg>
         )}
       </main>
-      {/* <div className="info">{JSON.stringify(path, null, 4)}</div> */}
+      {isInfoVisible && (
+        <Splash
+          setIsInfoVisible={() => setIsInfoVisible((prevState) => !prevState)}
+        />
+      )}
     </div>
   );
 };
