@@ -20,7 +20,7 @@ const App = () => {
   const [path, setPath] = useState(initialPath);
   const [isPaused, setIsPaused] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
