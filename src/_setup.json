@@ -11,7 +11,7 @@
     "value": 1,
     "type": "number",
     "min": 0,
-    "max": 25,
+    "max": 40,
     "step": 1
   },
   {

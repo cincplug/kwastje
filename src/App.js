@@ -17,8 +17,8 @@ const App = () => {
     initialSetup[item.id] = storedSetup ? storedSetup[item.id] : item.value;
   });
   const [setup, setSetup] = useState(initialSetup);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
   const [count, setCount] = useState(0);
   const initialPath = fillPath();
   const [path, setPath] = useState(initialPath);
@@ -75,13 +75,13 @@ const App = () => {
 
   function handleMouseMove(event) {
     if (isPaused) return null;
-    setX(event.pageX);
-    setY(event.pageY);
+    setMouseX(event.pageX);
+    setMouseY(event.pageY);
     if (isMouseDown && count % setup.latency === 0) {
       setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {
-            prevPath[prevPath.length - 1] = [x, y];
+            prevPath[prevPath.length - 1] = [mouseX, mouseY];
           }
         } else {
           const randomIndex = Math.round(
@@ -92,28 +92,28 @@ const App = () => {
           );
           switch (setup.kwastje) {
             case 1:
-              prevPath[prevPath.length] = [x, y];
+              prevPath[prevPath.length] = [mouseX, mouseY];
               break;
             case 2:
-              prevPath[Math.min(count, prevPath.length - 1)] = [x, y];
+              prevPath[Math.min(count, prevPath.length - 1)] = [mouseX, mouseY];
               break;
             case 3:
               const [prevX, prevY] = prevPath[randomIndex];
-              prevPath[randomIndex + 1] = [x, y];
+              prevPath[randomIndex + 1] = [mouseX, mouseY];
               prevPath[randomIndex] = [
-                (prevX + x * 5) / 6,
-                (prevY + y * 5) / 6,
+                (prevX + mouseX * 5) / 6,
+                (prevY + mouseY * 5) / 6,
               ];
               break;
             case 4:
-              prevPath[randomIndex] = [x, y];
+              prevPath[randomIndex] = [mouseX, mouseY];
               prevPath[randomIndex + 1] = [
-                x * setup.modifier,
-                y * setup.modifier,
+                mouseX * setup.modifier,
+                mouseY * setup.modifier,
               ];
               break;
             default:
-              prevPath[Math.round(count - 1)] = [x, y];
+              prevPath[Math.round(count - 1)] = [mouseX, mouseY];
               break;
           }
         }
@@ -132,9 +132,9 @@ const App = () => {
         ctx.lineWidth =
           (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
-        const [x1, y1] = path[path.length ? path.length - 1 : [x, y]];
+        const [x1, y1] = path[path.length ? path.length - 1 : [mouseX, mouseY]];
         ctx.moveTo(x1, y1);
-        ctx.lineTo(x, y);
+        ctx.lineTo(mouseX, mouseY);
         ctx.closePath();
         ctx.stroke();
       }
@@ -278,8 +278,8 @@ const App = () => {
               transform={`rotate(${setup.angle} 0 0)`}
               transform-origin={"center"}
             >
-              <Filters {...{ h, x, y, setup }} />
-              <Drawing {...{ path, setup, x, y, w, h, fgColor }} />
+              <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
+              <Drawing {...{ path, setup, mouseX, mouseY, w, h, fgColor }} />
             </g>
           </svg>
         )}

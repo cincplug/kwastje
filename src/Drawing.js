@@ -1,17 +1,18 @@
 import React from "react";
+import Bertje from "./kwastjes/Bertje";
 
 const Drawing = (props) => {
-  const { path, setup, x, y, w, h, fgColor } = props;
-  return path.map((item, index) => {
-    const [x2, y2] = setup.kwastje >= 5 ? [(x * index) / 100, y + index] : item;
+  const { path, setup, mouseX, mouseY, w, h, fgColor } = props;
+  return path.map((coords, index) => {
+    const [x2, y2] = setup.kwastje >= 5 ? [(mouseX * index) / 100, mouseY + index] : coords;
     const [x1, y1] =
       index > 0
         ? path[index - 1].length > 2
-          ? item
+          ? coords
           : path[index - 1]
         : setup.isCentric
         ? [w / 2, h / 2]
-        : item;
+        : coords;
     const stroke = fgColor;
     const fill = setup.isFilled ? `${setup.fgColor}01` : "none";
     const style = null;
@@ -195,6 +196,7 @@ const Drawing = (props) => {
           {...commonProps}
         />
       ),
+      26: <Bertje {...{...props, coords, commonProps}} key={key} />,
     };
     const Kwastje = kwastjes[setup.kwastje] || (
       <line x1={x1} y1={y1} x2={x2} y2={y2} {...commonProps} />

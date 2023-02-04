@@ -1,7 +1,7 @@
 import React from "react";
 
 const Filters = (props) => {
-  const { setup, h, x, y } = props;
+  const { setup, h, mouseX, mouseY } = props;
   return (
     <>
       {setup.erode && (
@@ -41,7 +41,7 @@ const Filters = (props) => {
             specularExponent={setup.growth}
             lightingColor={setup.fgColor}
           >
-            <fePointLight x={x} y={y} z={setup.specular} />
+            <fePointLight x={mouseX} y={mouseY} z={setup.specular} />
           </feSpecularLighting>
         )}
         {setup.diffuse && (
@@ -50,10 +50,10 @@ const Filters = (props) => {
             lightingColor={setup.fgColor}
           >
             <feSpotLight
-              x={x}
-              y={y}
+              x={mouseX}
+              y={mouseY}
               z={setup.diffuse}
-              limitingConeAngle={((y * 1110) / h) * 2}
+              limitingConeAngle={((mouseY * 1110) / h) * 2}
             />
           </feDiffuseLighting>
         )}
@@ -78,7 +78,7 @@ const Filters = (props) => {
         <filter id="convolve-filter">
           <feConvolveMatrix
             kernelMatrix={`${setup.convolve} 0 0
-                ${x} 0 0
+                ${mouseX} 0 0
                 0 0 ${setup.convolve}`}
           />
         </filter>
