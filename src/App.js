@@ -168,7 +168,8 @@ const App = () => {
     return controls.map((item, index) => {
       const { id, type, min, max, step, description } = item;
       const value = setup[id] || 0;
-      const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
+      const label = id;
+      // const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
       const checked = value === true;
       const style = type === "range" ? { background: fgColor } : null;
       return (
