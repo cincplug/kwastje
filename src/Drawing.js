@@ -1,5 +1,6 @@
 import React from "react";
 import Bertje from "./kwastjes/Bertje";
+import Colintje from "./kwastjes/Colintje";
 
 const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor } = props;
@@ -197,6 +198,7 @@ const Drawing = (props) => {
         />
       ),
       26: <Bertje {...{...props, coords, commonProps}} key={key} />,
+      27: <Colintje {...{...props, coords, commonProps}} key={key} />,
     };
     const Kwastje = kwastjes[setup.kwastje] || (
       <line x1={x1} y1={y1} x2={x2} y2={y2} {...commonProps} />
