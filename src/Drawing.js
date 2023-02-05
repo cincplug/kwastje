@@ -4,9 +4,7 @@ import { customKwastjes } from "./kwastjes";
 const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor } = props;
   return path.map((coords, index) => {
-    const [x2, y2] =
-      setup.kwastje >= 5 ? [(mouseX * index) / 100, mouseY + index] : coords;
-    const [x1, y1] =
+    const [defaultX1, defaultY1] =
       index > 0
         ? path[index - 1].length > 2
           ? coords
@@ -14,6 +12,8 @@ const Drawing = (props) => {
         : setup.isCentric
         ? [w / 2, h / 2]
         : coords;
+    const [defaultX2, defaultY2] =
+      setup.kwastje >= 5 ? [(mouseX * index) / 100, mouseY + index] : coords;
     const stroke = fgColor;
     const fill = setup.isFilled ? `${setup.fgColor}01` : "none";
     const style = null;
@@ -25,143 +25,143 @@ const Drawing = (props) => {
     const commonProps = { stroke, strokeWidth, fill, style, key };
     const kwastjes = [
       <circle
-        cx={x1}
-        cy={y1}
-        r={Math.abs(y2 - x2 / setup.modifier)}
+        cx={defaultX1}
+        cy={defaultY1}
+        r={Math.abs(defaultY2 - defaultX2 / setup.modifier)}
         {...commonProps}
       />,
       <ellipse
-        cx={x1}
-        cy={y1}
-        rx={x2 / setup.modifier / 2}
-        ry={y2 / setup.modifier / 2}
+        cx={defaultX1}
+        cy={defaultY1}
+        rx={defaultX2 / setup.modifier / 2}
+        ry={defaultY2 / setup.modifier / 2}
         {...commonProps}
       />,
       <polyline
-        points={`${x1},${y1} ${x2},${y2} ${y1},${x1} ${y2},${x2}`}
+        points={`${defaultX1},${defaultY1} ${defaultX2},${defaultY2} ${defaultY1},${defaultX1} ${defaultY2},${defaultX2}`}
         {...commonProps}
       />,
       <polygon
-        points={`${x1},${y1} ${x2},${y2} ${Math.pow(
-          y1,
+        points={`${defaultX1},${defaultY1} ${defaultX2},${defaultY2} ${Math.pow(
+          defaultY1,
           setup.modifier
-        )},${Math.pow(x1, setup.modifier)} ${y2},${x2}`}
+        )},${Math.pow(defaultX1, setup.modifier)} ${defaultY2},${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} L${x2},${y2} M${y1},${x1} L${y2},${x2}`}
+        d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${defaultY1},${defaultX1} L${defaultY2},${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} L${x2},${y2} M${Math.pow(
-          y1,
+        d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${Math.pow(
+          defaultY1,
           setup.modifier
-        )},${Math.pow(x1, setup.modifier)} L${y2},${x2}`}
+        )},${Math.pow(defaultX1, setup.modifier)} L${defaultY2},${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} C${x2} ${y2}, ${y1} ${x1}, ${y2} ${x2}`}
+        d={`M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1}, ${defaultY2} ${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} C${x2} ${y2}, ${Math.pow(
-          y1,
+        d={`M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${Math.pow(
+          defaultY1,
           setup.modifier
-        )} ${Math.pow(x1, setup.modifier)}, ${y2} ${x2}`}
+        )} ${Math.pow(defaultX1, setup.modifier)}, ${defaultY2} ${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1} L${y2},${x2}`}
+        d={`M${defaultX1},${defaultY1} Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1} L${defaultY2},${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${x1},${y1} Q${Math.pow(y1, setup.modifier)} ${Math.pow(
-          x1,
+        d={`M${defaultX1},${defaultY1} Q${Math.pow(defaultY1, setup.modifier)} ${Math.pow(
+          defaultX1,
           setup.modifier
-        )}, ${y2} ${x2} L${x2},${y2}`}
+        )}, ${defaultY2} ${defaultX2} L${defaultX2},${defaultY2}`}
         {...commonProps}
       />,
       <polyline
-        points={`${x1},${y1} ${Math.sin(x1 * index) + w / 2},${
-          Math.cos(y1) * index + h / 2
-        } ${x2},${y2} ${Math.abs(Math.sin(x2 * index + w / 2))},${
-          Math.cos(y2) * index + h / 2
+        points={`${defaultX1},${defaultY1} ${Math.sin(defaultX1 * index) + w / 2},${
+          Math.cos(defaultY1) * index + h / 2
+        } ${defaultX2},${defaultY2} ${Math.abs(Math.sin(defaultX2 * index + w / 2))},${
+          Math.cos(defaultY2) * index + h / 2
         }`}
         {...commonProps}
       />,
       <polygon
-        points={`${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(y1)} ${
-          Math.sin(x2 * index) + w / 2
-        },${Math.cos(y2) + h} ${x2},${y2}`}
+        points={`${defaultX1},${defaultY1} ${Math.sin(defaultX1) + w / 2},${Math.cos(defaultY1)} ${
+          Math.sin(defaultX2 * index) + w / 2
+        },${Math.cos(defaultY2) + h} ${defaultX2},${defaultY2}`}
         {...commonProps}
       />,
       <polyline
-        points={`${Math.sin(x1 * index) + w / 2},${
-          Math.cos(y1) * 3 * index + h
-        } ${x1 - y1 / 2},${(y1 - x1) / 2} ${x2},${y2} ${w / 2},${h / 2} ${
-          Math.cos(y2) * index + h / 2
+        points={`${Math.sin(defaultX1 * index) + w / 2},${
+          Math.cos(defaultY1) * 3 * index + h
+        } ${defaultX1 - defaultY1 / 2},${(defaultY1 - defaultX1) / 2} ${defaultX2},${defaultY2} ${w / 2},${h / 2} ${
+          Math.cos(defaultY2) * index + h / 2
         }`}
         {...commonProps}
       />,
       <polygon
-        points={`${Math.sin(x2 * index) + w / 2},${
-          Math.cos(y2 * index) + h / 2
-        } ${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(
-          y1 + h / 2
-        )} ${x2},${y2}`}
+        points={`${Math.sin(defaultX2 * index) + w / 2},${
+          Math.cos(defaultY2 * index) + h / 2
+        } ${defaultX1},${defaultY1} ${Math.sin(defaultX1) + w / 2},${Math.cos(
+          defaultY1 + h / 2
+        )} ${defaultX2},${defaultY2}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(x2 * index) + w / 2},${
-          Math.cos(y2 * index) + h / 2
-        } Q${x2} ${y2}, ${y1} ${x1} L${Math.cos(y2) * index + h / 2},${x2}`}
+        d={`M${Math.sin(defaultX2 * index) + w / 2},${
+          Math.cos(defaultY2 * index) + h / 2
+        } Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1} L${Math.cos(defaultY2) * index + h / 2},${defaultX2}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(x2 * index) + w / 2}, ${
-          Math.cos(y2 * index) + h / 2
-        } L${h - Math.cos(x2) * index + h / 2},${
-          (x2 + y2) / 2
-        } Q${x2} ${y2}, ${y1} ${x1 / 2}`}
+        d={`M${Math.sin(defaultX2 * index) + w / 2}, ${
+          Math.cos(defaultY2 * index) + h / 2
+        } L${h - Math.cos(defaultX2) * index + h / 2},${
+          (defaultX2 + defaultY2) / 2
+        } Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1 / 2}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(y2) * index + h / 2},${x2} L${
-          Math.sin(x2 * index) + w * setup.modifier
-        },${Math.cos(y2 * index) + h / 2} Q${x2} ${y2}, ${y1} ${x1 / 2}`}
+        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${
+          Math.sin(defaultX2 * index) + w * setup.modifier
+        },${Math.cos(defaultY2 * index) + h / 2} Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1 / 2}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(y2) * index + h / 2},${x2} L${w / 2} ,${
-          Math.cos(y2 * index) + h / 2
-        } Q${Math.sin(x2 * index) + w * setup.modifier} ${x1 / 2}, ${y2} ${y1}`}
+        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${w / 2} ,${
+          Math.cos(defaultY2 * index) + h / 2
+        } Q${Math.sin(defaultX2 * index) + w * setup.modifier} ${defaultX1 / 2}, ${defaultY2} ${defaultY1}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(y2) * index + h / 2},${y2} L${w / index},${
-          Math.cos(y2 * index) + h
-        } Q${Math.sin(x2 * index) + w * setup.modifier} ${x1 / 2}, ${x2} ${y1}`}
+        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultY2} L${w / index},${
+          Math.cos(defaultY2 * index) + h
+        } Q${Math.sin(defaultX2 * index) + w * setup.modifier} ${defaultX1 / 2}, ${defaultX2} ${defaultY1}`}
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(y2) * index + h / 2},${x2} C${w * setup.modifier} ,${
-          Math.cos(y2 * index) + (h / 2) * setup.modifier
-        } ${Math.cos(x2 * index) + w * setup.modifier}, ${Math.cos(y1 * x1)} ${
-          Math.sin(x2 * index) + w * setup.modifier
-        }, ${Math.sin(x2) - y2 + h}`}
+        d={`M${Math.sin(defaultY2) * index + h / 2},${defaultX2} C${w * setup.modifier} ,${
+          Math.cos(defaultY2 * index) + (h / 2) * setup.modifier
+        } ${Math.cos(defaultX2 * index) + w * setup.modifier}, ${Math.cos(defaultY1 * defaultX1)} ${
+          Math.sin(defaultX2 * index) + w * setup.modifier
+        }, ${Math.sin(defaultX2) - defaultY2 + h}`}
         {...commonProps}
       />,
     ].concat(
       customKwastjes.map((CustomKwastje) => (
         <CustomKwastje
-          {...{ x1, x2, y1, y2, index, w, h, commonProps }}
+          {...{ defaultX1, defaultX2, defaultY1, defaultY2, index, w, h, commonProps }}
           key={key}
         />
       ))
     );
 
     const Kwastje = kwastjes[setup.kwastje - 5] || (
-      <line x1={x1} y1={y1} x2={x2} y2={y2} {...commonProps} />
+      <line defaultX1={defaultX1} defaultY1={defaultY1} defaultX2={defaultX2} defaultY2={defaultY2} {...commonProps} />
     );
     return Kwastje;
   });
