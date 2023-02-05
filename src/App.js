@@ -52,6 +52,7 @@ const App = () => {
       [callback]
     );
     useEffect(() => {
+      updateKwastjeName();
       requestRef.current = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(requestRef.current);
     }, [animate]);
@@ -164,14 +165,17 @@ const App = () => {
       }
       localStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
-        const kwastjeNames = defaultKwastjeNames.concat(
-          Object.keys(customKwastjes)
-        );
-        console.warn(kwastjeNames, value);
-        setKwastjeName(kwastjeNames[value - 1]);
+        updateKwastjeName(value);
       }
       return nextSetup;
     });
+  }
+
+  function updateKwastjeName(value = setup.kwastje) {
+    const kwastjeNames = defaultKwastjeNames.concat(
+      Object.keys(customKwastjes)
+    );
+    setKwastjeName(kwastjeNames[value - 1]);
   }
 
   function getControls(controls) {
@@ -188,7 +192,11 @@ const App = () => {
           key={`${id}-${index}`}
           title={description}
         >
-          {id === "kwastje" && <p>{kwastjeName}</p>}
+          {id === "kwastje" && (
+            <label htmlFor={id} className="control__label control__label--name">
+              {kwastjeName}
+            </label>
+          )}
           <input
             className="control__input"
             {...{ type, id, value, min, max, step, checked, style }}
