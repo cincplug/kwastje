@@ -13,7 +13,7 @@ const Drawing = (props) => {
         ? [w / 2, h / 2]
         : coords;
     const [defaultX2, defaultY2] =
-      setup.kwastje >= 5 ? [(mouseX * index) / 100, mouseY + index] : coords;
+      setup.kwastje >= 5 ? [(mouseX * index) / 100, mouseY + index * setup.modifier] : coords;
     const stroke = fgColor;
     const fill = setup.isFilled ? `${setup.fgColor}01` : "none";
     const style = null;
@@ -161,7 +161,7 @@ const Drawing = (props) => {
     );
 
     const Kwastje = kwastjes[setup.kwastje - 5] || (
-      <line defaultX1={defaultX1} defaultY1={defaultY1} defaultX2={defaultX2} defaultY2={defaultY2} {...commonProps} />
+      <line x1={defaultX1} y1={defaultY1} x2={defaultX2} y2={defaultY2} {...commonProps} />
     );
     return Kwastje;
   });
