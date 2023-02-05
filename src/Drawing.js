@@ -183,7 +183,7 @@ const Drawing = (props) => {
       />,
     ];
     const kwastjes = defaultKwastjes.concat(
-      customKwastjes.map((CustomKwastje) => (
+      Object.values(customKwastjes).map((CustomKwastje) => (
         <CustomKwastje
           {...{
             setup,

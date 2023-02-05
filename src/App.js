@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
+import { defaultKwastjeNames, customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
@@ -26,6 +27,7 @@ const App = () => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
+  const [kwastjeName, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
@@ -132,7 +134,8 @@ const App = () => {
         ctx.lineWidth =
           (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
-        const [defaultX1, defaultY1] = path[path.length ? path.length - 1 : [mouseX, mouseY]];
+        const [defaultX1, defaultY1] =
+          path[path.length ? path.length - 1 : [mouseX, mouseY]];
         ctx.moveTo(defaultX1, defaultY1);
         ctx.lineTo(mouseX, mouseY);
         ctx.closePath();
@@ -160,6 +163,13 @@ const App = () => {
         nextSetup[id] = type === "number" ? parseFloat(value) : value;
       }
       localStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
+      if (id === "kwastje") {
+        const kwastjeNames = defaultKwastjeNames.concat(
+          Object.keys(customKwastjes)
+        );
+        console.warn(kwastjeNames, value);
+        setKwastjeName(kwastjeNames[setup.kwastje]);
+      }
       return nextSetup;
     });
   }
@@ -178,6 +188,7 @@ const App = () => {
           key={`${id}-${index}`}
           title={description}
         >
+          {id === "kwastje" && <p>{kwastjeName}</p>}
           <input
             className="control__input"
             {...{ type, id, value, min, max, step, checked, style }}
