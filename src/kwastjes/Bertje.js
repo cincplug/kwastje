@@ -3,7 +3,7 @@ import React from "react";
 const Bertje = (props) => {
   const {
     // setup,
-    // index,
+    index,
     // w,
     // h,
     defaultX1,
@@ -13,7 +13,9 @@ const Bertje = (props) => {
     commonProps,
   } = props;
 
-  return <path d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2}`} {...commonProps} />;
+  const x3 = defaultX2 + index * 2;
+  const y3 = defaultY2 * index;
+  return <path d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} L${x3},${y3}`} {...commonProps} />;
 };
 
 export default Bertje;

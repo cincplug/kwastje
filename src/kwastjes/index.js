@@ -1,6 +1,12 @@
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
-import Marijtje from "./Marijtje";
+import Denisje from "./Denisje";
+import Laurtje from "./Laurtje";
+import Luukje from "./Luukje";
+import Sybje from "./Sybje";
+import Sylweitje from "./Sylweitje";
+import Taimurtje from "./Taimurtje";
+import Timijtje from "./Timijtje";
 
 export const defaultKwastjeNames = [
   "Annijtje",
@@ -19,6 +25,7 @@ export const defaultKwastjeNames = [
   "Janneke",
   "Kaatje",
   "Lonneke",
+  "Doetje",
   "Pietje",
   "Wiesje",
   "Raalfje",
@@ -31,5 +38,11 @@ export const defaultKwastjeNames = [
 export const customKwastjes = {
   Bertje,
   Colintje,
-  Marijtje,
+  Denisje,
+  Laurtje,
+  Luukje,
+  Sybje,
+  Sylweitje,
+  Taimurtje,
+  Timijtje,
 };
