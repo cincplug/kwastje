@@ -153,7 +153,10 @@ const Drawing = (props) => {
       />,
     ].concat(
       customKwastjes.map((CustomKwastje) => (
-        <CustomKwastje {...{ ...props, coords, commonProps }} key={key} />
+        <CustomKwastje
+          {...{ x1, x2, y1, y2, index, w, h, commonProps }}
+          key={key}
+        />
       ))
     );
 
