@@ -168,7 +168,7 @@ const App = () => {
           Object.keys(customKwastjes)
         );
         console.warn(kwastjeNames, value);
-        setKwastjeName(kwastjeNames[setup.kwastje]);
+        setKwastjeName(kwastjeNames[value - 1]);
       }
       return nextSetup;
     });
