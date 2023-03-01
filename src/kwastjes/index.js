@@ -1,8 +1,12 @@
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
 import Denisje from "./Denisje";
+import Elsje from "./Elsje";
+import Katrientje from "./Katrientje";
 import Laurtje from "./Laurtje";
+import Liesje from "./Liesje";
 import Luukje from "./Luukje";
+import Marijke from "./Marijke";
 import Roosje from "./Roosje";
 import Sybje from "./Sybje";
 import Sylweitje from "./Sylweitje";
@@ -42,8 +46,12 @@ export const customKwastjes = {
   Bertje,
   Colintje,
   Denisje,
+  Elsje,
+  Katrientje,
   Laurtje,
+  Liesje,
   Luukje,
+  Marijke,
   Roosje,
   Sybje,
   Sylweitje,
