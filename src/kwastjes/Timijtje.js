@@ -13,8 +13,8 @@ const Timijtje = (props) => {
     commonProps,
   } = props;
 
-  const x3 = defaultX2 + index * 2;
-  const y3 = defaultY2 * index * setup.modifier;
+  // const x3 = defaultX2 + index * 2;
+  // const y3 = defaultY2 * index * setup.modifier;
   return <path d={`M${defaultX1},${defaultY1} L${defaultX2 * Math.cos(index) / setup.modifier},${Math.min(defaultY2, defaultX2)} L${defaultX1},${defaultY1}`} {...commonProps} />;
 };
 
