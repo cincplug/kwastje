@@ -17,7 +17,7 @@ const Roosje = (props) => {
   const y3 = defaultY2 * index * setup.modifier
   return (
     <path
-      d={`M${defaultX2},${
+      d={`M${index * 10},${
         (defaultY2 / x3 + defaultX2 * x3) / h
       } L${(x3 * index) / 100},${y3 / 50} L${defaultX2},${defaultY1} `}
       {...commonProps}
