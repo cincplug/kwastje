@@ -8,7 +8,7 @@ const Katrientje = (props) => {
     // h,
     defaultX1,
     defaultX2,
-    defaultY1,
+    // defaultY1,
     defaultY2,
     commonProps,
   } = props;

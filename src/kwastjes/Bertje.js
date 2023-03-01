@@ -6,7 +6,7 @@ const Bertje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
+    // defaultX1,
     defaultX2,
     defaultY1,
     defaultY2,
