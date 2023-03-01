@@ -15,7 +15,7 @@ const Katrientje = (props) => {
 
   const x3 = defaultX2 + index * 2;
   const y3 = defaultY2 * index * setup.modifier;
-  return <path d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} L${x3},${y3}`} {...commonProps} />;
+  return <path d={`M${defaultX2},${defaultY2} L${x3},${y3 * defaultX1}`} {...commonProps} />;
 };
 
 export default Katrientje;

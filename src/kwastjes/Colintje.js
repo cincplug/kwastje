@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Colintje = (props) => {
   const {
@@ -11,11 +11,16 @@ const Colintje = (props) => {
     defaultY1,
     defaultY2,
     commonProps,
-  } = props;
+  } = props
 
-  const x3 = defaultX2 + index * 2;
-  const y3 = defaultY2 * index * setup.modifier;
-  return <path d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} L${x3},${y3}`} {...commonProps} />;
-};
+  const x3 = defaultX2 + index * 2
+  const y3 = defaultY2 * index * setup.modifier
+  return (
+    <>
+      <circle cx={defaultX1} cy={defaultY1} r={50} {...commonProps} />
+      <circle cx={defaultX1} cy={defaultY1 + 20} r={20} {...commonProps} />
+    </>
+  )
+}
 
-export default Colintje;
+export default Colintje
