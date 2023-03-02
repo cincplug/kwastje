@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Sybje = (props) => {
   const {
@@ -11,10 +11,10 @@ const Sybje = (props) => {
     // defaultY1,
     defaultY2,
     commonProps,
-  } = props
+  } = props;
 
-  const x3 = defaultX2 + index * 2
-  const y3 = defaultY2 * index * setup.modifier
+  const x3 = defaultX2 + index * 2;
+  const y3 = defaultY2 * index * setup.modifier;
   return (
     <path
       d={`M${w},0 L${Math.pow(index, setup.modifier) + w / 2},${
@@ -22,7 +22,7 @@ const Sybje = (props) => {
       } L${(x3 * index) / 100},${y3 / 50} L${defaultY2},${defaultX1} `}
       {...commonProps}
     />
-  )
-}
+  );
+};
 
-export default Sybje
+export default Sybje;

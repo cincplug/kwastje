@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Elsje = (props) => {
   const {
@@ -11,7 +11,7 @@ const Elsje = (props) => {
     // defaultY1,
     defaultY2,
     commonProps,
-  } = props
+  } = props;
 
   // const x3 = defaultX2 + index * 2;
   // const y3 = defaultY2 * setup.modifier;
@@ -22,7 +22,7 @@ const Elsje = (props) => {
       } L${defaultX2 - 70},${defaultY2 - 500 * setup.modifier}`}
       {...commonProps}
     />
-  )
-}
+  );
+};
 
-export default Elsje
+export default Elsje;

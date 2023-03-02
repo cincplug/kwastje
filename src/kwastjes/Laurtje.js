@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Laurtje = (props) => {
   const {
@@ -11,7 +11,7 @@ const Laurtje = (props) => {
     defaultY1,
     // defaultY2,
     commonProps,
-  } = props
+  } = props;
 
   // const x3 = defaultX2 + index * 2;
   // const y3 = defaultY2 * index * setup.modifier;
@@ -22,7 +22,7 @@ const Laurtje = (props) => {
       },${defaultY1 + 60} L${defaultX2},${defaultY1}`}
       {...commonProps}
     />
-  )
-}
+  );
+};
 
-export default Laurtje
+export default Laurtje;

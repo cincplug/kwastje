@@ -11,7 +11,7 @@ const Liesje = (props) => {
     defaultY1,
     // defaultY2,
     commonProps,
-  } = props
+  } = props;
 
   // const x3 = defaultX2 + index * 2;
   // const y3 = defaultY2 * index * setup.modifier;
@@ -22,7 +22,7 @@ const Liesje = (props) => {
       },${-defaultY1 * 2} L${defaultX1},${defaultY1}`}
       {...commonProps}
     />
-  )
+  );
 };
 
 export default Liesje;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Sylweitje = (props) => {
   const {
@@ -11,10 +11,10 @@ const Sylweitje = (props) => {
     defaultY1,
     defaultY2,
     commonProps,
-  } = props
+  } = props;
 
   // const x3 = defaultX2 + index
-  const y3 = (defaultY2 * index * setup.modifier) / 100
+  const y3 = (defaultY2 * index * setup.modifier) / 100;
   return (
     <path
       d={`M${defaultX1 - 100},${
@@ -24,7 +24,7 @@ const Sylweitje = (props) => {
       },${defaultY1 + index}`}
       {...commonProps}
     />
-  )
-}
+  );
+};
 
-export default Sylweitje
+export default Sylweitje;

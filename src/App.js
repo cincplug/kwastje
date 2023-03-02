@@ -135,8 +135,9 @@ const App = () => {
         ctx.lineWidth =
           (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
-        const [defaultX1, defaultY1] =
-          path[path.length ? path.length - 1 : [mouseX, mouseY]];
+        const [defaultX1, defaultY1] = path[
+          path.length ? path.length - 1 : [mouseX, mouseY]
+        ];
         ctx.moveTo(defaultX1, defaultY1);
         ctx.lineTo(mouseX, mouseY);
         ctx.closePath();

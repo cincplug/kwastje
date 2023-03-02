@@ -13,9 +13,16 @@ const Marijke = (props) => {
     commonProps,
   } = props;
 
-//   const x3 = defaultX2 + index * 2;
-//   const y3 = defaultY2 * index * setup.modifier;
-  return <path d={`M${defaultX1},${defaultY2 * setup.modifier - 300} L${defaultX2},${defaultY2 / setup.modifier}`} {...commonProps} />;
+  //   const x3 = defaultX2 + index * 2;
+  //   const y3 = defaultY2 * index * setup.modifier;
+  return (
+    <path
+      d={`M${defaultX1},${defaultY2 * setup.modifier - 300} L${defaultX2},${
+        defaultY2 / setup.modifier
+      }`}
+      {...commonProps}
+    />
+  );
 };
 
 export default Marijke;
