@@ -7,7 +7,7 @@ const Laurtje = (props) => {
     // w,
     // h,
     defaultX1,
-    // defaultX2,
+    defaultX2,
     defaultY1,
     // defaultY2,
     commonProps,
@@ -19,7 +19,7 @@ const Laurtje = (props) => {
     <path
       d={`M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY1 - 80} L${
         defaultX1 - 140
-      },${defaultY1 + 60} L${defaultX1},${defaultY1}`}
+      },${defaultY1 + 60} L${defaultX2},${defaultY1}`}
       {...commonProps}
     />
   )

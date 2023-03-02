@@ -3,7 +3,7 @@ import React from 'react'
 const Colintje = (props) => {
   const {
     // setup,
-    // index,
+    index,
     // w,
     // h,
     defaultX1,
@@ -17,8 +17,8 @@ const Colintje = (props) => {
   // const y3 = defaultY2 * index * setup.modifier
   return (
     <>
-      <circle cx={defaultX1} cy={defaultY1} r={50} {...commonProps} />
-      <circle cx={defaultX1} cy={defaultY1 + 20} r={20} {...commonProps} />
+      <circle cx={defaultX1} cy={defaultY1} r={200 / index} {...commonProps} />
+      <circle cx={defaultX1} cy={defaultY1 + 20} r={50} {...commonProps} />
     </>
   )
 }

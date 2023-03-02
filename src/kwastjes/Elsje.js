@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Elsje = (props) => {
   const {
@@ -11,11 +11,18 @@ const Elsje = (props) => {
     // defaultY1,
     defaultY2,
     commonProps,
-  } = props;
+  } = props
 
   // const x3 = defaultX2 + index * 2;
   // const y3 = defaultY2 * setup.modifier;
-  return <path d={`M${defaultX2},${defaultY2} L${defaultX2 + 10},${defaultY2 + 50 * setup.modifier} L${defaultX2 - 70},${defaultY2 + 80 * setup.modifier}`} {...commonProps} />;
-};
+  return (
+    <path
+      d={`M${defaultX2},${defaultY2} L${defaultX2 * 5},${
+        defaultY2 + 500 * setup.modifier
+      } L${defaultX2 - 70},${defaultY2 - 500 * setup.modifier}`}
+      {...commonProps}
+    />
+  )
+}
 
-export default Elsje;
+export default Elsje

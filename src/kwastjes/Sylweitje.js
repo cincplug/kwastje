@@ -4,8 +4,8 @@ const Sylweitje = (props) => {
   const {
     setup,
     index,
-    // w,
-    // h,
+    w,
+    h,
     defaultX1,
     // defaultX2,
     defaultY1,
@@ -19,7 +19,9 @@ const Sylweitje = (props) => {
     <path
       d={`M${defaultX1 - 100},${
         defaultY1 + index
-      }  L${defaultX1},${defaultY1} L${defaultX1},${y3}`}
+      }  L${defaultX1},${defaultY1} L${w / 2},${y3 + h / 2} L${
+        defaultX1 - 100
+      },${defaultY1 + index}`}
       {...commonProps}
     />
   )
