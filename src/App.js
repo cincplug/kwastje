@@ -55,7 +55,7 @@ const App = () => {
       updateKwastjeName();
       requestRef.current = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(requestRef.current);
-    }, [animate]);
+    }, []);
   }
 
   function handleMouseDown(event) {
