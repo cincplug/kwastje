@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Timijtje = (props) => {
+const Timmetje = (props) => {
   const {
     setup,
     index,
-    w,
-    h,
+    // w,
+    // h,
     defaultX1,
     defaultX2,
     defaultY1,
@@ -26,4 +26,4 @@ const Timijtje = (props) => {
 };
 
 
-export default Timijtje;
+export default Timmetje;
