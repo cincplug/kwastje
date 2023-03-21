@@ -25,4 +25,5 @@ const Timijtje = (props) => {
   );
 };
 
+
 export default Timijtje;
