@@ -1,6 +1,5 @@
 import React from "react";
-
-const Denisje = (props) => {
+const Dennisje = (props) => {
   const {
     setup,
     index,
@@ -12,17 +11,19 @@ const Denisje = (props) => {
     defaultY2,
     commonProps,
   } = props;
-
   const x3 = defaultX2 + index * 2;
-  // const y3 = defaultY2 * index * setup.modifier;
   return (
     <circle
-      cx={x3}
-      cy={defaultY2}
-      r={defaultY1 * setup.modifier}
+      cx={x3 * Math.PI}
+      cy={Math.cos(defaultY2 / index) * Math.PI}
+      r={random_unit_vector(defaultY1 * setup.modifier) / 5}
       {...commonProps}
     />
   );
 };
+export default Dennisje;
 
-export default Denisje;
+function random_unit_vector(a) {
+  const theta = Math.random() * a * Math.PI;
+  return Math.cos(theta) / Math.sin(theta);
+}

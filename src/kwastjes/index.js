@@ -1,6 +1,6 @@
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
-import Denisje from "./Denisje";
+import Dennisje from "./Dennisje";
 import Elsje from "./Elsje";
 import Katrientje from "./Katrientje";
 import Laurtje from "./Laurtje";
@@ -45,7 +45,7 @@ export const defaultKwastjeNames = [
 export const customKwastjes = {
   Bertje,
   Colintje,
-  Denisje,
+  Dennisje,
   Elsje,
   Katrientje,
   Laurtje,
