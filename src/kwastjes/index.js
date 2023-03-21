@@ -11,7 +11,7 @@ import Roosje from "./Roosje";
 import Sybje from "./Sybje";
 import Sylweitje from "./Sylweitje";
 import Taimurtje from "./Taimurtje";
-import Timijtje from "./Timijtje";
+import Timmetje from "./Timmetje";
 import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 
@@ -56,7 +56,7 @@ export const customKwastjes = {
   Sybje,
   Sylweitje,
   Taimurtje,
-  Timijtje,
+  Timmetje,
   Truusje,
   Wilempje,
 };
