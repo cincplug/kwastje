@@ -17,7 +17,7 @@ const Sylweitje = (props) => {
   const y3 = (defaultY2 * index * setup.modifier) / 100;
   return (
     <path
-      d={`M${defaultX1 - 100},${
+      d={`M${defaultX1},${defaultY1} L${defaultX1 - 100},${
         defaultY1 + index
       }  L${defaultX1},${defaultY1} L${w / 2},${y3 + h / 2} L${
         defaultX1 - 100

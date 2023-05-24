@@ -17,10 +17,10 @@
   {
     "id": "dotsCount",
     "description": "How many dots make our kwastje",
-    "value": 100,
+    "value": 50,
     "type": "range",
-    "min": 10,
-    "max": 500,
+    "min": 5,
+    "max": 300,
     "step": 1
   },
   {

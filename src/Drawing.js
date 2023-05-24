@@ -114,7 +114,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <polyline
-        points={`${Math.sin(defaultX1 * index) + w / 2},${
+        points={`${defaultX1},${defaultY1} ${Math.sin(defaultX1 * index) + w / 2},${
           Math.cos(defaultY1) * 3 * index + h
         } ${defaultX1 - defaultY1 / 2},${
           (defaultY1 - defaultX1) / 2
@@ -124,7 +124,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <polygon
-        points={`${Math.sin(defaultX2 * index) + w / 2},${
+        points={`${defaultX1},${defaultY1} ${Math.sin(defaultX2 * index) + w / 2},${
           Math.cos(defaultY2 * index) + h / 2
         } ${defaultX1},${defaultY1} ${Math.sin(defaultX1) + w / 2},${Math.cos(
           defaultY1 + h / 2
@@ -132,7 +132,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(defaultX2 * index) + w / 2},${
+        d={`M${defaultX1},${defaultY1} L${Math.sin(defaultX2 * index) + w / 2},${
           Math.cos(defaultY2 * index) + h / 2
         } Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1} L${
           Math.cos(defaultY2) * index + h / 2
@@ -140,7 +140,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(defaultX2 * index) + w / 2}, ${
+        d={`M${defaultX1},${defaultY1} L${Math.sin(defaultX2 * index) + w / 2}, ${
           Math.cos(defaultY2 * index) + h / 2
         } L${h - Math.cos(defaultX2) * index + h / 2},${
           (defaultX2 + defaultY2) / 2
@@ -148,7 +148,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${
+        d={`M${defaultX1},${defaultY1} L${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${
           Math.sin(defaultX2 * index) + w * setup.modifier
         },${
           Math.cos(defaultY2 * index) + h / 2
@@ -156,7 +156,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${w / 2} ,${
+        d={`M${defaultX1},${defaultY1} L${Math.cos(defaultY2) * index + h / 2},${defaultX2} L${w / 2} ,${
           Math.cos(defaultY2 * index) + h / 2
         } Q${Math.sin(defaultX2 * index) + w * setup.modifier} ${
           defaultX1 / 2
@@ -164,7 +164,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.cos(defaultY2) * index + h / 2},${defaultY2} L${
+        d={`M${defaultX1},${defaultY1} L${Math.cos(defaultY2) * index + h / 2},${defaultY2} L${
           w / index
         },${Math.cos(defaultY2 * index) + h} Q${
           Math.sin(defaultX2 * index) + w * setup.modifier
@@ -172,7 +172,7 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <path
-        d={`M${Math.sin(defaultY2) * index + h / 2},${defaultX2} C${
+        d={`M${defaultX1},${defaultY1} L${Math.sin(defaultY2) * index + h / 2},${defaultX2} C${
           w * setup.modifier
         } ,${Math.cos(defaultY2 * index) + (h / 2) * setup.modifier} ${
           Math.cos(defaultX2 * index) + w * setup.modifier

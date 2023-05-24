@@ -17,7 +17,7 @@ const Luukje = (props) => {
   // const y3 = defaultY2 * index * setup.modifier / defaultX2;
   return (
     <path
-      d={`M${defaultX1},${defaultY1 * setup.modifier}  L${defaultX1},${
+      d={`M${defaultX1},${defaultY1} L${defaultX1},${defaultY1 * setup.modifier}  L${defaultX1},${
         defaultX2 * setup.modifier
       } L${defaultX1},${defaultY2 * setup.modifier}`}
       {...commonProps}
