@@ -8,6 +8,7 @@ import Splash from "./Splash";
 import "./App.scss";
 
 const App = () => {
+  const mainRef = useRef(null);
   const w = window.innerWidth;
   const h = window.innerHeight;
   const storageSetupItem = "kwastjeSetup";
@@ -53,19 +54,38 @@ const App = () => {
     );
     useEffect(() => {
       updateKwastjeName();
+      const mainElement = mainRef.current;
       requestRef.current = requestAnimationFrame(animate);
-      return () => cancelAnimationFrame(requestRef.current);
-    }, []);
+      mainElement.addEventListener("pointerdown", handleMouseDown, {
+        passive: false,
+      });
+      mainElement.addEventListener("pointermove", handleMouseMove, {
+        passive: false,
+      });
+      mainElement.addEventListener("pointerup", handleMouseUp, {
+        passive: false,
+      });
+      return () => {
+        mainElement.removeEventListener("pointerdown", handleMouseDown);
+        mainElement.removeEventListener("pointermove", handleMouseMove);
+        mainElement.removeEventListener("pointerup", handleMouseUp);
+        cancelAnimationFrame(requestRef.current);
+      };
+    }, [animate]);
   }
 
   function handleMouseDown(event) {
-    event.preventDefault();
+    if (event.pointerType === "mouse") {
+      event.preventDefault();
+    }
     setIsMouseDown(true);
     setIsPaused(false);
   }
 
   function handleMouseUp(event) {
-    event.preventDefault();
+    if (event.pointerType === "mouse") {
+      event.preventDefault();
+    }
     if (!(path[path.length - 1].length > 2) && !setup.isJoint) {
       setPath((prevPath) => {
         const nextPath = prevPath.slice();
@@ -78,8 +98,8 @@ const App = () => {
 
   function handleMouseMove(event) {
     if (isPaused) return null;
-    setMouseX(event.pageX);
-    setMouseY(event.pageY);
+    setMouseX(event.pageX || event.touches[0].pageX);
+    setMouseY(event.pageY || event.touches[0].page);
     if (isMouseDown && count % setup.latency === 0) {
       setPath((prevPath) => {
         if (setup.isCanvas) {
@@ -135,9 +155,8 @@ const App = () => {
         ctx.lineWidth =
           (setup.thickness * count * setup.growth) / setup.dotsCount;
         ctx.beginPath();
-        const [defaultX1, defaultY1] = path[
-          path.length ? path.length - 1 : [mouseX, mouseY]
-        ];
+        const [defaultX1, defaultY1] =
+          path[path.length ? path.length - 1 : [mouseX, mouseY]];
         ctx.moveTo(defaultX1, defaultY1);
         ctx.lineTo(mouseX, mouseY);
         ctx.closePath();
@@ -263,10 +282,14 @@ const App = () => {
         }}
       />
       <main
+        ref={mainRef}
         className="content"
         onMouseMove={(event) => handleMouseMove(event)}
         onMouseDown={(event) => handleMouseDown(event)}
         onMouseUp={(event) => handleMouseUp(event)}
+        onTouchMove={(event) => handleMouseMove(event)}
+        onTouchStart={(event) => handleMouseDown(event)}
+        onTouchEnd={(event) => handleMouseUp(event)}
         onDoubleClick={() => setIsPaused(true)}
       >
         <canvas
