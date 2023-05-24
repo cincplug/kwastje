@@ -12,7 +12,7 @@ const App = () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const storageSetupItem = "kwastjeSetup";
-  const storedSetupRaw = localStorage.getItem(storageSetupItem);
+  const storedSetupRaw = sessionStorage.getItem(storageSetupItem);
   const storedSetup = storedSetupRaw ? JSON.parse(storedSetupRaw) : null;
   const initialSetup = {};
   defaultSetup.forEach((item) => {
@@ -180,7 +180,7 @@ const App = () => {
       } else {
         nextSetup[id] = type === "number" ? parseFloat(value) : value;
       }
-      localStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
+      sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
       }

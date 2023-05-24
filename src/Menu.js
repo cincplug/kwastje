@@ -49,7 +49,7 @@ const Menu = (props) => {
           <button
             className="control__input control__button control__button--clear"
             onClick={() => {
-              localStorage.clear();
+              sessionStorage.clear();
               window.location.reload();
             }}
           >

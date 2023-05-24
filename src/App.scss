@@ -208,8 +208,7 @@ button {
     [type="checkbox"] + & {
       margin: 0;
     }
-    [type="color"] + &,
-    [type="range"] + & {
+    [type="color"] + & {
       display: none;
     }
   }
