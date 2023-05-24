@@ -17,7 +17,7 @@ const Drawing = (props) => {
         ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
         : coords;
     const stroke = fgColor;
-    const fill = setup.isFilled ? `${setup.fgColor}01` : "none";
+    const fill = setup.isFilled ? `${setup.fgColor}12` : "none";
     const style = null;
     const strokeWidth = Math.max(
       (setup.thickness * index * setup.growth) / path.length,
