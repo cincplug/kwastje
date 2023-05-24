@@ -311,7 +311,6 @@ const App = () => {
               ></rect>
             )}
             <g
-              transform={`rotate(${setup.angle} 0 0)`}
               transform-origin={"center"}
             >
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />

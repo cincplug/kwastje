@@ -118,10 +118,13 @@ button {
   @media (max-width: $bp-s) {
     width: 100vw;
     height: 25vh;
-    overflow-y: auto;
-    overflow-x: hidden;
     bottom: 0;
     top: auto;
+    flex-wrap: wrap;
+    & > * {
+      margin: 0.2rem 0.1rem;
+      max-width: 25%;
+    }
   }
   &--collapsed {
     height: 3rem;
@@ -160,7 +163,7 @@ button {
     @media (max-width: $bp-s) {
       width: 2rem;
       position: absolute;
-      top: -3rem;
+      top: -2rem;
     }
   }
 }

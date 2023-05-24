@@ -1,11 +1,5 @@
 [
   {
-    "id": "isCanvas",
-    "type": "checkbox",
-    "description": "Switches to HTML canvas, otherwise we use SVG",
-    "value": false
-  },
-  {
     "id": "kwastje",
     "description": "Shape and attitude of our graphic tool",
     "value": 1,
@@ -21,15 +15,6 @@
     "type": "range",
     "min": 5,
     "max": 300,
-    "step": 1
-  },
-  {
-    "id": "angle",
-    "description": "Angle of drawing board",
-    "value": 0,
-    "type": "range",
-    "min": 0,
-    "max": 360,
     "step": 1
   },
   {
@@ -117,6 +102,12 @@
     "id": "isFilled",
     "type": "checkbox",
     "description": "Fills closed shapes with minimal opacity of foreground color",
+    "value": false
+  },
+  {
+    "id": "isCanvas",
+    "type": "checkbox",
+    "description": "Switches to HTML canvas, otherwise we use SVG",
     "value": false
   },
   {
