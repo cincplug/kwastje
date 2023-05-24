@@ -266,6 +266,20 @@ const App = () => {
     }
   }
 
+  function getRandomInteger(x, y) {
+    return (
+      Math.floor(Math.random() * (Math.floor(y) - Math.ceil(x) + 1)) +
+      Math.ceil(x)
+    );
+  }
+
+  function shuffle() {
+    setSetup((prevSetup) => {
+      const { min, max } = defaultSetup.find((item) => item.id === "kwastje");
+      return { ...prevSetup, kwastje: getRandomInteger(min, max) };
+    });
+  }
+
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
       <Menu
@@ -276,6 +290,7 @@ const App = () => {
           getControls,
           download,
           clear,
+          shuffle,
         }}
       />
       <main
@@ -310,9 +325,7 @@ const App = () => {
                 fill={setup.bgColor}
               ></rect>
             )}
-            <g
-              transform-origin={"center"}
-            >
+            <g transform-origin={"center"}>
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
               <Drawing {...{ path, setup, mouseX, mouseY, w, h, fgColor }} />
             </g>

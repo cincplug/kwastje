@@ -9,6 +9,7 @@ const Menu = (props) => {
     getControls,
     download,
     clear,
+    shuffle
   } = props;
   return (
     <nav
@@ -29,6 +30,14 @@ const Menu = (props) => {
           }}
         >
           save
+        </button>
+      </div>
+      <div className="control" key="shuffle">
+        <button
+          className="control__input control__button control__button--save"
+          onClick={() => shuffle()}
+        >
+          shuffle
         </button>
       </div>
       <div className="control" key="clear">
