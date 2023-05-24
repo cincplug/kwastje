@@ -157,6 +157,11 @@ button {
       $color-input 80%,
       $color-input 100%
     );
+    @media (max-width: $bp-s) {
+      width: 2rem;
+      position: absolute;
+      top: -3rem;
+    }
   }
 }
 .control {
