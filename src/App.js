@@ -24,7 +24,6 @@ const App = () => {
   const [count, setCount] = useState(0);
   const initialPath = fillPath();
   const [path, setPath] = useState(initialPath);
-  const [isPaused, setIsPaused] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
@@ -79,7 +78,6 @@ const App = () => {
       event.preventDefault();
     }
     setIsMouseDown(true);
-    setIsPaused(false);
   }
 
   function handleMouseUp(event) {
@@ -97,10 +95,9 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isPaused) return null;
-    setMouseX(event.pageX || event.touches[0].pageX);
-    setMouseY(event.pageY || event.touches[0].page);
     if (isMouseDown && count % setup.latency === 0) {
+      setMouseX(event.pageX || event.touches[0].pageX);
+      setMouseY(event.pageY || event.touches[0].pageY);
       setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {
@@ -284,13 +281,9 @@ const App = () => {
       <main
         ref={mainRef}
         className="content"
-        onMouseMove={(event) => handleMouseMove(event)}
-        onMouseDown={(event) => handleMouseDown(event)}
-        onMouseUp={(event) => handleMouseUp(event)}
         onTouchMove={(event) => handleMouseMove(event)}
         onTouchStart={(event) => handleMouseDown(event)}
         onTouchEnd={(event) => handleMouseUp(event)}
-        onDoubleClick={() => setIsPaused(true)}
       >
         <canvas
           id="canvas"
