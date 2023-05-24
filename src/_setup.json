@@ -11,16 +11,44 @@
   {
     "id": "dotsCount",
     "description": "How many dots make our kwastje",
-    "value": 50,
+    "value": 80,
     "type": "range",
+    "isHidden": true,
     "min": 5,
     "max": 300,
     "step": 1
   },
   {
+    "id": "fgColor",
+    "description": "Foreground color",
+    "value": "#aadd44",
+    "type": "color",
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "bgColor",
+    "description": "Background color",
+    "value": "#14181a",
+    "type": "color",
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "opacity",
+    "description": "Initial opacity of lines in the kwastje",
+    "value": 128,
+    "type": "range",
+    "min": 0,
+    "max": 255,
+    "step": 1
+  },
+  {
     "id": "thickness",
     "description": "Initial thickness of lines in our kwastje",
-    "value": 1,
+    "value": 2,
     "type": "range",
     "min": 1,
     "max": 100,
@@ -29,7 +57,7 @@
   {
     "id": "growth",
     "description": "Growth factor of lines in the kwastje",
-    "value": 2,
+    "value": 3,
     "type": "range",
     "min": 0,
     "max": 10,
@@ -54,80 +82,13 @@
     "step": 1
   },
   {
-    "id": "opacity",
-    "description": "Initial opacity of lines in the kwastje",
-    "value": 128,
-    "type": "range",
-    "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
-    "id": "fgColor",
-    "description": "Foreground color",
-    "value": "#aadd44",
-    "type": "color",
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  {
-    "id": "bgColor",
-    "description": "Background color",
-    "value": "#14181a",
-    "type": "color",
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  {
-    "id": "hasBg",
-    "type": "checkbox",
-    "description": "Turns background on and off",
-    "value": true
-  },
-  {
-    "id": "isCentric",
-    "type": "checkbox",
-    "description": "Uses center of the image as a base in some kwastjes",
-    "value": false
-  },
-  {
-    "id": "isJoint",
-    "type": "checkbox",
-    "description": "Connects lines in the kwastje, even after mouse is released",
-    "value": false
-  },
-  {
-    "id": "isFilled",
-    "type": "checkbox",
-    "description": "Fills closed shapes with minimal opacity of foreground color",
-    "value": false
-  },
-  {
-    "id": "isCanvas",
-    "type": "checkbox",
-    "description": "Switches to HTML canvas, otherwise we use SVG",
-    "value": false
-  },
-  {
-    "id": "turbulence",
-    "description": "SVG turbulence filter",
+    "id": "dilate",
+    "description": "SVG dilate filter",
     "value": 0,
     "type": "range",
     "isFilter": true,
     "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
-    "id": "displace",
-    "description": "SVG displacement filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
-    "min": 0,
-    "max": 255,
+    "max": 20,
     "step": 1
   },
   {
@@ -136,16 +97,7 @@
     "value": 0,
     "type": "range",
     "isFilter": true,
-    "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
-    "id": "dilate",
-    "description": "SVG dilate filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
+    "isHidden": true,
     "min": 0,
     "max": 255,
     "step": 1
@@ -156,6 +108,7 @@
     "value": 0,
     "type": "range",
     "isFilter": true,
+    "isHidden": true,
     "min": 0,
     "max": 255,
     "step": 1
@@ -166,6 +119,7 @@
     "value": 0,
     "type": "range",
     "isFilter": true,
+    "isHidden": true,
     "min": 0,
     "max": 255,
     "step": 1
@@ -176,6 +130,7 @@
     "value": 0,
     "type": "range",
     "isFilter": true,
+    "isHidden": true,
     "min": 0,
     "max": 10,
     "step": 1
@@ -197,7 +152,33 @@
     "type": "range",
     "isFilter": true,
     "min": 0,
-    "max": 10,
+    "max": 5,
     "step": 1
+  },
+  {
+    "id": "hasBg",
+    "type": "checkbox",
+    "description": "Turns background on and off",
+    "value": true
+  },
+  {
+    "id": "isCentric",
+    "type": "checkbox",
+    "description": "Uses center of the image as a base in some kwastjes",
+    "isHidden": true,
+    "value": false
+  },
+  {
+    "id": "isJoint",
+    "type": "checkbox",
+    "isHidden": true,
+    "description": "Connects lines in the kwastje, even after mouse is released",
+    "value": false
+  },
+  {
+    "id": "isFilled",
+    "type": "checkbox",
+    "description": "Fills closed shapes with minimal opacity of foreground color",
+    "value": false
   }
 ]
