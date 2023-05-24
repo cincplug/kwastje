@@ -22,6 +22,8 @@ $color-nav: $color-bg;
 $handle-size: 4rem;
 $menu-width: 6rem;
 
+$bp-s: 516px;
+
 @mixin center {
   position: absolute;
   top: 50%;
@@ -113,9 +115,9 @@ button {
   background: $color-nav url(./img/bg-noise.png);
   color: $color-white;
   transform-origin: 0 0;
-  @media (max-width: 516px) {
-    width: 50vw;
-    height: 20vh;
+  @media (max-width: $bp-s) {
+    width: 100vw;
+    height: 25vh;
     overflow-y: auto;
     overflow-x: hidden;
     bottom: 0;
@@ -134,6 +136,9 @@ button {
   &--filters {
     right: 0;
     &.menu--collapsed {
+      display: none;
+    }
+    @media (max-width: $bp-s) {
       display: none;
     }
   }
