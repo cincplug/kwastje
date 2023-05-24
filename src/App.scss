@@ -113,6 +113,14 @@ button {
   background: $color-nav url(./img/bg-noise.png);
   color: $color-white;
   transform-origin: 0 0;
+  @media (max-width: 516px) {
+    width: 50vw;
+    height: 20vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    bottom: 0;
+    top: auto;
+  }
   &--collapsed {
     height: 3rem;
     overflow: hidden;
