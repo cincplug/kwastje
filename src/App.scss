@@ -127,11 +127,16 @@ button {
     }
   }
   &--collapsed {
-    height: 3rem;
-    overflow: hidden;
-    justify-content: flex-start;
-    border: none;
-    background: none;
+    @media (min-width: $bp-s) {
+      height: 3rem;
+      overflow: hidden;
+      justify-content: flex-start;
+      border: none;
+      background: none;
+    }
+    @media (max-width: $bp-s) {
+      top: 100%;
+    }
   }
   &--controls {
     left: 0;
