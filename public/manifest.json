@@ -1,6 +1,7 @@
 {
   "short_name": "Kwastje",
-  "name": "Kwastje - a paintbrush that does more than you want",
+  "name": "Kwastje",
+  "description": "A paintbrush that does not what you want, but primarily what it wants",
   "icons": [
     {
       "src": "favicon.ico",
