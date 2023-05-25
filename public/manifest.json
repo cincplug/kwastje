@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Kwastje",
+  "name": "Kwastje - a paintbrush that does more than you want",
   "icons": [
     {
       "src": "favicon.ico",
