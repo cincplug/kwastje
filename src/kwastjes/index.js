@@ -16,13 +16,12 @@ import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 
 export const defaultKwastjeNames = [
-  "Ankje",
   "Bentje",
   "Floortje",
   "Maaike",
   "Veerletje",
   "Elintje",
-  "Famke",
+  "Kieke",
   "Dirkje",
   "Aafje",
   "Gertje",
@@ -30,7 +29,7 @@ export const defaultKwastjeNames = [
   "Hylke",
   "Ineke",
   "Janneke",
-  "Kaatje",
+  "Annijtje",
   "Lonneke",
   "Doetje",
   "Pietje",

@@ -9,16 +9,6 @@
     "step": 1
   },
   {
-    "id": "dotsCount",
-    "description": "How many dots make our kwastje",
-    "value": 80,
-    "type": "range",
-    "isHidden": true,
-    "min": 5,
-    "max": 300,
-    "step": 1
-  },
-  {
     "id": "fgColor",
     "description": "Foreground color",
     "value": "#aadd44",
@@ -43,6 +33,15 @@
     "type": "range",
     "min": 0,
     "max": 255,
+    "step": 1
+  },
+  {
+    "id": "dotsCount",
+    "description": "How many dots make our kwastje",
+    "value": 80,
+    "type": "range",
+    "min": 5,
+    "max": 200,
     "step": 1
   },
   {
