@@ -210,7 +210,7 @@ const App = () => {
           title={description}
         >
           {id === "kwastje" && (
-            <label htmlFor={id} className="control__label control__label--name">
+            <label htmlFor={id} className="control__label--name">
               {kwastjeName}
             </label>
           )}

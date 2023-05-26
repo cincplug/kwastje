@@ -21,10 +21,13 @@ const Menu = (props) => {
       console.warn(deferredPromptRef);
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -34,10 +37,10 @@ const Menu = (props) => {
       deferredPrompt.prompt();
 
       deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('PWA installed successfully!');
+        if (choiceResult.outcome === "accepted") {
+          console.log("PWA installed successfully!");
         } else {
-          console.log('PWA installation declined.');
+          console.log("PWA installation declined.");
         }
         deferredPromptRef.current = null;
       });
@@ -73,6 +76,14 @@ const Menu = (props) => {
           shuffle
         </button>
       </div>
+      <div className="control" key="pwatje">
+        <button
+          className="control__input control__button control__button--save"
+          onClick={handleInstallButtonClick}
+        >
+          Pwatje
+        </button>
+      </div>
       <div className="control" key="clear">
         <button
           className="control__input control__button control__button--clear"
@@ -92,14 +103,6 @@ const Menu = (props) => {
           }}
         >
           reset
-        </button>
-      </div>
-      <div className="control" key="pwatje">
-        <button
-          className="control__input control__button control__button--clear"
-          onClick={handleInstallButtonClick}
-        >
-          Pwatje
         </button>
       </div>
     </nav>

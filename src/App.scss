@@ -1,5 +1,5 @@
 $gutter: 1rem;
-$base-width: calc(100vw - #{$gutter * 2});
+$base-width: calc(100vw - #{$gutter});
 $color-blue: #07a;
 $color-green: #59a200;
 $color-white: #f9f8f7;
@@ -127,15 +127,14 @@ button {
   @include until {
     flex-direction: row;
     align-items: center;
-    padding: 0.1rem;
+    padding: 0.5rem;
     width: 100vw;
-    max-height: 30vh;
-    bottom: 1rem;
-    top: auto;
+    max-height: 50vh;
+    top: calc(100% - 50vh);
     flex-wrap: wrap;
     & > * {
       margin: 0.2rem;
-      max-width: 25%;
+      flex-basis: 30%;
     }
   }
   &--collapsed {
@@ -180,7 +179,7 @@ button {
     @include until {
       width: 2rem;
       position: absolute;
-      top: -2rem;
+      top: -1.5rem;
     }
   }
 }
@@ -251,10 +250,8 @@ button {
     margin: 0.1rem auto 0;
     width: 100%;
     user-select: none;
-    text-align: center;
     &--name {
-      background: $color-text;
-      color: $color-dark;
+      color: $color-white;
       text-align: center;
     }
     .menu--collapsed & {
@@ -265,6 +262,9 @@ button {
     }
     [type="color"] + & {
       display: none;
+    }
+    &[for="kwastje"] {
+      visibility: hidden;
     }
   }
   &__button {

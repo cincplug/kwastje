@@ -97,7 +97,6 @@
     "value": 0,
     "type": "range",
     "isFilter": true,
-    "isHidden": true,
     "min": 0,
     "max": 255,
     "step": 1
