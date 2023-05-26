@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import setupArray from "./_setup.json";
 
 const Menu = (props) => {
@@ -9,8 +9,41 @@ const Menu = (props) => {
     getControls,
     download,
     clear,
-    shuffle
+    shuffle,
   } = props;
+
+  const deferredPromptRef = useRef(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      deferredPromptRef.current = event;
+      console.warn(deferredPromptRef);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallButtonClick = () => {
+    if (deferredPromptRef.current) {
+      const deferredPrompt = deferredPromptRef.current;
+      deferredPrompt.prompt();
+
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('PWA installed successfully!');
+        } else {
+          console.log('PWA installation declined.');
+        }
+        deferredPromptRef.current = null;
+      });
+    }
+  };
+
   return (
     <nav
       className={`menu menu--controls menu--${menuVisibilityClass}`}
@@ -59,6 +92,14 @@ const Menu = (props) => {
           }}
         >
           reset
+        </button>
+      </div>
+      <div className="control" key="pwatje">
+        <button
+          className="control__input control__button control__button--clear"
+          onClick={handleInstallButtonClick}
+        >
+          Pwatje
         </button>
       </div>
     </nav>
