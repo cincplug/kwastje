@@ -36,8 +36,8 @@ const Drawing = (props) => {
       <line
         x1={defaultX1}
         y1={defaultY1}
-        x2={defaultX2 / 2}
-        y2={defaultY2 / 2}
+        x2={w - defaultX2 * Math.tan(defaultX1) / 2}
+        y2={h - defaultY2}
         {...commonProps}
       />,
       <circle
