@@ -58,7 +58,7 @@ const Menu = (props) => {
         title="toggle"
       ></button>
       {getControls(setupArray.filter((control) => !control.isHidden))}
-      <div className="control" key="saveSvg">
+      <fieldset className="control" key="saveSvg">
         <button
           className="control__input control__button control__button--save"
           onClick={() => {
@@ -67,24 +67,24 @@ const Menu = (props) => {
         >
           save
         </button>
-      </div>
-      <div className="control" key="shuffle">
+      </fieldset>
+      <fieldset className="control" key="shuffle">
         <button
           className="control__input control__button control__button--save"
           onClick={() => shuffle()}
         >
           shuffle
         </button>
-      </div>
-      <div className="control" key="pwatje">
+      </fieldset>
+      <fieldset className="control" key="pwatje">
         <button
           className="control__input control__button control__button--save"
           onClick={handleInstallButtonClick}
         >
           Pwatje
         </button>
-      </div>
-      <div className="control" key="clear">
+      </fieldset>
+      <fieldset className="control" key="clear">
         <button
           className="control__input control__button control__button--clear"
           onClick={() => {
@@ -93,8 +93,8 @@ const Menu = (props) => {
         >
           clear
         </button>
-      </div>
-      <div className="control" key="reset">
+      </fieldset>
+      <fieldset className="control" key="reset">
         <button
           className="control__input control__button control__button--clear"
           onClick={() => {
@@ -104,7 +104,7 @@ const Menu = (props) => {
         >
           reset
         </button>
-      </div>
+      </fieldset>
     </nav>
   );
 };

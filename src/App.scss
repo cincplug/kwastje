@@ -22,8 +22,9 @@ $color-nav: $color-bg;
 
 $handle-size: 4rem;
 $menu-width: 6rem;
+$menu-height: 40vh;
 
-$bp-s: 516px;
+$bp-s: 768px;
 
 @mixin center {
   position: absolute;
@@ -129,10 +130,10 @@ button {
     align-items: center;
     padding: 0.5rem;
     width: 100vw;
-    max-height: 50vh;
-    top: calc(100% - 50vh);
+    max-height: $menu-height;
+    top: calc(100% - #{$menu-height});
     flex-wrap: wrap;
-    & > * {
+    .control {
       margin: 0.2rem;
       flex-basis: 30%;
     }
@@ -265,7 +266,7 @@ button {
       display: none;
     }
     &[for="kwastje"] {
-      visibility: hidden;
+      display: none;
     }
   }
   &__button {

@@ -209,11 +209,6 @@ const App = () => {
           key={`${id}-${index}`}
           title={description}
         >
-          {id === "kwastje" && (
-            <label htmlFor={id} className="control__label--name">
-              {kwastjeName}
-            </label>
-          )}
           <input
             className="control__input"
             {...{ type, id, value, min, max, step, checked, style }}
@@ -221,9 +216,15 @@ const App = () => {
               handleInputChange(event);
             }}
           />
-          <label className="control__label" htmlFor={id}>
-            {label}
-          </label>
+          {id === "kwastje" ? (
+            <label htmlFor={id} className="control__label--name">
+              {kwastjeName}
+            </label>
+          ) : (
+            <label className="control__label" htmlFor={id}>
+              {label}
+            </label>
+          )}
         </fieldset>
       );
     });
