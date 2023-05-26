@@ -21,7 +21,7 @@ $color-input-border: rgba($color-input, 30%);
 $color-nav: $color-bg;
 
 $handle-size: 4rem;
-$menu-width: 6rem;
+$menu-width: 8rem;
 $menu-height: 40vh;
 
 $bp-s: 768px;
@@ -254,7 +254,6 @@ button {
     user-select: none;
     &--name {
       color: $color-white;
-      text-align: center;
     }
     .menu--collapsed & {
       display: none;

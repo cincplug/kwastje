@@ -5,7 +5,7 @@ import Elsje from "./Elsje";
 import Katrientje from "./Katrientje";
 import Laurtje from "./Laurtje";
 import Liesje from "./Liesje";
-import Luukje from "./Luukje";
+import Maurtje from "./Maurtje";
 import Marijke from "./Marijke";
 import Roosje from "./Roosje";
 import Sybje from "./Sybje";
@@ -16,12 +16,13 @@ import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 
 export const defaultKwastjeNames = [
-  "Bentje",
-  "Floortje",
-  "Maaike",
-  "Veerletje",
-  "Elintje",
+  "Luukje",
+  "Annijtje",
   "Kieke",
+  "Doetje",
+  "Pietje",
+  "Elintje",
+  "Maaike",
   "Dirkje",
   "Aafje",
   "Gertje",
@@ -29,10 +30,9 @@ export const defaultKwastjeNames = [
   "Hylke",
   "Ineke",
   "Janneke",
-  "Annijtje",
   "Lonneke",
-  "Doetje",
-  "Pietje",
+  "Floortje",
+  "Verleitje",
   "Wiesje",
   "Raalfje",
   "Neeltje",
@@ -49,7 +49,7 @@ export const customKwastjes = {
   Katrientje,
   Laurtje,
   Liesje,
-  Luukje,
+  Maurtje,
   Marijke,
   Roosje,
   Sybje,

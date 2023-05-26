@@ -72,15 +72,6 @@
     "step": 0.1
   },
   {
-    "id": "latency",
-    "description": "Can be used to affect density of lines in the kwastje",
-    "value": 1,
-    "type": "range",
-    "min": 1,
-    "max": 30,
-    "step": 1
-  },
-  {
     "id": "dilate",
     "description": "SVG dilate filter",
     "value": 0,

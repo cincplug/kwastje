@@ -1,6 +1,6 @@
 import React from "react";
 
-const Luukje = (props) => {
+const Maurtje = (props) => {
   const {
     setup,
     // index,
@@ -25,4 +25,4 @@ const Luukje = (props) => {
   );
 };
 
-export default Luukje;
+export default Maurtje;

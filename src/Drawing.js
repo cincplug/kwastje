@@ -11,7 +11,7 @@ const Drawing = (props) => {
           : path[index - 1]
         : coords;
     const [defaultX2, defaultY2] =
-      setup.kwastje >= 5
+      setup.kwastje >= 2
         ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
         : coords;
     const stroke = fgColor;
@@ -212,7 +212,7 @@ const Drawing = (props) => {
       ))
     );
 
-    const Kwastje = kwastjes[setup.kwastje - 5] || BaseKwastje;
+    const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
     return Kwastje;
   });
 };

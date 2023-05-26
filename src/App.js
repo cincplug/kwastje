@@ -95,7 +95,7 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isMouseDown && count % setup.latency === 0) {
+    if (isMouseDown) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
       setPath((prevPath) => {
@@ -218,7 +218,7 @@ const App = () => {
           />
           {id === "kwastje" ? (
             <label htmlFor={id} className="control__label--name">
-              {kwastjeName}
+              {setup.kwastje}. {kwastjeName}
             </label>
           ) : (
             <label className="control__label" htmlFor={id}>
