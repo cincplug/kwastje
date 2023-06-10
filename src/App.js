@@ -38,8 +38,8 @@ const App = () => {
   });
 
   const [aitje, setAitje] = useState("");
-
-  const callOpenAI = async () => {
+  const [promptje, setPromptje] = useState("");
+  const callAitje = async () => {
     try {
       const model = "text-davinci-003";
       const response = await fetch("https://api.openai.com/v1/completions", {
@@ -51,7 +51,7 @@ const App = () => {
         },
         body: JSON.stringify({
           prompt:
-            "Write cleanly formatted SVG element without any non-svg stuff. Minimum 10 maximum 20 shapes in SVG and they all must be among elements with required with x and y attributes. Choose warm colors",
+            "Write cleanly formatted SVG element without any non-svg stuff. Minimum 10 maximum 20 shapes in SVG and they all must be among elements with required with x and y attributes. SVG should represent: " + promptje,
           model,
           max_tokens: 1000,
         }),
@@ -319,6 +319,9 @@ const App = () => {
           download,
           clear,
           shuffle,
+          callAitje,
+          promptje,
+          setPromptje,
         }}
       />
       <main
@@ -365,9 +368,6 @@ const App = () => {
           setIsInfoVisible={() => setIsInfoVisible((prevState) => !prevState)}
         />
       )}
-      <div className="call">
-        <button onClick={callOpenAI}>Complete</button>
-      </div>
     </div>
   );
 };

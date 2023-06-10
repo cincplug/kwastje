@@ -10,6 +10,9 @@ const Menu = (props) => {
     download,
     clear,
     shuffle,
+    callAitje,
+    setPromptje,
+    promptje,
   } = props;
 
   const deferredPromptRef = useRef(null);
@@ -83,6 +86,23 @@ const Menu = (props) => {
         >
           Pwatje
         </button>
+      </fieldset>
+      <fieldset className="control" key="aitje">
+        <button
+          className="control__input control__button control__button--save"
+          onClick={() => {
+            callAitje();
+          }}
+        >
+          Aitje
+        </button>
+        <input
+          className="promptje"
+          value={promptje}
+          onChange={(event) => {
+            setPromptje(event.target.value);
+          }}
+        />
       </fieldset>
       <fieldset className="control" key="clear">
         <button

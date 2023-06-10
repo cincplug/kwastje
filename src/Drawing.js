@@ -3,22 +3,22 @@ import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor, aitje } = props;
-  let aiputje;
+  let aiOutput;
   if (aitje) {
     const parser = new DOMParser();
     const svgtje = parser.parseFromString(aitje, "text/html").body.firstChild;
-    aiputje = svgtje;
+    aiOutput = svgtje;
   }
   return path.map((coords, index) => {
-    if (aiputje)
+    if (aiOutput)
       return (
         <g
           opacity={setup.opacity / 255}
           key={index}
           transform={`translate(${
             w / 3 - Math.round(mouseX * Math.sin(index) * setup.modifier)
-          }, ${h / 3 - Math.round(mouseY * Math.cos(index) * setup.modifier)}) scale(${setup.growth * index / setup.thickness})`}
-          dangerouslySetInnerHTML={{ __html: aiputje.outerHTML }}
+          }, ${h / 4 - Math.round(mouseY * Math.cos(index) * setup.modifier)}) scale(${setup.growth * index / (10 / setup.thickness)})`}
+          dangerouslySetInnerHTML={{ __html: aiOutput.outerHTML }}
         />
       );
     const [defaultX1, defaultY1] =
