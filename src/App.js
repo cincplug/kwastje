@@ -37,34 +37,28 @@ const App = () => {
     );
   });
 
-  const [response, setResponse] = useState("");
+  const [aitje, setAitje] = useState("");
 
   const callOpenAI = async () => {
     try {
-      const response = await fetch(
-        "https://api.openai.com/v1/images/generations",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer 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",
-          },
-          body: JSON.stringify({
-            prompt: "zx spectrum yellow and blue loading stripes",
-            n: 2,
-            size: "256x256",
-          }),
-        }
-      );
+      const model = "text-davinci-003";
+      const response = await fetch("https://api.openai.com/v1/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer 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",
+        },
+        body: JSON.stringify({
+          prompt:
+            "Write cleanly formatted SVG element without any non-svg stuff. Minimum 10 maximum 20 shapes in SVG and they all must be among elements with required with x and y attributes. Choose warm colors",
+          model,
+          max_tokens: 1000,
+        }),
+      });
 
       const data = await response.json();
-      console.warn(data);
-      setResponse(
-        data.data.map((item, index) => (
-          <img src={item.url} key={index} alt="" />
-        ))
-      );
+      setAitje(data.choices[0].text);
     } catch (error) {
       console.error(error);
     }
@@ -361,7 +355,7 @@ const App = () => {
             )}
             <g transform-origin={"center"}>
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
-              <Drawing {...{ path, setup, mouseX, mouseY, w, h, fgColor }} />
+              <Drawing {...{ path, setup, mouseX, mouseY, w, h, fgColor, aitje }} />
             </g>
           </svg>
         )}
@@ -372,8 +366,7 @@ const App = () => {
         />
       )}
       <div className="call">
-        <button onClick={callOpenAI}>Call OpenAI API</button>
-        <div>{response}</div>
+        <button onClick={callOpenAI}>Complete</button>
       </div>
     </div>
   );

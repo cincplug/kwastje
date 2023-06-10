@@ -2,8 +2,25 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, aitje } = props;
+  let aiputje;
+  if (aitje) {
+    const parser = new DOMParser();
+    const svgtje = parser.parseFromString(aitje, "text/html").body.firstChild;
+    aiputje = svgtje;
+  }
   return path.map((coords, index) => {
+    if (aiputje)
+      return (
+        <g
+          opacity={setup.opacity / 255}
+          key={index}
+          transform={`translate(${
+            w / 3 - Math.round(mouseX * Math.sin(index) * setup.modifier)
+          }, ${h / 3 - Math.round(mouseY * Math.cos(index) * setup.modifier)}) scale(${setup.growth * index / setup.thickness})`}
+          dangerouslySetInnerHTML={{ __html: aiputje.outerHTML }}
+        />
+      );
     const [defaultX1, defaultY1] =
       index > 0
         ? path[index - 1].length > 2
@@ -36,7 +53,7 @@ const Drawing = (props) => {
       <line
         x1={defaultX1}
         y1={defaultY1}
-        x2={w - defaultX2 * Math.tan(defaultX1) / 2}
+        x2={w - (defaultX2 * Math.tan(defaultX1)) / 2}
         y2={h - defaultY2}
         {...commonProps}
       />,
