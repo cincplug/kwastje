@@ -37,6 +37,39 @@ const App = () => {
     );
   });
 
+  const [response, setResponse] = useState("");
+
+  const callOpenAI = async () => {
+    try {
+      const response = await fetch(
+        "https://api.openai.com/v1/images/generations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer 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",
+          },
+          body: JSON.stringify({
+            prompt: "zx spectrum yellow and blue loading stripes",
+            n: 2,
+            size: "256x256",
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.warn(data);
+      setResponse(
+        data.data.map((item, index) => (
+          <img src={item.url} key={index} alt="" />
+        ))
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   function useAnimationFrame(callback) {
     const requestRef = useRef();
     const previousTimeRef = useRef();
@@ -338,6 +371,10 @@ const App = () => {
           setIsInfoVisible={() => setIsInfoVisible((prevState) => !prevState)}
         />
       )}
+      <div className="call">
+        <button onClick={callOpenAI}>Call OpenAI API</button>
+        <div>{response}</div>
+      </div>
     </div>
   );
 };

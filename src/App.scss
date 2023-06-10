@@ -304,3 +304,12 @@ button {
     width: auto;
   }
 }
+
+.call {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  button {
+    background: white;
+  }
+}
