@@ -45,22 +45,6 @@ const Menu = (props) => {
     }
   };
 
-  const handleInstallButtonClick = () => {
-    if (deferredPromptRef.current) {
-      const deferredPrompt = deferredPromptRef.current;
-      deferredPrompt.prompt();
-
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("PWA installed successfully!");
-        } else {
-          console.log("PWA installation declined.");
-        }
-        deferredPromptRef.current = null;
-      });
-    }
-  };
-
   return (
     <nav
       className={`menu menu--controls menu--${menuVisibilityClass}`}
