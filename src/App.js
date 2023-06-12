@@ -18,7 +18,7 @@ const App = () => {
   defaultSetup.forEach((item) => {
     initialSetup[item.id] = storedSetup ? storedSetup[item.id] : item.value;
   });
-  if (storedSetup.aitje) {
+  if (storedSetup && storedSetup.aitje) {
     initialSetup.aitje = new DOMParser().parseFromString(
       storedSetup.aitje,
       "text/html"
@@ -59,7 +59,7 @@ const App = () => {
             "Bearer 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",
         },
         body: JSON.stringify({
-          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions 500 x 500. SVG should have ${setup.dotsCount} shapes. SVG should represent: ${promptje}`,
+          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions 500 x 500. SVG should have maximum ${setup.dotsCount} shapes. Try using path and polygon as much as possible. SVG should represent: ${promptje}`,
           model,
           max_tokens: 3000,
         }),
