@@ -31,14 +31,17 @@ const App = () => {
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
+  const [movementX, setMovementX] = useState(0);
+  const [movementY, setMovementY] = useState(0);
   useAnimationFrame((deltaTime) => {
     setCount((prevCount) =>
       Math.ceil((prevCount + deltaTime * 0.01) % setup.dotsCount)
     );
   });
 
-  const [aitje, setAitje] = useState("");
-  const [promptje, setPromptje] = useState("");
+  const [promptje, setPromptje] = useState("something");
+  const [breedtje, setBreedtje] = useState(500);
+  const [hoogtje, setHoogtje] = useState(500);
   const callAitje = async () => {
     try {
       const model = "text-davinci-003";
@@ -50,15 +53,22 @@ const App = () => {
             "Bearer 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",
         },
         body: JSON.stringify({
-          prompt:
-            "Write cleanly formatted SVG element without any non-svg stuff. Minimum 10 maximum 20 shapes in SVG and they all must be among elements with required with x and y attributes. SVG should represent: " + promptje,
+          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions 500 x 500. SVG should have ${setup.dotsCount} shapes. SVG should represent: ${promptje}`,
           model,
-          max_tokens: 1000,
+          max_tokens: 3000,
         }),
       });
 
       const data = await response.json();
-      setAitje(data.choices[0].text);
+      const text = data.choices[0].text;
+      setSetup((prevSetup) => {
+        const nextSetup = {
+          ...prevSetup,
+          aitje: text.substring(text.indexOf("<svg")),
+        };
+        sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
+        return nextSetup;
+      });
     } catch (error) {
       console.error(error);
     }
@@ -123,6 +133,8 @@ const App = () => {
 
   function handleMouseMove(event) {
     if (isMouseDown) {
+      setMovementX(event.movementX || 0);
+      setMovementY(event.movementY || 0);
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
       setPath((prevPath) => {
@@ -249,7 +261,7 @@ const App = () => {
             </label>
           ) : (
             <label className="control__label" htmlFor={id}>
-              {label}
+              {label} {type === "range" && <span>{value}</span>}
             </label>
           )}
         </fieldset>
@@ -322,6 +334,10 @@ const App = () => {
           callAitje,
           promptje,
           setPromptje,
+          hoogtje,
+          setHoogtje,
+          breedtje,
+          setBreedtje,
         }}
       />
       <main
@@ -358,7 +374,20 @@ const App = () => {
             )}
             <g transform-origin={"center"}>
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
-              <Drawing {...{ path, setup, mouseX, mouseY, w, h, fgColor, aitje }} />
+              <Drawing
+                {...{
+                  path,
+                  setup,
+                  mouseX,
+                  mouseY,
+                  movementX,
+                  movementY,
+                  w,
+                  h,
+                  fgColor,
+                  count,
+                }}
+              />
             </g>
           </svg>
         )}

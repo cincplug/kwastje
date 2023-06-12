@@ -41,7 +41,7 @@
     "value": 80,
     "type": "range",
     "min": 5,
-    "max": 200,
+    "max": 100,
     "step": 1
   },
   {

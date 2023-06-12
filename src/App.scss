@@ -202,8 +202,7 @@ button {
     }
   }
   &--bgColor {
-    margin-top: -1.5rem;
-    margin-left: 1rem;
+    margin: -1.5rem 0 0.5rem 1rem;
     position: relative;
     z-index: -1;
     @include until {
@@ -291,6 +290,12 @@ button {
       display: block;
     }
   }
+  &.aitje {
+    margin: 0.5rem -1rem;
+    width: calc(100% + 2rem);
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to bottom, $color-green 0%, transparent 100%);
+  }
 }
 .splash {
   position: absolute;
@@ -305,17 +310,28 @@ button {
   }
 }
 
-.call {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  button {
-    background: white;
+.promptje {
+  border: 1px solid $color-green;
+  background: $color-dark;
+  color: $color-white;
+  margin: 0 0 0.4rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  border-bottom: none;
+  width: 100%;
+  &:focus {
+    border-color: $color-white;
+  }
+  &::placeholder {
+    color: $color-fg;
+  }
+  &.mini {
+    width: 40%;
   }
 }
 
-.promptje {
-  border: 1px solid white;
-  color: white;
-  margin-top: 1rem;
-}
+// .aitje-outer {
+//   & {
+//     transition: transform 0.2s ease-in-out;
+//   }
+// }

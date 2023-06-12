@@ -2,23 +2,51 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, aitje } = props;
+  const {
+    path,
+    setup,
+    mouseX,
+    mouseY,
+    movementX,
+    movementY,
+    w,
+    h,
+    fgColor,
+    // count,
+  } = props;
   let aiOutput;
-  if (aitje) {
+  if (setup.aitje) {
     const parser = new DOMParser();
-    const svgtje = parser.parseFromString(aitje, "text/html").body.firstChild;
+    const svgtje = parser.parseFromString(setup.aitje, "text/html").body.firstChild;
     aiOutput = svgtje;
   }
   return path.map((coords, index) => {
     if (aiOutput)
       return (
         <g
+          strokeWidth={setup.thickness}
+          stroke={setup.fgColor}
           opacity={setup.opacity / 255}
           key={index}
+          className="aitje-outer"
           transform={`translate(${
-            w / 3 - Math.round(mouseX * Math.sin(index) * setup.modifier)
-          }, ${h / 4 - Math.round(mouseY * Math.cos(index) * setup.modifier)}) scale(${setup.growth * index / (10 / setup.thickness)})`}
-          dangerouslySetInnerHTML={{ __html: aiOutput.outerHTML }}
+            w / 3 -
+            Math.round(mouseX * Math.sin(index) * setup.modifier) +
+            movementX +
+            1
+          }, ${
+            h / 4 -
+            Math.round(mouseY * Math.cos(index) * setup.modifier) +
+            movementY +
+            1
+          }) scale(${(index * setup.growth / 100)}) rotate(${
+            Math.sin(index) * 10
+          })`}
+          dangerouslySetInnerHTML={{
+            __html:
+              aiOutput.children[Math.min(index, aiOutput.children.length - 1)]
+                .outerHTML,
+          }}
         />
       );
     const [defaultX1, defaultY1] =
