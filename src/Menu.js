@@ -17,6 +17,8 @@ const Menu = (props) => {
     setHoogtje,
     breedtje,
     setBreedtje,
+    isLoading,
+    setIsLoading,
   } = props;
 
   const deferredPromptRef = useRef(null);
@@ -143,6 +145,7 @@ const Menu = (props) => {
         >
           Aitje
         </button>
+        {isLoading && <p className={`loader-message ${isLoading ? "loading" : "not-loading"}`}>Waiting for Aitje <span className="loader">...</span></p>}
       </fieldset>
     </nav>
   );

@@ -48,8 +48,11 @@ const App = () => {
   const [promptje, setPromptje] = useState("something");
   const [breedtje, setBreedtje] = useState(500);
   const [hoogtje, setHoogtje] = useState(500);
+  const [isLoading, setIsLoading] = useState(false);
+
   const callAitje = async () => {
     try {
+      setIsLoading(true);
       const model = "text-davinci-003";
       const response = await fetch("https://api.openai.com/v1/completions", {
         method: "POST",
@@ -59,7 +62,7 @@ const App = () => {
             "Bearer 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",
         },
         body: JSON.stringify({
-          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions 500 x 500. SVG should have maximum ${setup.dotsCount} shapes. Try using path and polygon as much as possible. SVG should represent: ${promptje}`,
+          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. SVG should have maximum ${setup.dotsCount} shapes. Use single path element. SVG should represent: ${promptje}`,
           model,
           max_tokens: 3000,
         }),
@@ -81,6 +84,7 @@ const App = () => {
           aitje: textFiltered,
         };
         sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
+        setIsLoading(false);
         return nextSetup;
       });
     } catch (error) {
@@ -352,6 +356,8 @@ const App = () => {
           setHoogtje,
           breedtje,
           setBreedtje,
+          isLoading,
+          setIsLoading,
         }}
       />
       <main
