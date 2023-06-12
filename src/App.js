@@ -18,6 +18,12 @@ const App = () => {
   defaultSetup.forEach((item) => {
     initialSetup[item.id] = storedSetup ? storedSetup[item.id] : item.value;
   });
+  if (storedSetup.aitje) {
+    initialSetup.aitje = new DOMParser().parseFromString(
+      storedSetup.aitje,
+      "text/html"
+    ).body.firstChild;
+  }
   const [setup, setSetup] = useState(initialSetup);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
@@ -64,14 +70,17 @@ const App = () => {
       const textFiltered = text.substring(text.indexOf("<svg"));
       setSetup((prevSetup) => {
         const parser = new DOMParser();
-
-        const aitje = parser.parseFromString(textFiltered, "text/html").body.firstChild;
-
+        const aitje = parser.parseFromString(textFiltered, "text/html").body
+          .firstChild;
         const nextSetup = {
           ...prevSetup,
           aitje,
         };
-        sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
+        const setupToStore = {
+          ...prevSetup,
+          aitje: textFiltered,
+        };
+        sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
         return nextSetup;
       });
     } catch (error) {
