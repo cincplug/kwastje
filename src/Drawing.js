@@ -14,14 +14,8 @@ const Drawing = (props) => {
     fgColor,
     // count,
   } = props;
-  let aiOutput;
-  if (setup.aitje) {
-    const parser = new DOMParser();
-    const svgtje = parser.parseFromString(setup.aitje, "text/html").body.firstChild;
-    aiOutput = svgtje;
-  }
   return path.map((coords, index) => {
-    if (aiOutput)
+    if (setup.aitje)
       return (
         <g
           strokeWidth={setup.thickness}
@@ -39,13 +33,14 @@ const Drawing = (props) => {
             Math.round(mouseY * Math.cos(index) * setup.modifier) +
             movementY +
             1
-          }) scale(${(index * setup.growth / 100)}) rotate(${
+          }) scale(${(index * setup.growth) / 100}) rotate(${
             Math.sin(index) * 10
           })`}
           dangerouslySetInnerHTML={{
             __html:
-              aiOutput.children[Math.min(index, aiOutput.children.length - 1)]
-                .outerHTML,
+              setup.aitje.children[
+                Math.min(index, setup.aitje.children.length - 1)
+              ].outerHTML,
           }}
         />
       );

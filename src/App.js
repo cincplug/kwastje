@@ -61,10 +61,15 @@ const App = () => {
 
       const data = await response.json();
       const text = data.choices[0].text;
+      const textFiltered = text.substring(text.indexOf("<svg"));
       setSetup((prevSetup) => {
+        const parser = new DOMParser();
+
+        const aitje = parser.parseFromString(textFiltered, "text/html").body.firstChild;
+
         const nextSetup = {
           ...prevSetup,
-          aitje: text.substring(text.indexOf("<svg")),
+          aitje,
         };
         sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
         return nextSetup;

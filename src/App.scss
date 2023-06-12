@@ -22,7 +22,7 @@ $color-nav: $color-bg;
 
 $handle-size: 4rem;
 $menu-width: 8rem;
-$menu-height: 40vh;
+$menu-height: 50vh;
 
 $bp-s: 768px;
 
@@ -193,7 +193,7 @@ button {
     flex-direction: row;
   }
   &--color {
-    width: 1.8rem;
+    width: 1.6rem;
   }
   &--kwastje {
     @include until {
@@ -202,7 +202,7 @@ button {
     }
   }
   &--bgColor {
-    margin: -1.5rem 0 0.5rem 1rem;
+    margin: -1.5rem -1rem 0.5rem 1rem;
     position: relative;
     z-index: -1;
     @include until {
@@ -295,6 +295,9 @@ button {
     width: calc(100% + 2rem);
     padding: 0.5rem 1rem;
     background: linear-gradient(to bottom, $color-green 0%, transparent 100%);
+    @include until {
+      flex-basis: 100%;
+    }
   }
 }
 .splash {
