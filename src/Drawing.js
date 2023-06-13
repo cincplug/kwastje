@@ -15,7 +15,7 @@ const Drawing = (props) => {
     // count,
   } = props;
   return path.map((coords, index) => {
-    if (setup.aitje)
+    if (setup.aitje) {
       return (
         <g
           strokeWidth={setup.thickness}
@@ -25,25 +25,27 @@ const Drawing = (props) => {
           className="aitje-outer"
           transform={`translate(${
             w / 3 -
-            Math.round(mouseX * Math.sin(index) * setup.modifier) +
+            Math.round(coords[0] * Math.sin(index) * setup.modifier) +
             movementX +
             1
           }, ${
             h / 4 -
-            Math.round(mouseY * Math.cos(index) * setup.modifier) +
+            Math.round(coords[1] * Math.cos(index) * setup.modifier) +
             movementY +
             1
-          }) scale(${(index * setup.growth) / 100}) rotate(${
-            Math.sin(index) * 10
+          }) scale(${(index * setup.growth) / 80}) rotate(${
+            Math.sin(index) * mouseX
           })`}
           dangerouslySetInnerHTML={{
-            __html:
+            __html: `${
               setup.aitje.children[
                 Math.min(index, setup.aitje.children.length - 1)
-              ].outerHTML,
+              ].outerHTML
+            }`,
           }}
         />
       );
+    }
     const [defaultX1, defaultY1] =
       index > 0
         ? path[index - 1].length > 2

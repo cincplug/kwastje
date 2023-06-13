@@ -18,7 +18,6 @@ const Menu = (props) => {
     breedtje,
     setBreedtje,
     isLoading,
-    setIsLoading,
   } = props;
 
   const deferredPromptRef = useRef(null);
