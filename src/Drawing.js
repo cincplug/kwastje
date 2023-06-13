@@ -14,8 +14,11 @@ const Drawing = (props) => {
     fgColor,
     // count,
   } = props;
-  return path.map((coords, index) => {
+  return path.map((defaultCoords, index) => {
+    let coords = defaultCoords;
     if (setup.aitje) {
+      const points = setup.aitje.querySelector("polygon").getAttribute("points").split(" ");
+      coords = points[Math.min(index, points.length - 1)].split(",");
       return (
         <g
           strokeWidth={setup.thickness}

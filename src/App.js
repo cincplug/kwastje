@@ -62,7 +62,7 @@ const App = () => {
             "Bearer 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",
         },
         body: JSON.stringify({
-          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. SVG should have maximum ${setup.dotsCount} shapes. Use single path element. SVG should represent: ${promptje}`,
+          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points. SVG should represent: ${promptje}`,
           model,
           max_tokens: 3000,
         }),
@@ -240,6 +240,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
+        delete nextSetup.aitje;
       }
       return nextSetup;
     });
