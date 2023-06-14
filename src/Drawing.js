@@ -15,10 +15,16 @@ const Drawing = (props) => {
     // count,
   } = props;
   return path.map((defaultCoords, index) => {
+    const { aitje } = setup;
     let coords = defaultCoords;
-    if (setup.aitje) {
-      const points = setup.aitje.querySelector("polygon").getAttribute("points").split(" ");
-      coords = points[Math.min(index, points.length - 1)].split(",");
+    if (aitje) {
+      if (aitje.tagName !== "image") {
+        const points = aitje
+          .querySelector("polygon")
+          .getAttribute("points")
+          .split(" ");
+        coords = points[Math.min(index, points.length - 1)].split(",");
+      }
       return (
         <g
           strokeWidth={setup.thickness}
@@ -40,11 +46,13 @@ const Drawing = (props) => {
             Math.sin(index) * mouseX
           })`}
           dangerouslySetInnerHTML={{
-            __html: `${
-              setup.aitje.children[
-                Math.min(index, setup.aitje.children.length - 1)
-              ].outerHTML
-            }`,
+            __html:
+              aitje.tagName === "image"
+                ? aitje.outerHTML
+                : `${
+                    aitje.children[Math.min(index, aitje.children.length - 1)]
+                      .outerHTML
+                  }`,
           }}
         />
       );

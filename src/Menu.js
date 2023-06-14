@@ -139,10 +139,19 @@ const Menu = (props) => {
           className="control__input control__button control__button--save"
           type="submit"
           onClick={() => {
-            callAitje();
+            callAitje("completions");
           }}
         >
-          Aitje
+          vectoortje
+        </button>
+        <button
+          className="control__input control__button control__button--save"
+          type="submit"
+          onClick={() => {
+            callAitje("images/generations");
+          }}
+        >
+          bitmapje
         </button>
         {isLoading && <p className={`loader-message ${isLoading ? "loading" : "not-loading"}`}>Waiting for Aitje <span className="loader">...</span></p>}
       </fieldset>

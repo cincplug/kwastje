@@ -308,6 +308,9 @@ button {
     @include until {
       flex-basis: 100%;
     }
+    button {
+      margin-top: 0.4rem;
+    }
   }
 }
 .loader-message.loading {

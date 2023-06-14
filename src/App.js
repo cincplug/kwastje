@@ -45,51 +45,74 @@ const App = () => {
     );
   });
 
-  const [promptje, setPromptje] = useState("something");
+  const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
   const [hoogtje, setHoogtje] = useState(500);
   const [isLoading, setIsLoading] = useState(false);
 
-  const callAitje = async () => {
+  const callAitje = async (endpoint = "images/generations") => {
+    const aiPath = "https://api.openai.com/v1";
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const model = "text-davinci-003";
-      const response = await fetch("https://api.openai.com/v1/completions", {
+      const prompt = promptje || "something";
+      const requestBody =
+        endpoint === "images/generations"
+          ? {
+              prompt,
+              response_format: "b64_json",
+              size: "256x256",
+            }
+          : {
+              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points. SVG should represent ${prompt}`,
+              model,
+              max_tokens: 4000,
+            };
+      const response = await fetch(`${aiPath}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization:
             "Bearer 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",
         },
-        body: JSON.stringify({
-          prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points. SVG should represent: ${promptje}`,
-          model,
-          max_tokens: 3000,
-        }),
+        body: JSON.stringify(requestBody),
       });
-
-      const data = await response.json();
-      const text = data.choices[0].text;
-      const textFiltered = text.substring(text.indexOf("<svg"));
+      const responseJson = await response.json();
+      const content =
+        endpoint === "completions"
+          ? responseJson.choices[0].text
+          : responseJson.data[0].b64_json;
+      const contentFiltered = content.substring(content.indexOf("<svg"));
       setSetup((prevSetup) => {
-        const parser = new DOMParser();
-        const aitje = parser.parseFromString(textFiltered, "text/html").body
-          .firstChild;
+        let aitje;
+        if (endpoint === "completions") {
+          const parser = new DOMParser();
+          aitje = parser.parseFromString(contentFiltered, "text/html").body
+            .firstChild;
+        } else {
+          aitje = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "image"
+          );
+          aitje.setAttribute("href", `data:image/png;base64,${content}`);
+          aitje.setAttribute("width", 100);
+          aitje.setAttribute("height", 100);
+        }
         const nextSetup = {
           ...prevSetup,
           aitje,
         };
         const setupToStore = {
           ...prevSetup,
-          aitje: textFiltered,
+          aitje: contentFiltered,
         };
         sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
-        setIsLoading(false);
         return nextSetup;
       });
     } catch (error) {
       console.error(error);
     }
+    setIsLoading(false);
   };
 
   function useAnimationFrame(callback) {
@@ -240,7 +263,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        delete nextSetup.aitje;
+        // delete nextSetup.aitje;
       }
       return nextSetup;
     });
