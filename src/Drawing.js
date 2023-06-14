@@ -17,16 +17,15 @@ const Drawing = (props) => {
   return path.map((defaultCoords, index) => {
     const { aitje } = setup;
     let coords = defaultCoords;
-    let Outje;
     if (aitje) {
-      if (aitje.tagName !== "image") {
+      if (aitje.querySelector("polygon")) {
         const points = aitje
           .querySelector("polygon")
           .getAttribute("points")
           .split(" ");
         coords = points[Math.min(index, points.length - 1)].split(",");
       }
-      Outje = (
+      return (
         <g
           strokeWidth={setup.thickness}
           stroke={setup.fgColor}
@@ -257,7 +256,7 @@ const Drawing = (props) => {
     );
 
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
-    return <g>{Kwastje}{Outje}</g>;
+    return Kwastje;
   });
 };
 
