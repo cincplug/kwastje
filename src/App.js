@@ -73,7 +73,7 @@ const App = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer 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",
+            "Bearer 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",
         },
         body: JSON.stringify(requestBody),
       });
@@ -95,8 +95,8 @@ const App = () => {
             "image"
           );
           aitje.setAttribute("href", `data:image/png;base64,${content}`);
-          aitje.setAttribute("width", 100);
-          aitje.setAttribute("height", 100);
+          aitje.setAttribute("width", 256);
+          aitje.setAttribute("height", 256);
         }
         const nextSetup = {
           ...prevSetup,
@@ -263,7 +263,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        // delete nextSetup.aitje;
+        delete nextSetup.aitje;
       }
       return nextSetup;
     });

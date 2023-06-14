@@ -7,8 +7,8 @@ const Drawing = (props) => {
     setup,
     mouseX,
     mouseY,
-    movementX,
-    movementY,
+    // movementX,
+    // movementY,
     w,
     h,
     fgColor,
@@ -17,6 +17,7 @@ const Drawing = (props) => {
   return path.map((defaultCoords, index) => {
     const { aitje } = setup;
     let coords = defaultCoords;
+    let Outje;
     if (aitje) {
       if (aitje.tagName !== "image") {
         const points = aitje
@@ -25,24 +26,14 @@ const Drawing = (props) => {
           .split(" ");
         coords = points[Math.min(index, points.length - 1)].split(",");
       }
-      return (
+      Outje = (
         <g
           strokeWidth={setup.thickness}
           stroke={setup.fgColor}
           opacity={setup.opacity / 255}
           key={index}
           className="aitje-outer"
-          transform={`translate(${
-            w / 3 -
-            Math.round(coords[0] * Math.sin(index) * setup.modifier) +
-            movementX +
-            1
-          }, ${
-            h / 4 -
-            Math.round(coords[1] * Math.cos(index) * setup.modifier) +
-            movementY +
-            1
-          }) scale(${(index * setup.growth) / 80}) rotate(${
+          transform={`translate(${mouseX}, ${mouseY}) scale(${(index * setup.growth) / 80}) rotate(${
             Math.sin(index) * mouseX
           })`}
           dangerouslySetInnerHTML={{
@@ -266,7 +257,7 @@ const Drawing = (props) => {
     );
 
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
-    return Kwastje;
+    return <g>{Kwastje}{Outje}</g>;
   });
 };
 
