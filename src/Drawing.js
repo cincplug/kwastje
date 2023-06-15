@@ -14,7 +14,7 @@ const Drawing = (props) => {
     fgColor,
     // count,
   } = props;
-  return path.map((defaultCoords, index) => {
+  const getKwastje = (defaultCoords, index) => {
     const { aitje } = setup;
     let coords = defaultCoords;
     if (aitje) {
@@ -32,9 +32,9 @@ const Drawing = (props) => {
           opacity={setup.opacity / 255}
           key={index}
           className="aitje-outer"
-          transform={`translate(${mouseX}, ${mouseY}) scale(${(index * setup.growth) / 80}) rotate(${
-            Math.sin(index) * mouseX
-          })`}
+          transform={`translate(${mouseX}, ${mouseY}) scale(${
+            (index * setup.growth) / 80
+          }) rotate(${Math.sin(index) * mouseX})`}
           dangerouslySetInnerHTML={{
             __html:
               aitje.tagName === "image"
@@ -254,10 +254,11 @@ const Drawing = (props) => {
         />
       ))
     );
-
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
     return Kwastje;
-  });
+  };
+
+  return path.map((defaultCoords, index) => getKwastje(defaultCoords, index));
 };
 
 export default Drawing;
