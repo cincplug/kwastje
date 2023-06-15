@@ -50,23 +50,30 @@ const App = () => {
   const [hoogtje, setHoogtje] = useState(500);
   const [isLoading, setIsLoading] = useState(false);
 
-  const callAitje = async (endpoint = "images/generations") => {
+  const callAitje = async (goal = "vectortje") => {
+    const endpoint = goal === "bitmapje" ? "images/generations" : "completions";
     const aiPath = "https://api.openai.com/v1";
     setIsLoading(true);
     try {
       const model = "text-davinci-003";
       const prompt = promptje || "something";
       const requestBody =
-        endpoint === "images/generations"
+        goal === "bitmapje"
           ? {
               prompt,
               response_format: "b64_json",
               size: "256x256",
             }
+          : goal === "pietje"
+          ? {
+              prompt: `Write cleanly formatted <svg> element, with shapes similar to these: ${document.querySelector(".drawing").innerHTML}`,
+              model,
+              max_tokens: 2000,
+            }
           : {
               prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points. SVG should represent ${prompt}`,
               model,
-              max_tokens: 4000,
+              max_tokens: 3000,
             };
       const response = await fetch(`${aiPath}/${endpoint}`, {
         method: "POST",
@@ -79,17 +86,13 @@ const App = () => {
       });
       const responseJson = await response.json();
       const content =
-        endpoint === "completions"
-          ? responseJson.choices[0].text
-          : responseJson.data[0].b64_json;
+        goal === "bitmapje"
+          ? responseJson.data[0].b64_json
+          : responseJson.choices[0].text;
       const contentFiltered = content.substring(content.indexOf("<svg"));
       setSetup((prevSetup) => {
         let aitje;
-        if (endpoint === "completions") {
-          const parser = new DOMParser();
-          aitje = parser.parseFromString(contentFiltered, "text/html").body
-            .firstChild;
-        } else {
+        if (goal === "bitmapje") {
           aitje = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "image"
@@ -97,6 +100,10 @@ const App = () => {
           aitje.setAttribute("href", `data:image/png;base64,${content}`);
           aitje.setAttribute("width", 256);
           aitje.setAttribute("height", 256);
+        } else {
+          const parser = new DOMParser();
+          aitje = parser.parseFromString(contentFiltered, "text/html").body
+            .firstChild;
         }
         const nextSetup = {
           ...prevSetup,
@@ -416,8 +423,8 @@ const App = () => {
                 fill={setup.bgColor}
               ></rect>
             )}
-            <g transform-origin={"center"}>
-              <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
+            <g className="center-origin" transform-origin={"center"}>
+              {/* <Filters {...{ h, x: mouseX, y: mouseY, setup }} /> */}
               <Drawing
                 {...{
                   path,

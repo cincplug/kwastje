@@ -126,7 +126,8 @@ const Menu = (props) => {
             onChange={(event) => {
               setBreedtje(event.target.value);
             }}
-          /> x{` `} 
+          />{" "}
+          x{` `}
           <input
             className="promptje mini"
             value={hoogtje}
@@ -139,21 +140,38 @@ const Menu = (props) => {
           className="control__input control__button control__button--save"
           type="submit"
           onClick={() => {
-            callAitje("completions");
+            callAitje("vectortje");
           }}
         >
-          vectoortje
+          vectortje
         </button>
         <button
           className="control__input control__button control__button--save"
           type="submit"
           onClick={() => {
-            callAitje("images/generations");
+            callAitje("bitmapje");
           }}
         >
           bitmapje
         </button>
-        {isLoading && <p className={`loader-message ${isLoading ? "loading" : "not-loading"}`}>Waiting for Aitje <span className="loader">...</span></p>}
+        <button
+          className="control__input control__button control__button--save"
+          type="submit"
+          onClick={() => {
+            callAitje("pietje");
+          }}
+        >
+          pietje
+        </button>
+        {isLoading && (
+          <p
+            className={`loader-message ${
+              isLoading ? "loading" : "not-loading"
+            }`}
+          >
+            Waiting for Aitje <span className="loader">...</span>
+          </p>
+        )}
       </fieldset>
     </nav>
   );

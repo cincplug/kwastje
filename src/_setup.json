@@ -40,7 +40,7 @@
     "description": "How many dots make our kwastje",
     "value": 50,
     "type": "range",
-    "min": 5,
+    "min": 3,
     "max": 100,
     "step": 1
   },
