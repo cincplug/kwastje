@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import defaultSetup from "./_setup.json";
 import { defaultKwastjeNames, customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
@@ -39,11 +39,6 @@ const App = () => {
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
   const [movementX, setMovementX] = useState(0);
   const [movementY, setMovementY] = useState(0);
-  useAnimationFrame((deltaTime) => {
-    setCount((prevCount) =>
-      Math.ceil((prevCount + deltaTime * 0.01) % setup.dotsCount)
-    );
-  });
 
   const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
@@ -64,14 +59,16 @@ const App = () => {
               response_format: "b64_json",
               size: "256x256",
             }
-          : goal === "pietje"
+          : goal === "componentje"
           ? {
-              prompt: `Write cleanly formatted <svg> element, with shapes similar to these: ${document.querySelector(".drawing").innerHTML}`,
+              prompt: `Write cleanly formatted <svg> element, with shapes similar to these: ${
+                document.querySelector(".drawing").innerHTML
+              }`,
               model,
               max_tokens: 2000,
             }
           : {
-              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points. SVG should represent ${prompt}`,
+              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points and the main color must be ${fgColor}. SVG should represent ${prompt}`,
               model,
               max_tokens: 3000,
             };
@@ -122,41 +119,40 @@ const App = () => {
     setIsLoading(false);
   };
 
-  function useAnimationFrame(callback) {
-    const requestRef = useRef();
-    const previousTimeRef = useRef();
-    const animate = useCallback(
-      (time) => {
-        if (previousTimeRef.current !== undefined) {
-          const deltaTime = time - previousTimeRef.current;
-          callback(deltaTime);
-        }
-        previousTimeRef.current = time;
-        requestRef.current = requestAnimationFrame(animate);
-      },
-      [callback]
-    );
-    useEffect(() => {
-      updateKwastjeName();
-      const mainElement = mainRef.current;
-      requestRef.current = requestAnimationFrame(animate);
-      mainElement.addEventListener("pointerdown", handleMouseDown, {
-        passive: false,
-      });
-      mainElement.addEventListener("pointermove", handleMouseMove, {
-        passive: false,
-      });
-      mainElement.addEventListener("pointerup", handleMouseUp, {
-        passive: false,
-      });
-      return () => {
-        mainElement.removeEventListener("pointerdown", handleMouseDown);
-        mainElement.removeEventListener("pointermove", handleMouseMove);
-        mainElement.removeEventListener("pointerup", handleMouseUp);
-        cancelAnimationFrame(requestRef.current);
-      };
-    }, [animate]);
-  }
+  useEffect(() => {
+    let animationFrameId;
+    let counter = 0;
+    updateKwastjeName();
+    const mainElement = mainRef.current;
+    mainElement.addEventListener("pointerdown", handleMouseDown, {
+      passive: false,
+    });
+    mainElement.addEventListener("pointermove", handleMouseMove, {
+      passive: false,
+    });
+    mainElement.addEventListener("pointerup", handleMouseUp, {
+      passive: false,
+    });
+
+    const animationLoop = () => {
+      // Perform animation-related tasks
+
+      if (counter === 10) {
+        console.log("Counter reached 10!");
+      }
+      counter++;
+      animationFrameId = requestAnimationFrame(animationLoop);
+    };
+
+    animationLoop();
+
+    return () => {
+      mainElement.removeEventListener("pointerdown", handleMouseDown);
+      mainElement.removeEventListener("pointermove", handleMouseMove);
+      mainElement.removeEventListener("pointerup", handleMouseUp);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [updateKwastjeName]);
 
   function handleMouseDown(event) {
     if (event.pointerType === "mouse") {
@@ -270,7 +266,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        delete nextSetup.aitje;
+        // delete nextSetup.aitje;
       }
       return nextSetup;
     });
@@ -424,7 +420,7 @@ const App = () => {
               ></rect>
             )}
             <g className="center-origin" transform-origin={"center"}>
-              {/* <Filters {...{ h, x: mouseX, y: mouseY, setup }} /> */}
+              <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
               <Drawing
                 {...{
                   path,

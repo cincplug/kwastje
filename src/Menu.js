@@ -158,10 +158,10 @@ const Menu = (props) => {
           className="control__input control__button control__button--save"
           type="submit"
           onClick={() => {
-            callAitje("pietje");
+            callAitje("componentje");
           }}
         >
-          pietje
+          componentje
         </button>
         {isLoading && (
           <p
