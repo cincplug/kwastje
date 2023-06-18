@@ -5,6 +5,8 @@ import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
+import potrace from "potrace";
+
 import "./App.scss";
 
 const App = () => {
@@ -56,19 +58,21 @@ const App = () => {
         goal === "bitmapje"
           ? {
               prompt,
-              response_format: "b64_json",
+              response_format: "url",
               size: "256x256",
             }
           : goal === "componentje"
           ? {
               prompt: `Write cleanly formatted <svg> element, with shapes similar to these: ${
-                document.querySelector(".drawing").innerHTML
+                document.querySelector(
+                  "path, polygon, polyline, line, rect, circle, ellipse"
+                ).outerHTML
               }`,
               model,
               max_tokens: 2000,
             }
           : {
-              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polygon element which must have ${setup.dotsCount} points and the main color must be ${fgColor}. SVG should represent ${prompt}`,
+              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polyline or polygon element which must have ${setup.dotsCount} points and the main color must go well with ${setup.fgColor} but also be visible on ${setup.bgColor}. Please include in the comment why it goes well. SVG should represent ${prompt}`,
               model,
               max_tokens: 3000,
             };
@@ -77,47 +81,47 @@ const App = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer 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",
+            "Bearer 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",
         },
         body: JSON.stringify(requestBody),
       });
       const responseJson = await response.json();
-      const content =
+      let content =
         goal === "bitmapje"
-          ? responseJson.data[0].b64_json
+          ? responseJson.data[0].url
           : responseJson.choices[0].text;
-      const contentFiltered = content.substring(content.indexOf("<svg"));
-      setSetup((prevSetup) => {
-        let aitje;
-        if (goal === "bitmapje") {
-          aitje = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "image"
-          );
-          aitje.setAttribute("href", `data:image/png;base64,${content}`);
-          aitje.setAttribute("width", 256);
-          aitje.setAttribute("height", 256);
-        } else {
-          const parser = new DOMParser();
-          aitje = parser.parseFromString(contentFiltered, "text/html").body
-            .firstChild;
-        }
-        const nextSetup = {
-          ...prevSetup,
-          aitje,
-        };
-        const setupToStore = {
-          ...prevSetup,
-          aitje: contentFiltered,
-        };
-        sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
-        return nextSetup;
-      });
+      if (goal === "bitmapje") {
+        potrace.trace(content, function (err, svg) {
+          if (err) throw err;
+          content = svg;
+          set(content);
+        });
+      } else {
+        set(content.substring(content.indexOf("<svg")));
+      }
     } catch (error) {
       console.error(error);
     }
     setIsLoading(false);
   };
+
+  function set(content) {
+    setSetup((prevSetup) => {
+      let aitje;
+      const parser = new DOMParser();
+      aitje = parser.parseFromString(content, "text/html").body.firstChild;
+      const nextSetup = {
+        ...prevSetup,
+        aitje,
+      };
+      const setupToStore = {
+        ...prevSetup,
+        aitje: content,
+      };
+      sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
+      return nextSetup;
+    });
+  }
 
   useEffect(() => {
     let animationFrameId;
@@ -136,12 +140,10 @@ const App = () => {
 
     const animationLoop = () => {
       // Perform animation-related tasks
-
-      if (counter === 10) {
-        console.log("Counter reached 10!");
-      }
       counter++;
       animationFrameId = requestAnimationFrame(animationLoop);
+      if (counter === w) counter = 0;
+      setCount(counter);
     };
 
     animationLoop();

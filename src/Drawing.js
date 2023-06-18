@@ -16,16 +16,17 @@ const Drawing = (props) => {
   } = props;
   const getKwastje = (defaultCoords, index) => {
     const { aitje } = setup;
-    let coords = defaultCoords;
-    if (aitje) {
-      if (aitje.querySelector("polygon")) {
-        const points = aitje
-          .querySelector("polygon")
-          .getAttribute("points")
-          .split(" ");
-        coords = points[Math.min(index, points.length - 1)].split(",");
-      }
-      return (
+    let Outje,
+      coords = defaultCoords;
+    if (aitje && index % 1 === 0) {
+      // if (aitje.querySelector("polygon, path, polyline")) {
+      //   const points = aitje
+      //     .querySelector("polygon")
+      //     .getAttribute("points")
+      //     .split(" ");
+      //   coords = points[Math.min(index, points.length - 1)].split(",");
+      // }
+      Outje = (
         <g
           strokeWidth={setup.thickness}
           stroke={setup.fgColor}
@@ -144,18 +145,18 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <polyline
-        points={`${defaultX1},${defaultY1} ${
-          Math.sin(defaultX1 * index) + w / 2
-        },${
-          Math.cos(defaultY1) * index + h / 2
-        } ${defaultX2},${defaultY2} ${Math.abs(
-          Math.sin(defaultX2 * index + w / 2)
+      points={`${defaultX1},${defaultY1} ${
+        Math.sin(defaultX1 * index) + w / 2
+      },${
+        Math.cos(defaultY1) * index + h / 2
+      } ${defaultX2},${defaultY2} ${Math.abs(
+        Math.sin(defaultX2 * index + w / 2)
         )},${Math.cos(defaultY2) * index + h / 2}`}
         {...commonProps}
-      />,
-      <polygon
+        />,
+        <polygon
         points={`${defaultX1},${defaultY1} ${
-          Math.sin(defaultX1) + w / 2
+          Math.sin(defaultX1 * index) / setup.modifier
         },${Math.cos(defaultY1)} ${Math.sin(defaultX2 * index) + w / 2},${
           Math.cos(defaultY2) + h
         } ${defaultX2},${defaultY2}`}
@@ -255,7 +256,7 @@ const Drawing = (props) => {
       ))
     );
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
-    return Kwastje;
+    return <>{Kwastje}{defaultX2 < mouseY && Outje}</>;
   };
 
   return path.map((defaultCoords, index) => getKwastje(defaultCoords, index));
