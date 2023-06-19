@@ -37,13 +37,10 @@ const Drawing = (props) => {
             (index * setup.growth) / 80
           }) rotate(${Math.sin(index) * mouseX})`}
           dangerouslySetInnerHTML={{
-            __html:
-              aitje.tagName === "image"
-                ? aitje.outerHTML
-                : `${
-                    aitje.children[Math.min(index, aitje.children.length - 1)]
-                      .outerHTML
-                  }`,
+            __html: `${
+              aitje.children[Math.min(index, aitje.children.length - 1)]
+                .outerHTML
+            }`,
           }}
         />
       );
@@ -145,16 +142,16 @@ const Drawing = (props) => {
         {...commonProps}
       />,
       <polyline
-      points={`${defaultX1},${defaultY1} ${
-        Math.sin(defaultX1 * index) + w / 2
-      },${
-        Math.cos(defaultY1) * index + h / 2
-      } ${defaultX2},${defaultY2} ${Math.abs(
-        Math.sin(defaultX2 * index + w / 2)
+        points={`${defaultX1},${defaultY1} ${
+          Math.sin(defaultX1 * index) + w / 2
+        },${
+          Math.cos(defaultY1) * index + h / 2
+        } ${defaultX2},${defaultY2} ${Math.abs(
+          Math.sin(defaultX2 * index + w / 2)
         )},${Math.cos(defaultY2) * index + h / 2}`}
         {...commonProps}
-        />,
-        <polygon
+      />,
+      <polygon
         points={`${defaultX1},${defaultY1} ${
           Math.sin(defaultX1 * index) / setup.modifier
         },${Math.cos(defaultY1)} ${Math.sin(defaultX2 * index) + w / 2},${
@@ -256,7 +253,12 @@ const Drawing = (props) => {
       ))
     );
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
-    return <>{Kwastje}{defaultX2 < mouseY && Outje}</>;
+    return (
+      <>
+        {Kwastje}
+        {defaultX2 < mouseY && Outje}
+      </>
+    );
   };
 
   return path.map((defaultCoords, index) => getKwastje(defaultCoords, index));

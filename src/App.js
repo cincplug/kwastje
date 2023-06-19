@@ -57,9 +57,9 @@ const App = () => {
       const requestBody =
         goal === "bitmapje"
           ? {
-              prompt,
+              prompt: `Simple drawing with 2-5 colors, representing: ${prompt}`,
               response_format: "url",
-              size: "256x256",
+              size: "512x512",
             }
           : goal === "componentje"
           ? {
@@ -81,7 +81,7 @@ const App = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer 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",
+            "Bearer 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",
         },
         body: JSON.stringify(requestBody),
       });
