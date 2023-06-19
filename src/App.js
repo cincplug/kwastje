@@ -94,10 +94,10 @@ const App = () => {
         potrace.trace(content, function (err, svg) {
           if (err) throw err;
           content = svg;
-          set(content);
+          setAitje(content);
         });
       } else {
-        set(content.substring(content.indexOf("<svg")));
+        setAitje(content.substring(content.indexOf("<svg")));
       }
     } catch (error) {
       console.error(error);
@@ -105,7 +105,7 @@ const App = () => {
     setIsLoading(false);
   };
 
-  function set(content) {
+  function setAitje(content) {
     setSetup((prevSetup) => {
       let aitje;
       const parser = new DOMParser();
