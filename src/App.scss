@@ -361,6 +361,9 @@ button {
     width: 40%;
   }
 }
+.originel {
+  @include center;
+}
 
 // .aitje-outer {
 //   & {

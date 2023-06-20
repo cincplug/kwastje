@@ -2,48 +2,22 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const {
-    path,
-    setup,
-    mouseX,
-    mouseY,
-    // movementX,
-    // movementY,
-    w,
-    h,
-    fgColor,
-    // count,
-  } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje } = props;
   const getKwastje = (defaultCoords, index) => {
     const { aitje } = setup;
-    let Outje,
-      coords = defaultCoords;
-    if (aitje && index % 1 === 0) {
+    let Aitje, coords = defaultCoords;
+    if (aitje && index > 4) {
+      const [x,y] = mapje[index];
       // if (aitje.querySelector("polygon, path, polyline")) {
       //   const points = aitje
       //     .querySelector("polygon")
       //     .getAttribute("points")
       //     .split(" ");
       //   coords = points[Math.min(index, points.length - 1)].split(",");
+        Aitje = <g transform={`translate(${mouseX}, ${mouseY}) scale(${(index * setup.growth) / 80})  
+        rotate(${Math.sin(x) * index}) `}
+        dangerouslySetInnerHTML={{ __html: setup.aitje }}/>
       // }
-      Outje = (
-        <g
-          strokeWidth={setup.thickness}
-          stroke={setup.fgColor}
-          opacity={setup.opacity / 255}
-          key={index}
-          className="aitje-outer"
-          transform={`translate(${mouseX}, ${mouseY}) scale(${
-            (index * setup.growth) / 80
-          }) rotate(${Math.sin(index) * mouseX})`}
-          dangerouslySetInnerHTML={{
-            __html: `${
-              aitje.children[Math.min(index, aitje.children.length - 1)]
-                .outerHTML
-            }`,
-          }}
-        />
-      );
     }
     const [defaultX1, defaultY1] =
       index > 0
@@ -253,10 +227,29 @@ const Drawing = (props) => {
       ))
     );
     const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
+    let KwastjeMetAitje,
+      [x, y] = [mouseX, mouseY];
+    if (mapje) {
+      x += mapje[Math.min(index, mapje.length - 1)][0] * setup.modifier - w / 2;
+      y += mapje[Math.min(index, mapje.length - 1)][1] * setup.modifier - h / 2;
+      KwastjeMetAitje = (
+        <g
+          strokeWidth={setup.thickness}
+          stroke={setup.fgColor}
+          opacity={setup.opacity / 255}
+          key={index}
+          className="aitje-outer"
+          transform={`
+          translate(${x}, ${y})
+          `}
+        >
+          {Kwastje}
+        </g>
+      );
+    }
     return (
       <>
-        {Kwastje}
-        {defaultX2 < mouseY && Outje}
+        {mapje ? KwastjeMetAitje : Kwastje}{Aitje}
       </>
     );
   };

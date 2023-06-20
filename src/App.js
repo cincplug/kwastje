@@ -46,6 +46,7 @@ const App = () => {
   const [breedtje, setBreedtje] = useState(500);
   const [hoogtje, setHoogtje] = useState(500);
   const [isLoading, setIsLoading] = useState(false);
+  const [mapje, setMapje] = useState(null);
 
   const callAitje = async (goal = "vectortje") => {
     const endpoint = goal === "bitmapje" ? "images/generations" : "completions";
@@ -93,8 +94,21 @@ const App = () => {
       if (goal === "bitmapje") {
         potrace.trace(content, function (err, svg) {
           if (err) throw err;
-          content = svg;
-          setAitje(content);
+          const parser = new DOMParser();
+          const aitje = parser.parseFromString(svg, "text/html").body
+            .firstChild;
+          const dAttribute = aitje.querySelector("path").getAttribute("d");
+          // const segments = dAttribute.replace(/[A-Za-z]/g, "").split(" ");
+          const segments = dAttribute.replace(/[A-Za-z]/g, "").split(/[ ,]+/);
+          const coordinates = [];
+          for (let i = 0; i < segments.length; i += 6) {
+            const [startX, startY, , , , endX, endY] = segments
+              .slice(i, i + 7)
+              .map(parseFloat);
+            coordinates.push([startX, startY], [endX, endY]);
+          }
+          setMapje(coordinates);
+          setAitje(svg);
         });
       } else {
         setAitje(content.substring(content.indexOf("<svg")));
@@ -105,20 +119,19 @@ const App = () => {
     setIsLoading(false);
   };
 
-  function setAitje(content) {
+  function setAitje(aitje) {
     setSetup((prevSetup) => {
-      let aitje;
-      const parser = new DOMParser();
-      aitje = parser.parseFromString(content, "text/html").body.firstChild;
+      // const parser = new DOMParser();
+      // aitje = parser.parseFromString(content, "text/html").body.firstChild;
       const nextSetup = {
         ...prevSetup,
         aitje,
       };
-      const setupToStore = {
-        ...prevSetup,
-        aitje: content,
-      };
-      sessionStorage.setItem(storageSetupItem, JSON.stringify(setupToStore));
+      // const setupToStore = {
+      //   ...prevSetup,
+      //   aitje: content,
+      // };
+      sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
     });
   }
@@ -421,6 +434,13 @@ const App = () => {
                 fill={setup.bgColor}
               ></rect>
             )}
+            {setup.aitje && (
+              <g transform-origin="center"
+                transform={`translate(${mouseX - 256}, ${mouseY - 256}) rotate(${
+                  Math.abs(mouseX) / 3})`}
+                dangerouslySetInnerHTML={{ __html: setup.aitje }}
+              />
+            )}
             <g className="center-origin" transform-origin={"center"}>
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
               <Drawing
@@ -435,6 +455,7 @@ const App = () => {
                   h,
                   fgColor,
                   count,
+                  mapje,
                 }}
               />
             </g>
