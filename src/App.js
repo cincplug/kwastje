@@ -82,7 +82,7 @@ const App = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "Bearer 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",
+            `Bearer ${process.env.REACT_APP_AITJE_KEY}`,
         },
         body: JSON.stringify(requestBody),
       });
