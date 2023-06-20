@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import defaultSetup from "./_setup.json";
 import { defaultKwastjeNames, customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
@@ -168,12 +168,12 @@ const App = () => {
     };
   });
 
-  const handleMouseDown = useCallback(function(event) {
+  function handleMouseDown(event) {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
     setIsMouseDown(true);
-  }, []);
+  }
 
   function handleMouseUp(event) {
     if (event.pointerType === "mouse") {
