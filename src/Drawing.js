@@ -2,23 +2,10 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, aitje } = props;
   const getKwastje = (defaultCoords, index) => {
-    const { aitje } = setup;
-    let Aitje, coords = defaultCoords;
-    if (aitje && index > 4) {
-      const [x,y] = mapje[index];
-      // if (aitje.querySelector("polygon, path, polyline")) {
-      //   const points = aitje
-      //     .querySelector("polygon")
-      //     .getAttribute("points")
-      //     .split(" ");
-      //   coords = points[Math.min(index, points.length - 1)].split(",");
-        Aitje = <g transform={`translate(${mouseX}, ${mouseY}) scale(${(index * setup.growth) / 80})  
-        rotate(${Math.sin(x) * index}) `}
-        dangerouslySetInnerHTML={{ __html: setup.aitje }}/>
-      // }
-    }
+    let Aitje,
+      coords = defaultCoords;
     const [defaultX1, defaultY1] =
       index > 0
         ? path[index - 1].length > 2
@@ -246,10 +233,27 @@ const Drawing = (props) => {
           {Kwastje}
         </g>
       );
+      if (index > 0) {
+        Aitje = (
+          <g
+            transform={`translate(${mouseX + x}, ${mouseY + y}) scale(${
+              (index * setup.growth) / 80
+            }) rotate(${Math.sin(index) * mouseX})`}
+            dangerouslySetInnerHTML={{ __html: setup.aitje }}
+          />
+        );
+      }
     }
     return (
       <>
-        {mapje ? KwastjeMetAitje : Kwastje}{Aitje}
+        {mapje ? (
+          <>
+            {Aitje}
+            {KwastjeMetAitje}
+          </>
+        ) : (
+          Kwastje
+        )}
       </>
     );
   };

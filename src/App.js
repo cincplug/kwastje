@@ -434,13 +434,6 @@ const App = () => {
                 fill={setup.bgColor}
               ></rect>
             )}
-            {setup.aitje && (
-              <g transform-origin="center"
-                transform={`translate(${mouseX - 256}, ${mouseY - 256}) rotate(${
-                  Math.abs(mouseX) / 3})`}
-                dangerouslySetInnerHTML={{ __html: setup.aitje }}
-              />
-            )}
             <g className="center-origin" transform-origin={"center"}>
               <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
               <Drawing
