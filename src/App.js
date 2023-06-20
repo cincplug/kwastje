@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
 import { defaultKwastjeNames, customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
@@ -166,14 +166,14 @@ const App = () => {
       mainElement.removeEventListener("pointerup", handleMouseUp);
       // cancelAnimationFrame(animationFrameId);
     };
-  }, [updateKwastjeName]);
+  });
 
-  function handleMouseDown(event) {
+  const handleMouseDown = useCallback(function(event) {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
     setIsMouseDown(true);
-  }
+  }, []);
 
   function handleMouseUp(event) {
     if (event.pointerType === "mouse") {

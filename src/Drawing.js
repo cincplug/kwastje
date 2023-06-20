@@ -2,7 +2,7 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, aitje } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje } = props;
   const getKwastje = (defaultCoords, index) => {
     let Aitje,
       coords = defaultCoords;
@@ -233,11 +233,11 @@ const Drawing = (props) => {
           {Kwastje}
         </g>
       );
-      if (index > 0) {
+      if (index > 0 && index < 10) {
         Aitje = (
           <g
             transform={`translate(${mouseX + x}, ${mouseY + y}) scale(${
-              (index * setup.growth) / 80
+              (index * setup.growth) / 10
             }) rotate(${Math.sin(index) * mouseX})`}
             dangerouslySetInnerHTML={{ __html: setup.aitje }}
           />
@@ -249,7 +249,7 @@ const Drawing = (props) => {
         {mapje ? (
           <>
             {Aitje}
-            {KwastjeMetAitje}
+            {setup.isMerged ? KwastjeMetAitje : Kwastje}
           </>
         ) : (
           Kwastje

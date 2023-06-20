@@ -170,5 +170,11 @@
     "type": "checkbox",
     "description": "Fills closed shapes with minimal opacity of foreground color",
     "value": false
+  },
+  {
+    "id": "isMerged",
+    "type": "checkbox",
+    "description": "Brings together kwastje and aitje",
+    "value": false
   }
 ]
