@@ -137,8 +137,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    let animationFrameId;
-    let counter = 0;
+    // let animationFrameId;
+    // let counter = 0;
     updateKwastjeName();
     const mainElement = mainRef.current;
     mainElement.addEventListener("pointerdown", handleMouseDown, {
@@ -151,21 +151,20 @@ const App = () => {
       passive: false,
     });
 
-    const animationLoop = () => {
-      // Perform animation-related tasks
-      counter++;
-      animationFrameId = requestAnimationFrame(animationLoop);
-      if (counter === w) counter = 0;
-      setCount(counter);
-    };
+    // const animationLoop = () => {
+    //   counter++;
+    //   animationFrameId = requestAnimationFrame(animationLoop);
+    //   if (counter === w) counter = 0;
+    //   setCount(counter);
+    // };
 
-    animationLoop();
+    // animationLoop();
 
     return () => {
       mainElement.removeEventListener("pointerdown", handleMouseDown);
       mainElement.removeEventListener("pointermove", handleMouseMove);
       mainElement.removeEventListener("pointerup", handleMouseUp);
-      cancelAnimationFrame(animationFrameId);
+      // cancelAnimationFrame(animationFrameId);
     };
   }, [updateKwastjeName]);
 

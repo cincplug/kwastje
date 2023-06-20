@@ -177,7 +177,7 @@ const Drawing = (props) => {
       <path
         d={`M${defaultX1},${defaultY1} L${
           Math.cos(defaultY2) * index + h / 2
-        },${defaultY2} L${w / index},${Math.cos(defaultY2 * index) + h} Q${
+        },${defaultY2} L${w / (index + 0.1)},${Math.cos(defaultY2 * index) + h} Q${
           Math.sin(defaultX2 * index) + w * setup.modifier
         } ${defaultX1 / 2}, ${defaultX2} ${defaultY1}`}
         {...commonProps}
@@ -227,7 +227,7 @@ const Drawing = (props) => {
           key={index}
           className="aitje-outer"
           transform={`
-          translate(${x}, ${y})
+          translate(${x || w / 2}, ${y || h / 2})
           `}
         >
           {Kwastje}
