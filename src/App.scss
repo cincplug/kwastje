@@ -165,6 +165,10 @@ button {
   }
   &--filters {
     right: 0;
+    background: $color-green;
+    overflow-y: auto;
+    position: absolute;
+    flex-flow: wrap;
     &.menu--collapsed {
       display: none;
     }
@@ -361,12 +365,14 @@ button {
     width: 40%;
   }
 }
-.originel {
-  @include center;
+.navaitje {
+  width: 40%;
+    margin: 10% 5%;
+    display: flex;
+    overflow-y: auto;
+    height: auto;
+  svg {
+    width: 100%;
+    height: auto;
+  }
 }
-
-// .aitje-outer {
-//   & {
-//     transition: transform 0.2s ease-in-out;
-//   }
-// }

@@ -6,7 +6,6 @@ import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
 import potrace from "potrace";
-
 import "./App.scss";
 
 const App = () => {
@@ -81,8 +80,7 @@ const App = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            `Bearer ${process.env.REACT_APP_AITJE_KEY}`,
+          Authorization: `Bearer ${process.env.REACT_APP_AITJE_KEY}`,
         },
         body: JSON.stringify(requestBody),
       });
@@ -132,6 +130,12 @@ const App = () => {
       //   aitje: content,
       // };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
+      const link = document.createElement("a");
+      link.download = "x.svg";
+      const base64doc = btoa(unescape(encodeURIComponent(aitje)));
+      const e = new MouseEvent("click");
+      link.href = "data:image/svg+xml;base64," + base64doc;
+      link.dispatchEvent(e);
       return nextSetup;
     });
   }
