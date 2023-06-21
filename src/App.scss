@@ -174,7 +174,9 @@ button {
       display: none;
     }
     @include until {
-      display: none;
+      width: auto;
+      height: 3rem;
+      top: calc(50vh - 3rem);
     }
   }
   &__toggle {
@@ -198,9 +200,8 @@ button {
     );
     margin-bottom: 0.5rem;
     @include until {
-      width: 2rem;
+      width: 1.5rem;
       position: absolute;
-      top: -1.5rem;
     }
   }
 }
@@ -375,12 +376,20 @@ button {
 }
 .navaitje {
   width: 40%;
-    margin: 10% 5%;
-    display: flex;
-    overflow-y: auto;
-    height: auto;
+  margin: 10% 5%;
+  display: flex;
+  overflow-y: auto;
+  height: auto;
+  @include until {
+    height: 2rem;
+    width: 2rem;
+    margin: 0.2rem;
+  }
   svg {
     width: 100%;
     height: auto;
+    @include until {
+      height: 2rem;
+    }
   }
 }
