@@ -124,14 +124,15 @@ const App = () => {
   function setAitje(aitje) {
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
+      const dotsCount = Math.min(coordinates.length, 500);
       const nextSetup = {
         ...prevSetup,
         aitje,
         kwastje: 1,
-        dotsCount: Math.min(coordinates.length, 500),
+        dotsCount,
         opacity: 200,
-        thickness: 1,
-        growth: 20,
+        thickness: Math.ceil(w / dotsCount),
+        growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       // const link = document.createElement("a");
