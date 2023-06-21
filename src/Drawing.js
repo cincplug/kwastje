@@ -36,6 +36,13 @@ const Drawing = (props) => {
     );
     const defaultKwastjes = [
       <line
+        x1={defaultX1 + Math.sin(defaultX1)}
+        y1={defaultY1 + Math.sin(defaultY1)}
+        x2={defaultX2 + Math.sin(defaultX2)}
+        y2={defaultY2 + Math.sin(defaultY2)}
+        {...commonProps}
+      />,
+      <line
         x1={defaultX1}
         y1={defaultY1}
         x2={w - (defaultX2 * Math.tan(defaultX1)) / 2}
@@ -215,7 +222,7 @@ const Drawing = (props) => {
         />
       ))
     );
-    const Kwastje = kwastjes[setup.kwastje - 3] || BaseKwastje;
+    const Kwastje = kwastjes[setup.kwastje - 2] || BaseKwastje;
     let KwastjeMetAitje,
       [x, y] = [mouseX, mouseY];
     if (mapje) {

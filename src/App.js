@@ -288,7 +288,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        if(value > 1) {
+        if(value > 3) {
           console.warn(prevSetup.dotsCount, defaultSetup.dotsCount);
           nextSetup.dotsCount = 50;
           nextSetup.thickness = 2;
