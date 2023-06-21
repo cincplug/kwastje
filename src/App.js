@@ -92,20 +92,7 @@ const App = () => {
       if (goal === "bitmapje") {
         potrace.trace(content, function (err, svg) {
           if (err) throw err;
-          const parser = new DOMParser();
-          const aitje = parser.parseFromString(svg, "text/html").body
-            .firstChild;
-          const dAttribute = aitje.querySelector("path").getAttribute("d");
-          // const segments = dAttribute.replace(/[A-Za-z]/g, "").split(" ");
-          const segments = dAttribute.replace(/[A-Za-z]/g, "").split(/[ ,]+/);
-          const coordinates = [];
-          for (let i = 0; i < segments.length; i += 6) {
-            const [startX, startY, , , , endX, endY] = segments
-              .slice(i, i + 7)
-              .map(parseFloat);
-            coordinates.push([startX, startY], [endX, endY]);
-          }
-          setMapje(coordinates);
+          processAitje(svg);
           setAitje(svg);
         });
       } else {
@@ -117,25 +104,36 @@ const App = () => {
     setIsLoading(false);
   };
 
+  function processAitje(svg) {
+    const parser = new DOMParser();
+    const aitje = parser.parseFromString(svg, "text/html").body.firstChild;
+    const dAttribute = aitje.querySelector("path").getAttribute("d");
+    // const segments = dAttribute.replace(/[A-Za-z]/g, "").split(" ");
+    const segments = dAttribute.replace(/[A-Za-z]/g, "").split(/[ ,]+/);
+    const coordinates = [];
+    for (let i = 0; i < segments.length; i += 6) {
+      const [startX, startY, , , , endX, endY] = segments
+        .slice(i, i + 7)
+        .map(parseFloat);
+      coordinates.push([startX, startY], [endX, endY]);
+    }
+    setMapje(coordinates);
+  }
+
   function setAitje(aitje) {
     setSetup((prevSetup) => {
-      // const parser = new DOMParser();
-      // aitje = parser.parseFromString(content, "text/html").body.firstChild;
       const nextSetup = {
         ...prevSetup,
         aitje,
       };
-      // const setupToStore = {
-      //   ...prevSetup,
-      //   aitje: content,
-      // };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
-      const link = document.createElement("a");
-      link.download = "x.svg";
-      const base64doc = btoa(unescape(encodeURIComponent(aitje)));
-      const e = new MouseEvent("click");
-      link.href = "data:image/svg+xml;base64," + base64doc;
-      link.dispatchEvent(e);
+      processAitje(aitje);
+      // const link = document.createElement("a");
+      // link.download = "x.svg";
+      // const base64doc = btoa(unescape(encodeURIComponent(aitje)));
+      // const e = new MouseEvent("click");
+      // link.href = "data:image/svg+xml;base64," + base64doc;
+      // link.dispatchEvent(e);
       return nextSetup;
     });
   }
@@ -403,6 +401,7 @@ const App = () => {
           setBreedtje,
           isLoading,
           setIsLoading,
+          setAitje,
         }}
       />
       <main

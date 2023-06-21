@@ -177,9 +177,11 @@ const Drawing = (props) => {
       <path
         d={`M${defaultX1},${defaultY1} L${
           Math.cos(defaultY2) * index + h / 2
-        },${defaultY2} L${w / (index + 0.1)},${Math.cos(defaultY2 * index) + h} Q${
-          Math.sin(defaultX2 * index) + w * setup.modifier
-        } ${defaultX1 / 2}, ${defaultX2} ${defaultY1}`}
+        },${defaultY2} L${w / (index + 0.1)},${
+          Math.cos(defaultY2 * index) + h
+        } Q${Math.sin(defaultX2 * index) + w * setup.modifier} ${
+          defaultX1 / 2
+        }, ${defaultX2} ${defaultY1}`}
         {...commonProps}
       />,
       <path
@@ -233,11 +235,11 @@ const Drawing = (props) => {
           {Kwastje}
         </g>
       );
-      if (index > 0 && index < 10) {
+      if (index > 10 && index < 20 && index % 2 === 0) {
         Aitje = (
           <g
-            transform={`translate(${mouseX + x}, ${mouseY + y}) scale(${
-              (index * setup.growth) / 10
+            transform={`translate(${mouseX }, ${mouseY }) scale(${
+              (index * setup.growth) / 50
             }) rotate(${Math.sin(index) * mouseX})`}
             dangerouslySetInnerHTML={{ __html: setup.aitje }}
           />
@@ -246,14 +248,8 @@ const Drawing = (props) => {
     }
     return (
       <>
-        {mapje ? (
-          <>
-            {Aitje}
-            {setup.isMerged ? KwastjeMetAitje : Kwastje}
-          </>
-        ) : (
-          Kwastje
-        )}
+        {Aitje}
+        {mapje && setup.isMerged ? KwastjeMetAitje : Kwastje}
       </>
     );
   };

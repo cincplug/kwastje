@@ -11,7 +11,7 @@
   {
     "id": "fgColor",
     "description": "Foreground color",
-    "value": "#aadd44",
+    "value": "#eedd00",
     "type": "color",
     "min": 0,
     "max": 100,
@@ -20,7 +20,7 @@
   {
     "id": "bgColor",
     "description": "Background color",
-    "value": "#14181a",
+    "value": "#005588",
     "type": "color",
     "min": 0,
     "max": 100,
@@ -175,6 +175,6 @@
     "id": "isMerged",
     "type": "checkbox",
     "description": "Brings together kwastje and aitje",
-    "value": false
+    "value": true
   }
 ]

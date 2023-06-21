@@ -18,17 +18,11 @@ const Menu = (props) => {
     breedtje,
     setBreedtje,
     isLoading,
+    setAitje,
   } = props;
   const [svgData, setSvgData] = useState([]);
 
   const deferredPromptRef = useRef(null);
-
-  function importAll(r) {
-    return r.keys().map(r);
-  }
-  const aitjes = importAll(
-    require.context("./aitjes/", false, /\.(png|jpe?g|svg)$/)
-  );
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
@@ -38,6 +32,12 @@ const Menu = (props) => {
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    function importAll(r) {
+      return r.keys().map(r);
+    }
+    const aitjes = importAll(
+      require.context("./aitjes/", false, /\.(png|jpe?g|svg)$/)
+    );
 
     const loadSvgFiles = async () => {
       const svgPromises = aitjes.map((fileNumber) =>
@@ -195,10 +195,11 @@ const Menu = (props) => {
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
         {svgData.map((svgContent, index) => (
-          <div
+          <button
             key={index}
             className="navaitje"
             dangerouslySetInnerHTML={{ __html: svgContent }}
+            onClick={() => setAitje(svgContent)}
           />
         ))}
       </nav>
