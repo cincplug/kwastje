@@ -118,16 +118,22 @@ const App = () => {
       coordinates.push([startX, startY], [endX, endY]);
     }
     setMapje(coordinates);
+    return coordinates;
   }
 
   function setAitje(aitje) {
     setSetup((prevSetup) => {
+      const coordinates = processAitje(aitje);
       const nextSetup = {
         ...prevSetup,
         aitje,
+        kwastje: 1,
+        dotsCount: Math.min(coordinates.length, 500),
+        opacity: 200,
+        thickness: 1,
+        growth: 20,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
-      processAitje(aitje);
       // const link = document.createElement("a");
       // link.download = "x.svg";
       // const base64doc = btoa(unescape(encodeURIComponent(aitje)));
@@ -282,6 +288,12 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
+        if(value > 1) {
+          console.warn(prevSetup.dotsCount, defaultSetup.dotsCount);
+          nextSetup.dotsCount = 50;
+          nextSetup.thickness = 2;
+          nextSetup.growth = 5;
+        }
         // delete nextSetup.aitje;
       }
       return nextSetup;
@@ -402,6 +414,7 @@ const App = () => {
           isLoading,
           setIsLoading,
           setAitje,
+          processAitje,
         }}
       />
       <main

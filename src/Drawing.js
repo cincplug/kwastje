@@ -13,7 +13,7 @@ const Drawing = (props) => {
           : path[index - 1]
         : coords;
     const [defaultX2, defaultY2] =
-      setup.kwastje >= 2
+      setup.kwastje > 1
         ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
         : coords;
     const stroke = fgColor;
@@ -222,25 +222,36 @@ const Drawing = (props) => {
       x += mapje[Math.min(index, mapje.length - 1)][0] * setup.modifier - w / 2;
       y += mapje[Math.min(index, mapje.length - 1)][1] * setup.modifier - h / 2;
       KwastjeMetAitje = (
-        <g
-          strokeWidth={setup.thickness}
-          stroke={setup.fgColor}
-          opacity={setup.opacity / 255}
-          key={index}
-          className="aitje-outer"
-          transform={`
+        <>
+          {/* <path
+            d={`M0 0, ${mapje
+              .slice(0, 30)
+              .map((coords) => `L${coords[0] || 0}, ${coords[1] || 0} `)} `}
+          /> */}
+          <g
+            strokeWidth={setup.thickness}
+            stroke={setup.fgColor}
+            opacity={setup.opacity / 255}
+            key={index}
+            className="aitje-outer"
+            transform={`
           translate(${x || w / 2}, ${y || h / 2})
           `}
-        >
-          {Kwastje}
-        </g>
+          >
+            {Kwastje}
+          </g>
+        </>
       );
-      if (index > 10 && index < 20 && index % 2 === 0) {
+      if (index === 1) {
         Aitje = (
+          // <g
+          //   transform={`translate(${mouseX }, ${mouseY }) scale(${
+          //     (index * setup.growth) / 5
+          //   }) rotate(${Math.sin(index) * mouseX})`}
+          //   dangerouslySetInnerHTML={{ __html: setup.aitje }}
+          // />
           <g
-            transform={`translate(${mouseX }, ${mouseY }) scale(${
-              (index * setup.growth) / 50
-            }) rotate(${Math.sin(index) * mouseX})`}
+            transform={`translate(${w / 2 - 256}, ${h / 2 - 256})`}
             dangerouslySetInnerHTML={{ __html: setup.aitje }}
           />
         );

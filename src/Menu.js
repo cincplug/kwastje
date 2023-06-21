@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import setupArray from "./_setup.json";
+import { Potrace } from "potrace";
 
 const Menu = (props) => {
   const {
@@ -19,9 +20,38 @@ const Menu = (props) => {
     setBreedtje,
     isLoading,
     setAitje,
+    processAitje,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+
+    if (file && file.type === "image/svg+xml") {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const svgContent = reader.result;
+        setAitje(svgContent);
+      };
+      reader.readAsText(file);
+    } else {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageSrc = e.target.result;
+        const trace = new Potrace();
+        trace.loadImage(imageSrc, function (error) {
+          if (error) {
+            console.error("Error loading image:", error);
+            return;
+          }
+          const svg = trace.getSVG();
+          setAitje(svg);
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   useEffect(() => {
     function importAll(r) {
@@ -181,6 +211,15 @@ const Menu = (props) => {
             onClick={() => setAitje(svgContent)}
           />
         ))}
+        <label className="add-aitje">
+          <input
+            type="file"
+            // accept=".svg"
+            onChange={handleFileUpload}
+            placeholder="Add an aitje"
+          />
+          +
+        </label>
       </nav>
     </>
   );

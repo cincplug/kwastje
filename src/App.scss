@@ -378,7 +378,6 @@ button {
   width: 40%;
   margin: 10% 5%;
   display: flex;
-  overflow-y: auto;
   height: auto;
   @include until {
     height: 2rem;
@@ -391,5 +390,16 @@ button {
     @include until {
       height: 2rem;
     }
+  }
+}
+.add-aitje {
+  font-size: 4rem;
+  line-height: 3rem;
+  color: $color-dark;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  input {
+    display: none;
   }
 }
