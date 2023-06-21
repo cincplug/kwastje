@@ -33,6 +33,7 @@ const Menu = (props) => {
       reader.onload = () => {
         const svgContent = reader.result;
         setAitje(svgContent);
+        processAitje(svgContent)
       };
       reader.readAsText(file);
     } else {
@@ -47,6 +48,7 @@ const Menu = (props) => {
           }
           const svg = trace.getSVG();
           setAitje(svg);
+          processAitje(svg);
         });
       };
       reader.readAsDataURL(file);
