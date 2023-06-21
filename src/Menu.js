@@ -51,15 +51,15 @@ const Menu = (props) => {
 
   return (
     <>
+      <button
+        className="menu__toggle"
+        onClick={() => setIsMenuVisible(!isMenuVisible)}
+        title="toggle"
+      ></button>
       <nav
         className={`menu menu--controls menu--${menuVisibilityClass}`}
         onClick={() => !isMenuVisible && setIsMenuVisible(true)}
       >
-        <button
-          className="menu__toggle"
-          onClick={() => setIsMenuVisible(false)}
-          title="toggle"
-        ></button>
         {getControls(setupArray.filter((control) => !control.isHidden))}
         <fieldset className="control" key="saveSvg">
           <button
