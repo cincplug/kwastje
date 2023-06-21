@@ -41,6 +41,10 @@ const Menu = (props) => {
       reader.onload = function (e) {
         const imageSrc = e.target.result;
         const trace = new Potrace();
+        trace.setParameters({
+          turdSize: 4,
+          optTolerance: 6
+        });
         trace.loadImage(imageSrc, function (error) {
           if (error) {
             console.error("Error loading image:", error);
