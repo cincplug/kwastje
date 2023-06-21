@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import setupArray from "./_setup.json";
 
 const Menu = (props) => {
@@ -20,18 +20,10 @@ const Menu = (props) => {
     isLoading,
     setAitje,
   } = props;
+  
   const [svgData, setSvgData] = useState([]);
 
-  const deferredPromptRef = useRef(null);
-
   useEffect(() => {
-    const handleBeforeInstallPrompt = (event) => {
-      event.preventDefault();
-      deferredPromptRef.current = event;
-      console.warn(deferredPromptRef);
-    };
-
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     function importAll(r) {
       return r.keys().map(r);
     }
@@ -48,13 +40,6 @@ const Menu = (props) => {
     };
 
     loadSvgFiles();
-
-    return () => {
-      window.removeEventListener(
-        "beforeinstallprompt",
-        handleBeforeInstallPrompt
-      );
-    };
   }, []);
 
   const handleKeyDown = (event) => {
@@ -94,14 +79,6 @@ const Menu = (props) => {
             shuffle
           </button>
         </fieldset>
-        {/* <fieldset className="control" key="pwatje">
-        <button
-          className="control__input control__button control__button--save"
-          onClick={handleInstallButtonClick}
-        >
-          Pwatje
-        </button>
-      </fieldset> */}
         <fieldset className="control" key="clear">
           <button
             className="control__input control__button control__button--clear"
