@@ -92,7 +92,6 @@ const App = () => {
       if (goal === "bitmapje") {
         potrace.trace(content, function (err, svg) {
           if (err) throw err;
-          processAitje(svg);
           setAitje(svg);
         });
       } else {
@@ -122,6 +121,7 @@ const App = () => {
   }
 
   function setAitje(aitje) {
+    processAitje(aitje);
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
       const dotsCount = Math.min(coordinates.length, 500);
@@ -135,12 +135,6 @@ const App = () => {
         growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
-      // const link = document.createElement("a");
-      // link.download = "x.svg";
-      // const base64doc = btoa(unescape(encodeURIComponent(aitje)));
-      // const e = new MouseEvent("click");
-      // link.href = "data:image/svg+xml;base64," + base64doc;
-      // link.dispatchEvent(e);
       return nextSetup;
     });
   }

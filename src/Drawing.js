@@ -36,16 +36,16 @@ const Drawing = (props) => {
     );
     const defaultKwastjes = [
       <line
-        x1={defaultX1 + Math.sin(defaultX1)}
-        y1={defaultY1 + Math.sin(defaultY1)}
-        x2={defaultX2 + Math.sin(defaultX2)}
-        y2={defaultY2 + Math.sin(defaultY2)}
+        x1={defaultX1}
+        y1={defaultX2}
+        x2={defaultY1}
+        y2={defaultY2}
         {...commonProps}
       />,
       <line
         x1={defaultX1}
         y1={defaultY1}
-        x2={w - (defaultX2 * Math.tan(defaultX1)) / 2}
+        x2={w - (defaultX2 * Math.atan(defaultX1)) / 2}
         y2={h - defaultY2}
         {...commonProps}
       />,

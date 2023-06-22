@@ -33,7 +33,6 @@ const Menu = (props) => {
       reader.onload = () => {
         const svgContent = reader.result;
         setAitje(svgContent);
-        processAitje(svgContent)
       };
       reader.readAsText(file);
     } else {
@@ -43,7 +42,7 @@ const Menu = (props) => {
         const trace = new Potrace();
         trace.setParameters({
           turdSize: 4,
-          optTolerance: 6
+          optTolerance: 6,
         });
         trace.loadImage(imageSrc, function (error) {
           if (error) {
@@ -52,7 +51,6 @@ const Menu = (props) => {
           }
           const svg = trace.getSVG();
           setAitje(svg);
-          processAitje(svg);
         });
       };
       reader.readAsDataURL(file);
@@ -214,7 +212,9 @@ const Menu = (props) => {
             key={index}
             className="navaitje"
             dangerouslySetInnerHTML={{ __html: svgContent }}
-            onClick={() => setAitje(svgContent)}
+            onClick={() => {
+              setAitje(svgContent);
+            }}
           />
         ))}
         <label className="add-aitje">
