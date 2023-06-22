@@ -68,7 +68,7 @@ const Drawing = (props) => {
             strokeWidth={setup.thickness}
             stroke={setup.fgColor}
             opacity={setup.opacity / 255}
-            key={index}
+            key={`kma-${index}`}
             className="aitje-outer"
             transform={`
           translate(${x || w / 2}, ${y || h / 2})

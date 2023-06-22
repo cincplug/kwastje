@@ -212,10 +212,9 @@ const App = () => {
           );
           switch (setup.kwastje) {
             case 1:
+            case 2: 
+            default:
               prevPath[prevPath.length] = [mouseX, mouseY];
-              break;
-            case 2:
-              prevPath[Math.min(count, prevPath.length - 1)] = [mouseX, mouseY];
               break;
             case 3:
               const [prevX, prevY] = prevPath[randomIndex];
@@ -231,9 +230,6 @@ const App = () => {
                 mouseX * setup.modifier,
                 mouseY * setup.modifier,
               ];
-              break;
-            default:
-              prevPath[Math.round(count - 1)] = [mouseX, mouseY];
               break;
           }
         }
@@ -284,7 +280,6 @@ const App = () => {
       if (id === "kwastje") {
         updateKwastjeName(value);
         if (value > 3) {
-          console.warn(prevSetup.dotsCount, defaultSetup.dotsCount);
           nextSetup.dotsCount = 50;
           nextSetup.thickness = 2;
           nextSetup.growth = 5;
