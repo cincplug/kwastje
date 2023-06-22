@@ -16,8 +16,8 @@ const Luukje = (props) => {
   return (
     <line
       x1={defaultX1}
-      y1={defaultX2}
-      x2={defaultY1}
+      y1={defaultY1}
+      x2={defaultX2}
       y2={defaultY2}
       {...commonProps}
     />

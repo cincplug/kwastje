@@ -25,15 +25,6 @@ const Drawing = (props) => {
     );
     const key = `shp-${index}`;
     const commonProps = { stroke, strokeWidth, fill, style, key };
-    const BaseKwastje = (
-      <line
-        x1={defaultX1}
-        y1={defaultY1}
-        x2={defaultX2}
-        y2={defaultY2}
-        {...commonProps}
-      />
-    );
 
     const kwastjes = Object.values(customKwastjes).map((CustomKwastje) => (
       <CustomKwastje
@@ -51,7 +42,7 @@ const Drawing = (props) => {
         key={key}
       />
     ));
-    const Kwastje = kwastjes[setup.kwastje - 2] || BaseKwastje;
+    const Kwastje = kwastjes[setup.kwastje - 1];
     let KwastjeMetAitje,
       [x, y] = [mouseX, mouseY];
     if (mapje) {
