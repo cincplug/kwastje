@@ -219,7 +219,7 @@ const Menu = (props) => {
         <label className="add-aitje">
           <input
             type="file"
-            // accept=".svg"
+            accept=".svg, .png, .jpg"
             onChange={handleFileUpload}
             placeholder="Add an aitje"
           />
