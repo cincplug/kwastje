@@ -20,7 +20,6 @@ const Menu = (props) => {
     setBreedtje,
     isLoading,
     setAitje,
-    processAitje,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
