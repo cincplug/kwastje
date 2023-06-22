@@ -17,8 +17,18 @@ const Colintje = (props) => {
   // const y3 = defaultY2 * index * setup.modifier
   return (
     <>
-      <circle cx={defaultX1} cy={defaultY2} r={w / (index + 0.1)} {...commonProps} />
-      <circle cx={defaultX2} cy={defaultY1 * index} r={index} {...commonProps} />
+      <circle
+        cx={defaultX1}
+        cy={defaultY2}
+        r={w / (index + 0.1)}
+        {...commonProps}
+      />
+      <circle
+        cx={defaultX2}
+        cy={defaultY1 * index}
+        r={index}
+        {...commonProps}
+      />
     </>
   );
 };

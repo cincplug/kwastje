@@ -17,9 +17,9 @@ const Taimurtje = (props) => {
   const y3 = (defaultY2 * index) / setup.modifier;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX1 * 21},${defaultY1} L${defaultY2 * 41},${
-        defaultY2 * Math.sin(index)
-      } L${x3},${y3 * Math.sin(90)}`}
+      d={`M${defaultX1},${defaultY1} L${defaultX1 * 21},${defaultY1} L${
+        defaultY2 * 41
+      },${defaultY2 * Math.sin(index)} L${x3},${y3 * Math.sin(90)}`}
       {...commonProps}
     />
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import defaultSetup from "./_setup.json";
-import { defaultKwastjeNames, customKwastjes } from "./kwastjes";
+import { customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
@@ -283,7 +283,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        if(value > 3) {
+        if (value > 3) {
           console.warn(prevSetup.dotsCount, defaultSetup.dotsCount);
           nextSetup.dotsCount = 50;
           nextSetup.thickness = 2;
@@ -296,9 +296,7 @@ const App = () => {
   }
 
   function updateKwastjeName(value = setup.kwastje) {
-    const kwastjeNames = defaultKwastjeNames.concat(
-      Object.keys(customKwastjes)
-    );
+    const kwastjeNames = Object.keys(customKwastjes);
     setKwastjeName(kwastjeNames[value - 1]);
   }
 

@@ -1,3 +1,26 @@
+import Luukje from "./Luukje";
+import Annijtje from "./Annijtje";
+import Kieke from "./Kieke";
+import Doetje from "./Doetje";
+import Pietje from "./Pietje";
+import Eefje from "./Eefje";
+import Aafje from "./Aafje";
+import Dirkje from "./Dirkje";
+import Maaike from "./Maaike";
+import Gertje from "./Gertje";
+import Hendrikje from "./Hendrikje";
+import Hylke from "./Hylke";
+import Ineke from "./Ineke";
+import Janneke from "./Janneke";
+import Lonneke from "./Lonneke";
+import Floortje from "./Floortje";
+import Verleitje from "./Verleitje";
+import Wiesje from "./Wiesje";
+import Raalfje from "./Raalfje";
+import Neeltje from "./Neeltje";
+import Juultje from "./Juultje";
+import Trijntje from "./Trijntje";
+import Yfke from "./Yfke";
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
 import Dennisje from "./Dennisje";
@@ -15,33 +38,30 @@ import Timmetje from "./Timmetje";
 import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 
-export const defaultKwastjeNames = [
-  "Luukje",
-  "Annijtje",
-  "Kieke",
-  "Doetje",
-  "Pietje",
-  "Eefje",
-  "Aafje",
-  "Dirkje",
-  "Maaike",
-  "Gertje",
-  "Hendrikje",
-  "Hylke",
-  "Ineke",
-  "Janneke",
-  "Lonneke",
-  "Floortje",
-  "Verleitje",
-  "Wiesje",
-  "Raalfje",
-  "Neeltje",
-  "Juultje",
-  "Trijntje",
-  "Yfke",
-];
-
 export const customKwastjes = {
+  Luukje,
+  Annijtje,
+  Kieke,
+  Doetje,
+  Pietje,
+  Eefje,
+  Aafje,
+  Dirkje,
+  Maaike,
+  Gertje,
+  Hendrikje,
+  Hylke,
+  Ineke,
+  Janneke,
+  Lonneke,
+  Floortje,
+  Verleitje,
+  Wiesje,
+  Raalfje,
+  Neeltje,
+  Juultje,
+  Trijntje,
+  Yfke,
   Bertje,
   Colintje,
   Dennisje,

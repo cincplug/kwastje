@@ -17,9 +17,11 @@ const Sybje = (props) => {
   const y3 = defaultY2 * index * setup.modifier;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${w},0 L${Math.pow(index, setup.modifier) + w / 2},${
-        (defaultY2 / x3 + defaultX2 * y3) / h
-      } L${(x3 * index) / 100},${y3 / 50} L${defaultY2},${defaultX1} `}
+      d={`M${defaultX1},${defaultY1} L${w},0 L${
+        Math.pow(index, setup.modifier) + w / 2
+      },${(defaultY2 / x3 + defaultX2 * y3) / h} L${(x3 * index) / 100},${
+        y3 / 50
+      } L${defaultY2},${defaultX1} `}
       {...commonProps}
     />
   );

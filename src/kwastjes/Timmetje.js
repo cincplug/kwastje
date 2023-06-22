@@ -18,12 +18,12 @@ const Timmetje = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${
-        defaultX1},${defaultX2} L${defaultX1 * y3 * 1000},${x3 * Math.random() * 1}`}
+      d={`M${defaultX1},${defaultY1} L${defaultX1},${defaultX2} L${
+        defaultX1 * y3 * 1000
+      },${x3 * Math.random() * 1}`}
       {...commonProps}
     />
   );
 };
-
 
 export default Timmetje;

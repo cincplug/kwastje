@@ -17,9 +17,11 @@ const Elsje = (props) => {
   // const y3 = defaultY2 * setup.modifier;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} L${defaultX2 * 5},${
-        defaultY2 + 500 * setup.modifier
-      } L${defaultX2 - 70},${defaultY2 - 500 * setup.modifier}`}
+      d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} L${
+        defaultX2 * 5
+      },${defaultY2 + 500 * setup.modifier} L${defaultX2 - 70},${
+        defaultY2 - 500 * setup.modifier
+      }`}
       {...commonProps}
     />
   );
