@@ -14,7 +14,7 @@ const Blijpje = (props) => {
   } = props;
 
   const quadrantGap = setup.thickness * setup.growth;
-  const tickRadius = quadrantGap * index;
+  const tickRadius = quadrantGap * (index + 1);
   return (
     <path
       transform={`translate(${defaultX1 - tickRadius}, ${
