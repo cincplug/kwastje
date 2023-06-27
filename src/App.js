@@ -128,11 +128,11 @@ const App = () => {
       const nextSetup = {
         ...prevSetup,
         aitje,
-        kwastje: 1,
+        // kwastje: 1,
         dotsCount,
         opacity: 200,
-        thickness: Math.ceil(w / dotsCount),
-        growth: 7,
+        // thickness: Math.ceil(w / dotsCount),
+        // growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
@@ -279,10 +279,14 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        if (value > 3) {
+        if (value > 1) {
           nextSetup.dotsCount = 50;
           nextSetup.thickness = 2;
           nextSetup.growth = 5;
+        } else {
+          nextSetup.dotsCount = Math.min(prevSetup.dotsCount, mapje.length);
+          nextSetup.thickness = Math.ceil(w / nextSetup.dotsCount);
+          nextSetup.growth = 7;
         }
         // delete nextSetup.aitje;
       }
