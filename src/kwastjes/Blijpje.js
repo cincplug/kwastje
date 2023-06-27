@@ -13,7 +13,7 @@ const Blijpje = (props) => {
     commonProps,
   } = props;
 
-  const quadrantGap = setup.thickness;
+  const quadrantGap = setup.thickness * setup.growth;
   const tickRadius = quadrantGap * index;
   return (
     <path
@@ -22,19 +22,21 @@ const Blijpje = (props) => {
       })`}
       d={`M ${
         tickRadius + quadrantGap / 2
-      } 0 A ${tickRadius} ${tickRadius} 0 0 1 ${tickRadius * 2} ${
-        tickRadius - quadrantGap / 2
-      } M ${tickRadius * 2} ${
+      } 0 A ${tickRadius} ${tickRadius} 0 0 1 ${
+        tickRadius * setup.modifier * 2
+      } ${tickRadius - quadrantGap / 2} M ${tickRadius * 2} ${
         tickRadius + quadrantGap / 2
-      } A ${tickRadius} ${tickRadius} 0 0 1 ${tickRadius + quadrantGap / 2} ${
-        tickRadius * 2
-      } M ${tickRadius - quadrantGap / 2} ${
+      } A ${tickRadius} ${tickRadius} 0 0 1 ${
+        tickRadius * setup.modifier + quadrantGap / 2
+      } ${tickRadius * 2} M ${tickRadius - quadrantGap / 2} ${
         tickRadius * 2
       } A ${tickRadius} ${tickRadius} 0 0 1 0 ${
-        tickRadius + quadrantGap / 2
+        tickRadius * setup.modifier + quadrantGap / 2
       } M 0 ${
         tickRadius - quadrantGap / 2
-      } A ${tickRadius} ${tickRadius} 0 0 1 ${tickRadius - quadrantGap / 2} 0`}
+      } A ${tickRadius} ${tickRadius} 0 0 1 ${
+        tickRadius * setup.modifier - quadrantGap / 2
+      } 0`}
       {...commonProps}
     />
   );
