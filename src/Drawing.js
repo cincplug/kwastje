@@ -12,12 +12,13 @@ const Drawing = (props) => {
           ? coords
           : path[index - 1]
         : coords;
-    const [defaultX2, defaultY2] =
-      setup.kwastje > 1
-        ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
-        : coords;
+    const [defaultX2, defaultY2] = setup.isChildish
+      ? [mouseX, mouseY]
+      : setup.kwastje > 1
+      ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
+      : coords;
     const stroke = fgColor;
-    const fill = setup.isFilled ? `${setup.fgColor}12` : "none";
+    const fill = setup.isShaded ? `${setup.fgColor}12` : "none";
     const style = null;
     const strokeWidth = Math.max(
       (setup.thickness * index * setup.growth) / path.length,
@@ -87,7 +88,7 @@ const Drawing = (props) => {
     return (
       <>
         {Aitje}
-        {mapje && setup.isMerged ? KwastjeMetAitje : Kwastje}
+        {mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}
       </>
     );
   };
