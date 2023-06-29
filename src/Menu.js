@@ -93,7 +93,9 @@ const Menu = (props) => {
         className={`menu menu--controls menu--${menuVisibilityClass}`}
         onClick={() => !isMenuVisible && setIsMenuVisible(true)}
       >
-        {getControls(setupArray.filter((control) => !control.isHidden))}
+        {getControls(
+          setupArray.filter((control) => !control.isHidden && !control.isRight)
+        )}
         <fieldset className="control" key="saveSvg">
           <button
             className="control__input control__button control__button--save"
@@ -206,6 +208,9 @@ const Menu = (props) => {
         </div>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
+        {getControls(
+          setupArray.filter((control) => !control.isHidden && control.isRight)
+        )}
         {svgData.map((svgContent, index) => (
           <button
             key={index}

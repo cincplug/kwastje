@@ -175,6 +175,7 @@
     "id": "isInfluenced",
     "type": "checkbox",
     "description": "Brings together kwastje and aitje",
+    "isRight": true,
     "value": true
   },
   {

@@ -166,7 +166,7 @@ button {
   }
   &--filters {
     right: 0;
-    background: $color-green;
+    background: $color-dark;
     overflow-y: auto;
     position: absolute;
     flex-flow: wrap;
@@ -390,6 +390,9 @@ button {
     @include until {
       height: 2rem;
     }
+  }
+  path {
+    fill: $color-neutral;
   }
 }
 .add-aitje {
