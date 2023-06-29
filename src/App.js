@@ -128,7 +128,10 @@ const App = () => {
         // kwastje: 1,
         dotsCount,
         opacity: 200,
-        // thickness: Math.ceil(w / dotsCount),
+        thickness:
+          prevSetup.kwastje === 1
+            ? Math.ceil(w / dotsCount)
+            : prevSetup.dotsCount,
         // growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
@@ -190,7 +193,7 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isMouseDown || (setup.kwastje < 2)) {
+    if (isMouseDown || setup.kwastje < 2) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
     }
@@ -209,7 +212,7 @@ const App = () => {
           );
           switch (setup.kwastje) {
             case 1:
-            case 2: 
+            case 2:
             default:
               prevPath[prevPath.length] = [mouseX, mouseY];
               break;
@@ -281,7 +284,9 @@ const App = () => {
           nextSetup.thickness = 2;
           nextSetup.growth = 5;
         } else {
-          nextSetup.dotsCount = Math.min(prevSetup.dotsCount, mapje.length);
+          nextSetup.dotsCount = mapje
+            ? Math.min(prevSetup.dotsCount, mapje.length)
+            : prevSetup.dotsCount;
           nextSetup.thickness = Math.ceil(w / nextSetup.dotsCount);
           nextSetup.growth = 7;
         }
