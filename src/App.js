@@ -38,9 +38,6 @@ const App = () => {
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
-  const [movementX, setMovementX] = useState(0);
-  const [movementY, setMovementY] = useState(0);
-
   const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
   const [hoogtje, setHoogtje] = useState(500);
@@ -193,11 +190,11 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isMouseDown) {
-      setMovementX(event.movementX || 0);
-      setMovementY(event.movementY || 0);
+    if (isMouseDown || (setup.kwastje < 2)) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
+    }
+    if (isMouseDown) {
       setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {
@@ -449,8 +446,6 @@ const App = () => {
                   setup,
                   mouseX,
                   mouseY,
-                  movementX,
-                  movementY,
                   w,
                   h,
                   fgColor,
