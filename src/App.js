@@ -131,7 +131,7 @@ const App = () => {
         thickness:
           prevSetup.kwastje === 1
             ? Math.ceil(w / dotsCount)
-            : prevSetup.dotsCount,
+            : prevSetup.thickness,
         // growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
