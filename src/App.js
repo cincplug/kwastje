@@ -113,15 +113,42 @@ const App = () => {
         .map(parseFloat);
       coordinates.push([startX, startY], [endX, endY]);
     }
-    setMapje(coordinates);
-    return coordinates;
+    const filteredCoordinates = fitCoordinates(coordinates, setup.dotsCount);
+    console.warn(setup.dotsCount, filteredCoordinates.length);
+    setMapje(filteredCoordinates);
+    return filteredCoordinates;
+  }
+
+  function fitCoordinates(array, maxLength) {
+    if (array.length <= maxLength) {
+      // No modifications needed
+      return array;
+    }
+
+    var removeCount = array.length - maxLength;
+    var removePerSection = Math.floor(removeCount / maxLength);
+    var remainingRemoveCount = removeCount % maxLength;
+    var modifiedArray = [];
+
+    var sectionSize = Math.ceil(array.length / maxLength);
+
+    for (var i = 0; i < array.length; i++) {
+      if (
+        i % sectionSize <
+        sectionSize - (removePerSection + (i < remainingRemoveCount ? 1 : 0))
+      ) {
+        modifiedArray.push(array[i]);
+      }
+    }
+
+    return modifiedArray;
   }
 
   function setAitje(aitje) {
     processAitje(aitje);
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
-      const dotsCount = Math.min(coordinates.length, 500);
+      const dotsCount = Math.min(coordinates.length, 300);
       const nextSetup = {
         ...prevSetup,
         aitje,
@@ -279,11 +306,7 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        if (value > 1) {
-          nextSetup.dotsCount = 50;
-          nextSetup.thickness = 2;
-          nextSetup.growth = 5;
-        } else {
+        if (value === 1) {
           nextSetup.dotsCount = mapje
             ? Math.min(prevSetup.dotsCount, mapje.length)
             : prevSetup.dotsCount;
