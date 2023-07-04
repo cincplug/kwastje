@@ -114,7 +114,6 @@ const App = () => {
       coordinates.push([startX, startY], [endX, endY]);
     }
     const filteredCoordinates = fitCoordinates(coordinates, setup.dotsCount);
-    console.warn(setup.dotsCount, filteredCoordinates.length);
     setMapje(filteredCoordinates);
     return filteredCoordinates;
   }
