@@ -432,6 +432,17 @@ const App = () => {
           setIsLoading,
           setAitje,
           processAitje,
+          
+            path,
+            setup,
+            mouseX,
+            mouseY,
+            w,
+            h,
+            fgColor,
+            count,
+            mapje,
+          
         }}
       />
       <main

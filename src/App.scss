@@ -291,18 +291,24 @@ button {
   &__button {
     color: $color-white;
     border: none;
-    border-radius: 12px;
+    border-radius: 0.9rem;
     font-weight: bold;
     font-size: 0.8rem;
     text-transform: uppercase;
-    line-height: 1rem;
-    height: 1.5rem;
+    line-height: 1.2rem;
+    height: 1.8rem;
+    background: url(./img/kwastje-knopje.svg) no-repeat right center;
+    background-size: 200%;
+    transition: background-size 0.2s ease-in;
+    &:hover {
+      background-size: 50%;
+    }
     &--save {
-      background: $color-green;
+      background-color: $color-green;
     }
     &--clear,
     &--close {
-      background: $color-red;
+      background-color: $color-red;
     }
     &--close {
       width: auto;
