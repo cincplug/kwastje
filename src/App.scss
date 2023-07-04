@@ -167,13 +167,13 @@ button {
   &--filters {
     right: 0;
     background: $color-dark;
-    overflow-y: auto;
     position: absolute;
     flex-flow: wrap;
     &.menu--collapsed {
       display: none;
     }
     @include until {
+      overflow-y: auto;
       width: auto;
       height: 3rem;
       top: calc(50vh - 3rem);
@@ -404,7 +404,7 @@ button {
 .add-aitje {
   font-size: 4rem;
   line-height: 3rem;
-  color: $color-dark;
+  color: $color-neutral;
   cursor: pointer;
   text-align: center;
   margin: 0;
