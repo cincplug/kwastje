@@ -14,14 +14,13 @@ const Blijpje = (props) => {
   } = props;
 
   const qG = setup.thickness * setup.growth;
-  const tR = qG * (index / defaultX1 * defaultY1);
-  commonProps.transform = `translate(${defaultX1 - tR}, ${
-    defaultY1 - tR
-  })`;
+  const tR = qG * ((index / defaultX1) * defaultY1);
   return (
-    <>
+    <g
+      {...commonProps}
+      transform={`translate(${defaultX1 - tR}, ${defaultY1 - tR})`}
+    >
       <path
-        {...commonProps}
         className={`radar__line radar__line--tick-${
           index + 1
         } radar__line--quadrant-1`}
@@ -50,7 +49,7 @@ const Blijpje = (props) => {
         } radar__line--quadrant-4`}
         d={`M 0 ${tR - qG / 2} A ${tR} ${tR} 0 0 1 ${tR - qG / 2} 0`}
       />
-    </>
+    </g>
   );
 };
 
