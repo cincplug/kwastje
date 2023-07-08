@@ -15,10 +15,12 @@ const Hendrikje = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${Math.pow(
-        defaultY1,
-        setup.modifier
-      )} ${Math.pow(defaultX1, setup.modifier)}, ${defaultY2} ${defaultX2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${Math.pow(
+          defaultY1,
+          setup.modifier
+        )} ${Math.pow(defaultX1, setup.modifier)}, ${defaultY2} ${defaultX2}`
+      )}
       {...commonProps}
     />
   );

@@ -15,10 +15,12 @@ const Maaike = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${Math.pow(
-        defaultY1,
-        setup.modifier
-      )},${Math.pow(defaultX1, setup.modifier)} L${defaultY2},${defaultX2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${Math.pow(
+          defaultY1,
+          setup.modifier
+        )},${Math.pow(defaultX1, setup.modifier)} L${defaultY2},${defaultX2}`
+      )}
       {...commonProps}
     />
   );

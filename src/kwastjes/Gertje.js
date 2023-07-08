@@ -15,7 +15,9 @@ const Gertje = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1}, ${defaultY2} ${defaultX2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} C${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1}, ${defaultY2} ${defaultX2}`
+      )}
       {...commonProps}
     />
   );

@@ -3,6 +3,9 @@ import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor, mapje } = props;
+  const normalize = (dAttribute) => {
+    return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
+  };
   const getKwastje = (defaultCoords, index) => {
     let Aitje,
       coords = defaultCoords;
@@ -25,7 +28,7 @@ const Drawing = (props) => {
       0.5
     );
     const key = `shp-${index}`;
-    const commonProps = { stroke, strokeWidth, fill, style, key };
+    const commonProps = { stroke, strokeWidth, fill, style, key, normalize };
 
     const kwastjes = Object.values(customKwastjes).map((CustomKwastje) => (
       <CustomKwastje

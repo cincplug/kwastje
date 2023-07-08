@@ -15,7 +15,9 @@ const Dirkje = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${defaultY1},${defaultX1} L${defaultY2},${defaultX2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${defaultX2},${defaultY2} M${defaultY1},${defaultX1} L${defaultY2},${defaultX2}`
+      )}
       {...commonProps}
     />
   );

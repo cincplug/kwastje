@@ -16,11 +16,13 @@ const Truusje = (props) => {
   const offset = setup.modifier * 100;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY2} L${
-        defaultX1 + offset
-      },${defaultY1 + offset} ${(defaultX2 * offset) / 10},${
-        defaultY2 / offset
-      }`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY2} L${
+          defaultX1 + offset
+        },${defaultY1 + offset} ${(defaultX2 * offset) / 10},${
+          defaultY2 / offset
+        }`
+      )}
       {...commonProps}
     />
   );

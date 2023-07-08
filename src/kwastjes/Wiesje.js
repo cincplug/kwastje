@@ -15,11 +15,13 @@ const Wiesje = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${Math.sin(defaultX2 * index) + w / 2},${
-        Math.cos(defaultY2 * index) + h / 2
-      } Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1} L${
-        Math.cos(defaultY2) * index + h / 2
-      },${defaultX2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${Math.sin(defaultX2 * index) + w / 2},${
+          Math.cos(defaultY2 * index) + h / 2
+        } Q${defaultX2} ${defaultY2}, ${defaultY1} ${defaultX1} L${
+          Math.cos(defaultY2) * index + h / 2
+        },${defaultX2}`
+      )}
       {...commonProps}
     />
   );

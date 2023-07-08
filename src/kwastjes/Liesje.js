@@ -17,9 +17,11 @@ const Liesje = (props) => {
   // const y3 = defaultY2 * index * setup.modifier;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX1 * 3},${defaultY1 / 8} L${
-        defaultX1 * setup.modifier
-      },${-defaultY1 * 2} L${defaultX1},${defaultY1}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${defaultX1 * 3},${defaultY1 / 8} L${
+          defaultX1 * setup.modifier
+        },${-defaultY1 * 2} L${defaultX1},${defaultY1}`
+      )}
       {...commonProps}
     />
   );

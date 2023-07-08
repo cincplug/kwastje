@@ -15,13 +15,15 @@ const Ineke = (props) => {
 
   return (
     <path
-      d={`M${defaultX1},${defaultY1} Q${Math.pow(
-        defaultY1,
-        setup.modifier
-      )} ${Math.pow(
-        defaultX1,
-        setup.modifier
-      )}, ${defaultY2} ${defaultX2} L${defaultX2},${defaultY2}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} Q${Math.pow(
+          defaultY1,
+          setup.modifier
+        )} ${Math.pow(
+          defaultX1,
+          setup.modifier
+        )}, ${defaultY2} ${defaultX2} L${defaultX2},${defaultY2}`
+      )}
       {...commonProps}
     />
   );

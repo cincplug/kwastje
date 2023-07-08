@@ -17,9 +17,11 @@ const Laurtje = (props) => {
   // const y3 = defaultY2 * index * setup.modifier;
   return (
     <path
-      d={`M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY1 - 80} L${
-        defaultX1 - 140
-      },${defaultY1 + 60} L${defaultX2},${defaultY1}`}
+      d={commonProps.normalize(
+        `M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY1 - 80} L${
+          defaultX1 - 140
+        },${defaultY1 + 60} L${defaultX2},${defaultY1}`
+      )}
       {...commonProps}
     />
   );
