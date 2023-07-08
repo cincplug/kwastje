@@ -21,12 +21,8 @@ const Reblijpje = (props) => {
       {...{
         setup,
         index,
-        // w,
-        // h,
         defaultX1,
-        // defaultX2,
         defaultY1,
-        // defaultY2,
         commonProps,
         tR,
       }}
