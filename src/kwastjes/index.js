@@ -38,6 +38,7 @@ import Timmetje from "./Timmetje";
 import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 import Blijpje from "./Blijpje";
+import Reblijpje from "./Reblijpje";
 
 export const customKwastjes = {
   Luukje,
@@ -80,4 +81,5 @@ export const customKwastjes = {
   Truusje,
   Wilempje,
   Blijpje,
+  Reblijpje,
 };
