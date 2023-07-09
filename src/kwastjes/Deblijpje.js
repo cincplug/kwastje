@@ -15,15 +15,29 @@ const Deblijpje = (props) => {
   } = props;
 
   const qG = setup.thickness * setup.growth;
-  const tR =
-    qG * Math.max(0, Math.min(setup.dotsCount - index, index));
+  let tR = qG * Math.max(0, Math.min(setup.dotsCount - index, index));
+  const displacementMap = {
+    14: [10, -20],
+    15: [-20, -20],
+    16: [10, -20],
+    17: [-20, -20],
+  };
+  let [deltaX, deltaY] = [0, 0];
+  const displacement = displacementMap[setup.dotsCount - index];
+  if (displacement) {
+    [deltaX, deltaY] = displacement;
+    deltaX *= qG;
+    deltaY *= qG;
+    commonProps.opacity *= 2;
+    tR /= 2.5;
+  }
   return (
     <Blijpje
       {...{
         setup,
         index,
-        defaultX1,
-        defaultY1,
+        defaultX1: defaultX1 + deltaX,
+        defaultY1: defaultY1 + deltaY,
         commonProps,
         tR,
       }}
