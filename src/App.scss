@@ -237,6 +237,9 @@ button {
       left: 1rem;
     }
   }
+  &--isInfluenced {
+    margin: -1rem 0 1rem;
+  }
   &__input {
     width: 100%;
     color: $color-input;
@@ -381,8 +384,8 @@ button {
   display: none;
 }
 .navaitje {
-  width: 40%;
-  margin: 10% 5%;
+  width: 35%;
+  margin: 5% 3%;
   display: flex;
   height: auto;
   @include until {
@@ -404,7 +407,7 @@ button {
 .add-aitje {
   font-size: 4rem;
   line-height: 3rem;
-  color: $color-neutral;
+  color: $color-green;
   cursor: pointer;
   text-align: center;
   margin: 0;
