@@ -14,7 +14,7 @@ const Blijpje = (props) => {
   } = props;
 
   const qG = setup.thickness * setup.growth;
-  const tR = props.tR || qG * index + 2;
+  const tR = props.tR || qG * index;
   return (
     <g
       {...commonProps}
