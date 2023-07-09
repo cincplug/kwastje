@@ -22,7 +22,7 @@ const Drawing = (props) => {
       : coords;
     const stroke = fgColor;
     const fill = setup.isShaded
-      ? `${setup.bgColor}${setup.opacity.toString(16).padStart(2, "0")}`
+      ? `${setup.bgColor}${(setup.opacity / 2).toString(16).padStart(2, "0")}`
       : "none";
     const style = null;
     const strokeWidth = Math.max(
