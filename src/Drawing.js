@@ -15,13 +15,15 @@ const Drawing = (props) => {
           ? coords
           : path[index - 1]
         : coords;
-    const [defaultX2, defaultY2] = setup.isChildish
+    const [defaultX2, defaultY2] = setup.isSimplified
       ? [mouseX, mouseY]
       : setup.kwastje > 1
       ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
       : coords;
     const stroke = fgColor;
-    const fill = setup.isShaded ? `${setup.fgColor}12` : "none";
+    const fill = setup.isShaded
+      ? `${setup.bgColor}${setup.opacity.toString(16).padStart(2, "0")}`
+      : "none";
     const style = null;
     const strokeWidth = Math.max(
       (setup.thickness * index * setup.growth) / path.length,
