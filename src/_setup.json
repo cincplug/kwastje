@@ -179,7 +179,7 @@
     "value": true
   },
   {
-    "id": "isChildish",
+    "id": "isSimplified",
     "type": "checkbox",
     "description": "Controls x2 and y2",
     "value": false
