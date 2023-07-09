@@ -13,8 +13,8 @@ const Blijpje = (props) => {
     commonProps,
   } = props;
 
-  const qG = setup.thickness * setup.growth;
-  const tR = props.tR || qG * index;
+  const qG = setup.modifier * 10;
+  const tR = props.tR || qG * index / 2;
   return (
     <g
       {...commonProps}

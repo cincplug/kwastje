@@ -40,6 +40,7 @@ import Wilempje from "./Wilempje";
 import Blijpje from "./Blijpje";
 import Deblijpje from "./Deblijpje";
 import Reblijpje from "./Reblijpje";
+import Redeblijpje from "./Redeblijpje";
 
 export const customKwastjes = {
   Luukje,
@@ -84,4 +85,5 @@ export const customKwastjes = {
   Blijpje,
   Deblijpje,
   Reblijpje,
+  Redeblijpje,
 };
