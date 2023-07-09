@@ -116,9 +116,9 @@ button {
 .no-bg {
   background: repeating-conic-gradient(
       $color-neutral 0% 25%,
-      lighten($color-neutral, 1%) 0% 50%
+      lighten($color-neutral, 2%) 0% 50%
     )
-    50% / 2rem 2rem;
+    50% / 5rem 5rem;
 }
 .menu {
   position: absolute;
