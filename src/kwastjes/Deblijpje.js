@@ -32,16 +32,30 @@ const Deblijpje = (props) => {
     tR /= 2.5;
   }
   return (
-    <Blijpje
-      {...{
-        setup,
-        index,
-        defaultX1: defaultX1 + deltaX,
-        defaultY1: defaultY1 + deltaY,
-        commonProps,
-        tR,
-      }}
-    />
+    <>
+      {setup.isSimplified && (
+        <Blijpje
+          {...{
+            setup: { ...setup, modifier: 8 },
+            index: index + defaultX1 / 10,
+            defaultX1: defaultX1 + deltaX * setup.modifier,
+            defaultY1: defaultY1 + deltaY * setup.modifier,
+            commonProps: { ...commonProps, strokeWidth: setup.thickness / 4 },
+            tR,
+          }}
+        />
+      )}
+      <Blijpje
+        {...{
+          setup,
+          index,
+          defaultX1: defaultX1 + deltaX,
+          defaultY1: defaultY1 + deltaY,
+          commonProps,
+          tR,
+        }}
+      />
+    </>
   );
 };
 
