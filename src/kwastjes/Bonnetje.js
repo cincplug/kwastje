@@ -21,7 +21,7 @@ const Bonnetje = (props) => {
       x={defaultX1}
       y={defaultY1}
       style={{
-        fontSize: defaultY1 / 2 * setup.modifier,
+        fontSize: defaultX1 / 10 * setup.modifier,
         letterSpacing: (w - defaultX1) / 100,
         transform: `rotate(${90 - defaultX2}deg)`,
         fill: setup.fgColor,

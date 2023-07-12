@@ -39,7 +39,7 @@ $bp-s: 768px;
   }
 }
 
-$base-font-family: "Brando Sans", sans-serif;
+$base-font-family: "Brando Sans, sans-serif";
 @font-face {
   font-family: $base-font-family;
   src: url("./fonts/BrandoSans-Light.woff2") format("woff2");
