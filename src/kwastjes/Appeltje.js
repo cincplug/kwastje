@@ -13,7 +13,7 @@ const Appeltje = (props) => {
     commonProps,
   } = props;
 
-  const food = `(${"=".repeat(Math.round(defaultX2 / 64))})`
+  const food = `(${":".repeat(Math.round(defaultX2 / 64))})`
   // const text = food.slice(Math.min(index, food.length - 1));
   return (
     <text
