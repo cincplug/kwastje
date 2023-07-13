@@ -49,7 +49,7 @@
     "description": "Initial thickness of lines in our kwastje",
     "value": 2,
     "type": "range",
-    "min": 1,
+    "min": -10,
     "max": 100,
     "step": 1
   },
@@ -58,7 +58,7 @@
     "description": "Growth factor of lines in the kwastje",
     "value": 3,
     "type": "range",
-    "min": 0,
+    "min": -5,
     "max": 10,
     "step": 0.5
   },
