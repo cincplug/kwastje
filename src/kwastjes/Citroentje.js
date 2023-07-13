@@ -23,7 +23,7 @@ const Citroentje = (props) => {
         fontSize: index * 10 * setup.modifier,
       }}
     >
-      {index % 3 === 0 && index < setup.dotsCount - 10 ? "0" : "ö"}
+      {index > setup.dotsCount - 3 ? "ö" : "0"}
     </text>
   );
 };
