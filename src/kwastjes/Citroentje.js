@@ -7,13 +7,12 @@ const Citroentje = (props) => {
     // w,
     // h,
     defaultX1,
-    defaultX2,
+    // defaultX2,
     defaultY1,
     // defaultY2,
     commonProps,
   } = props;
 
-  const food = "ö…".repeat(10);
   return (
     <text
       {...props}
@@ -21,11 +20,10 @@ const Citroentje = (props) => {
       y={defaultY1}
       {...commonProps}
       style={{
-        fontSize: (defaultY1 / 2) * setup.modifier,
-        letterSpacing: defaultX2
+        fontSize: index * 10 * setup.modifier,
       }}
     >
-      {food[Math.min(index, food.length - 1)]}
+      {index % 3 === 0 && index < setup.dotsCount - 10 ? "0" : "ö"}
     </text>
   );
 };

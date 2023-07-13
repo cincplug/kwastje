@@ -4,7 +4,7 @@ const Appeltje = (props) => {
   const {
     setup,
     index,
-    w,
+    // w,
     // h,
     // defaultX1,
     defaultX2,
