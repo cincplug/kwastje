@@ -7,8 +7,7 @@ const Drawing = (props) => {
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
   const getKwastje = (defaultCoords, index) => {
-    let Aitje,
-      coords = defaultCoords;
+    let coords = defaultCoords;
     const [defaultX1, defaultY1] =
       index > 0
         ? path[index - 1].length > 2
@@ -75,27 +74,8 @@ const Drawing = (props) => {
           </g>
         </>
       );
-      if (index === 1) {
-        Aitje = (
-          // <g
-          //   transform={`translate(${mouseX }, ${mouseY }) scale(${
-          //     (index * setup.growth) / 5
-          //   }) rotate(${Math.sin(index) * mouseX})`}
-          //   dangerouslySetInnerHTML={{ __html: setup.aitje }}
-          // />
-          <g
-            transform={`translate(${w / 2 - 256}, ${h / 2 - 256})`}
-            dangerouslySetInnerHTML={{ __html: setup.aitje }}
-          />
-        );
-      }
     }
-    return (
-      <>
-        {Aitje}
-        {mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}
-      </>
-    );
+    return <>{mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}</>;
   };
 
   return path.map((defaultCoords, index) => getKwastje(defaultCoords, index));

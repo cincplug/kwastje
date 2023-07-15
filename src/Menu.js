@@ -23,6 +23,7 @@ const Menu = (props) => {
   } = props;
 
   const [svgData, setSvgData] = useState([]);
+  const [aitjeIndex, setAitjeIndex] = useState(null);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -214,10 +215,11 @@ const Menu = (props) => {
         {svgData.map((svgContent, index) => (
           <button
             key={index}
-            className="navaitje"
+            className={`navaitje ${index === aitjeIndex ? "selected" : "unselected"}`}
             dangerouslySetInnerHTML={{ __html: svgContent }}
             onClick={() => {
               setAitje(svgContent);
+              setAitjeIndex(index);
             }}
           />
         ))}

@@ -393,6 +393,13 @@ button {
     width: 2rem;
     margin: 0.2rem;
   }
+  &.selected {
+    * {
+      fill: $color-green;
+      stroke: $color-green;
+      stroke-width: 0.5rem;
+    }
+  }
   svg {
     width: 100%;
     height: auto;
