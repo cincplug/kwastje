@@ -46,6 +46,8 @@ import Rebonnetje from "./Rebonnetje";
 import Appeltje from "./Appeltje";
 import Citroentje from "./Citroentje";
 import Katje from "./Katje";
+import Dekatje from "./Dekatje";
+import Rekatje from "./Rekatje";
 
 export const customKwastjes = {
   Luukje,
@@ -96,4 +98,6 @@ export const customKwastjes = {
   Appeltje,
   Citroentje,
   Katje,
+  Dekatje,
+  Rekatje,
 };
