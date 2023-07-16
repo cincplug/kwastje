@@ -25,10 +25,14 @@ const Dekatje = (props) => {
       href={katjes[welkeKatje]}
       transform={`translate(${
         defaultX1 / 2 + index ** setup.modifier - breedtje / 1 / setup.thickness
-      }, ${breedtje / 4}) rotate(${index}) scale(${
+      }, ${breedtje / 4}) rotate(${index / 10}) scale(${
         index / (index + setup.growth / 10)
       })`}
       {...commonProps}
+      style={{
+        opacity:
+          index === welkeKatje ? 1 : Math.min(1, setup.opacity / (index * 64)),
+      }}
     />
   );
 };

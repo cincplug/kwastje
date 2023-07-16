@@ -28,6 +28,10 @@ const Rekatje = (props) => {
         (welkeKatje * defaultX2) / ((1 / setup.modifier) * 2) - 1
       }) scale(${1 / index})`}
       {...commonProps}
+      style={{
+        opacity:
+          index === welkeKatje ? 1 : Math.min(1, setup.opacity / (index * 64)),
+      }}
     />
   );
 };
