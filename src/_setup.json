@@ -20,7 +20,7 @@
   {
     "id": "bgColor",
     "description": "Background color",
-    "value": "#005588",
+    "value": "#000000",
     "type": "color",
     "min": 0,
     "max": 100,
