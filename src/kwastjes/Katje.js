@@ -31,7 +31,7 @@ const Katje = (props) => {
         transform ||
         `translate(${breedtje / 2 + scale * setup.thickness}, 100) rotate(${
           (welkeKatje * defaultX2) /
-            (100000 / (setup.modifier + setup.growth)) -
+            (1000000 / (setup.modifier * setup.growth)) -
           1
         })`
       }
