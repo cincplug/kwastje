@@ -8,24 +8,26 @@ const Dekatje = (props) => {
     w,
     // h,
     defaultX1,
-    defaultX2,
+    // defaultX2,
     // defaultY1,
     // defaultY2,
     commonProps,
   } = props;
 
   const breedtje = 400;
-  let welkeKatje = Math.round(
+  const welkeKatje = Math.round(
     (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje)
   );
-  if (index !== welkeKatje && setup.isSimplified) welkeKatje = katjes.length - index;
+  if (index !== welkeKatje && setup.isSimplified) return null;
   return (
     <image
       className="katje"
       href={katjes[welkeKatje]}
-      transform={`translate(${breedtje / 2}, 100) rotate(${
-        (welkeKatje * defaultX2) / (10000 / setup.modifier * 2) - 1
-      }) scale(${setup.modifier})`}
+      transform={`translate(${
+        defaultX1 / 2 + index ** setup.modifier - breedtje / 1 / setup.thickness
+      }, ${breedtje / 4}) rotate(${index}) scale(${
+        index / (index + setup.growth / 10)
+      })`}
       {...commonProps}
     />
   );
