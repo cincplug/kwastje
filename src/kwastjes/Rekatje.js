@@ -1,5 +1,6 @@
 import React from "react";
 import katjes from "./katjes";
+import Katje from "./Katje";
 
 const Rekatje = (props) => {
   const {
@@ -11,23 +12,15 @@ const Rekatje = (props) => {
     defaultX2,
     // defaultY1,
     // defaultY2,
-    commonProps,
   } = props;
 
-  const breedtje = 400;
-  let welkeKatje = Math.round(
-    (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje)
-  );
-  if (index !== welkeKatje && setup.isSimplified)
-    welkeKatje = katjes.length - index;
+  const welkeKatje = Math.round((katjes.length * defaultX1) / w);
   return (
-    <image
-      className="katje"
-      href={katjes[welkeKatje]}
+    <Katje
+      {...props}
       transform={`translate(${index + defaultX1 / 3}, 100) rotate(${
         (welkeKatje * defaultX2) / ((1 / setup.modifier) * 2) - 1
       }) scale(${1 / index})`}
-      {...commonProps}
       style={{
         opacity:
           index === welkeKatje ? 1 : Math.min(1, setup.opacity / (index * 64)),
