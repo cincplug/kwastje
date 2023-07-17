@@ -43,6 +43,7 @@ const App = () => {
   const [hoogtje, setHoogtje] = useState(500);
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
+  const [isReversed, setIsReversed] = useState(false);
 
   const callAitje = async (goal = "vectortje") => {
     const endpoint = goal === "bitmapje" ? "images/generations" : "completions";
@@ -222,6 +223,8 @@ const App = () => {
     if (isMouseDown || setup.kwastje < 2) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
+      if (event.movementX < 0 && !isReversed) setIsReversed(true);
+      if (event.movementX > 0 && isReversed) setIsReversed(false);
     }
     if (isMouseDown) {
       setPath((prevPath) => {
@@ -431,17 +434,15 @@ const App = () => {
           setIsLoading,
           setAitje,
           processAitje,
-          
-            path,
-            setup,
-            mouseX,
-            mouseY,
-            w,
-            h,
-            fgColor,
-            count,
-            mapje,
-          
+          path,
+          setup,
+          mouseX,
+          mouseY,
+          w,
+          h,
+          fgColor,
+          count,
+          mapje,
         }}
       />
       <main
@@ -489,6 +490,7 @@ const App = () => {
                   fgColor,
                   count,
                   mapje,
+                  isReversed,
                 }}
               />
             </g>

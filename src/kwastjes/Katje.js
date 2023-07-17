@@ -14,15 +14,16 @@ const Katje = (props) => {
     commonProps,
     style,
     transform,
+    isReversed,
   } = props;
 
-  const breedtje = 400;
+  const breedtje = 400 * (isReversed ? -1 : 1);
   const welkeKatjeRaw =
     (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
   const scale = welkeKatje - welkeKatjeRaw;
   if (index !== welkeKatje && setup.isSimplified)
-    welkeKatje = katjes.length - index;
+    welkeKatje = isReversed ? index : katjes.length - index;
   return (
     <image
       className="katje"
@@ -33,7 +34,7 @@ const Katje = (props) => {
           (welkeKatje * defaultX2) /
             (1000000 / (setup.modifier * setup.growth)) -
           1
-        })`
+        }) ${isReversed ? "scale(-1, 1)" : ""}`
       }
       {...commonProps}
       style={

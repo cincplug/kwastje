@@ -2,7 +2,7 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } = props;
   const normalize = (dAttribute) => {
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
@@ -43,6 +43,7 @@ const Drawing = (props) => {
           defaultY1,
           defaultY2,
           commonProps,
+          isReversed,
         }}
         key={key}
       />
