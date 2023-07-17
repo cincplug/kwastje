@@ -18,8 +18,8 @@ const Rekatje = (props) => {
   return (
     <Katje
       {...props}
-      transform={`translate(${index + defaultX1 / 3}, 100) rotate(${
-        (welkeKatje * defaultX2) / ((1 / setup.modifier) * 2) - 1
+      transform={`translate(${index + defaultX1 / setup.growth}, 100) rotate(${
+        (welkeKatje * defaultX2) / ((1 / setup.modifier) * setup.thickness) - 1
       }) scale(${1 / index})`}
       style={{
         opacity:
