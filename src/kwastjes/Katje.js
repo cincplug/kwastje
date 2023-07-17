@@ -8,7 +8,7 @@ const Katje = (props) => {
     w,
     // h,
     defaultX1,
-    defaultX2,
+    // defaultX2,
     // defaultY1,
     // defaultY2,
     commonProps,
@@ -17,7 +17,7 @@ const Katje = (props) => {
     isReversed,
   } = props;
 
-  const breedtje = 400 * (isReversed ? -1 : 1);
+  const breedtje = 400;
   const welkeKatjeRaw =
     (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
@@ -26,15 +26,13 @@ const Katje = (props) => {
     welkeKatje = isReversed ? index : katjes.length - index;
   return (
     <image
-      className="katje"
+      className={`katje`}
       href={katjes[welkeKatje]}
       transform={
         transform ||
-        `translate(${breedtje / 2 + scale * setup.thickness}, 100) rotate(${
-          (welkeKatje * defaultX2) /
-            (1000000 / (setup.modifier * setup.growth)) -
-          1
-        }) ${isReversed ? "scale(-1, 1)" : ""}`
+        `translate(${isReversed ? "-" : ""}${
+          breedtje / 2 + scale * setup.thickness
+        }, 100) ${isReversed ? "scale(-1, 1)" : ""}`
       }
       {...commonProps}
       style={

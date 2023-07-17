@@ -424,5 +424,8 @@ button {
 }
 .katje {
   transform-origin: center;
-  transition: transform 50ms ease-in;
+  transition: transform 20ms ease-in;
+}
+.reverser {
+  transform: scaleX(-1);
 }
