@@ -4,6 +4,7 @@ import { customKwastjes } from "./kwastjes";
 const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } = props;
   const normalize = (dAttribute) => {
+    if (!dAttribute) return "";
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
   const getKwastje = (defaultCoords, index) => {
