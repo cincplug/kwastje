@@ -180,6 +180,9 @@ const App = () => {
     mainElement.addEventListener("pointerup", handleMouseUp, {
       passive: false,
     });
+    document.addEventListener("keyup", handleKeyUp, {
+      passive: false,
+    });
 
     // const animationLoop = () => {
     //   counter++;
@@ -194,6 +197,7 @@ const App = () => {
       mainElement.removeEventListener("pointerdown", handleMouseDown);
       mainElement.removeEventListener("pointermove", handleMouseMove);
       mainElement.removeEventListener("pointerup", handleMouseUp);
+      document.removeEventListener("keyup", handleKeyUp);
       // cancelAnimationFrame(animationFrameId);
     };
   });
@@ -412,8 +416,35 @@ const App = () => {
     });
   }
 
+  const handleKeyUp = (event) => {
+    switch (event.key) {
+      case ",":
+        setSetup((prevSetup) => {
+          return {
+            ...prevSetup,
+            kwastje: parseInt(prevSetup.kwastje) - 1,
+          };
+        });
+        break;
+      case ".":
+        setSetup((prevSetup) => {
+          return {
+            ...prevSetup,
+            kwastje: parseInt(prevSetup.kwastje) + 1,
+          };
+        });
+        break;
+      default:
+        break;
+    }
+    
+  }
+
   return (
-    <div className="wrapper" style={{ background: setup.bgColor }}>
+    <div
+      className="wrapper"
+      style={{ background: setup.bgColor }}
+    >
       <Menu
         {...{
           isMenuVisible,
