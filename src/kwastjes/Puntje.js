@@ -11,36 +11,39 @@ const Puntje = (props) => {
     // defaultX2,
     defaultY1,
     // defaultY2,
-    commonProps,
+    // commonProps,
+    isReversed,
   } = props;
 
   const puntjeRef = useRef(null);
 
-  
   useEffect(() => {
-      const shortenPath = (string, count, separator) => {
-        const processedPath = string
-          .split(separator)
-          .slice(0, count)
-          .join(separator);
-        return commonProps.normalize(processedPath);
-      };
-      const pathElement = puntjeRef.current.querySelector(".puntje");
-      const dAttribute = pathElement.getAttribute("d");
-      const shortenedDAtribute = shortenPath(
-      dAttribute,
-      index,
-      "z"
-    );
+    const shortenPath = (inputPath, count, separator) => {
+      const strokes = inputPath.split(separator);
+      if (isReversed) {
+        strokes.reverse();
+      }
+      const processedPath = strokes.slice(0, count + Math.round(setup.thickness)).join(separator);
+      return processedPath;
+    };
+    const pathElement = puntjeRef.current.querySelector(".puntje");
+    const dAttribute = pathElement.getAttribute("d");
+    const shortenedDAtribute = shortenPath(dAttribute, index, "z");
     pathElement.setAttribute("d", shortenedDAtribute);
-  },[index, commonProps]);
+  }, []);
 
   return (
     <g
-      transform={`translate(${defaultX1}, ${defaultY1}) rotate(${
+      transform={`translate(${defaultX1 / 2}, ${defaultY1 / 2}) rotate(${
         setup.modifier * index
-      }) scale(${setup.growth / 10})`}
+      }) scale(${setup.thickness / setup.growth})`}
     >
+      {setup.isSimplified && (
+        <path transform={`translate(${defaultX1 / 2}, ${defaultY1 / 2}) scale(${setup.thickness})`}
+          d="M244.512 176.045c0 37.878-30.753 68.584-68.689 68.584-37.936 0-68.689-30.706-68.689-68.584s30.753-68.583 68.689-68.583c37.936 0 68.689 30.705 68.689 68.583"
+          fill="#FFB612"
+        />
+      )}
       <PuntjeSvg ref={puntjeRef} />;
     </g>
   );

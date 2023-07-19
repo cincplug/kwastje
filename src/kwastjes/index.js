@@ -49,6 +49,7 @@ import Katje from "./Katje";
 import Dekatje from "./Dekatje";
 import Rekatje from "./Rekatje";
 import Puntje from "./Puntje";
+import Repuntje from "./Repuntje";
 
 export const customKwastjes = {
   Luukje,
@@ -102,4 +103,5 @@ export const customKwastjes = {
   Dekatje,
   Rekatje,
   Puntje,
+  Repuntje,
 };
