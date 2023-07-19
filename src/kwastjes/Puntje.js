@@ -37,11 +37,9 @@ const Puntje = (props) => {
 
   return (
     <g
-      transformOrigin="center"
       transform={`translate(${defaultX1}, ${defaultY1}) rotate(${
         setup.modifier * index
       }) scale(${setup.growth / 10})`}
-      stroke={commonProps.stroke * setup.thickness}
     >
       <PuntjeSvg ref={puntjeRef} />;
     </g>
