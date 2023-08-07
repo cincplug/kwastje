@@ -21,7 +21,7 @@ const Truusje = (props) => {
           defaultX1 + offset
         },${defaultY1 + offset} ${(defaultX2 * offset) / 10},${
           defaultY2 / offset
-        }`
+        } Z`
       )}
       {...commonProps}
     />

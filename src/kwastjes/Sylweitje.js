@@ -22,7 +22,7 @@ const Sylweitje = (props) => {
           defaultY1 + index
         }  L${defaultX1},${defaultY1} L${w / 2},${y3 + h / 2} L${
           defaultX1 - 100
-        },${defaultY1 + index}`
+        },${defaultY1 + index} Z`
       )}
       {...commonProps}
     />

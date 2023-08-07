@@ -20,11 +20,11 @@ const Yfke = (props) => {
           Math.sin(defaultY2) * index + h / 2
         },${defaultX2} C${w * setup.modifier} ,${
           Math.cos(defaultY2 * index) + (h / 2) * setup.modifier
-        } ${Math.cos(defaultX2 * index) + w * setup.modifier}, ${Math.cos(
+        } ${Math.cos(defaultX2 * index) + w / 3 * setup.modifier}, ${Math.cos(
           defaultY1 * defaultX1
-        )} ${Math.sin(defaultX2 * index) + w * setup.modifier}, ${
+        )} ${Math.sin(defaultX2 * index) + w / 2 * setup.modifier}, ${
           Math.sin(defaultX2) - defaultY2 + h
-        }`
+        } Z`
       )}
       {...commonProps}
     />
