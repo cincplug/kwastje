@@ -104,17 +104,21 @@ const App = () => {
   function processAitje(svg) {
     const parser = new DOMParser();
     const aitje = parser.parseFromString(svg, "text/html").body.firstChild;
-    const dAttribute = aitje.querySelector("path").getAttribute("d");
-    // const segments = dAttribute.replace(/[A-Za-z]/g, "").split(" ");
-    const segments = dAttribute.replace(/[A-Za-z]/g, "").split(/[ ,]+/);
     const coordinates = [];
-    for (let i = 0; i < segments.length; i += 6) {
-      const [startX, startY, , , , endX, endY] = segments
-        .slice(i, i + 7)
-        .map(parseFloat);
-      coordinates.push([startX, startY], [endX, endY]);
-    }
-    const filteredCoordinates = fitCoordinates(coordinates, setup.dotsCount);
+    aitje.querySelectorAll("path").forEach(pathElement => {
+      const dAttribute = pathElement.getAttribute("d");
+      const strippedPath = dAttribute.replace(/[A-Za-z]\s*[\d\s,]*/g, function(match) {
+        return match.trim().split(/[A-Za-z,\s]+/).join(" ");
+      }).trim();
+      const pairs = strippedPath.split(/\s+/).reduce((acc, val, index, array) => {
+        if (index % 2 === 0) {
+          acc.push([parseFloat(val), parseFloat(array[Math.min(index + 1, array.length)])]);
+        }
+        return acc;
+      }, []);
+      coordinates.push(pairs);
+    });
+    const filteredCoordinates = fitCoordinates(coordinates.flat(), setup.dotsCount);
     setMapje(filteredCoordinates);
     return filteredCoordinates;
   }

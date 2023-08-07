@@ -2,7 +2,8 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } = props;
+  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } =
+    props;
   const normalize = (dAttribute) => {
     if (!dAttribute) return "";
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
@@ -53,28 +54,21 @@ const Drawing = (props) => {
     let KwastjeMetAitje,
       [x, y] = [mouseX, mouseY];
     if (mapje) {
-      x += mapje[Math.min(index, mapje.length - 1)][0] * setup.modifier - w / 2;
-      y += mapje[Math.min(index, mapje.length - 1)][1] * setup.modifier - h / 2;
+      x += mapje[Math.min(index, mapje.length - 1)][0] - w / 2;
+      y += mapje[Math.min(index, mapje.length - 1)][1] - h / 2;
       KwastjeMetAitje = (
-        <>
-          {/* <path
-            d={`M0 0, ${mapje
-              .slice(0, 30)
-              .map((coords) => `L${coords[0] || 0}, ${coords[1] || 0} `)} `}
-          /> */}
-          <g
-            strokeWidth={setup.thickness}
-            stroke={setup.fgColor}
-            opacity={setup.opacity / 255}
-            key={`kma-${index}`}
-            className="aitje-outer"
-            transform={`
+        <g
+          strokeWidth={setup.thickness}
+          stroke={setup.fgColor}
+          opacity={setup.opacity / 255}
+          key={`kma-${index}`}
+          className="aitje-outer"
+          transform={`
           translate(${x || w / 2}, ${y || h / 2})
           `}
-          >
-            {Kwastje}
-          </g>
-        </>
+        >
+          {Kwastje}
+        </g>
       );
     }
     return <>{mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}</>;
