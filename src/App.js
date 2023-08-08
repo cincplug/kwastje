@@ -228,7 +228,7 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isMouseDown || setup.kwastje < 2) {
+    if (isMouseDown || setup.kwastje === 1) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
       if (event.movementX < 0 && !isReversed) setIsReversed(true);
