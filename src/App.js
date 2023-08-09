@@ -156,6 +156,7 @@ const App = () => {
       const nextSetup = {
         ...prevSetup,
         aitje,
+        isInfluenced: true,
         // kwastje: 1,
         dotsCount,
         opacity: 200,
