@@ -17,16 +17,16 @@ const Dekatje = (props) => {
   return (
     <Katje
       {...props}
-      transform={`translate(${commonProps.normalize(
-        `${
+      transform={commonProps.normalize(
+        `translate(${`${
           defaultX1 / setup.growth +
-          Math.max(2, index ** setup.modifier) / 1 / setup.thickness
-        }`
-      )}, 0) rotate(${-index * setup.modifier}) scale(${
-        index / (index + setup.growth / 100)
-      })`}
+          Math.max(setup.thickness, index ** setup.modifier) / setup.thickness
+        }`}, 0) scale(${
+          index / (index + setup.growth)
+        })`
+      )}
       style={{
-        opacity: Math.min(1, setup.opacity / (index * 128)),
+        opacity: 1 - Math.min(1, 256 / setup.opacity / index),
       }}
     />
   );
