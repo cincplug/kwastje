@@ -205,7 +205,7 @@ const App = () => {
       document.removeEventListener("keyup", handleKeyUp);
       // cancelAnimationFrame(animationFrameId);
     };
-  }, [handleMouseMove, handleMouseUp, updateKwastjeName]);
+  });
 
   function handleMouseDown(event) {
     if (event.pointerType === "mouse") {
