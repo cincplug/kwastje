@@ -14,11 +14,11 @@ const Kieke = (props) => {
   } = props;
 
   return (
-    <line
-      x1={defaultX1}
-      y1={defaultY1}
-      x2={w - (defaultX2 * Math.atan(defaultX1)) / 2}
-      y2={h - defaultY2}
+    <path
+      d={`M${defaultX1},
+      ${defaultY1}
+      L${w / 2 - defaultX2 * Math.tan(defaultX1)},
+      ${h - defaultY2 * Math.atan(defaultY1)}`}
       {...commonProps}
     />
   );

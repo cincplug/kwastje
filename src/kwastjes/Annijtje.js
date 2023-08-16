@@ -14,11 +14,7 @@ const Annijtje = (props) => {
   } = props;
 
   return (
-    <line
-      x1={defaultX1}
-      y1={defaultX2}
-      x2={defaultY1}
-      y2={defaultY2}
+    <path d={`M${defaultX1}, ${defaultX2} L${defaultY1},${defaultY2}`}
       {...commonProps}
     />
   );
