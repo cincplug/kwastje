@@ -45,6 +45,17 @@ const App = () => {
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
 
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  const prevMouseX = usePrevious(mouseX);
+  const prevMouseY = usePrevious(mouseY);
+
   const callAitje = async (goal = "vectortje") => {
     const endpoint = goal === "bitmapje" ? "images/generations" : "completions";
     const aiPath = "https://api.openai.com/v1";
@@ -105,20 +116,33 @@ const App = () => {
     const parser = new DOMParser();
     const aitje = parser.parseFromString(svg, "text/html").body.firstChild;
     const coordinates = [];
-    aitje.querySelectorAll("path").forEach(pathElement => {
+    aitje.querySelectorAll("path").forEach((pathElement) => {
       const dAttribute = pathElement.getAttribute("d");
-      const strippedPath = dAttribute.replace(/[A-Za-z]\s*[\d\s,]*/g, function(match) {
-        return match.trim().split(/[A-Za-z,\s]+/).join(" ");
-      }).trim();
-      const pairs = strippedPath.split(/\s+/).reduce((acc, val, index, array) => {
-        if (index % 2 === 0) {
-          acc.push([parseFloat(val), parseFloat(array[Math.min(index + 1, array.length)])]);
-        }
-        return acc;
-      }, []);
+      const strippedPath = dAttribute
+        .replace(/[A-Za-z]\s*[\d\s,]*/g, function (match) {
+          return match
+            .trim()
+            .split(/[A-Za-z,\s]+/)
+            .join(" ");
+        })
+        .trim();
+      const pairs = strippedPath
+        .split(/\s+/)
+        .reduce((acc, val, index, array) => {
+          if (index % 2 === 0) {
+            acc.push([
+              parseFloat(val),
+              parseFloat(array[Math.min(index + 1, array.length)]),
+            ]);
+          }
+          return acc;
+        }, []);
       coordinates.push(pairs);
     });
-    const filteredCoordinates = fitCoordinates(coordinates.flat(), setup.dotsCount);
+    const filteredCoordinates = fitCoordinates(
+      coordinates.flat(),
+      setup.dotsCount
+    );
     setMapje(filteredCoordinates);
     return filteredCoordinates;
   }
@@ -205,7 +229,7 @@ const App = () => {
       document.removeEventListener("keyup", handleKeyUp);
       // cancelAnimationFrame(animationFrameId);
     };
-  });
+  }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
 
   function handleMouseDown(event) {
     if (event.pointerType === "mouse") {
@@ -229,7 +253,10 @@ const App = () => {
   }
 
   function handleMouseMove(event) {
-    if (isMouseDown || setup.kwastje === 1) {
+    if (
+      isMouseDown ||
+      (setup.kwastje === 1 && (prevMouseX === mouseX || prevMouseY === mouseY))
+    ) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
       if (event.movementX < 0 && !isReversed) setIsReversed(true);
@@ -442,14 +469,10 @@ const App = () => {
       default:
         break;
     }
-    
-  }
+  };
 
   return (
-    <div
-      className="wrapper"
-      style={{ background: setup.bgColor }}
-    >
+    <div className="wrapper" style={{ background: setup.bgColor }}>
       <Menu
         {...{
           isMenuVisible,
