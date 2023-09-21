@@ -21,9 +21,7 @@ const Dekatje = (props) => {
         `translate(${`${
           defaultX1 / setup.growth +
           Math.max(setup.thickness, index ** setup.modifier) / setup.thickness
-        }`}, 0) scale(${
-          index / (index + setup.growth)
-        })`
+        }`}, 0) scale(${1 - (1 / index) * setup.growth})`
       )}
       style={{
         opacity: 1 - Math.min(1, 256 / setup.opacity / index),
