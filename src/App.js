@@ -255,7 +255,8 @@ const App = () => {
   function handleMouseMove(event) {
     if (
       isMouseDown ||
-      (setup.kwastje === 1 && (prevMouseX === mouseX || prevMouseY === mouseY))
+      (setup.kwastje === 1 &&
+        (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isInfluenced))
     ) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
@@ -369,7 +370,6 @@ const App = () => {
       // const label = id;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
       const checked = value === true;
-      const style = type === "range" ? { background: fgColor } : null;
       return (
         <fieldset
           className={`control control--${type} control--${id}`}
@@ -378,7 +378,7 @@ const App = () => {
         >
           <input
             className="control__input"
-            {...{ type, id, value, min, max, step, checked, style }}
+            {...{ type, id, value, min, max, step, checked }}
             onChange={(event) => {
               handleInputChange(event);
             }}
