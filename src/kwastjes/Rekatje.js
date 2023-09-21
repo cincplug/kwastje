@@ -10,22 +10,26 @@ const Rekatje = (props) => {
     // h,
     defaultX1,
     defaultX2,
-    // defaultY1,
+    defaultY1,
     // defaultY2,
   } = props;
 
   const welkeKatje = Math.round((katjes.length * defaultX1) / w);
   return (
-    <Katje
-      {...props}
-      transform={`translate(${index + defaultX1 / setup.growth}, 100) rotate(${
-        (welkeKatje * defaultX2) / ((1 / setup.modifier) * setup.thickness) - 1
-      }) scale(${1 / index})`}
-      style={{
-        opacity:
-          index === welkeKatje ? 1 : Math.min(1, setup.opacity / (index * 64)),
-      }}
-    />
+    index && (
+      <Katje
+        {...props}
+        transform={`translate(${defaultX2}, ${defaultY1 / 2}) rotate(${
+          (welkeKatje * defaultX1) / ((1 / setup.modifier) * setup.thickness)
+        }) scale(${1 - 1 / index * setup.growth})`}
+        style={{
+          opacity:
+            index === welkeKatje
+              ? 1
+              : Math.min(1, setup.opacity / (index * 64)),
+        }}
+      />
+    )
   );
 };
 
