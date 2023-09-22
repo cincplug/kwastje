@@ -24,6 +24,7 @@ const Katje = (props) => {
   const scale = welkeKatje - welkeKatjeRaw;
   if (index !== welkeKatje && setup.isSimplified)
     welkeKatje = isReversed ? index : katjes.length - index;
+  delete commonProps.normalize;
   return (
     <image
       className={`katje`}

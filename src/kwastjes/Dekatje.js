@@ -19,12 +19,12 @@ const Dekatje = (props) => {
       {...props}
       transform={commonProps.normalize(
         `translate(${`${
-          defaultX1 / setup.growth +
+          defaultX1 / 10 * setup.growth +
           Math.max(setup.thickness, index ** setup.modifier) / setup.thickness
-        }`}, 0) scale(${1 - (1 / index) * setup.growth})`
+        }`}, 0) scale(${Math.min(1, 1 / index * setup.thickness)})`
       )}
       style={{
-        opacity: 1 - Math.min(1, 256 / setup.opacity / index),
+        opacity: Math.min(1, 256 / setup.opacity / index),
       }}
     />
   );

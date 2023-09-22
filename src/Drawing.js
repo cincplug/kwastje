@@ -5,7 +5,7 @@ const Drawing = (props) => {
   const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } =
     props;
   const normalize = (dAttribute) => {
-    if (!dAttribute) return "";
+    if (!dAttribute) return null;
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
   const getKwastje = (defaultCoords, index) => {
@@ -30,8 +30,7 @@ const Drawing = (props) => {
       (setup.thickness * index * setup.growth) / path.length,
       0.5
     );
-    const key = `shp-${index}`;
-    const commonProps = { stroke, strokeWidth, fill, style, key, normalize };
+    const commonProps = { stroke, strokeWidth, fill, style, normalize };
 
     const kwastjes = Object.values(customKwastjes).map((CustomKwastje) => (
       <CustomKwastje
@@ -47,7 +46,6 @@ const Drawing = (props) => {
           commonProps,
           isReversed,
         }}
-        key={key}
       />
     ));
     const Kwastje = kwastjes[setup.kwastje - 1];
@@ -61,7 +59,6 @@ const Drawing = (props) => {
           strokeWidth={setup.thickness}
           stroke={setup.fgColor}
           opacity={setup.opacity / 255}
-          key={`kma-${index}`}
           className="aitje-outer"
           transform={`
           translate(${x || w / 2}, ${y || h / 2})
@@ -74,7 +71,11 @@ const Drawing = (props) => {
     return <>{mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}</>;
   };
 
-  return path.map((defaultCoords, index) => getKwastje(defaultCoords, index));
+  return path.map((defaultCoords, index) => (
+    <React.Fragment key={`kma-${index}`}>
+      {getKwastje(defaultCoords, index)}
+    </React.Fragment>
+  ));
 };
 
 export default Drawing;
