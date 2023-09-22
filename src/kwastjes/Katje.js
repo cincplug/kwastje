@@ -17,7 +17,7 @@ const Katje = (props) => {
     isReversed,
   } = props;
 
-  const breedtje = 400;
+  const breedtje = Math.min(400, w);
   const welkeKatjeRaw =
     (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);

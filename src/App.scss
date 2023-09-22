@@ -18,11 +18,12 @@ $color-text: $color-neutral;
 $color-input: $color-white;
 $color-input-bg: $color-black;
 $color-input-border: rgba($color-input, 30%);
-$color-nav: $color-bg;
+$color-nav: rgba($color-black, 95%);
 
 $handle-size: 4rem;
 $menu-width: 10rem;
-$menu-height: 50vh;
+$filters-mobile-height: 3rem;
+$menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
 
 $bp-s: 768px;
 
@@ -140,13 +141,9 @@ button {
     align-items: center;
     padding: 0.5rem;
     width: 100vw;
-    max-height: $menu-height;
-    top: calc(100% - #{$menu-height});
+    max-height: $menu-mobile-height;
+    top: calc(100% - #{$menu-mobile-height});
     flex-wrap: wrap;
-    .control {
-      margin: 0.2rem;
-      flex-basis: 30%;
-    }
   }
   &--collapsed {
     display: none;
@@ -166,7 +163,6 @@ button {
   }
   &--filters {
     right: 0;
-    background: $color-dark;
     position: absolute;
     flex-flow: wrap;
     &.menu--collapsed {
@@ -175,8 +171,8 @@ button {
     @include until {
       overflow-y: auto;
       width: auto;
-      height: 3rem;
-      top: calc(50vh - 3rem);
+      height: $filters-mobile-height;
+      top: calc(100% - #{$menu-mobile-height} - #{$filters-mobile-height});
     }
   }
   &__toggle {
@@ -210,6 +206,10 @@ button {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  @include until {
+    margin: 0.2rem;
+    flex-basis: 30%;
+  }
   &--checkbox {
     flex-direction: row;
   }
@@ -239,6 +239,9 @@ button {
   }
   &--isInfluenced {
     margin: -1rem 0 1rem;
+    @include until {
+      margin: 0;
+    }
   }
   &__input {
     width: 100%;
