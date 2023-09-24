@@ -204,6 +204,9 @@ button {
     margin: -1.5rem -1rem 0.5rem 1rem;
     position: relative;
     z-index: -1;
+    @include mobile-landscape {
+      margin: 0;
+    }
   }
   &--isInfluenced,
   &--isSuperimposed {
@@ -232,6 +235,10 @@ button {
       top: -3rem;
       margin-top: -3rem;
       z-index: 1;
+      @include mobile-landscape {
+        position: static;
+        margin: 0;
+      }
     }
     &[type="checkbox"] {
       padding: 0;
@@ -278,7 +285,7 @@ button {
   }
   &--buttons {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
   }
   &__button {
