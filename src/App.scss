@@ -213,6 +213,8 @@ button {
   }
   &--checkbox {
     flex-direction: row;
+    width: auto;
+    align-self: flex-start;
   }
   &--color {
     width: 1.6rem;
@@ -259,6 +261,11 @@ button {
       padding: 0;
       background: $color-input;
       border: none;
+      position: relative;
+      left: 2rem;
+      top: -3rem;
+      margin-top: -3rem;
+      z-index: 1;
     }
     &[type="checkbox"] {
       padding: 0;
@@ -287,6 +294,9 @@ button {
     }
     .menu--collapsed & {
       display: none;
+    }
+    [type="range"] + & {
+      justify-content: space-between;
     }
     [type="checkbox"] + & {
       margin: 0;

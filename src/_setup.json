@@ -9,33 +9,6 @@
     "step": 1
   },
   {
-    "id": "fgColor",
-    "description": "Foreground color",
-    "value": "#ffffff",
-    "type": "color",
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  {
-    "id": "bgColor",
-    "description": "Background color",
-    "value": "#000000",
-    "type": "color",
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  {
-    "id": "opacity",
-    "description": "Initial opacity of lines in the kwastje",
-    "value": 128,
-    "type": "range",
-    "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
     "id": "dotsCount",
     "description": "How many dots make our kwastje",
     "value": 50,
@@ -146,6 +119,15 @@
     "step": 1
   },
   {
+    "id": "opacity",
+    "description": "Initial opacity of lines in the kwastje",
+    "value": 128,
+    "type": "range",
+    "min": 0,
+    "max": 255,
+    "step": 1
+  },
+  {
     "id": "hasBg",
     "type": "checkbox",
     "description": "Turns background on and off",
@@ -172,16 +154,34 @@
     "value": false
   },
   {
+    "id": "isSimplified",
+    "type": "checkbox",
+    "description": "Controls x2 and y2",
+    "value": false
+  },
+  {
+    "id": "fgColor",
+    "description": "Foreground color",
+    "value": "#ffffff",
+    "type": "color",
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
+    "id": "bgColor",
+    "description": "Background color",
+    "value": "#000000",
+    "type": "color",
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  {
     "id": "isInfluenced",
     "type": "checkbox",
     "description": "Brings together kwastje and aitje",
     "isRight": true,
-    "value": false
-  },
-  {
-    "id": "isSimplified",
-    "type": "checkbox",
-    "description": "Controls x2 and y2",
     "value": false
   }
 ]
