@@ -523,7 +523,7 @@ const App = () => {
             viewBox={`0 0 ${w} ${h}`}
             xmlns="http://www.w3.org/2000/svg"
             filter={
-              "url(#dilate-filter) url(#erode-filter) url(#blur-filter) url(#freehand-filter)"
+              "url(#erode-filter) url(#dilate-filter) url(#blur-filter) url(#freehand-filter)"
             }
           >
             {setup.hasBg && (
@@ -537,7 +537,7 @@ const App = () => {
               ></rect>
             )}
             <g className="center-origin" transform-origin={"center"}>
-              <Filters {...{ h, x: mouseX, y: mouseY, setup }} />
+              <Filters {...{ h, mouseX, mouseY, setup }} />
               <Drawing
                 {...{
                   path,
