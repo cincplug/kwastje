@@ -11,14 +11,6 @@ const Menu = (props) => {
     download,
     clear,
     shuffle,
-    callAitje,
-    setPromptje,
-    promptje,
-    hoogtje,
-    setHoogtje,
-    breedtje,
-    setBreedtje,
-    isLoading,
     setAitje,
   } = props;
 
@@ -76,13 +68,6 @@ const Menu = (props) => {
     loadSvgFiles();
   }, []);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      event.target.blur();
-    }
-  };
-
   return (
     <>
       <button
@@ -130,77 +115,6 @@ const Menu = (props) => {
             reset
           </button>
         </fieldset>
-        <div className="aitjes-form">
-          <fieldset className="control aitje" key="aitje">
-            <input
-              className="promptje"
-              value={promptje}
-              placeholder="Ask Aitje"
-              onChange={(event) => {
-                setPromptje(event.target.value);
-              }}
-              onKeyUp={(event) => {
-                if (event.key === "Enter") {
-                  callAitje();
-                  handleKeyDown(event);
-                }
-              }}
-            />
-            <div>
-              <input
-                className="promptje mini"
-                value={breedtje}
-                onChange={(event) => {
-                  setBreedtje(event.target.value);
-                }}
-              />{" "}
-              x{` `}
-              <input
-                className="promptje mini"
-                value={hoogtje}
-                onChange={(event) => {
-                  setHoogtje(event.target.value);
-                }}
-              />
-            </div>
-            <button
-              className="control__input control__button control__button--save"
-              type="submit"
-              onClick={() => {
-                callAitje("vectortje");
-              }}
-            >
-              vectortje
-            </button>
-            <button
-              className="control__input control__button control__button--save"
-              type="submit"
-              onClick={() => {
-                callAitje("bitmapje");
-              }}
-            >
-              bitmapje
-            </button>
-            <button
-              className="control__input control__button control__button--save"
-              type="submit"
-              onClick={() => {
-                callAitje("componentje");
-              }}
-            >
-              componentje
-            </button>
-            {isLoading && (
-              <p
-                className={`loader-message ${
-                  isLoading ? "loading" : "not-loading"
-                }`}
-              >
-                Waiting for Aitje <span className="loader">...</span>
-              </p>
-            )}
-          </fieldset>
-        </div>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
         {getControls(
@@ -209,7 +123,9 @@ const Menu = (props) => {
         {svgData.map((svgContent, index) => (
           <button
             key={index}
-            className={`navaitje ${index === aitjeIndex ? "selected" : "unselected"}`}
+            className={`navaitje ${
+              index === aitjeIndex ? "selected" : "unselected"
+            }`}
             dangerouslySetInnerHTML={{ __html: svgContent }}
             onClick={() => {
               setAitje(svgContent);

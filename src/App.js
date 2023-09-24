@@ -5,7 +5,6 @@ import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
-import potrace from "potrace";
 import "./App.scss";
 
 const App = () => {
@@ -55,62 +54,6 @@ const App = () => {
 
   const prevMouseX = usePrevious(mouseX);
   const prevMouseY = usePrevious(mouseY);
-
-  const callAitje = async (goal = "vectortje") => {
-    const endpoint = goal === "bitmapje" ? "images/generations" : "completions";
-    const aiPath = "https://api.openai.com/v1";
-    setIsLoading(true);
-    try {
-      const model = "text-davinci-003";
-      const prompt = promptje || "something";
-      const requestBody =
-        goal === "bitmapje"
-          ? {
-              prompt: `Simple drawing with 2-5 colors, representing: ${prompt}`,
-              response_format: "url",
-              size: "512x512",
-            }
-          : goal === "componentje"
-          ? {
-              prompt: `Write cleanly formatted <svg> element, with shapes similar to these: ${
-                document.querySelector(
-                  "path, polygon, polyline, line, rect, circle, ellipse"
-                ).outerHTML
-              }`,
-              model,
-              max_tokens: 2000,
-            }
-          : {
-              prompt: `Write cleanly formatted SVG element. Output must not contain anything before or after SVG element. Dimensions ${breedtje} x ${hoogtje}. Use single polyline or polygon element which must have ${setup.dotsCount} points and the main color must go well with ${setup.fgColor} but also be visible on ${setup.bgColor}. Please include in the comment why it goes well. SVG should represent ${prompt}`,
-              model,
-              max_tokens: 3000,
-            };
-      const response = await fetch(`${aiPath}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_AITJE_KEY}`,
-        },
-        body: JSON.stringify(requestBody),
-      });
-      const responseJson = await response.json();
-      let content =
-        goal === "bitmapje"
-          ? responseJson.data[0].url
-          : responseJson.choices[0].text;
-      if (goal === "bitmapje") {
-        potrace.trace(content, function (err, svg) {
-          if (err) throw err;
-          setAitje(svg);
-        });
-      } else {
-        setAitje(content.substring(content.indexOf("<svg")));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    setIsLoading(false);
-  };
 
   function processAitje(svg) {
     const parser = new DOMParser();
@@ -482,7 +425,6 @@ const App = () => {
           download,
           clear,
           shuffle,
-          callAitje,
           promptje,
           setPromptje,
           hoogtje,
