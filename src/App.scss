@@ -254,7 +254,7 @@ button {
     z-index: 1;
     &[type="color"] {
       padding: 0;
-      background: $color-input;
+      background: none;
       border: none;
       position: relative;
       left: 2rem;
@@ -286,11 +286,13 @@ button {
     user-select: none;
     &--name {
       color: $color-white;
+      font-size: 0.9rem;
     }
     .menu--collapsed & {
       display: none;
     }
     [type="range"] + & {
+      display: flex;
       justify-content: space-between;
     }
     [type="checkbox"] + & {
