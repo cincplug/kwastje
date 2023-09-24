@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap');
+
 $gutter: 1rem;
 $base-width: calc(100vw - #{$gutter});
 $color-blue: #07a;
@@ -41,14 +43,7 @@ $bp-s: 768px;
   }
 }
 
-$base-font-family: "Brando Sans, sans-serif";
-@font-face {
-  font-family: $base-font-family;
-  src: url("./fonts/BrandoSans-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+$base-font-family: "Figtree", sans-serif;
 
 @keyframes breathe {
   from {
@@ -321,13 +316,14 @@ button {
     border: none;
     border-radius: 0.9rem;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.05rem;
     text-transform: uppercase;
     line-height: 1.2rem;
     height: 1.8rem;
     background: $color-dark-lighter;
     background-size: 200%;
-    transition: background-size 0.2s ease-in;
+    transition: background-color 0.1s ease-in;
     &:hover {
       background-size: 50%;
     }
