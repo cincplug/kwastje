@@ -97,7 +97,7 @@ const Menu = (props) => {
         {getControls(
           setupArray.filter((control) => !control.isHidden && !control.isRight)
         )}
-        <fieldset className="control" key="saveSvg">
+        <fieldset className="control control--buttons" key="saveSvg">
           <button
             className="control__input control__button control__button--save"
             onClick={() => {
@@ -106,16 +106,12 @@ const Menu = (props) => {
           >
             save
           </button>
-        </fieldset>
-        <fieldset className="control" key="shuffle">
           <button
             className="control__input control__button control__button--save"
             onClick={() => shuffle()}
           >
             shuffle
           </button>
-        </fieldset>
-        <fieldset className="control" key="clear">
           <button
             className="control__input control__button control__button--clear"
             onClick={() => {
@@ -124,8 +120,6 @@ const Menu = (props) => {
           >
             clear
           </button>
-        </fieldset>
-        <fieldset className="control" key="reset">
           <button
             className="control__input control__button control__button--clear"
             onClick={() => {

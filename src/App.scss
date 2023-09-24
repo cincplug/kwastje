@@ -3,6 +3,7 @@ $base-width: calc(100vw - #{$gutter});
 $color-blue: #07a;
 $color-green: #59a200;
 $color-white: #f9f8f7;
+$color-dark-lighter: #34383a;
 $color-dark: #24282a;
 $color-black: #14181a;
 $color-neutral: #c4c4c4;
@@ -297,6 +298,14 @@ button {
       display: none;
     }
   }
+  &--buttons {
+    display: grid;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Twee kolommen van gelijke breedte */
+    gap: 0.5rem;
+  }
   &__button {
     color: $color-white;
     border: none;
@@ -306,17 +315,17 @@ button {
     text-transform: uppercase;
     line-height: 1.2rem;
     height: 1.8rem;
-    background: url(./img/kwastje-knopje.svg) no-repeat right center;
+    background: $color-dark-lighter;
     background-size: 200%;
     transition: background-size 0.2s ease-in;
     &:hover {
       background-size: 50%;
     }
-    &--save {
+    &--save:hover {
       background-color: $color-green;
     }
-    &--clear,
-    &--close {
+    &--clear:hover,
+    &--close:hover {
       background-color: $color-red;
     }
     &--close {
