@@ -523,7 +523,7 @@ const App = () => {
             viewBox={`0 0 ${w} ${h}`}
             xmlns="http://www.w3.org/2000/svg"
             filter={
-              "url(#displacement-filter) url(#dilate-filter) url(#erode-filter) url(#light-filter) url(#blur-filter) url(#convolve-filter)"
+              "url(#displacement-filter) url(#dilate-filter) url(#erode-filter) url(#light-filter) url(#blur-filter) url(#convolve-filter) url(#freehand-filter)"
             }
           >
             {setup.hasBg && (
