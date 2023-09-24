@@ -93,13 +93,6 @@ const Filters = (props) => {
             baseFrequency="0.005"
           ></feTurbulence>
           <feDisplacementMap scale={setup.freehand} in="SourceGraphic"></feDisplacementMap>
-          <animate
-            attributeName="baseFrequency"
-            dur="5s"
-            keyTimes="0;0.5;1"
-            values="0.02 0.06; 0.04 0.08; 0.02 0.06"
-            repeatCount="indefinite"
-          ></animate>
         </filter>
       )}
     </>
