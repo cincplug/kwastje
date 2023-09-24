@@ -1,7 +1,13 @@
 import React from "react";
 
 const Filters = (props) => {
-  const { setup } = props;
+  const { setup, w, h } = props;
+  // Base64-coderen van de SVG-afbeelding
+  let encodedSVG, dataUri;
+  if (setup.aitje) {
+    encodedSVG = btoa(setup.aitje);
+    dataUri = `data:image/svg+xml;base64,${encodedSVG}`;
+  }
   return (
     <>
       {setup.erode && (
@@ -20,7 +26,8 @@ const Filters = (props) => {
         </filter>
       )}
       {setup.freehand && (
-        <filter id="freehand-filter">
+        <>
+          <filter id="freehand-filter">
           <feTurbulence
             type="turbulence"
             id="freehand-turbulence"
@@ -28,8 +35,15 @@ const Filters = (props) => {
             seed="1"
             baseFrequency="0.005"
           ></feTurbulence>
-          <feDisplacementMap scale={setup.freehand} in="SourceGraphic"></feDisplacementMap>
-        </filter>
+            {dataUri && setup.isSuperimposed && (
+              <feImage href={dataUri} x={0} y={0} width={w} height={h} />
+            )}
+            <feDisplacementMap
+              scale={setup.freehand}
+              in="SourceGraphic"
+            ></feDisplacementMap>
+          </filter>
+        </>
       )}
     </>
   );

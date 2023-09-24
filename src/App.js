@@ -479,7 +479,7 @@ const App = () => {
               ></rect>
             )}
             <g className="center-origin" transform-origin={"center"}>
-              <Filters {...{ h, mouseX, mouseY, setup }} />
+              <Filters {...{ w, h, mouseX, mouseY, setup }} />
               <Drawing
                 {...{
                   path,

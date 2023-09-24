@@ -183,5 +183,12 @@
     "description": "Brings together kwastje and aitje",
     "isRight": true,
     "value": false
+  },
+  {
+    "id": "isSuperimposed",
+    "type": "checkbox",
+    "description": "Superimposes aitje over kwastje",
+    "isRight": true,
+    "value": false
   }
 ]
