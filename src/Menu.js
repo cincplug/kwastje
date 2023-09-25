@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import setupArray from "./_setup.json";
+import defaultSetup from "./_setup.json";
 import { Potrace } from "potrace";
 
 const Menu = (props) => {
   const {
+    setup,
     isMenuVisible,
     setIsMenuVisible,
     menuVisibilityClass,
@@ -49,6 +50,16 @@ const Menu = (props) => {
     }
   };
 
+  const handleAitjeClick = (svgContent, index) => {
+    if(aitjeIndex !== index) {
+      setAitje(svgContent);
+      setAitjeIndex(index);
+    } else {
+      setAitjeIndex(null);
+      setAitje(null);
+    }
+  }
+
   useEffect(() => {
     function importAll(r) {
       return r.keys().map(r);
@@ -80,7 +91,7 @@ const Menu = (props) => {
         onClick={() => !isMenuVisible && setIsMenuVisible(true)}
       >
         {getControls(
-          setupArray.filter((control) => !control.isHidden && !control.isRight)
+          defaultSetup.filter((control) => !control.isHidden && !control.isRight)
         )}
           <button
             className="control__input control__button control__button--save"
@@ -115,9 +126,7 @@ const Menu = (props) => {
           </button>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        {getControls(
-          setupArray.filter((control) => !control.isHidden && control.isRight)
-        )}
+        
         {svgData.map((svgContent, index) => (
           <button
             key={index}
@@ -125,12 +134,12 @@ const Menu = (props) => {
               index === aitjeIndex ? "selected" : "unselected"
             }`}
             dangerouslySetInnerHTML={{ __html: svgContent }}
-            onClick={() => {
-              setAitje(svgContent);
-              setAitjeIndex(index);
-            }}
+            onClick={() => handleAitjeClick(svgContent, index)}
           />
         ))}
+        {setup.aitje && getControls(
+          defaultSetup.filter((control) => !control.isHidden && control.isRight)
+        )}
         <label className="add-aitje">
           <input
             type="file"

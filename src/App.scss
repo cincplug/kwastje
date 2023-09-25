@@ -128,7 +128,7 @@ button {
   top: 0;
   width: 12rem;
   height: 100vh;
-  padding: 2rem 1rem 1rem;
+  padding: 1rem;
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -154,8 +154,8 @@ button {
     right: 0;
     position: absolute;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    > :nth-child(1),
-    > :nth-child(2) {
+    grid-auto-rows: max-content;
+    > fieldset {
       grid-column: span 2;
     }
     &.menu--collapsed {
@@ -198,13 +198,6 @@ button {
   &--checkbox {
     flex-direction: row;
     align-self: flex-start;
-  }
-  &--isMerger,
-  &--isStencil {
-    margin: -1rem 0 1.5rem;
-    @include mobile-landscape {
-      margin: 0;
-    }
   }
   &__input {
     width: 100%;
@@ -374,6 +367,7 @@ button {
   }
 }
 .add-aitje {
+  grid-column: span 4;
   font-size: 4rem;
   line-height: 3rem;
   color: $color-green;

@@ -116,6 +116,16 @@ const App = () => {
   }
 
   function setAitje(aitje) {
+    if (!aitje) {
+      setSetup((prevSetup) => {
+        return {
+          ...prevSetup,
+          aitje: null,
+          isMerger: false,
+          isStencil: false,
+        };
+      });
+    }
     processAitje(aitje);
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
@@ -331,7 +341,8 @@ const App = () => {
             }}
           />
           <label className="control__label" htmlFor={id}>
-            {label} {id === "kwastje" && kwastjeName} {type === "range" && <span>{value}</span>}
+            {label} {id === "kwastje" && kwastjeName}{" "}
+            {type === "range" && <span>{value}</span>}
           </label>
         </fieldset>
       );
