@@ -21,7 +21,7 @@ $color-text: $color-white;
 $color-input: $color-white;
 $color-input-bg: $color-black;
 $color-input-border: rgba($color-input, 30%);
-$color-nav: rgba($color-black, 95%);
+$color-nav: rgba($color-black, 90%);
 
 $base-font-size: 0.8rem;
 $handle-size: 4rem;
@@ -198,6 +198,11 @@ button {
   &--checkbox {
     flex-direction: row;
     align-self: flex-start;
+  }
+  &--color {
+    @include mobile-landscape {
+      grid-column: span 2;
+    }
   }
   &__input {
     width: 100%;
