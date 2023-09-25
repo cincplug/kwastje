@@ -34,8 +34,8 @@ const Menu = (props) => {
         const imageSrc = e.target.result;
         const trace = new Potrace();
         trace.setParameters({
-          turdSize: 4,
-          optTolerance: 6,
+          turdSize: 15,
+          optTolerance: 10,
         });
         trace.loadImage(imageSrc, function (error) {
           if (error) {

@@ -24,12 +24,12 @@ $color-input-border: rgba($color-input, 30%);
 $color-nav: rgba($color-black, 90%);
 
 $base-font-size: 0.8rem;
+$base-font-family: "Figtree", sans-serif;
 $handle-size: 4rem;
 $menu-width: 10rem;
 $filters-mobile-height: 3rem;
 $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
 
-$bp-s: 768px;
 
 @mixin center {
   position: absolute;
@@ -38,19 +38,11 @@ $bp-s: 768px;
   transform: translate(-50%, -50%);
 }
 
-@mixin until($breakpoint: $bp-s) {
-  @media (max-width: $breakpoint) {
-    @content;
-  }
-}
-
 @mixin mobile-landscape($breakpoint: 844px) {
   @media screen and (max-width: $breakpoint) and (orientation: landscape) {
     @content;
   }
 }
-
-$base-font-family: "Figtree", sans-serif;
 
 @keyframes breathe {
   from {
@@ -69,7 +61,7 @@ $base-font-family: "Figtree", sans-serif;
   border: none;
   outline: none;
   font-family: sans-serif;
-  font-weight: 300;
+  font-weight: normal;
   letter-spacing: 0.3px;
   font-family: $base-font-family;
 }

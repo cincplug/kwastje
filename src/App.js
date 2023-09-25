@@ -126,6 +126,7 @@ const App = () => {
         };
       });
     }
+    console.info(aitje);
     processAitje(aitje);
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
