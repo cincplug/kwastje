@@ -178,7 +178,9 @@ const App = () => {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
-    setIsMouseDown(true);
+    if (!isMouseDown) {
+      setIsMouseDown(true);
+    }
   }
 
   function handleMouseUp(event) {
@@ -192,12 +194,14 @@ const App = () => {
         return nextPath;
       });
     }
-    setIsMouseDown(false);
+    if (isMouseDown) {
+      setIsMouseDown(false);
+    }
   }
 
   function handleMouseMove(event) {
     if (
-      isMouseDown ||
+      isMouseDown || setup.isMouseLocked ||
       (setup.kwastje === 1 &&
         (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isInfluenced))
     ) {
@@ -206,7 +210,7 @@ const App = () => {
       if (event.movementX < 0 && !isReversed) setIsReversed(true);
       if (event.movementX > 0 && isReversed) setIsReversed(false);
     }
-    if (isMouseDown) {
+    if (isMouseDown || setup.isMouseLocked) {
       setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {

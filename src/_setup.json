@@ -160,6 +160,12 @@
     "value": false
   },
   {
+    "id": "isMouseLocked",
+    "type": "checkbox",
+    "description": "Locks mouse as if constantly pressed",
+    "value": false
+  },
+  {
     "id": "fgColor",
     "description": "Foreground color",
     "value": "#ffffff",
