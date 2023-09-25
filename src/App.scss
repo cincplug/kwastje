@@ -126,41 +126,36 @@ button {
 .menu {
   position: absolute;
   top: 0;
-  width: 10rem;
+  width: 12rem;
   height: 100vh;
   padding: 2rem 1rem 1rem;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 0.8rem;
   background: $color-nav url(./img/bg-noise.png);
   color: $color-white;
   transform-origin: 0 0;
   margin: 0 0 0.5rem;
   @include mobile-landscape {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    width: 20rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   &--collapsed {
     display: none;
   }
   &--controls {
     left: 0;
+    @include mobile-landscape {
+      width: 20rem;
+    }
   }
   &--filters {
     right: 0;
     position: absolute;
-    flex-flow: wrap;
-    @include mobile-landscape {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      > :nth-child(1),
-      > :nth-child(2) {
-        grid-column: span 2;
-      }
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    > :nth-child(1),
+    > :nth-child(2) {
+      grid-column: span 2;
     }
     &.menu--collapsed {
       display: none;
@@ -193,23 +188,18 @@ button {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  &--range {
+    grid-column: 1 / span 2;
+    @include mobile-landscape {
+      grid-column: span 2;
+    }
+  }
   &--checkbox {
     flex-direction: row;
     align-self: flex-start;
   }
-  &--color {
-    width: 1.6rem;
-  }
-  &--bgColor {
-    margin: -1.5rem -1rem 0.5rem 1rem;
-    position: relative;
-    z-index: -1;
-    @include mobile-landscape {
-      margin: 0;
-    }
-  }
-  &--isInfluenced,
-  &--isSuperimposed {
+  &--isMerger,
+  &--isStencil {
     margin: -1rem 0 1.5rem;
     @include mobile-landscape {
       margin: 0;
@@ -230,15 +220,6 @@ button {
       padding: 0;
       background: none;
       border: none;
-      position: relative;
-      left: 2rem;
-      top: -3rem;
-      margin-top: -3rem;
-      z-index: 1;
-      @include mobile-landscape {
-        position: static;
-        margin: 0;
-      }
     }
     &[type="checkbox"] {
       padding: 0;
@@ -259,7 +240,7 @@ button {
   &__label {
     color: $color-text;
     font-size: $base-font-size;
-    margin: 0.3rem auto;
+    margin: 0.3rem auto 0;
     width: 100%;
     user-select: none;
     text-transform: capitalize;
@@ -375,7 +356,7 @@ button {
   display: none;
 }
 .navaitje {
-  width: 33.333%;
+  // width: 33.333%;
   margin: 5% 3%;
   display: flex;
   height: auto;

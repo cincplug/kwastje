@@ -35,7 +35,7 @@ const Filters = (props) => {
             seed="1"
             baseFrequency="0.005"
           ></feTurbulence>
-            {dataUri && setup.isSuperimposed && (
+            {dataUri && setup.isStencil && (
               <feImage href={dataUri} x={0} y={0} width={w} height={h} />
             )}
             <feDisplacementMap

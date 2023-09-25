@@ -16,7 +16,7 @@ const Drawing = (props) => {
           ? coords
           : path[index - 1]
         : coords;
-    const [defaultX2, defaultY2] = setup.isSimplified
+    const [defaultX2, defaultY2] = setup.isSimple
       ? [mouseX, mouseY]
       : setup.kwastje > 1
       ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
@@ -68,7 +68,7 @@ const Drawing = (props) => {
         </g>
       );
     }
-    return <>{mapje && setup.isInfluenced ? KwastjeMetAitje : Kwastje}</>;
+    return <>{mapje && setup.isMerger ? KwastjeMetAitje : Kwastje}</>;
   };
 
   return path.map((defaultCoords, index) => (

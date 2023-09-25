@@ -82,7 +82,6 @@ const Menu = (props) => {
         {getControls(
           setupArray.filter((control) => !control.isHidden && !control.isRight)
         )}
-        <fieldset className="control control--buttons" key="saveSvg">
           <button
             className="control__input control__button control__button--save"
             onClick={() => {
@@ -114,7 +113,6 @@ const Menu = (props) => {
           >
             reset
           </button>
-        </fieldset>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
         {getControls(

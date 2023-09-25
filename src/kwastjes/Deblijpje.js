@@ -33,7 +33,7 @@ const Deblijpje = (props) => {
   }
   return (
     <>
-      {setup.isSimplified && (
+      {setup.isSimple && (
         <Blijpje
           {...{
             setup: { ...setup, modifier: 8 },

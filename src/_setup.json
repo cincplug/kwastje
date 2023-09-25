@@ -55,6 +55,16 @@
     "step": 1
   },
   {
+    "id": "erode",
+    "description": "SVG erode filter",
+    "value": 0,
+    "type": "range",
+    "isFilter": true,
+    "min": 0,
+    "max": 10,
+    "step": 1
+  },
+  {
     "id": "freehand",
     "description": "Freehand filter",
     "value": 0,
@@ -128,7 +138,7 @@
     "step": 1
   },
   {
-    "id": "hasBg",
+    "id": "isOpaque",
     "type": "checkbox",
     "description": "Turns background on and off",
     "value": true
@@ -154,7 +164,7 @@
     "value": false
   },
   {
-    "id": "isSimplified",
+    "id": "isSimple",
     "type": "checkbox",
     "description": "Controls x2 and y2",
     "value": false
@@ -184,14 +194,14 @@
     "step": 1
   },
   {
-    "id": "isInfluenced",
+    "id": "isMerger",
     "type": "checkbox",
     "description": "Brings together kwastje and aitje",
     "isRight": true,
     "value": false
   },
   {
-    "id": "isSuperimposed",
+    "id": "isStencil",
     "type": "checkbox",
     "description": "Superimposes aitje over kwastje",
     "isRight": true,

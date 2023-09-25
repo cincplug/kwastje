@@ -35,7 +35,7 @@ const App = () => {
   const [isInfoVisible, setIsInfoVisible] = useState(false);
   const [kwastjeName, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
-  const bgClass = setup.hasBg ? "has-bg" : "no-bg";
+  const bgClass = setup.isOpaque ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
   const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
@@ -123,7 +123,7 @@ const App = () => {
       const nextSetup = {
         ...prevSetup,
         aitje,
-        isInfluenced: true,
+        isMerger: true,
         // kwastje: 1,
         dotsCount,
         opacity: 200,
@@ -203,7 +203,7 @@ const App = () => {
     if (
       isMouseDown || setup.isMouseLocked ||
       (setup.kwastje === 1 &&
-        (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isInfluenced))
+        (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isMerger))
     ) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);
@@ -472,7 +472,7 @@ const App = () => {
               "url(#erode-filter) url(#dilate-filter) url(#blur-filter) url(#freehand-filter)"
             }
           >
-            {setup.hasBg && (
+            {setup.isOpaque && (
               <rect
                 x={0}
                 y={0}
