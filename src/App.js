@@ -35,7 +35,7 @@ const App = () => {
   const [isInfoVisible, setIsInfoVisible] = useState(false);
   const [kwastjeName, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
-  const bgClass = setup.isOpaque ? "has-bg" : "no-bg";
+  const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
   const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
@@ -201,7 +201,8 @@ const App = () => {
 
   function handleMouseMove(event) {
     if (
-      isMouseDown || setup.isMouseLocked ||
+      isMouseDown ||
+      setup.isMouseLocked ||
       (setup.kwastje === 1 &&
         (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isMerger))
     ) {
@@ -314,7 +315,6 @@ const App = () => {
     return controls.map((item, index) => {
       const { id, type, min, max, step, description } = item;
       const value = setup[id] || 0;
-      // const label = id;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
       const checked = value === true;
       return (
@@ -330,15 +330,9 @@ const App = () => {
               handleInputChange(event);
             }}
           />
-          {id === "kwastje" ? (
-            <label htmlFor={id} className="control__label--name">
-              {setup.kwastje}. {kwastjeName}
-            </label>
-          ) : (
-            <label className="control__label" htmlFor={id}>
-              {label} {type === "range" && <span>{value}</span>}
-            </label>
-          )}
+          <label className="control__label" htmlFor={id}>
+            {label} {id === "kwastje" && kwastjeName} {type === "range" && <span>{value}</span>}
+          </label>
         </fieldset>
       );
     });
@@ -472,7 +466,7 @@ const App = () => {
               "url(#erode-filter) url(#dilate-filter) url(#blur-filter) url(#freehand-filter)"
             }
           >
-            {setup.isOpaque && (
+            {setup.hasBg && (
               <rect
                 x={0}
                 y={0}

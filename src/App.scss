@@ -145,6 +145,7 @@ button {
   }
   &--controls {
     left: 0;
+    padding-top: 3rem;
     @include mobile-landscape {
       width: 20rem;
     }
@@ -185,7 +186,7 @@ button {
 }
 .control {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   width: 100%;
   &--range {
@@ -260,9 +261,6 @@ button {
       margin: 0;
     }
     [type="color"] + & {
-      display: none;
-    }
-    &[for="kwastje"] {
       display: none;
     }
   }

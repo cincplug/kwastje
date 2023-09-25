@@ -138,7 +138,7 @@
     "step": 1
   },
   {
-    "id": "isOpaque",
+    "id": "hasBg",
     "type": "checkbox",
     "description": "Turns background on and off",
     "value": true
