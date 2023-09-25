@@ -75,39 +75,6 @@
     "step": 1
   },
   {
-    "id": "specular",
-    "description": "SVG specular light filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
-    "isHidden": true,
-    "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
-    "id": "diffuse",
-    "description": "SVG diffuse light filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
-    "isHidden": true,
-    "min": 0,
-    "max": 255,
-    "step": 1
-  },
-  {
-    "id": "composite",
-    "description": "SVG composite filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
-    "isHidden": true,
-    "min": 0,
-    "max": 10,
-    "step": 1
-  },
-  {
     "id": "blur",
     "description": "SVG gaussian blur filter",
     "value": 0,
@@ -115,17 +82,6 @@
     "isFilter": true,
     "min": 0,
     "max": 10,
-    "step": 1
-  },
-  {
-    "id": "convolve",
-    "description": "SVG convolve filter",
-    "value": 0,
-    "type": "range",
-    "isFilter": true,
-    "isHidden": true,
-    "min": 0,
-    "max": 5,
     "step": 1
   },
   {
