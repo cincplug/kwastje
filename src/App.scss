@@ -4,11 +4,11 @@ $gutter: 1rem;
 $base-width: calc(100vw - #{$gutter});
 $color-blue: #07a;
 $color-green: #59a200;
-$color-white: #f9f8f7;
+$color-white: #f4f8fa;
 $color-dark-lighter: #34383a;
 $color-dark: #24282a;
 $color-black: #14181a;
-$color-neutral: #c4c4c4;
+$color-neutral: #c4c8ca;
 $color-red: #d44;
 $color-dark-blue: #024;
 
@@ -16,13 +16,14 @@ $color-bg: $color-dark;
 $color-fg: $color-green;
 $color-brand: $color-green;
 $color-event: $color-white;
-$color-text: $color-neutral;
+$color-text: $color-white;
 
 $color-input: $color-white;
 $color-input-bg: $color-black;
 $color-input-border: rgba($color-input, 30%);
 $color-nav: rgba($color-black, 95%);
 
+$base-font-size: 0.8rem;
 $handle-size: 4rem;
 $menu-width: 10rem;
 $filters-mobile-height: 3rem;
@@ -194,7 +195,6 @@ button {
   width: 100%;
   &--checkbox {
     flex-direction: row;
-    width: auto;
     align-self: flex-start;
   }
   &--color {
@@ -223,7 +223,7 @@ button {
     display: block;
     border-radius: 0;
     padding: 0.3rem 0.4rem;
-    font-size: 0.9rem;
+    font-size: $base-font-size;
     position: relative;
     z-index: 1;
     &[type="color"] {
@@ -258,13 +258,15 @@ button {
   }
   &__label {
     color: $color-text;
-    font-size: 0.9rem;
+    font-size: $base-font-size;
     margin: 0.3rem auto;
     width: 100%;
     user-select: none;
+    text-transform: capitalize;
     &--name {
       color: $color-white;
-      font-size: 0.9rem;
+      font-size: $base-font-size;
+      margin-top: 0.4rem;
     }
     .menu--collapsed & {
       display: none;
@@ -291,7 +293,7 @@ button {
   &__button {
     color: $color-white;
     border: none;
-    border-radius: 0.9rem;
+    border-radius: $base-font-size;
     font-weight: bold;
     font-size: 0.7rem;
     letter-spacing: 0.05rem;
