@@ -83,37 +83,8 @@ const App = () => {
       coordinates.push(pairs);
     });
     const filteredCoordinates = coordinates.flat();
-    // const filteredCoordinates = fitCoordinates(
-    //   coordinates.flat(),
-    //   setup.aitjeDotsCount || setup.dotsCount
-    // );
     setMapje(filteredCoordinates);
     return filteredCoordinates;
-  }
-
-  function fitCoordinates(array, maxLength) {
-    if (array.length <= maxLength) {
-      // No modifications needed
-      return array;
-    }
-
-    var removeCount = array.length - maxLength;
-    var removePerSection = Math.floor(removeCount / maxLength);
-    var remainingRemoveCount = removeCount % maxLength;
-    var modifiedArray = [];
-
-    var sectionSize = Math.ceil(array.length / maxLength);
-
-    for (var i = 0; i < array.length; i++) {
-      if (
-        i % sectionSize <
-        sectionSize - (removePerSection + (i < remainingRemoveCount ? 1 : 0))
-      ) {
-        modifiedArray.push(array[i]);
-      }
-    }
-
-    return modifiedArray;
   }
 
   function setAitje(aitje) {
