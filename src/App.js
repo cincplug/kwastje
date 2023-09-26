@@ -27,7 +27,6 @@ const App = () => {
   const [setup, setSetup] = useState(initialSetup);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
-  const [count, setCount] = useState(0);
   const initialPath = fillPath();
   const [path, setPath] = useState(initialPath);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -114,8 +113,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    // let animationFrameId;
-    // let counter = 0;
     updateKwastjeName();
     const mainElement = mainRef.current;
     mainElement.addEventListener("pointerdown", handleMouseDown, {
@@ -130,16 +127,6 @@ const App = () => {
     document.addEventListener("keyup", handleKeyUp, {
       passive: false,
     });
-
-    // const animationLoop = () => {
-    //   counter++;
-    //   animationFrameId = requestAnimationFrame(animationLoop);
-    //   if (counter === w) counter = 0;
-    //   setCount(counter);
-    // };
-
-    // animationLoop();
-
     return () => {
       mainElement.removeEventListener("pointerdown", handleMouseDown);
       mainElement.removeEventListener("pointermove", handleMouseMove);
@@ -373,7 +360,6 @@ const App = () => {
           w,
           h,
           fgColor,
-          count,
           mapje,
         }}
       />
@@ -413,7 +399,6 @@ const App = () => {
                 w,
                 h,
                 fgColor,
-                count,
                 mapje,
                 isReversed,
               }}
