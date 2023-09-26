@@ -124,6 +124,9 @@ const App = () => {
     mainElement.addEventListener("pointerup", handleMouseUp, {
       passive: false,
     });
+    mainElement.addEventListener("doubleclick", handleDoubleClick, {
+      passive: false,
+    });
     document.addEventListener("keyup", handleKeyUp, {
       passive: false,
     });
@@ -132,6 +135,7 @@ const App = () => {
       mainElement.removeEventListener("pointermove", handleMouseMove);
       mainElement.removeEventListener("pointerup", handleMouseUp);
       document.removeEventListener("keyup", handleKeyUp);
+      document.removeEventListener("keyup", handleDoubleClick);
       // cancelAnimationFrame(animationFrameId);
     };
   }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
@@ -237,6 +241,12 @@ const App = () => {
         updateKwastjeName(value);
       }
       return nextSetup;
+    });
+  }
+
+  function handleDoubleClick(event) {
+    setSetup((prevSetup) => {
+      return { ...prevSetup, isMouseLocked: !prevSetup.isMouseLocked };
     });
   }
 
