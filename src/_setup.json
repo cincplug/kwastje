@@ -157,10 +157,13 @@
     "value": false
   },
   {
-    "id": "isStencil",
-    "type": "checkbox",
+    "id": "stencil",
     "description": "Superimposes aitje over kwastje",
+    "value": 0,
+    "type": "range",
     "isRight": true,
-    "value": false
+    "min": 0,
+    "max": 30,
+    "step": 1
   }
 ]
