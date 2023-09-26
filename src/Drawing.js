@@ -61,7 +61,7 @@ const Drawing = (props) => {
           opacity={setup.opacity / 255}
           className="aitje-outer"
           transform={`
-          translate(${x || w / 2}, ${y || h / 2})
+          translate(${x}, ${y})
           `}
         >
           {Kwastje}
