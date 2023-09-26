@@ -82,10 +82,11 @@ const App = () => {
         }, []);
       coordinates.push(pairs);
     });
-    const filteredCoordinates = fitCoordinates(
-      coordinates.flat(),
-      setup.aitjeDotsCount || setup.dotsCount
-    );
+    const filteredCoordinates = coordinates.flat();
+    // const filteredCoordinates = fitCoordinates(
+    //   coordinates.flat(),
+    //   setup.aitjeDotsCount || setup.dotsCount
+    // );
     setMapje(filteredCoordinates);
     return filteredCoordinates;
   }
@@ -116,35 +117,27 @@ const App = () => {
   }
 
   function setAitje(aitje) {
-    if (!aitje) {
-      setSetup((prevSetup) => {
-        return {
+    console.info(aitje);
+    setSetup((prevSetup) => {
+      let nextSetup;
+      if (!aitje) {
+        nextSetup = {
           ...prevSetup,
           aitje: null,
           isMerger: false,
           isStencil: false,
           aitjeDotsCount: null,
         };
-      });
-    }
-    console.info(aitje);
-    processAitje(aitje);
-    setSetup((prevSetup) => {
-      const coordinates = processAitje(aitje);
-      const aitjeDotsCount = Math.min(coordinates.length, 300);
-      const nextSetup = {
-        ...prevSetup,
-        aitje,
-        isMerger: true,
-        // kwastje: 1,
-        aitjeDotsCount,
-        // opacity: 200,
-        // thickness:
-        //   prevSetup.kwastje === 1
-        //     ? Math.ceil(w / dotsCount)
-        //     : prevSetup.thickness,
-        // growth: 7,
-      };
+      } else {
+        const coordinates = processAitje(aitje);
+        const aitjeDotsCount = Math.min(coordinates.length, 500);
+        nextSetup = {
+          ...prevSetup,
+          aitje,
+          isMerger: true,
+          aitjeDotsCount,
+        };
+      }
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
     });
