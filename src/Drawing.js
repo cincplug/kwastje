@@ -60,7 +60,7 @@ const Drawing = (props) => {
           stroke={setup.fgColor}
           opacity={setup.opacity / 255}
           className="aitje-outer"
-          transform={`translate(${x}, ${y})`}
+          transform={`translate(${x || 0}, ${y || 0})`}
         >
           {Kwastje}
         </g>
