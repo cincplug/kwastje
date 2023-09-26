@@ -227,7 +227,7 @@ const App = () => {
           }
         });
         if (setup.aitjeDotsCount) {
-          setup.aitjeDotsCount = null;
+          nextSetup.aitjeDotsCount = null;
         }
       }
       if (type === "checkbox") {
