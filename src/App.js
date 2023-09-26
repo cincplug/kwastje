@@ -97,14 +97,12 @@ const App = () => {
         nextSetup = {
           ...prevSetup,
           aitje,
-          isMerger: true,
           aitjeDotsCount,
         };
       } else {
         nextSetup = {
           ...prevSetup,
           aitje: null,
-          isMerger: false,
           stencil: 0,
           aitjeDotsCount: null,
         };
@@ -181,7 +179,7 @@ const App = () => {
       isMouseDown ||
       setup.isMouseLocked ||
       (setup.kwastje === 1 &&
-        (prevMouseX === mouseX || prevMouseY === mouseY || !setup.isMerger))
+        (prevMouseX === mouseX || prevMouseY === mouseY || !mapje))
     ) {
       setMouseX(event.pageX || event.touches[0].pageX);
       setMouseY(event.pageY || event.touches[0].pageY);

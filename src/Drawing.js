@@ -68,7 +68,7 @@ const Drawing = (props) => {
         </g>
       );
     }
-    return <>{mapje && setup.isMerger ? KwastjeMetAitje : Kwastje}</>;
+    return <>{mapje ? KwastjeMetAitje : Kwastje}</>;
   };
 
   return path.map((defaultCoords, index) => (

@@ -150,13 +150,6 @@
     "step": 1
   },
   {
-    "id": "isMerger",
-    "type": "checkbox",
-    "description": "Brings together kwastje and aitje",
-    "isRight": true,
-    "value": false
-  },
-  {
     "id": "stencil",
     "description": "Superimposes aitje over kwastje",
     "value": 0,
