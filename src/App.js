@@ -120,7 +120,16 @@ const App = () => {
     console.info(aitje);
     setSetup((prevSetup) => {
       let nextSetup;
-      if (!aitje) {
+      if (aitje) {
+        const coordinates = processAitje(aitje);
+        const aitjeDotsCount = Math.min(coordinates.length, 300);
+        nextSetup = {
+          ...prevSetup,
+          aitje,
+          isMerger: true,
+          aitjeDotsCount,
+        };
+      } else {
         nextSetup = {
           ...prevSetup,
           aitje: null,
@@ -128,15 +137,7 @@ const App = () => {
           isStencil: false,
           aitjeDotsCount: null,
         };
-      } else {
-        const coordinates = processAitje(aitje);
-        const aitjeDotsCount = Math.min(coordinates.length, 500);
-        nextSetup = {
-          ...prevSetup,
-          aitje,
-          isMerger: true,
-          aitjeDotsCount,
-        };
+        setMapje(null);
       }
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
