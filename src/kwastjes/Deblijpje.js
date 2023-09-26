@@ -14,8 +14,9 @@ const Deblijpje = (props) => {
     commonProps,
   } = props;
 
+  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
   const qG = setup.thickness * setup.growth;
-  let tR = qG * Math.max(0, Math.min(setup.dotsCount - index, index));
+  let tR = qG * Math.max(0, Math.min(dotsCount - index, index));
   const displacementMap = {
     14: [10, -20],
     15: [-20, -20],
@@ -23,7 +24,7 @@ const Deblijpje = (props) => {
     17: [-20, -20],
   };
   let [deltaX, deltaY] = [0, 0];
-  const displacement = displacementMap[setup.dotsCount - index];
+  const displacement = displacementMap[dotsCount - index];
   if (displacement) {
     [deltaX, deltaY] = displacement;
     deltaX *= qG;

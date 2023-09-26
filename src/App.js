@@ -84,7 +84,7 @@ const App = () => {
     });
     const filteredCoordinates = fitCoordinates(
       coordinates.flat(),
-      setup.dotsCount
+      setup.aitjeDotsCount || setup.dotsCount
     );
     setMapje(filteredCoordinates);
     return filteredCoordinates;
@@ -123,6 +123,7 @@ const App = () => {
           aitje: null,
           isMerger: false,
           isStencil: false,
+          aitjeDotsCount: null,
         };
       });
     }
@@ -130,18 +131,18 @@ const App = () => {
     processAitje(aitje);
     setSetup((prevSetup) => {
       const coordinates = processAitje(aitje);
-      const dotsCount = Math.min(coordinates.length, 300);
+      const aitjeDotsCount = Math.min(coordinates.length, 300);
       const nextSetup = {
         ...prevSetup,
         aitje,
         isMerger: true,
         // kwastje: 1,
-        dotsCount,
-        opacity: 200,
-        thickness:
-          prevSetup.kwastje === 1
-            ? Math.ceil(w / dotsCount)
-            : prevSetup.thickness,
+        aitjeDotsCount,
+        // opacity: 200,
+        // thickness:
+        //   prevSetup.kwastje === 1
+        //     ? Math.ceil(w / dotsCount)
+        //     : prevSetup.thickness,
         // growth: 7,
       };
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
@@ -223,6 +224,7 @@ const App = () => {
       if (event.movementX > 0 && isReversed) setIsReversed(false);
     }
     if (isMouseDown || setup.isMouseLocked) {
+      const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
       setPath((prevPath) => {
         if (setup.isCanvas) {
           if (setup.kwastje !== 2) {
@@ -231,9 +233,7 @@ const App = () => {
         } else {
           const randomIndex = Math.round(
             Math.random() * (path.length - 1) +
-              setup.dotsCount /
-                setup.modifier /
-                (setup.dotsCount / setup.modifier + 1)
+              dotsCount / setup.modifier / (dotsCount / setup.modifier + 1)
           );
           switch (setup.kwastje) {
             case 1:
@@ -259,7 +259,7 @@ const App = () => {
           }
         }
         const nextPath = prevPath.slice(
-          prevPath.length - setup.dotsCount,
+          prevPath.length - dotsCount,
           prevPath.length
         );
         return nextPath;
@@ -295,6 +295,9 @@ const App = () => {
             return prevPath.concat(fillPath(value - prevPath.length));
           }
         });
+        if (setup.aitjeDotsCount) {
+          setup.aitjeDotsCount = null;
+        }
       }
       if (type === "checkbox") {
         nextSetup[id] = !nextSetup[id];
@@ -304,14 +307,6 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
         updateKwastjeName(value);
-        if (value === 1) {
-          nextSetup.dotsCount = mapje
-            ? Math.min(prevSetup.dotsCount, mapje.length)
-            : prevSetup.dotsCount;
-          nextSetup.thickness = Math.ceil(w / nextSetup.dotsCount);
-          nextSetup.growth = 7;
-        }
-        // delete nextSetup.aitje;
       }
       return nextSetup;
     });
@@ -325,8 +320,11 @@ const App = () => {
   function getControls(controls) {
     return controls.map((item, index) => {
       const { id, type, min, max, step, description } = item;
-      const value = setup[id] || 0;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
+      let value = setup[id] || 0;
+      if (id === "dotsCount" && setup.aitjeDotsCount) {
+        value = setup.aitjeDotsCount;
+      }
       const checked = value === true;
       return (
         <fieldset

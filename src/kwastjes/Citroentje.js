@@ -12,6 +12,7 @@ const Citroentje = (props) => {
     // defaultY2,
     commonProps,
   } = props;
+  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
 
   return (
     <text
@@ -23,7 +24,7 @@ const Citroentje = (props) => {
         fontSize: index * 10 * setup.modifier,
       }}
     >
-      {index >= setup.dotsCount - 2 ? ",,ö,," : ".._.."}
+      {index >= dotsCount - 2 ? ",,ö,," : ".._.."}
     </text>
   );
 };

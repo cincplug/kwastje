@@ -13,6 +13,8 @@ const Trijntje = (props) => {
     commonProps,
   } = props;
 
+  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+
   return (
     <>
       <path
@@ -26,7 +28,7 @@ const Trijntje = (props) => {
         )}
         {...commonProps}
       />
-      {index === setup.dotsCount - 1 && (
+      {index === dotsCount - 1 && (
         <>
           <circle
             cx={defaultX1 - setup.growth * setup.thickness}
