@@ -87,7 +87,6 @@ const App = () => {
   }
 
   function setAitje(aitje) {
-    console.info(aitje);
     setSetup((prevSetup) => {
       let nextSetup;
       if (aitje) {
