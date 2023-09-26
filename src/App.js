@@ -226,37 +226,31 @@ const App = () => {
     if (isMouseDown || setup.isMouseLocked) {
       const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
       setPath((prevPath) => {
-        if (setup.isCanvas) {
-          if (setup.kwastje !== 2) {
-            prevPath[prevPath.length - 1] = [mouseX, mouseY];
-          }
-        } else {
-          const randomIndex = Math.round(
-            Math.random() * (path.length - 1) +
-              dotsCount / setup.modifier / (dotsCount / setup.modifier + 1)
-          );
-          switch (setup.kwastje) {
-            case 1:
-            case 2:
-            default:
-              prevPath[prevPath.length] = [mouseX, mouseY];
-              break;
-            case 3:
-              const [prevX, prevY] = prevPath[randomIndex];
-              prevPath[randomIndex + 1] = [mouseX, mouseY];
-              prevPath[randomIndex] = [
-                (prevX + mouseX * 5) / 6,
-                (prevY + mouseY * 5) / 6,
-              ];
-              break;
-            case 4:
-              prevPath[randomIndex] = [mouseX, mouseY];
-              prevPath[randomIndex + 1] = [
-                mouseX * setup.modifier,
-                mouseY * setup.modifier,
-              ];
-              break;
-          }
+        const randomIndex = Math.round(
+          Math.random() * (path.length - 1) +
+            dotsCount / setup.modifier / (dotsCount / setup.modifier + 1)
+        );
+        switch (setup.kwastje) {
+          case 1:
+          case 2:
+          default:
+            prevPath[prevPath.length] = [mouseX, mouseY];
+            break;
+          case 3:
+            const [prevX, prevY] = prevPath[randomIndex];
+            prevPath[randomIndex + 1] = [mouseX, mouseY];
+            prevPath[randomIndex] = [
+              (prevX + mouseX * 5) / 6,
+              (prevY + mouseY * 5) / 6,
+            ];
+            break;
+          case 4:
+            prevPath[randomIndex] = [mouseX, mouseY];
+            prevPath[randomIndex + 1] = [
+              mouseX * setup.modifier,
+              mouseY * setup.modifier,
+            ];
+            break;
         }
         const nextPath = prevPath.slice(
           prevPath.length - dotsCount,
@@ -264,22 +258,6 @@ const App = () => {
         );
         return nextPath;
       });
-      if (setup.isCanvas) {
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
-        ctx.strokeStyle = fgColor;
-        ctx.lineWidth =
-          (setup.thickness * count * setup.growth) / setup.dotsCount;
-        ctx.beginPath();
-        const [defaultX1, defaultY1] =
-          path[path.length ? path.length - 1 : [mouseX, mouseY]];
-        ctx.moveTo(defaultX1, defaultY1);
-        ctx.lineTo(mouseX, mouseY);
-        ctx.closePath();
-        ctx.stroke();
-      }
     }
   }
 
@@ -349,12 +327,6 @@ const App = () => {
   }
 
   function clear() {
-    if (setup.isCanvas) {
-      const canvas = document.getElementById("canvas");
-      const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, w, h);
-      setCount(0);
-    }
     const initialPath = fillPath();
     setPath(initialPath);
   }
@@ -365,24 +337,12 @@ const App = () => {
 
   function download() {
     const link = document.createElement("a");
-    if (setup.isCanvas) {
-      link.download = "download.png";
-      link.setAttribute(
-        "href",
-        document
-          .getElementById("canvas")
-          .toDataURL("image/png")
-          .replace("image/png", "image/octet-stream")
-      );
-      link.click();
-    } else {
-      link.download = "download.svg";
-      const svg = document.querySelector(".drawing");
-      const base64doc = btoa(unescape(encodeURIComponent(svg.outerHTML)));
-      const e = new MouseEvent("click");
-      link.href = "data:image/svg+xml;base64," + base64doc;
-      link.dispatchEvent(e);
-    }
+    link.download = "download.svg";
+    const svg = document.querySelector(".drawing");
+    const base64doc = btoa(unescape(encodeURIComponent(svg.outerHTML)));
+    const e = new MouseEvent("click");
+    link.href = "data:image/svg+xml;base64," + base64doc;
+    link.dispatchEvent(e);
   }
 
   function getRandomInteger(x, y) {
@@ -461,50 +421,42 @@ const App = () => {
         onTouchStart={(event) => handleMouseDown(event)}
         onTouchEnd={(event) => handleMouseUp(event)}
       >
-        <canvas
-          id="canvas"
-          className={`canvas ${bgClass}`}
-          width={w}
-          height={h}
-        />
-        {!setup.isCanvas && (
-          <svg
-            className={`drawing ${bgClass}`}
-            viewBox={`0 0 ${w} ${h}`}
-            xmlns="http://www.w3.org/2000/svg"
-            filter={
-              "url(#erode-filter) url(#dilate-filter) url(#blur-filter) url(#freehand-filter)"
-            }
-          >
-            {setup.hasBg && (
-              <rect
-                x={0}
-                y={0}
-                width={w}
-                height={h}
-                stroke="none"
-                fill={setup.bgColor}
-              ></rect>
-            )}
-            <g className="center-origin" transform-origin={"center"}>
-              <Filters {...{ w, h, mouseX, mouseY, setup }} />
-              <Drawing
-                {...{
-                  path,
-                  setup,
-                  mouseX,
-                  mouseY,
-                  w,
-                  h,
-                  fgColor,
-                  count,
-                  mapje,
-                  isReversed,
-                }}
-              />
-            </g>
-          </svg>
-        )}
+        <svg
+          className={`drawing ${bgClass}`}
+          viewBox={`0 0 ${w} ${h}`}
+          xmlns="http://www.w3.org/2000/svg"
+          filter={
+            "url(#erode-filter) url(#dilate-filter) url(#blur-filter) url(#freehand-filter)"
+          }
+        >
+          {setup.hasBg && (
+            <rect
+              x={0}
+              y={0}
+              width={w}
+              height={h}
+              stroke="none"
+              fill={setup.bgColor}
+            ></rect>
+          )}
+          <g className="center-origin" transform-origin={"center"}>
+            <Filters {...{ w, h, mouseX, mouseY, setup }} />
+            <Drawing
+              {...{
+                path,
+                setup,
+                mouseX,
+                mouseY,
+                w,
+                h,
+                fgColor,
+                count,
+                mapje,
+                isReversed,
+              }}
+            />
+          </g>
+        </svg>
       </main>
       {isInfoVisible && (
         <Splash
