@@ -92,7 +92,7 @@ const App = () => {
       let nextSetup;
       if (aitje) {
         const coordinates = processAitje(aitje);
-        const aitjeDotsCount = Math.min(coordinates.length, 300);
+        const aitjeDotsCount = Math.min(Math.max(coordinates.length, 50), 300);
         nextSetup = {
           ...prevSetup,
           aitje,

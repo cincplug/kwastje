@@ -358,9 +358,9 @@ button {
   svg {
     width: 100%;
     height: auto;
-  }
-  path {
-    fill: $color-neutral;
+    > * {
+      fill: $color-neutral;
+    }
   }
 }
 .add-aitje {
