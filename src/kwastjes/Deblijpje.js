@@ -7,10 +7,10 @@ const Deblijpje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
 
@@ -38,9 +38,9 @@ const Deblijpje = (props) => {
         <Blijpje
           {...{
             setup: { ...setup, modifier: 8 },
-            index: index + defaultX1 / 10,
-            defaultX1: defaultX1 + deltaX * setup.modifier,
-            defaultY1: defaultY1 + deltaY * setup.modifier,
+            index: index + x1 / 10,
+            x1: x1 + deltaX * setup.modifier,
+            y1: y1 + deltaY * setup.modifier,
             commonProps: { ...commonProps, strokeWidth: setup.thickness / 4 },
             tR,
           }}
@@ -50,8 +50,8 @@ const Deblijpje = (props) => {
         {...{
           setup,
           index,
-          defaultX1: defaultX1 + deltaX,
-          defaultY1: defaultY1 + deltaY,
+          x1: x1 + deltaX,
+          y1: y1 + deltaY,
           commonProps,
           tR,
         }}

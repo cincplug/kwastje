@@ -5,18 +5,18 @@ const Dennisje = (props) => {
     index,
     // w,
     h,
-    // defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    // x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
-  const x3 = defaultX2 + index * 2;
+  const x3 = x2 + index * 2;
   return (
     <circle
       cx={x3 * Math.PI}
-      cy={Math.cos(defaultY2 / (index + 0.1)) * Math.PI + h / 2}
-      r={Math.abs(random_unit_vector(defaultY1 * setup.modifier) / 5)}
+      cy={Math.cos(y2 / (index + 0.1)) * Math.PI + h / 2}
+      r={Math.abs(random_unit_vector(y1 * setup.modifier) / 5)}
       {...commonProps}
     />
   );

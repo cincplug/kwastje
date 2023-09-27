@@ -8,15 +8,15 @@ const Redeblijpje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   const qG = setup.thickness * setup.growth;
-  const tR = qG * index - (defaultX2 + defaultY2) / 3;
+  const tR = qG * index - (x2 + y2) / 3;
   return (
     <>
       {index % 2 === 0 ? (
@@ -24,8 +24,8 @@ const Redeblijpje = (props) => {
           {...{
             setup,
             index: index - 10,
-            defaultX1,
-            defaultY1: defaultY1 - 100,
+            x1,
+            y1: y1 - 100,
             commonProps,
             tR,
           }}
@@ -34,9 +34,9 @@ const Redeblijpje = (props) => {
         <Deblijpje
           {...{
             setup,
-            index: (defaultX2 + defaultY2) / 100,
-            defaultX1,
-            defaultY1,
+            index: (x2 + y2) / 100,
+            x1,
+            y1,
             commonProps: {...commonProps, strokeWidth: setup.thickness / 4},
             tR,
           }}

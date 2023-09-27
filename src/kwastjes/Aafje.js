@@ -6,19 +6,19 @@ const Aafje = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <polygon
-      points={`${defaultX1},${defaultY1} ${defaultX2},${defaultY2} ${Math.pow(
-        defaultY1,
+      points={`${x1},${y1} ${x2},${y2} ${Math.pow(
+        y1,
         setup.modifier
-      )},${Math.pow(defaultX1, setup.modifier)} ${defaultY2},${defaultX2}`}
+      )},${Math.pow(x1, setup.modifier)} ${y2},${x2}`}
       {...commonProps}
     />
   );

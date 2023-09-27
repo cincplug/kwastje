@@ -6,18 +6,18 @@ const Doetje = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <circle
-      cx={defaultX1}
-      cy={defaultY1}
-      r={Math.abs(defaultY2 - defaultX2 / setup.modifier)}
+      cx={x1}
+      cy={y1}
+      r={Math.abs(y2 - x2 / setup.modifier)}
       {...commonProps}
     />
   );

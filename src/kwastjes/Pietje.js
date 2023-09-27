@@ -6,19 +6,19 @@ const Pietje = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <ellipse
-      cx={defaultX1}
-      cy={defaultY1}
-      rx={defaultX2 / setup.modifier / 2}
-      ry={defaultY2 / setup.modifier / 2}
+      cx={x1}
+      cy={y1}
+      rx={x2 / setup.modifier / 2}
+      ry={y2 / setup.modifier / 2}
       {...commonProps}
     />
   );

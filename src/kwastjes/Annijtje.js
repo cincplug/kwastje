@@ -6,15 +6,15 @@ const Annijtje = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
-    <path d={`M${defaultX1}, ${defaultX2} L${defaultY1},${defaultY2}`}
+    <path d={`M${x1}, ${x2} L${y1},${y2}`}
       {...commonProps}
     />
   );

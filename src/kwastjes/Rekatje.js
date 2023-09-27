@@ -8,19 +8,19 @@ const Rekatje = (props) => {
     index,
     w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    x2,
+    y1,
+    // y2,
   } = props;
 
-  const welkeKatje = Math.round((katjes.length * defaultX1) / w);
+  const welkeKatje = Math.round((katjes.length * x1) / w);
   return (
     index && (
       <Katje
         {...props}
-        transform={`translate(${defaultX2}, ${defaultY1 / 2}) rotate(${
-          (welkeKatje * defaultX1) / ((1 / setup.modifier) * setup.thickness)
+        transform={`translate(${x2}, ${y1 / 2}) rotate(${
+          (welkeKatje * x1) / ((1 / setup.modifier) * setup.thickness)
         }) scale(${1 - 1 / index * setup.growth})`}
         style={{
           opacity:

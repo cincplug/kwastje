@@ -7,10 +7,10 @@ const Reblijpje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
 
@@ -21,8 +21,8 @@ const Reblijpje = (props) => {
       {...{
         setup,
         index,
-        defaultX1,
-        defaultY1,
+        x1,
+        y1,
         commonProps,
         tR,
       }}

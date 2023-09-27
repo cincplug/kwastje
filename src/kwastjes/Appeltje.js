@@ -6,27 +6,27 @@ const Appeltje = (props) => {
     index,
     // w,
     // h,
-    // defaultX1,
-    defaultX2,
-    defaultY1,
-    // defaultY2,
+    // x1,
+    x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
 
   const food = `(${
     index % 3 === 0
-      ? ".".repeat(Math.round(defaultX2 / 32))
-      : "`".repeat(Math.abs(10 - Math.round(defaultX2 / 32)))
+      ? ".".repeat(Math.round(x2 / 32))
+      : "`".repeat(Math.abs(10 - Math.round(x2 / 32)))
   })`;
   // const text = food.slice(Math.min(index, food.length - 1));
   return (
     <text
       {...props}
-      x={defaultX2}
-      y={defaultY1}
+      x={x2}
+      y={y1}
       {...commonProps}
       style={{
-        fontSize: (defaultY1 / 2) * setup.modifier,
+        fontSize: (y1 / 2) * setup.modifier,
       }}
     >
       {food}

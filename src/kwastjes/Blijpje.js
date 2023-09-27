@@ -6,10 +6,10 @@ const Blijpje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
 
@@ -20,7 +20,7 @@ const Blijpje = (props) => {
       {[0, 1, 2, 3].map((quadrant) => (
         <path
           {...commonProps}
-          transform={`translate(${defaultX1 - tR}, ${defaultY1 - tR}) rotate(${
+          transform={`translate(${x1 - tR}, ${y1 - tR}) rotate(${
             quadrant * 90 + index * setup.modifier
           }, ${tR}, ${tR})`}
           className={`radar__line radar__line--tick-${

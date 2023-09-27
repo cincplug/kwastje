@@ -7,14 +7,14 @@ const Rebonnetje = (props) => {
     // index,
     // w,
     // h,
-    // defaultX1,
-    // defaultX2,
-    // defaultY1,
-    defaultY2,
+    // x1,
+    // x2,
+    // y1,
+    y2,
     // commonProps,
   } = props;
 
-  const text = Math.round(defaultY2 / 5) / 9;
+  const text = Math.round(y2 / 5) / 9;
   return <Bonnetje {...props} text={text} />;
 };
 

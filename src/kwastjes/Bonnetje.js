@@ -6,24 +6,24 @@ const Bonnetje = (props) => {
     // index,
     w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
     text,
   } = props;
 
-  const defaultText = Math.round(defaultY2 / 5);
+  const defaultText = Math.round(y2 / 5);
   return (
     <text
       {...commonProps}
-      x={defaultX1}
-      y={defaultY1}
+      x={x1}
+      y={y1}
       style={{
-        fontSize: defaultX1 / 10 * setup.modifier,
-        letterSpacing: (w - defaultX1) / 100,
-        transform: `rotate(${90 - defaultX2}deg)`,
+        fontSize: x1 / 10 * setup.modifier,
+        letterSpacing: (w - x1) / 100,
+        transform: `rotate(${90 - x2}deg)`,
         fill: setup.fgColor,
         opacity: setup.opacity / 100 / 3,
       }}

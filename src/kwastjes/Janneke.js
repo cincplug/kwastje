@@ -6,22 +6,22 @@ const Janneke = (props) => {
     index,
     w,
     h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <polyline
-      points={`${defaultX1},${defaultY1} ${
-        Math.sin(defaultX1 * index) + w / 2
+      points={`${x1},${y1} ${
+        Math.sin(x1 * index) + w / 2
       },${
-        Math.cos(defaultY1) * index + h / 2
-      } ${defaultX2},${defaultY2} ${Math.abs(
-        Math.sin(defaultX2 * index + w / 2)
-      )},${Math.cos(defaultY2) * index + h / 2}`}
+        Math.cos(y1) * index + h / 2
+      } ${x2},${y2} ${Math.abs(
+        Math.sin(x2 * index + w / 2)
+      )},${Math.cos(y2) * index + h / 2}`}
       {...commonProps}
     />
   );

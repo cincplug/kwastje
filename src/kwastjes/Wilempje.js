@@ -6,10 +6,10 @@ const Wilempje = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
@@ -17,10 +17,10 @@ const Wilempje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${defaultX1},${defaultY1} L${defaultX1 + 30},${defaultY1} L${
-          defaultX1 + offset
-        },${defaultY1 + offset} ${(defaultX2 * offset) / 10},${
-          defaultY2 / offset
+        `M${x1},${y1} L${x1 + 30},${y1} L${
+          x1 + offset
+        },${y1 + offset} ${(x2 * offset) / 10},${
+          y2 / offset
         } Z`
       )}
       {...commonProps}

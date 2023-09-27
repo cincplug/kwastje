@@ -6,23 +6,23 @@ const Ineke = (props) => {
     // index,
     // w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <path
       d={commonProps.normalize(
-        `M${defaultX1},${defaultY1} Q${Math.pow(
-          defaultY1,
+        `M${x1},${y1} Q${Math.pow(
+          y1,
           setup.modifier
         )} ${Math.pow(
-          defaultX1,
+          x1,
           setup.modifier
-        )}, ${defaultY2} ${defaultX2} L${defaultX2},${defaultY2}`
+        )}, ${y2} ${x2} L${x2},${y2}`
       )}
       {...commonProps}
     />

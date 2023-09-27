@@ -6,10 +6,10 @@ const Trijntje = (props) => {
     index,
     w,
     h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
@@ -19,27 +19,27 @@ const Trijntje = (props) => {
     <>
       <path
         d={commonProps.normalize(
-          `M${defaultX1},${defaultY1} L${Math.max(
+          `M${x1},${y1} L${Math.max(
             w / 2,
-            Math.cos(defaultY2) * index
-          )},${defaultY2} Q${
-            Math.sin(defaultX2 * index) + w * setup.modifier
-          } ${defaultX1}, ${defaultX2} ${defaultY1}`
+            Math.cos(y2) * index
+          )},${y2} Q${
+            Math.sin(x2 * index) + w * setup.modifier
+          } ${x1}, ${x2} ${y1}`
         )}
         {...commonProps}
       />
       {index === dotsCount - 1 && (
         <>
           <circle
-            cx={defaultX1 - setup.growth * setup.thickness}
-            cy={defaultY1}
-            r={(w / defaultX2) * setup.thickness * setup.growth}
+            cx={x1 - setup.growth * setup.thickness}
+            cy={y1}
+            r={(w / x2) * setup.thickness * setup.growth}
             {...commonProps}
           ></circle>
           <circle
-            cx={defaultX1 + setup.growth * setup.thickness}
-            cy={defaultY1}
-            r={(h / defaultY2) * setup.thickness * setup.growth}
+            cx={x1 + setup.growth * setup.thickness}
+            cy={y1}
+            r={(h / y2) * setup.thickness * setup.growth}
             {...commonProps}
           ></circle>
         </>

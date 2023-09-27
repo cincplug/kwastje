@@ -6,22 +6,22 @@ const Bertje = (props) => {
     index,
     // w,
     // h,
-    // defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    // x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
-  const x3 = defaultX2 * index * 2;
-  const y3 = defaultY2 * index * setup.modifier;
+  const x3 = x2 * index * 2;
+  const y3 = y2 * index * setup.modifier;
   return (
     <>
-      <circle cx={x3} cy={y3} r={defaultY1 * setup.modifier} {...commonProps} />
+      <circle cx={x3} cy={y3} r={y1 * setup.modifier} {...commonProps} />
       <circle
         cx={x3}
-        cy={defaultY2 / 2}
-        r={(defaultY1 * setup.modifier) / 2}
+        cy={y2 / 2}
+        r={(y1 * setup.modifier) / 2}
         {...commonProps}
         fill={`${setup.fgColor}${parseInt(setup.opacity).toString(16)}`}
       />

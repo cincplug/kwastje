@@ -7,10 +7,10 @@ const Puntje = (props) => {
     index,
     // w,
     h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    // x2,
+    y1,
+    y2,
     // commonProps,
     isReversed,
   } = props;
@@ -34,14 +34,14 @@ const Puntje = (props) => {
 
   return (
     <g
-      transform={`translate(${defaultX1 / 2}, ${defaultY1 / 2}) rotate(${
+      transform={`translate(${x1 / 2}, ${y1 / 2}) rotate(${
         setup.modifier * index
       }) scale(${setup.thickness / setup.growth})`}
     >
       {setup.isSimple && (
-        <path transform={`translate(${defaultX1 / 2}, ${defaultY2 - h}) scale(${setup.thickness})`}
+        <path transform={`translate(${x1 / 2}, ${y2 - h}) scale(${setup.thickness})`}
           d="M244.512 176.045c0 37.878-30.753 68.584-68.689 68.584-37.936 0-68.689-30.706-68.689-68.584s30.753-68.583 68.689-68.583c37.936 0 68.689 30.705 68.689 68.583"
-          stroke="#FFB612" strokeWidth={Math.sinh(index / defaultY1 * setup.thickness)}
+          stroke="#FFB612" strokeWidth={Math.sinh(index / y1 * setup.thickness)}
         />
       )}
       <PuntjeSvg ref={puntjeRef} />;

@@ -7,10 +7,10 @@ const Katje = (props) => {
     index,
     w,
     // h,
-    defaultX1,
-    // defaultX2,
-    // defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    // y1,
+    // y2,
     commonProps,
     style,
     transform,
@@ -19,7 +19,7 @@ const Katje = (props) => {
 
   const breedtje = Math.min(400, w);
   const welkeKatjeRaw =
-    (katjes.length * (defaultX1 - breedtje / 2)) / (w - breedtje);
+    (katjes.length * (x1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
   const scale = welkeKatje - welkeKatjeRaw;
   if (index !== welkeKatje && setup.isSimple)

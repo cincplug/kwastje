@@ -7,15 +7,15 @@ const Redekatje = (props) => {
     index,
     w,
     // h,
-    // defaultX1,
-    defaultX2,
-    // defaultY1,
-    // defaultY2,
+    // x1,
+    x2,
+    // y1,
+    // y2,
     commonProps,
   } = props;
 
   const x = `${
-    (defaultX2 / 10) * setup.growth +
+    (x2 / 10) * setup.growth +
     Math.max(setup.thickness, index ** setup.modifier) * setup.thickness
   }`;
   return (

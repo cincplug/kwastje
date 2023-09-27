@@ -6,19 +6,19 @@ const Kieke = (props) => {
     // index,
     w,
     h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <path
-      d={`M${defaultX1},
-      ${defaultY1}
-      L${w / 2 - defaultX2 * Math.tan(defaultX1)},
-      ${h - defaultY2 * Math.atan(defaultY1)}`}
+      d={`M${x1},
+      ${y1}
+      L${w / 2 - x2 * Math.tan(x1)},
+      ${h - y2 * Math.atan(y1)}`}
       {...commonProps}
     />
   );

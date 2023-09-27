@@ -6,10 +6,10 @@ const Citroentje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
   const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
@@ -17,8 +17,8 @@ const Citroentje = (props) => {
   return (
     <text
       {...props}
-      x={defaultX1}
-      y={defaultY1}
+      x={x1}
+      y={y1}
       {...commonProps}
       style={{
         fontSize: index * 10 * setup.modifier,

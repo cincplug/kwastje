@@ -7,22 +7,22 @@ const Dekatje = (props) => {
     index,
     // w,
     // h,
-    defaultX1,
-    // defaultX2,
-    defaultY1,
-    // defaultY2,
+    x1,
+    // x2,
+    y1,
+    // y2,
     commonProps,
   } = props;
 
   const x = `${
-    (defaultX1 / 10) * setup.growth +
+    (x1 / 10) * setup.growth +
     Math.max(setup.thickness, index ** setup.modifier) * setup.thickness
   }`;
   return (
     <Katje
       {...props}
       transform={commonProps.normalize(
-        `translate(${x}, ${defaultY1 / 10 * setup.growth + index}) scale(${Math.min(
+        `translate(${x}, ${y1 / 10 * setup.growth + index}) scale(${Math.min(
           1,
           (1 / index) * setup.thickness * setup.growth
         )})`

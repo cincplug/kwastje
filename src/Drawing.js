@@ -10,13 +10,13 @@ const Drawing = (props) => {
   };
   const getKwastje = (defaultCoords, index) => {
     let coords = defaultCoords;
-    const [defaultX1, defaultY1] =
+    const [x1, y1] =
       index > 0
         ? path[index - 1].length > 2
           ? coords
           : path[index - 1]
         : coords;
-    const [defaultX2, defaultY2] = setup.isSimple
+    const [x2, y2] = setup.isSimple
       ? [mouseX, mouseY]
       : setup.kwastje > 1
       ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
@@ -39,10 +39,10 @@ const Drawing = (props) => {
           index,
           w,
           h,
-          defaultX1,
-          defaultX2,
-          defaultY1,
-          defaultY2,
+          x1,
+          x2,
+          y1,
+          y2,
           commonProps,
           isReversed,
         }}

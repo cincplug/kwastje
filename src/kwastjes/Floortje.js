@@ -6,21 +6,21 @@ const Floortje = (props) => {
     index,
     w,
     h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
   return (
     <polyline
-      points={`${defaultX1},${defaultY1} ${
-        Math.sin(defaultX1 * index) + w / 2
-      },${Math.cos(defaultY1) * 3 * index + h} ${defaultX1 - defaultY1 / 2},${
-        (defaultY1 - defaultX1) / 2
-      } ${defaultX2},${defaultY2} ${w / 2},${h / 2} ${
-        Math.cos(defaultY2) * index + h / 2
+      points={`${x1},${y1} ${
+        Math.sin(x1 * index) + w / 2
+      },${Math.cos(y1) * 3 * index + h} ${x1 - y1 / 2},${
+        (y1 - x1) / 2
+      } ${x2},${y2} ${w / 2},${h / 2} ${
+        Math.cos(y2) * index + h / 2
       }`}
       {...commonProps}
     />

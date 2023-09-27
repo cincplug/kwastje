@@ -6,26 +6,26 @@ const Colintje = (props) => {
     index,
     w,
     // h,
-    defaultX1,
-    defaultX2,
-    defaultY1,
-    defaultY2,
+    x1,
+    x2,
+    y1,
+    y2,
     commonProps,
   } = props;
 
-  // const x3 = defaultX2 + index * 2
-  // const y3 = defaultY2 * index * setup.modifier
+  // const x3 = x2 + index * 2
+  // const y3 = y2 * index * setup.modifier
   return (
     <>
       <circle
-        cx={defaultX1}
-        cy={defaultY2}
+        cx={x1}
+        cy={y2}
         r={w / (index + 0.1)}
         {...commonProps}
       />
       <circle
-        cx={defaultX2}
-        cy={defaultY1 * index}
+        cx={x2}
+        cy={y1 * index}
         r={index}
         {...commonProps}
       />
