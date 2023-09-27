@@ -5,8 +5,7 @@ import Doetje from "./Doetje";
 import Pietje from "./Pietje";
 import Aafje from "./Aafje";
 import Eefje from "./Eefje";
-import Dirkje from "./Dirkje";
-import Gertje from "./Gertje";
+import Yfke from "./Yfke";
 import Maaike from "./Maaike";
 import Hendrikje from "./Hendrikje";
 import Hylke from "./Hylke";
@@ -20,7 +19,8 @@ import Raalfje from "./Raalfje";
 import Neeltje from "./Neeltje";
 import Juultje from "./Juultje";
 import Trijntje from "./Trijntje";
-import Yfke from "./Yfke";
+import Dirkje from "./Dirkje";
+import Gertje from "./Gertje";
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
 import Dennisje from "./Dennisje";
@@ -58,8 +58,7 @@ export const customKwastjes = {
   Pietje,
   Aafje,
   Eefje,
-  Dirkje,
-  Gertje,
+  Yfke,
   Maaike,
   Hendrikje,
   Hylke,
@@ -73,7 +72,8 @@ export const customKwastjes = {
   Neeltje,
   Juultje,
   Trijntje,
-  Yfke,
+  Dirkje,
+  Gertje,
   Bertje,
   Colintje,
   Dennisje,

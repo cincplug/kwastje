@@ -1,33 +1,15 @@
 import React from "react";
+import Aafje from "./Aafje";
 
 const Yfke = (props) => {
-  const {
-    setup,
-    index,
-    w,
-    h,
-    x1,
-    x2,
-    y1,
-    y2,
-    commonProps,
-  } = props;
-
+  const { index, w, x1, y1 } = props;
   return (
-    <path
-      d={commonProps.normalize(
-        `M${x1},${y1} L${
-          Math.sin(y2) * index + h / 2
-        },${x2} C${w * setup.modifier} ,${
-          Math.cos(y2 * index) + (h / 2) * setup.modifier
-        } ${Math.cos(x2 * index) + w / 3 * setup.modifier}, ${Math.cos(
-          y1 * x1
-        )} ${Math.sin(x2 * index) + w / 2 * setup.modifier}, ${
-          Math.sin(x2) - y2 + h
-        } Z`
-      )}
-      {...commonProps}
-    />
+    <>
+      <Aafje {...props} stepCount={4} />
+      <g transform={`rotate(${index},${x1 - w},${y1 * index})`}>
+        <Aafje {...props} stepCount={2} />
+      </g>
+    </>
   );
 };
 
