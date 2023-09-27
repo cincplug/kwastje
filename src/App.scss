@@ -8,7 +8,7 @@ $color-white: #f4f8fa;
 $color-dark-lighter: #34383a;
 $color-dark: #24282a;
 $color-black: #14181a;
-$color-neutral: #c4c8ca;
+$color-neutral: #a4a8aa;
 $color-red: #d44;
 $color-dark-blue: #024;
 
@@ -16,9 +16,9 @@ $color-bg: $color-dark;
 $color-fg: $color-green;
 $color-brand: $color-green;
 $color-event: $color-white;
-$color-text: $color-white;
+$color-text: $color-neutral;
 
-$color-input: $color-white;
+$color-input: $color-neutral;
 $color-input-bg: $color-black;
 $color-input-border: rgba($color-input, 30%);
 $color-nav: rgba($color-black, 90%);
@@ -29,7 +29,6 @@ $handle-size: 4rem;
 $menu-width: 10rem;
 $filters-mobile-height: 3rem;
 $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
-
 
 @mixin center {
   position: absolute;
@@ -76,9 +75,30 @@ body {
 h1 {
   font-size: 3rem;
 }
+input,
 button {
   cursor: pointer;
+  transition: all 0.1s ease-in;
+  &:hover,
+  &:focus {
+    & + label {
+      color: $color-white;
+    }
+  }
 }
+input {
+  &:hover,
+  &:focus {
+    background: $color-white;
+  }
+}
+button {
+  &:hover,
+  &:focus {
+    filter: brightness(200%);
+  }
+}
+
 .wrapper {
   width: calc(100vw);
   height: calc(100vh);
@@ -271,17 +291,6 @@ button {
     height: 1.8rem;
     background: $color-dark-lighter;
     background-size: 200%;
-    transition: background-color 0.1s ease-in;
-    &:hover {
-      background-size: 50%;
-    }
-    &--save:hover {
-      background-color: $color-green;
-    }
-    &--clear:hover,
-    &--close:hover {
-      background-color: $color-red;
-    }
     &--close {
       width: auto;
       padding: 0 1rem;

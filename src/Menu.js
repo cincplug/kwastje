@@ -51,14 +51,14 @@ const Menu = (props) => {
   };
 
   const handleAitjeClick = (svgContent, index) => {
-    if(aitjeIndex !== index) {
+    if (aitjeIndex !== index) {
       setAitje(svgContent);
       setAitjeIndex(index);
     } else {
       setAitjeIndex(null);
       setAitje(null);
     }
-  }
+  };
 
   useEffect(() => {
     function importAll(r) {
@@ -85,48 +85,54 @@ const Menu = (props) => {
         className="menu__toggle"
         onClick={() => setIsMenuVisible(!isMenuVisible)}
         title="toggle"
+        aria-controls="mainNav"
+        aria-expanded={isMenuVisible}
       ></button>
       <nav
+        id="mainNav"
         className={`menu menu--controls menu--${menuVisibilityClass}`}
         onClick={() => !isMenuVisible && setIsMenuVisible(true)}
+        aria-label="Main menu"
+        hidden={!isMenuVisible}
       >
         {getControls(
-          defaultSetup.filter((control) => !control.isHidden && !control.isRight)
+          defaultSetup.filter(
+            (control) => !control.isHidden && !control.isRight
+          )
         )}
-          <button
-            className="control__input control__button control__button--save"
-            onClick={() => {
-              download();
-            }}
-          >
-            save
-          </button>
-          <button
-            className="control__input control__button control__button--save"
-            onClick={() => shuffle()}
-          >
-            shuffle
-          </button>
-          <button
-            className="control__input control__button control__button--clear"
-            onClick={() => {
-              clear();
-            }}
-          >
-            clear
-          </button>
-          <button
-            className="control__input control__button control__button--clear"
-            onClick={() => {
-              sessionStorage.clear();
-              window.location.reload();
-            }}
-          >
-            reset
-          </button>
+        <button
+          className="control__input control__button control__button--save"
+          onClick={() => {
+            download();
+          }}
+        >
+          save
+        </button>
+        <button
+          className="control__input control__button control__button--save"
+          onClick={() => shuffle()}
+        >
+          shuffle
+        </button>
+        <button
+          className="control__input control__button control__button--clear"
+          onClick={() => {
+            clear();
+          }}
+        >
+          clear
+        </button>
+        <button
+          className="control__input control__button control__button--clear"
+          onClick={() => {
+            sessionStorage.clear();
+            window.location.reload();
+          }}
+        >
+          reset
+        </button>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        
         {svgData.map((svgContent, index) => (
           <button
             key={index}
@@ -137,9 +143,12 @@ const Menu = (props) => {
             onClick={() => handleAitjeClick(svgContent, index)}
           />
         ))}
-        {setup.aitje && getControls(
-          defaultSetup.filter((control) => !control.isHidden && control.isRight)
-        )}
+        {setup.aitje &&
+          getControls(
+            defaultSetup.filter(
+              (control) => !control.isHidden && control.isRight
+            )
+          )}
         <label className="add-aitje">
           <input
             type="file"
