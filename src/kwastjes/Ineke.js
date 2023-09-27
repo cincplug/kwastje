@@ -3,8 +3,8 @@ import React from "react";
 const Ineke = (props) => {
   const {
     setup,
-    // index,
-    // w,
+    index,
+    w,
     // h,
     x1,
     x2,
@@ -13,16 +13,15 @@ const Ineke = (props) => {
     commonProps,
   } = props;
 
+  const garmentSize = 10 * setup.modifier;
+  
   return (
     <path
       d={commonProps.normalize(
         `M${x1},${y1} Q${Math.pow(
           y1,
           setup.modifier
-        )} ${Math.pow(
-          x1,
-          setup.modifier
-        )}, ${y2} ${x2} L${x2},${y2}`
+        ) / garmentSize} ${Math.pow(x1, setup.modifier) / garmentSize}, ${y2} ${x2} L${Math.min(w, x2 * index / garmentSize)},${y2} v${100 - garmentSize * index} h${5 * garmentSize} v${-100 + garmentSize * index} h${-4 * garmentSize}`
       )}
       {...commonProps}
     />

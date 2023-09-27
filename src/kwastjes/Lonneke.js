@@ -1,12 +1,10 @@
 import React from "react";
-import Ineke from "./Ineke";
 
 const Lonneke = (props) => {
   const {
-    setup,
     index,
     w,
-    // h,
+    h,
     x1,
     x2,
     y1,
@@ -14,19 +12,17 @@ const Lonneke = (props) => {
     commonProps,
   } = props;
 
-  const inekeProps = {...props, setup: {...setup, modifier: x1 / w}, commonProps: {...commonProps, strokeWidth: setup.thickness / 4}};
   return (
-    <>
-    <Ineke {...inekeProps}/>
-    <polygon
-      points={`${x1},${y1} ${
-        Math.sin(x1 * index) / setup.modifier
-      },${Math.cos(y1)} ${Math.sin(x2 * index) + w / 2},${
-        Math.cos(y2)
-      } ${x2},${y2}`}
+    <path
+      d={commonProps.normalize(
+        `M${x1},${y1} C${Math.round(Math.sin(x1 * index) + w / 2)},${Math.round(
+          Math.cos(y1 * index) + h / 2
+        )} ${x1},${y2} ${Math.round(
+          Math.abs(x2 * Math.sqrt(index))
+        )},${Math.round(Math.cos(y2 * index + h / 2))}}`
+      )}
       {...commonProps}
-      />
-      </>
+    />
   );
 };
 
