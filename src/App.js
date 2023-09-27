@@ -91,7 +91,7 @@ const App = () => {
       let nextSetup;
       if (aitje) {
         const coordinates = processAitje(aitje);
-        const aitjeDotsCount = Math.min(Math.max(coordinates.length, 50), 700);
+        const aitjeDotsCount = Math.min(Math.max(coordinates.length, 50), 500);
         nextSetup = {
           ...prevSetup,
           aitje,
