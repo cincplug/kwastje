@@ -3,11 +3,11 @@ import Annijtje from "./Annijtje";
 import Kieke from "./Kieke";
 import Doetje from "./Doetje";
 import Pietje from "./Pietje";
-import Eefje from "./Eefje";
 import Aafje from "./Aafje";
+import Eefje from "./Eefje";
 import Dirkje from "./Dirkje";
-import Maaike from "./Maaike";
 import Gertje from "./Gertje";
+import Maaike from "./Maaike";
 import Hendrikje from "./Hendrikje";
 import Hylke from "./Hylke";
 import Ineke from "./Ineke";
@@ -56,11 +56,11 @@ export const customKwastjes = {
   Kieke,
   Doetje,
   Pietje,
-  Eefje,
   Aafje,
+  Eefje,
   Dirkje,
-  Maaike,
   Gertje,
+  Maaike,
   Hendrikje,
   Hylke,
   Ineke,

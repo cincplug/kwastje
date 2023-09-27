@@ -7,18 +7,20 @@ const Aafje = (props) => {
     // w,
     // h,
     x1,
-    x2,
     y1,
-    y2,
     commonProps,
   } = props;
 
+  const stepCount = props.stepCount || 5,
+    stepSize = props.stepSize || 10;
+  const modifier = setup.modifier - stepSize;
   return (
-    <polygon
-      points={`${x1},${y1} ${x2},${y2} ${Math.pow(
-        y1,
-        setup.modifier
-      )},${Math.pow(x1, setup.modifier)} ${y2},${x2}`}
+    <path
+      d={commonProps.normalize(
+        `M${x1},${y1} ${[...Array(stepCount).keys()].map(
+          (step) => `h${stepSize * modifier} v${-stepSize * modifier}`
+        )}`
+      )}
       {...commonProps}
     />
   );
