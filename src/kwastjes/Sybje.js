@@ -13,16 +13,13 @@ const Sybje = (props) => {
     commonProps,
   } = props;
 
-  const x3 = x2 + index * 2;
-  const y3 = y2 * index * setup.modifier;
+  const lang = index * setup.modifier;
+  const kort = Math.min(index - 20, 1) * setup.modifier;  
+
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${w},0 L${
-          Math.pow(index, setup.modifier) + w / 2
-        },${(y2 / x3 + x2 * y3) / h} L${(x3 * index) / 100},${
-          y3 / 50
-        } L${y2},${x1} `
+        `M${x1 / 2},${y1} l${-kort}${-lang} ${[...Array(10).keys()].map((step) => `l${lang},${-lang} ${index < step ? `m${lang - kort},${lang - kort}` : `h${kort} v${-kort + index}`} v${-lang + index * step / 2}`)} Z`
       )}
       {...commonProps}
     />
