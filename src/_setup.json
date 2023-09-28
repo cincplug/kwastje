@@ -126,7 +126,7 @@
   {
     "id": "isFluent",
     "type": "checkbox",
-    "description": "Locks mouse as if constantly pressed",
+    "description": "Locks mouse as if constantly pressed, if you are more comfortable that way.\nYou can also turn it on and off by double-click",
     "value": false
   },
   {

@@ -281,6 +281,7 @@ button {
     }
     [type="color"] + & {
       display: none;
+      color: $color-white;
     }
   }
   &--buttons {

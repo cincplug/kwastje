@@ -335,7 +335,7 @@ const App = () => {
     mainElement.addEventListener("pointerup", handleMouseUp, {
       passive: false,
     });
-    mainElement.addEventListener("doubleclick", handleDoubleClick, {
+    document.addEventListener("dblclick", handleDoubleClick, {
       passive: false,
     });
     document.addEventListener("keyup", handleKeyUp, {
@@ -346,7 +346,7 @@ const App = () => {
       mainElement.removeEventListener("pointermove", handleMouseMove);
       mainElement.removeEventListener("pointerup", handleMouseUp);
       document.removeEventListener("keyup", handleKeyUp);
-      document.removeEventListener("keyup", handleDoubleClick);
+      document.removeEventListener("dblclick", handleDoubleClick);
     };
   }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
 
