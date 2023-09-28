@@ -262,7 +262,7 @@ const App = () => {
           <label className="control__label" htmlFor={id}>
             <span>
               {label}
-              {id === "kwastje" && <span>: {kwastjeName}</span>}
+              {id === "kwastje" && <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>}
             </span>
             {type === "range" && <span>{value}</span>}
           </label>
