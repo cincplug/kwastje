@@ -20,7 +20,7 @@ const Marijke = (props) => {
       d={commonProps.normalize(
         `M${x1},${y1} L${x1},${
           y2 * setup.modifier - 300
-        } L${x2},${y2 / setup.modifier}`
+        } L${x2},${y2 / setup.modifier} l${x2 / 10},${-y2 / 2} v${y2}`
       )}
       {...commonProps}
     />

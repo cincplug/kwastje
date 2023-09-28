@@ -18,9 +18,9 @@ const Roosje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${index * 10},${
-          (y2 / x3 + x2 * x3) / h
-        } L${(x3 * index) / 100},${y3 / 50} L${x2},${y1} `
+        `M${x1},${y1} c${index * 10},${
+          (y2 / x3 + x2) / h
+        } ${(x3 * index) / 50},${y3 / 50} ${x2 / 2},${y1} v${-x1}, l${y1 - x1},${index}`
       )}
       {...commonProps}
     />

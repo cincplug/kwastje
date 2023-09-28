@@ -3,8 +3,8 @@ import React from "react";
 const Maurtje = (props) => {
   const {
     setup,
-    // index,
-    // w,
+    index,
+    w,
     // h,
     x1,
     x2,
@@ -18,11 +18,10 @@ const Maurtje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${x1},${
+        `M${x1 / 10},${x2 / setup.modifier - w / index} L${x1},${
           y1 * setup.modifier
-        }  L${x1},${x2 * setup.modifier} L${x1},${
-          y2 * setup.modifier
-        }`
+        } h${x1 / index} a10 ${index} 0 0 1 ${x1 / index},${y1 / index} v${y1} a${index} 10 0 0 1 ${x1 / index}
+        } Z`
       )}
       {...commonProps}
     />
