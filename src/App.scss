@@ -29,6 +29,7 @@ $handle-size: 4rem;
 $menu-width: 10rem;
 $filters-mobile-height: 3rem;
 $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
+$button-height: 1.8rem;
 
 @mixin center {
   position: absolute;
@@ -60,7 +61,6 @@ $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
   border: none;
   outline: none;
   font-family: sans-serif;
-  font-weight: normal;
   letter-spacing: 0.3px;
   font-family: $base-font-family;
 }
@@ -143,7 +143,7 @@ button {
   padding: 1rem;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 0.8rem;
   background: $color-nav url(./img/bg-noise.png);
   color: $color-white;
@@ -202,7 +202,7 @@ button {
   justify-content: center;
   width: 100%;
   &--range {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 4;
     @include mobile-landscape {
       grid-column: span 2;
     }
@@ -210,11 +210,17 @@ button {
   &--checkbox {
     flex-direction: row;
     align-self: flex-start;
+    grid-column: span 2;
   }
   &--color {
-    @include mobile-landscape {
-      grid-column: span 2;
-    }
+    position: relative;
+  }
+  &--fgColor {
+    bottom: 0.5rem;
+    z-index: 2;
+  }
+  &--bgColor {
+    right: 1.5rem;
   }
   &__input {
     width: 100%;
@@ -282,15 +288,16 @@ button {
   &__button {
     color: $color-white;
     border: none;
-    border-radius: $base-font-size;
+    border-radius: $button-height / 2;
     font-weight: bold;
     font-size: 0.7rem;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
     line-height: 1.2rem;
-    height: 1.8rem;
+    height: $button-height;
     background: $color-dark-lighter;
     background-size: 200%;
+    grid-column: span 2;
     &--close {
       width: auto;
       padding: 0 1rem;

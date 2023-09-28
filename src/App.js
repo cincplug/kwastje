@@ -153,7 +153,7 @@ const App = () => {
       event.preventDefault();
     }
     // Check if previous path is finished, to avoid connecting the new path with the old one
-    // If it wasn't finished, mark it as finished by adding arbitrary string as a third member 
+    // If it wasn't finished, mark it as finished by adding arbitrary string as a third member
     const isPrevPathFinished = path[path.length - 1].length > 2;
     if (!isPrevPathFinished) {
       setPath((prevPath) => {
@@ -280,7 +280,10 @@ const App = () => {
             }}
           />
           <label className="control__label" htmlFor={id}>
-            {label} {id === "kwastje" && kwastjeName}{" "}
+            <span>
+              {label}
+              {id === "kwastje" && <span>: {kwastjeName}</span>}
+            </span>
             {type === "range" && <span>{value}</span>}
           </label>
         </fieldset>

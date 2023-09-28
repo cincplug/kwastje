@@ -100,13 +100,6 @@
     "value": true
   },
   {
-    "id": "isCentric",
-    "type": "checkbox",
-    "description": "Uses center of the image as a base in some kwastjes",
-    "isHidden": true,
-    "value": false
-  },
-  {
     "id": "isShaded",
     "type": "checkbox",
     "description": "Fills closed shapes with minimal opacity of foreground color",
