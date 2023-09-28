@@ -1,27 +1,24 @@
 import React from "react";
 
 const Floortje = (props) => {
-  const {
-    // setup,
-    index,
-    w,
-    h,
-    x1,
-    x2,
-    y1,
-    y2,
-    commonProps,
-  } = props;
+  const { setup, index, w, h, x1, y1, commonProps } = props;
+
+  const stepCount = props.stepCount || 10,
+    stepSize = props.stepSize || 10;
+  const modifier = setup.modifier - stepSize;
+
+  const angleRadians = (angleDegrees) => (angleDegrees * Math.PI) / 180;
 
   return (
-    <polyline
-      points={`${x1},${y1} ${
-        Math.sin(x1 * index) + w / 2
-      },${Math.cos(y1) * 3 * index + h} ${x1 - y1 / 2},${
-        (y1 - x1) / 2
-      } ${x2},${y2} ${w / 2},${h / 2} ${
-        Math.cos(y2) * index + h / 2
-      }`}
+    <path
+      d={commonProps.normalize(
+        `M${x1},${y1} ${[...Array(index).keys()].map(
+          (step) =>
+            ` l0,${step * Math.cos(angleRadians(index))} l${
+              step * Math.sin(angleRadians(index))
+            },0 `
+        )}`
+      )}
       {...commonProps}
     />
   );

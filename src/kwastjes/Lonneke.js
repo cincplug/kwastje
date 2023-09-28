@@ -1,7 +1,7 @@
 import React from "react";
 
 const Lonneke = (props) => {
-  const { setup, index, w, h, x1, x2, y1, y2, commonProps } = props;
+  const { setup, index, w, h, x1, y1, y2, commonProps } = props;
 
   return (
     <path
