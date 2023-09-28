@@ -34,18 +34,6 @@ const Deblijpje = (props) => {
   }
   return (
     <>
-      {setup.isSimple && (
-        <Blijpje
-          {...{
-            setup: { ...setup, modifier: 8 },
-            index: index + x1 / 10,
-            x1: x1 + deltaX * setup.modifier,
-            y1: y1 + deltaY * setup.modifier,
-            commonProps: { ...commonProps, strokeWidth: setup.thickness / 4 },
-            tR,
-          }}
-        />
-      )}
       <Blijpje
         {...{
           setup,

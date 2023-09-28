@@ -18,11 +18,10 @@ const Katje = (props) => {
   } = props;
 
   const breedtje = Math.min(400, w);
-  const welkeKatjeRaw =
-    (katjes.length * (x1 - breedtje / 2)) / (w - breedtje);
+  const welkeKatjeRaw = (katjes.length * (x1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
   const scale = welkeKatje - welkeKatjeRaw;
-  if (index !== welkeKatje && setup.isSimple)
+  if (index !== welkeKatje)
     welkeKatje = isReversed ? index : katjes.length - index;
   delete commonProps.normalize;
   return (

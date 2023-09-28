@@ -13,11 +13,10 @@ const Drawing = (props) => {
     // x1 and y1 are starting coordinates
     // Take them either from current position if previous path is finished
     const [x1, y1] = isPrevPathFinished ? coords : path[index - 1] || coords;
-    const [x2, y2] = setup.isSimple
-      ? [mouseX, mouseY]
-      : setup.kwastje > 1
-      ? [mouseX + index * setup.modifier, mouseY + index * setup.modifier]
-      : coords;
+    const [x2, y2] =
+      setup.kwastje > 1
+        ? [mouseX + index * setup.modifier, mouseY + index * setup.modifier]
+        : coords;
     const stroke = fgColor;
     const fill = setup.isShaded
       ? `${setup.bgColor}${(setup.opacity / 2).toString(16).padStart(2, "0")}`

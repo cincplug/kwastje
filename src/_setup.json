@@ -5,7 +5,7 @@
     "value": 1,
     "type": "range",
     "min": 1,
-    "max": 47,
+    "max": 51,
     "step": 1
   },
   {
@@ -110,12 +110,6 @@
     "id": "isShaded",
     "type": "checkbox",
     "description": "Fills closed shapes with minimal opacity of foreground color",
-    "value": false
-  },
-  {
-    "id": "isSimple",
-    "type": "checkbox",
-    "description": "Controls x2 and y2",
     "value": false
   },
   {
