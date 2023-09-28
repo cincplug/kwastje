@@ -38,17 +38,17 @@ import Timmetje from "./Timmetje";
 import Truusje from "./Truusje";
 import Wilempje from "./Wilempje";
 import Blijpje from "./Blijpje";
-import Deblijpje from "./Deblijpje";
-import Reblijpje from "./Reblijpje";
-import Redeblijpje from "./Redeblijpje";
+import Blijpje2 from "./Blijpje2";
+import Blijpje3 from "./Blijpje3";
+import Blijpje4 from "./Blijpje4";
 import Bonnetje from "./Bonnetje";
-import Rebonnetje from "./Rebonnetje";
+import Bonnetje2 from "./Bonnetje2";
 import Appeltje from "./Appeltje";
 import Citroentje from "./Citroentje";
 import Katje from "./Katje";
-import Dekatje from "./Dekatje";
-import Rekatje from "./Rekatje";
-import Redekatje from "./Redekatje";
+import Katje2 from "./Katje2";
+import Katje3 from "./Katje3";
+import Katje4 from "./Katje4";
 
 export const customKwastjes = {
   Luukje,
@@ -91,15 +91,15 @@ export const customKwastjes = {
   Truusje,
   Wilempje,
   Blijpje,
-  Deblijpje,
-  Reblijpje,
-  Redeblijpje,
+  Blijpje2,
+  Blijpje3,
+  Blijpje4,
   Bonnetje,
-  Rebonnetje,
+  Bonnetje2,
   Appeltje,
   Citroentje,
   Katje,
-  Dekatje,
-  Rekatje,
-  Redekatje,
+  Katje2,
+  Katje3,
+  Katje4,
 };
