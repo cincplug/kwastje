@@ -1,7 +1,7 @@
 import React from "react";
 import Blijpje from "./Blijpje";
 
-const Reblijpje = (props) => {
+const Blijpje3 = (props) => {
   const {
     setup,
     index,
@@ -30,4 +30,4 @@ const Reblijpje = (props) => {
   );
 };
 
-export default Reblijpje;
+export default Blijpje3;

@@ -1,7 +1,7 @@
 import React from "react";
 import Katje from "./Katje";
 
-const Dekatje = (props) => {
+const Katje2 = (props) => {
   const {
     setup,
     index,
@@ -34,4 +34,4 @@ const Dekatje = (props) => {
   );
 };
 
-export default Dekatje;
+export default Katje2;

@@ -2,7 +2,7 @@ import React from "react";
 import katjes from "./katjes";
 import Katje from "./Katje";
 
-const Rekatje = (props) => {
+const Katje3 = (props) => {
   const {
     setup,
     index,
@@ -33,4 +33,4 @@ const Rekatje = (props) => {
   );
 };
 
-export default Rekatje;
+export default Katje3;

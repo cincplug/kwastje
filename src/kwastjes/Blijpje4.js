@@ -1,8 +1,8 @@
 import React from "react";
 import Blijpje from "./Blijpje";
-import Deblijpje from "./Blijpje2";
+import Blijpje2 from "./Blijpje2";
 
-const Redeblijpje = (props) => {
+const Blijpje4 = (props) => {
   const {
     setup,
     index,
@@ -31,7 +31,7 @@ const Redeblijpje = (props) => {
           }}
         />
       ) : (
-        <Deblijpje
+        <Blijpje2
           {...{
             setup,
             index: (x2 + y2) / 100,
@@ -46,4 +46,4 @@ const Redeblijpje = (props) => {
   );
 };
 
-export default Redeblijpje;
+export default Blijpje4;
