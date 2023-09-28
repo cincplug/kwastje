@@ -10,19 +10,19 @@ const Redekatje = (props) => {
     // x1,
     x2,
     // y1,
-    // y2,
+    y2,
     commonProps,
   } = props;
 
   const x = `${
-    (x2 / 10) * setup.growth +
-    Math.max(setup.thickness, index ** setup.modifier) * setup.thickness
+    (x2 / y2) * setup.growth +
+    Math.max(setup.thickness, index * setup.modifier) * setup.thickness
   }`;
   return (
     <Katje
       {...props}
       transform={commonProps.normalize(
-        `translate(0, ${index * setup.growth}) scale(${setup.growth * setup.thickness / x * index})`
+        `translate(${x / setup.modifier}, ${index * setup.growth}) scale(${setup.growth * setup.thickness / x * index})`
       )}
       style={{
         opacity: Math.min(1, 1 / w * index * setup.opacity),

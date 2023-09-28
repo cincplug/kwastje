@@ -21,8 +21,6 @@ const Katje = (props) => {
   const welkeKatjeRaw = (katjes.length * (x1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
   const scale = welkeKatje - welkeKatjeRaw;
-  if (index !== welkeKatje)
-    welkeKatje = isReversed ? index : katjes.length - index;
   delete commonProps.normalize;
   return (
     <image

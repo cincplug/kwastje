@@ -9,7 +9,7 @@ const Rekatje = (props) => {
     w,
     // h,
     x1,
-    x2,
+    // x2,
     y1,
     // y2,
   } = props;
@@ -19,9 +19,9 @@ const Rekatje = (props) => {
     index && (
       <Katje
         {...props}
-        transform={`translate(${x2}, ${y1 / 2}) rotate(${
-          (welkeKatje * x1) / ((1 / setup.modifier) * setup.thickness)
-        }) scale(${1 - 1 / index * setup.growth})`}
+        transform={`rotate(${
+          (welkeKatje * x1) / y1 / ((1 / setup.modifier) * setup.thickness)
+        }) scale(${1 - (1 / index) * setup.growth})`}
         style={{
           opacity:
             index === welkeKatje

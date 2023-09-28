@@ -7,9 +7,9 @@ const Verleitje = (props) => {
     w,
     h,
     x1,
-    x2,
+    // x2,
     y1,
-    y2,
+    // y2,
     commonProps,
   } = props;
 

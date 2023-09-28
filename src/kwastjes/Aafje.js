@@ -8,8 +8,8 @@ const Aafje = (props) => {
     // h,
     x1,
     y1,
-    x2,
-    y2,
+    // x2,
+    // y2,
     commonProps,
   } = props;
 

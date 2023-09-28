@@ -1,7 +1,15 @@
 import React from "react";
 
 const Floortje = (props) => {
-  const { setup, index, w, h, x1, y1, commonProps } = props;
+  const {
+    setup,
+    index,
+    // w,
+    // h,
+    x1,
+    y1,
+    commonProps,
+  } = props;
 
   const stepSize = props.stepSize || 10;
   const modifier = setup.modifier - stepSize;
