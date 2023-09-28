@@ -152,10 +152,13 @@ const App = () => {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
-    if (!(path[path.length - 1].length > 2) && !setup.isJoint) {
+    // Check if previous path is finished, to avoid connecting the new path with the old one
+    // If it wasn't finished, mark it as finished by adding arbitrary string as a third member 
+    const isPrevPathFinished = path[path.length - 1].length > 2;
+    if (!isPrevPathFinished) {
       setPath((prevPath) => {
         const nextPath = prevPath.slice();
-        nextPath[nextPath.length - 1].push("end");
+        nextPath[nextPath.length - 1].push("stop");
         return nextPath;
       });
     }

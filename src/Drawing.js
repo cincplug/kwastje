@@ -8,18 +8,16 @@ const Drawing = (props) => {
     if (!dAttribute) return null;
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
-  const getKwastje = (defaultCoords, index) => {
-    let coords = defaultCoords;
+  const getKwastje = (coords, index) => {
+    const isPrevPathFinished = index > 0 && path[index - 1].length > 2;
     const [x1, y1] =
-      index > 0
-        ? path[index - 1].length > 2
-          ? coords
-          : path[index - 1]
-        : coords;
+      isPrevPathFinished
+        ? coords
+        : path[index - 1] || coords;
     const [x2, y2] = setup.isSimple
       ? [mouseX, mouseY]
       : setup.kwastje > 1
-      ? [(mouseX * index) / 100, mouseY + index * setup.modifier]
+      ? [mouseX + index * setup.modifier, mouseY + index * setup.modifier]
       : coords;
     const stroke = fgColor;
     const fill = setup.isShaded
@@ -69,9 +67,9 @@ const Drawing = (props) => {
     return <>{mapje ? KwastjeMetAitje : Kwastje}</>;
   };
 
-  return path.map((defaultCoords, index) => (
+  return path.map((coords, index) => (
     <React.Fragment key={`kma-${index}`}>
-      {getKwastje(defaultCoords, index)}
+      {getKwastje(coords, index)}
     </React.Fragment>
   ));
 };

@@ -107,13 +107,6 @@
     "value": false
   },
   {
-    "id": "isJoint",
-    "type": "checkbox",
-    "isHidden": true,
-    "description": "Connects lines in the kwastje, even after mouse is released",
-    "value": false
-  },
-  {
     "id": "isShaded",
     "type": "checkbox",
     "description": "Fills closed shapes with minimal opacity of foreground color",
