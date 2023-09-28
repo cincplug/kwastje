@@ -10,10 +10,9 @@ const Drawing = (props) => {
   };
   const getKwastje = (coords, index) => {
     const isPrevPathFinished = index > 0 && path[index - 1].length > 2;
-    const [x1, y1] =
-      isPrevPathFinished
-        ? coords
-        : path[index - 1] || coords;
+    // x1 and y1 are starting coordinates
+    // Take them either from current position if previous path is finished
+    const [x1, y1] = isPrevPathFinished ? coords : path[index - 1] || coords;
     const [x2, y2] = setup.isSimple
       ? [mouseX, mouseY]
       : setup.kwastje > 1
