@@ -94,24 +94,6 @@
     "step": 1
   },
   {
-    "id": "hasBg",
-    "type": "checkbox",
-    "description": "Turns background on and off",
-    "value": true
-  },
-  {
-    "id": "isShaded",
-    "type": "checkbox",
-    "description": "Fills closed shapes with minimal opacity of foreground color",
-    "value": false
-  },
-  {
-    "id": "isMouseLocked",
-    "type": "checkbox",
-    "description": "Locks mouse as if constantly pressed",
-    "value": false
-  },
-  {
     "id": "fgColor",
     "description": "Foreground color",
     "value": "#ffffff",
@@ -128,6 +110,24 @@
     "min": 0,
     "max": 100,
     "step": 1
+  },
+  {
+    "id": "hasBg",
+    "type": "checkbox",
+    "description": "Turns background on and off",
+    "value": true
+  },
+  {
+    "id": "isShaded",
+    "type": "checkbox",
+    "description": "Fills closed shapes with minimal opacity of foreground color",
+    "value": false
+  },
+  {
+    "id": "isFluent",
+    "type": "checkbox",
+    "description": "Locks mouse as if constantly pressed",
+    "value": false
   },
   {
     "id": "stencil",

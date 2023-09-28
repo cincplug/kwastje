@@ -170,7 +170,7 @@ const App = () => {
   function handleMouseMove(event) {
     if (
       isMouseDown ||
-      setup.isMouseLocked ||
+      setup.isFluent ||
       (setup.kwastje === 1 &&
         (prevMouseX === mouseX || prevMouseY === mouseY || !mapje))
     ) {
@@ -179,7 +179,7 @@ const App = () => {
       if (event.movementX < 0 && !isReversed) setIsReversed(true);
       if (event.movementX > 0 && isReversed) setIsReversed(false);
     }
-    if (isMouseDown || setup.isMouseLocked) {
+    if (isMouseDown || setup.isFluent) {
       const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
       setPath((prevPath) => {
         const randomIndex = Math.round(
@@ -248,7 +248,7 @@ const App = () => {
 
   function handleDoubleClick(event) {
     setSetup((prevSetup) => {
-      return { ...prevSetup, isMouseLocked: !prevSetup.isMouseLocked };
+      return { ...prevSetup, isFluent: !prevSetup.isFluent };
     });
   }
 

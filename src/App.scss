@@ -159,7 +159,8 @@ button {
     left: 0;
     padding-top: 3rem;
     @include mobile-landscape {
-      width: 20rem;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      width: 70%;
     }
   }
   &--filters {
@@ -167,6 +168,9 @@ button {
     position: absolute;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-auto-rows: max-content;
+    @include mobile-landscape {
+      width: 30%;
+    }
     > fieldset {
       grid-column: span 4;
     }
@@ -199,7 +203,7 @@ button {
 .control {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   &--range {
     grid-column: 1 / span 4;
@@ -257,7 +261,6 @@ button {
   &__label {
     color: $color-text;
     font-size: $base-font-size;
-    margin: 0.3rem auto 0;
     width: 100%;
     user-select: none;
     text-transform: capitalize;
