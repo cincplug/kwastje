@@ -16,9 +16,9 @@ const Dirkje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${
+        `M${x1},${y1} ${index < 2 ? `L${
           Math.sin(y2) * index + h / 2
-        },${x2} C${w * setup.modifier} ,${
+        },${x2}` : `h20`} C${w * setup.modifier} ,${
           Math.cos(y2 * index) + (h / 2) * setup.modifier
         } ${Math.cos(x2 * index) + w / 3 * setup.modifier}, ${Math.cos(
           y1 * x1

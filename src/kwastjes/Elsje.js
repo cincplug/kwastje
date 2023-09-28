@@ -18,11 +18,7 @@ const Elsje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${x2},${y2} L${
-          x2 * 5
-        },${y2 + 500 * setup.modifier} L${x2 - 70},${
-          y2 - 500 * setup.modifier
-        }`
+        `M${x1},${y1} L${x2},${y2} L${x2},${y1 * setup.modifier}`
       )}
       {...commonProps}
     />

@@ -3,7 +3,7 @@ import React from "react";
 const Liesje = (props) => {
   const {
     setup,
-    // index,
+    index,
     // w,
     // h,
     x1,
@@ -18,9 +18,9 @@ const Liesje = (props) => {
   return (
     <path
       d={commonProps.normalize(
-        `M${x1},${y1} L${x1 * 3},${y1 / 8} L${
-          x1 * setup.modifier
-        },${-y1 * 2} L${x1},${y1}`
+        `M${x1},${y1} h${
+          x1 - y1 * setup.modifier
+        } v${-y1 / index} Z`
       )}
       {...commonProps}
     />

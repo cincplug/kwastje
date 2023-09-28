@@ -11,7 +11,7 @@ const Dennisje = (props) => {
     y2,
     commonProps,
   } = props;
-  const x3 = x2 + index * 2;
+  const x3 = x2 / 2 + index * 2;
   return (
     <circle
       cx={x3 * Math.PI}

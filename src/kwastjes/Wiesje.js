@@ -3,7 +3,7 @@ import React from "react";
 const Wiesje = (props) => {
   const {
     // setup,
-    index,
+    // index,
     w,
     h,
     x1,
@@ -14,13 +14,9 @@ const Wiesje = (props) => {
   } = props;
 
   return (
-    <path
+    <path transform={`scale(0.5) translate(${x1}, ${y1})`}
       d={commonProps.normalize(
-        `M${x1},${y1} L${Math.sin(x2 * index) + w / 2},${
-          Math.cos(y2 * index) + h / 2
-        } Q${x2} ${y2}, ${y1} ${x1} L${
-          Math.cos(y2) * index + h / 2
-        },${x2}`
+        `M${x1},${y1} q${x2} ${y2}, ${y1} ${x1} L${w/2}, ${h/2} q${-x1} ${-y1}, ${-y2} ${-x2}  `
       )}
       {...commonProps}
     />
