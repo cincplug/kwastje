@@ -30,14 +30,14 @@ const Menu = (props) => {
       reader.readAsText(file);
     } else {
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = (e) => {
         const imageSrc = e.target.result;
         const trace = new Potrace();
         trace.setParameters({
           turdSize: 1020,
           optTolerance: 800,
         });
-        trace.loadImage(imageSrc, function (error) {
+        trace.loadImage(imageSrc, (error) => {
           if (error) {
             console.error("Error loading image:", error);
             return;
@@ -61,7 +61,7 @@ const Menu = (props) => {
   };
 
   useEffect(() => {
-    function importAll(r) {
+    const importAll = (r) => {
       return r.keys().map(r);
     }
     const aitjes = importAll(

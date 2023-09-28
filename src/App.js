@@ -27,6 +27,14 @@ const App = () => {
   const [setup, setSetup] = useState(initialSetup);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
+
+  const fillPath = (
+    length = setup.dotsCount,
+    defaultValue = [w / 2, h / 2]
+  ) => {
+    return new Array(length + 1).fill(defaultValue);
+  };
+
   const initialPath = fillPath();
   const [path, setPath] = useState(initialPath);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -43,25 +51,25 @@ const App = () => {
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
 
-  function usePrevious(value) {
+  const usePrevious = (value) => {
     const ref = useRef();
     useEffect(() => {
       ref.current = value;
     });
     return ref.current;
-  }
+  };
 
   const prevMouseX = usePrevious(mouseX);
   const prevMouseY = usePrevious(mouseY);
 
-  function processAitje(svg) {
+  const processAitje = (svg) => {
     const parser = new DOMParser();
     const aitje = parser.parseFromString(svg, "text/html").body.firstChild;
     const coordinates = [];
     aitje.querySelectorAll("path").forEach((pathElement) => {
       const dAttribute = pathElement.getAttribute("d");
       const strippedPath = dAttribute
-        .replace(/[A-Za-z]\s*[\d\s,]*/g, function (match) {
+        .replace(/[A-Za-z]\s*[\d\s,]*/g, (match) => {
           return match
             .trim()
             .split(/[A-Za-z,\s]+/)
@@ -84,9 +92,9 @@ const App = () => {
     const filteredCoordinates = coordinates.flat();
     setMapje(filteredCoordinates);
     return filteredCoordinates;
-  }
+  };
 
-  function setAitje(aitje) {
+  const setAitje = (aitje) => {
     setSetup((prevSetup) => {
       let nextSetup;
       if (aitje) {
@@ -109,46 +117,18 @@ const App = () => {
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       return nextSetup;
     });
-  }
+  };
 
-  useEffect(() => {
-    updateKwastjeName();
-    const mainElement = mainRef.current;
-    mainElement.addEventListener("pointerdown", handleMouseDown, {
-      passive: false,
-    });
-    mainElement.addEventListener("pointermove", handleMouseMove, {
-      passive: false,
-    });
-    mainElement.addEventListener("pointerup", handleMouseUp, {
-      passive: false,
-    });
-    mainElement.addEventListener("doubleclick", handleDoubleClick, {
-      passive: false,
-    });
-    document.addEventListener("keyup", handleKeyUp, {
-      passive: false,
-    });
-    return () => {
-      mainElement.removeEventListener("pointerdown", handleMouseDown);
-      mainElement.removeEventListener("pointermove", handleMouseMove);
-      mainElement.removeEventListener("pointerup", handleMouseUp);
-      document.removeEventListener("keyup", handleKeyUp);
-      document.removeEventListener("keyup", handleDoubleClick);
-      // cancelAnimationFrame(animationFrameId);
-    };
-  }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
-
-  function handleMouseDown(event) {
+  const handleMouseDown = (event) => {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
     if (!isMouseDown) {
       setIsMouseDown(true);
     }
-  }
+  };
 
-  function handleMouseUp(event) {
+  const handleMouseUp = (event) => {
     if (event.pointerType === "mouse") {
       event.preventDefault();
     }
@@ -165,9 +145,9 @@ const App = () => {
     if (isMouseDown) {
       setIsMouseDown(false);
     }
-  }
+  };
 
-  function handleMouseMove(event) {
+  const handleMouseMove = (event) => {
     if (
       isMouseDown ||
       setup.isFluent ||
@@ -215,9 +195,9 @@ const App = () => {
         return nextPath;
       });
     }
-  }
+  };
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     setSetup((prevSetup) => {
       const { id, value, type } = event.target;
       const nextSetup = { ...prevSetup };
@@ -244,20 +224,20 @@ const App = () => {
       }
       return nextSetup;
     });
-  }
+  };
 
-  function handleDoubleClick(event) {
+  const handleDoubleClick = () => {
     setSetup((prevSetup) => {
       return { ...prevSetup, isFluent: !prevSetup.isFluent };
     });
-  }
+  };
 
-  function updateKwastjeName(value = setup.kwastje) {
+  const updateKwastjeName = (value = setup.kwastje) => {
     const kwastjeNames = Object.keys(customKwastjes);
     setKwastjeName(kwastjeNames[value - 1]);
-  }
+  };
 
-  function getControls(controls) {
+  const getControls = (controls) => {
     return controls.map((item, index) => {
       const { id, type, min, max, step, description } = item;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
@@ -289,18 +269,14 @@ const App = () => {
         </fieldset>
       );
     });
-  }
+  };
 
-  function clear() {
+  const clear = () => {
     const initialPath = fillPath();
     setPath(initialPath);
-  }
+  };
 
-  function fillPath(length = setup.dotsCount, defaultValue = [w / 2, h / 2]) {
-    return new Array(length + 1).fill(defaultValue);
-  }
-
-  function download() {
+  const download = () => {
     const link = document.createElement("a");
     link.download = "download.svg";
     const svg = document.querySelector(".drawing");
@@ -308,21 +284,21 @@ const App = () => {
     const e = new MouseEvent("click");
     link.href = "data:image/svg+xml;base64," + base64doc;
     link.dispatchEvent(e);
-  }
+  };
 
-  function getRandomInteger(x, y) {
+  const getRandomInteger = (x, y) => {
     return (
       Math.floor(Math.random() * (Math.floor(y) - Math.ceil(x) + 1)) +
       Math.ceil(x)
     );
-  }
+  };
 
-  function shuffle() {
+  const shuffle = () => {
     setSetup((prevSetup) => {
       const { min, max } = defaultSetup.find((item) => item.id === "kwastje");
       return { ...prevSetup, kwastje: getRandomInteger(min, max) };
     });
-  }
+  };
 
   const handleKeyUp = (event) => {
     switch (event.key) {
@@ -346,6 +322,33 @@ const App = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    updateKwastjeName();
+    const mainElement = mainRef.current;
+    mainElement.addEventListener("pointerdown", handleMouseDown, {
+      passive: false,
+    });
+    mainElement.addEventListener("pointermove", handleMouseMove, {
+      passive: false,
+    });
+    mainElement.addEventListener("pointerup", handleMouseUp, {
+      passive: false,
+    });
+    mainElement.addEventListener("doubleclick", handleDoubleClick, {
+      passive: false,
+    });
+    document.addEventListener("keyup", handleKeyUp, {
+      passive: false,
+    });
+    return () => {
+      mainElement.removeEventListener("pointerdown", handleMouseDown);
+      mainElement.removeEventListener("pointermove", handleMouseMove);
+      mainElement.removeEventListener("pointerup", handleMouseUp);
+      document.removeEventListener("keyup", handleKeyUp);
+      document.removeEventListener("keyup", handleDoubleClick);
+    };
+  }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
