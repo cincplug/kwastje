@@ -4,22 +4,29 @@ const Sybje = (props) => {
   const {
     setup,
     index,
-    w,
-    h,
+    // w,
+    // h,
     x1,
-    x2,
+    // x2,
     y1,
-    y2,
+    // y2,
     commonProps,
   } = props;
 
-  const lang = index * setup.modifier;
-  const kort = Math.min(index - 20, 1) * setup.modifier;  
+  const langje = index * setup.modifier;
+  const kortje = Math.min(index - 20, 1) * setup.modifier;
 
   return (
     <path
       d={commonProps.normalize(
-        `M${x1 / 2},${y1} l${-kort}${-lang} ${[...Array(10).keys()].map((step) => `l${lang},${-lang} ${index < step ? `m${lang - kort},${lang - kort}` : `h${kort} v${-kort + index}`} v${-lang + index * step / 2}`)} Z`
+        `M${x1 / 2},${y1} l${-kortje}${-langje} ${[...Array(10).keys()].map(
+          (step) =>
+            `l${langje},${-langje} ${
+              index < step
+                ? `m${langje - kortje},${langje - kortje}`
+                : `h${kortje} v${-kortje + index}`
+            } v${-langje + (index * step) / 2}`
+        )} Z`
       )}
       {...commonProps}
     />
