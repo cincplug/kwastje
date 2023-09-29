@@ -50,6 +50,54 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
+  const [altBgIndex, setAltBgIndex] = useState(0);
+
+  const altBg = [
+    "#2233aa",
+    "#aa3322",
+    "#22aa33",
+    "#22aabb",
+    "#bbaa22",
+    "#4488dd",
+    "#dd4488",
+    "#88dd44",
+    "#cc55aa",
+    "#aacc44",
+  ];
+  const [count, setCount] = React.useState(0);
+  const requestRef = React.useRef();
+  const previousTimeRef = React.useRef();
+
+  const animate = (time) => {
+    if (previousTimeRef.current !== undefined) {
+      const deltaTime = time - previousTimeRef.current;
+      setCount((prevCount) => {
+        const nextCount = (prevCount + deltaTime * 0.01) % 100;
+        const nr = Math.round(nextCount);
+        if (nr === 100) {
+          setAltBgIndex((prevAltBgIndex) => {
+            const nextAltBgIndex =
+              prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
+            setSetup((prevSetup) => {
+              return {
+                ...prevSetup,
+                bgColor: altBg[nextAltBgIndex],
+              };
+            });
+            return nextAltBgIndex;
+          });
+        }
+        return nextCount;
+      });
+    }
+    previousTimeRef.current = time;
+    requestRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, []);
 
   const usePrevious = (value) => {
     const ref = useRef();
@@ -262,7 +310,9 @@ const App = () => {
           <label className="control__label" htmlFor={id}>
             <span>
               {label}
-              {id === "kwastje" && <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>}
+              {id === "kwastje" && (
+                <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>
+              )}
             </span>
             {type === "range" && <span>{value}</span>}
           </label>
@@ -398,6 +448,7 @@ const App = () => {
         >
           {setup.hasBg && (
             <rect
+              className="bg"
               x={0}
               y={0}
               width={w}
