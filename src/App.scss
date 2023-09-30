@@ -86,13 +86,9 @@ button {
     }
   }
 }
-input {
-  &:hover,
-  &:focus {
-    background: $color-white;
-  }
-}
-button {
+input,
+button,
+.control__button {
   &:hover,
   &:focus {
     filter: brightness(200%);
@@ -390,14 +386,17 @@ button {
   }
 }
 .add-aitje {
+  position: absolute;
+  left: -10000px;
+}
+
+.add-aitje + label,
+.slideshow {
   grid-column: span 4;
   line-height: $button-height;
   cursor: pointer;
   text-align: center;
   margin: 0;
-  input {
-    display: none;
-  }
 }
 .katje {
   transform-origin: center;

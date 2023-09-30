@@ -51,6 +51,7 @@ const App = () => {
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
   const [, setAltBgIndex] = useState(0);
+  const [isSlideshow, setIsSlideshow] = useState(false);
 
   const altBg = [
     "#2233aa",
@@ -112,17 +113,20 @@ const App = () => {
     },
   ];
 
-  useEffect(() => {
+  const startSlideshow = () => {
     tasks.forEach((task) => {
       task.requestRef.current = requestAnimationFrame(task.task);
     });
-
     return () => {
-      tasks.forEach((task) => {
-        cancelAnimationFrame(task.requestRef.current);
-      });
+      stopSlideshow();
     };
-  }, []);
+  };
+
+  const stopSlideshow = () => {
+    tasks.forEach((task) => {
+      cancelAnimationFrame(task.requestRef.current);
+    });
+  };
 
   const usePrevious = (value) => {
     const ref = useRef();
@@ -373,6 +377,17 @@ const App = () => {
     }
   };
 
+  const toggleSlideshow = () => {
+    setIsSlideshow((prevIsSlideshow) => {
+      if (prevIsSlideshow) {
+        stopSlideshow();
+      } else {
+        startSlideshow();
+      }
+      return !prevIsSlideshow;
+    });
+  };
+
   useEffect(() => {
     updateKwastjeName();
     const mainElement = mainRef.current;
@@ -402,35 +417,39 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      <Menu
-        {...{
-          isMenuVisible,
-          setIsMenuVisible,
-          menuVisibilityClass,
-          getControls,
-          download,
-          clear,
-          shuffle,
-          promptje,
-          setPromptje,
-          hoogtje,
-          setHoogtje,
-          breedtje,
-          setBreedtje,
-          isLoading,
-          setIsLoading,
-          setAitje,
-          processAitje,
-          path,
-          setup,
-          mouseX,
-          mouseY,
-          w,
-          h,
-          fgColor,
-          mapje,
-        }}
-      />
+      {!isSlideshow && (
+        <Menu
+          {...{
+            isMenuVisible,
+            setIsMenuVisible,
+            menuVisibilityClass,
+            getControls,
+            download,
+            clear,
+            shuffle,
+            promptje,
+            setPromptje,
+            hoogtje,
+            setHoogtje,
+            breedtje,
+            setBreedtje,
+            isLoading,
+            setIsLoading,
+            setAitje,
+            processAitje,
+            toggleSlideshow,
+            path,
+            setup,
+            mouseX,
+            mouseY,
+            w,
+            h,
+            fgColor,
+            mapje,
+            isSlideshow,
+          }}
+        />
+      )}
       <main
         ref={mainRef}
         className="content"

@@ -13,6 +13,7 @@ const Menu = (props) => {
     clear,
     shuffle,
     setAitje,
+    toggleSlideshow,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
@@ -63,7 +64,7 @@ const Menu = (props) => {
   useEffect(() => {
     const importAll = (r) => {
       return r.keys().map(r);
-    }
+    };
     const aitjes = importAll(
       require.context("./aitjes/", false, /\.(png|jpe?g|svg)$/)
     );
@@ -149,15 +150,30 @@ const Menu = (props) => {
               (control) => !control.isHidden && control.isRight
             )
           )}
-        <label className="add-aitje">
-          <input
-            type="file"
-            accept=".svg, .png, .jpg"
-            onChange={handleFileUpload}
-            placeholder="Add an aitje"
-          />
-          +
+        <input
+          type="file"
+          accept=".svg, .png, .jpg"
+          onChange={handleFileUpload}
+          placeholder="Add an aitje"
+          key={"add-aitje-input"}
+          id="add-aitje"
+          className="add-aitje"
+        />
+        <label
+          htmlFor="add-aitje"
+          className="control__button"
+          key={"add-aitje-label"}
+        >
+          Add merger
         </label>
+        <button
+          htmlFor="slideshow"
+          className="control__button slideshow"
+          key={"slideshow"}
+          onClick={toggleSlideshow}
+        >
+          Start slideshow
+        </button>
       </nav>
     </>
   );
