@@ -7,27 +7,27 @@ import Aafje from "./Aafje";
 import Eefje from "./Eefje";
 import Yfke from "./Yfke";
 import Maaike from "./Maaike";
-import Hendrikje from "./Hendrikje";
 import Hylke from "./Hylke";
 import Ineke from "./Ineke";
 import Janneke from "./Janneke";
 import Lonneke from "./Lonneke";
 import Floortje from "./Floortje";
+import Trijntje from "./Trijntje";
+import Hendrikje from "./Hendrikje";
 import Verleitje from "./Verleitje";
+import Juultje from "./Juultje";
 import Wiesje from "./Wiesje";
 import Raalfje from "./Raalfje";
 import Neeltje from "./Neeltje";
-import Juultje from "./Juultje";
-import Trijntje from "./Trijntje";
 import Dirkje from "./Dirkje";
 import Gertje from "./Gertje";
+import Katrientje from "./Katrientje";
 import Bertje from "./Bertje";
 import Colintje from "./Colintje";
 import Dennisje from "./Dennisje";
 import Elsje from "./Elsje";
-import Katrientje from "./Katrientje";
-import Laurtje from "./Laurtje";
 import Liesje from "./Liesje";
+import Laurtje from "./Laurtje";
 import Maurtje from "./Maurtje";
 import Marijke from "./Marijke";
 import Roosje from "./Roosje";
@@ -49,6 +49,7 @@ import Katje from "./Katje";
 import Katje2 from "./Katje2";
 import Katje3 from "./Katje3";
 import Katje4 from "./Katje4";
+
 
 export const customKwastjes = {
   Luukje,
