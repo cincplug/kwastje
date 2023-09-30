@@ -26,7 +26,7 @@ const Blijpje4 = (props) => {
             setup,
             index: index - 10,
             x1,
-            y1: y1 - 100,
+            y1,
             commonProps,
             normalize,
             tR,
@@ -41,9 +41,9 @@ const Blijpje4 = (props) => {
             y1,
             commonProps: {
               ...commonProps,
-              normalize,
-              strokeWidth: setup.thickness / 4,
+              strokeWidth: setup.thickness / setup.modifier,
             },
+            normalize,
             tR,
           }}
         />
