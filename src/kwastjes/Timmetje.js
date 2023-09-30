@@ -11,6 +11,7 @@ const Timmetje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
   const x3 = x2 + index * 2;
@@ -18,10 +19,8 @@ const Timmetje = (props) => {
 
   return (
     <path
-      d={commonProps.normalize(
-        `M${x1},${y1} L${x1},${x2} L${
-          x1 * y3 * 1000
-        },${x3 * Math.random() * 1}`
+      d={normalize(
+        `M${x1},${y1} L${x1},${x2} L${x1 * y3 * 1000},${x3 * Math.random() * 1}`
       )}
       {...commonProps}
     />

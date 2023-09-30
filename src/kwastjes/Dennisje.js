@@ -10,6 +10,7 @@ const Dennisje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
   const x3 = x2 / 2 + index * 2;
   return (

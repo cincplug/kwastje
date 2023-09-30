@@ -9,6 +9,7 @@ const Floortje = (props) => {
     x1,
     y1,
     commonProps,
+    normalize,
   } = props;
 
   const stepSize = props.stepSize || 10;
@@ -18,7 +19,7 @@ const Floortje = (props) => {
 
   return (
     <path
-      d={commonProps.normalize(
+      d={normalize(
         `M${x1},${y1} ${[...Array(index).keys()].map(
           (step) =>
             ` l${

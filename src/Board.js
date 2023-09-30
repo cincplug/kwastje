@@ -15,7 +15,10 @@ const Board = () => {
 
     // Gebruik svgpath om de punten langs het pad te extraheren.
     // console.info(SVGPath.from(pathData));
-    const pathArray = SVGPath.from(pathData).segments.map(segment => [segment[1], segment[2]]);
+    const pathArray = SVGPath.from(pathData).segments.map((segment) => [
+      segment[1],
+      segment[2],
+    ]);
 
     if (pathArray) {
       const extractedPoints = pathArray.map((segment) => ({

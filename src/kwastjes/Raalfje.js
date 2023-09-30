@@ -11,11 +11,12 @@ const Raalfje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
   return (
     <path
-      d={commonProps.normalize(
+      d={normalize(
         `M${x1},${y1} L${Math.sin(x2 * index) + w / 2}, ${
           Math.cos(y2 * index) + h / 2
         } L${h - Math.cos(x2) * index + h / 2},${

@@ -11,13 +11,10 @@ const Annijtje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
-  return (
-    <path d={`M${x1}, ${x2} L${y1},${y2}`}
-      {...commonProps}
-    />
-  );
+  return <path d={`M${x1}, ${x2} L${y1},${y2}`} {...commonProps} />;
 };
 
 export default Annijtje;

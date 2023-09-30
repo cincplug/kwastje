@@ -11,13 +11,14 @@ const Hylke = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
   const garmentSize = 10 * setup.modifier;
 
   return (
     <path
-      d={commonProps.normalize(
+      d={normalize(
         `M${x1},${y1} v${garmentSize * 2} h${garmentSize * 2} v${
           -garmentSize * 2
         } Q${x2} ${y2}, ${y1} ${x1 / 2} L${y2},${

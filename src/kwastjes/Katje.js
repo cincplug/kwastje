@@ -12,6 +12,7 @@ const Katje = (props) => {
     // y1,
     // y2,
     commonProps,
+    normalize,
     style,
     transform,
     isReversed,
@@ -21,7 +22,6 @@ const Katje = (props) => {
   const welkeKatjeRaw = (katjes.length * (x1 - breedtje / 2)) / (w - breedtje);
   let welkeKatje = Math.round(welkeKatjeRaw);
   const scale = welkeKatje - welkeKatjeRaw;
-  delete commonProps.normalize;
   return (
     <image
       className={`katje`}

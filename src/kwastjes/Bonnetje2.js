@@ -11,7 +11,7 @@ const Rebonnetje = (props) => {
     // x2,
     // y1,
     y2,
-    // commonProps,
+    // commonProps, normalize,
   } = props;
 
   const text = Math.round(y2 / 5) / 9;

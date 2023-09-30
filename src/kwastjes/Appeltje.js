@@ -11,6 +11,7 @@ const Appeltje = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const food = `(${

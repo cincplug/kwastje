@@ -26,7 +26,7 @@ const Drawing = (props) => {
       (setup.thickness * index * setup.growth) / path.length,
       0.5
     );
-    const commonProps = { stroke, strokeWidth, fill, style, normalize };
+    const commonProps = { stroke, strokeWidth, fill, style };
 
     const kwastjes = Object.values(customKwastjes).map((CustomKwastje) => (
       <CustomKwastje
@@ -40,6 +40,7 @@ const Drawing = (props) => {
           y1,
           y2,
           commonProps,
+          normalize,
           isReversed,
         }}
       />

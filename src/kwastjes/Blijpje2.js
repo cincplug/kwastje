@@ -12,6 +12,7 @@ const Blijpje2 = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
@@ -41,6 +42,7 @@ const Blijpje2 = (props) => {
           x1: x1 + deltaX,
           y1: y1 + deltaY,
           commonProps,
+          normalize,
           tR,
         }}
       />

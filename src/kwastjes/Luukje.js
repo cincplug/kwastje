@@ -11,13 +11,10 @@ const Luukje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
-  return (
-    <path d={`M${x1}, ${y1} L${x2},${y2}`}
-      {...commonProps}
-    />
-  );
+  return <path d={`M${x1}, ${y1} L${x2},${y2}`} {...commonProps} />;
 };
 
 export default Luukje;

@@ -12,6 +12,7 @@ const Blijpje3 = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const qG = setup.thickness * setup.growth;
@@ -24,6 +25,7 @@ const Blijpje3 = (props) => {
         x1,
         y1,
         commonProps,
+        normalize,
         tR,
       }}
     />

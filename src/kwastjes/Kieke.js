@@ -11,6 +11,7 @@ const Kieke = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
   return (

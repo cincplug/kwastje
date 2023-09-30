@@ -11,15 +11,14 @@ const Verleitje = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   return (
     <polygon
-      points={`${
-        Math.sin(x1 * index) + w / 2
-      },${Math.cos(y1 * index) + h / 2} ${x1},${y1} ${
-        Math.sin(x1) + w / 2
-      },${Math.cos(y1 + h / 2)}`}
+      points={`${Math.sin(x1 * index) + w / 2},${
+        Math.cos(y1 * index) + h / 2
+      } ${x1},${y1} ${Math.sin(x1) + w / 2},${Math.cos(y1 + h / 2)}`}
       {...commonProps}
     />
   );

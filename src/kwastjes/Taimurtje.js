@@ -11,16 +11,17 @@ const Taimurtje = (props) => {
     y1,
     y2,
     commonProps,
+    normalize,
   } = props;
 
   const x3 = x2 + index * 2;
   const y3 = (y2 * index) / setup.modifier;
   return (
     <path
-      d={commonProps.normalize(
-        `M${x1},${y1} L${x1 * 21},${y1} L${
-          y2 * 41
-        },${y2 * Math.sin(index)} L${x3},${y3 * Math.sin(90)}`
+      d={normalize(
+        `M${x1},${y1} L${x1 * 21},${y1} L${y2 * 41},${
+          y2 * Math.sin(index)
+        } L${x3},${y3 * Math.sin(90)}`
       )}
       {...commonProps}
     />

@@ -11,12 +11,13 @@ const Wilempje = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const offset = setup.modifier * 10;
   return (
     <path
-      d={commonProps.normalize(
+      d={normalize(
         `M${x1},${y1} ${[...Array(index).keys()].map(
           (step) =>
             `h${offset - step} v${offset / (step + 1)} m${offset * 3},${

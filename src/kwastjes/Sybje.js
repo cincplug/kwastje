@@ -11,6 +11,7 @@ const Sybje = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const langje = index * setup.modifier;
@@ -18,7 +19,7 @@ const Sybje = (props) => {
 
   return (
     <path
-      d={commonProps.normalize(
+      d={normalize(
         `M${x1 / 2},${y1} l${-kortje}${-langje} ${[...Array(10).keys()].map(
           (step) =>
             `l${langje},${-langje} ${

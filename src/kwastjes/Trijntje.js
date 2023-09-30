@@ -1,14 +1,14 @@
 import React from "react";
 
 const Trijntje = (props) => {
-  const { setup, index, w, h, x1, x2, y1, y2, commonProps } = props;
+  const { setup, index, w, h, x1, x2, y1, y2, commonProps, normalize } = props;
 
   const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
 
   return (
     <>
       <path
-        d={commonProps.normalize(
+        d={normalize(
           `M${x1},${y1} L${Math.max(w / 2, Math.cos(y2) * index)},${y2} ${
             index % 2 === 0 &&
             `Q${Math.sin(x2 * index) + w * setup.modifier} ${x1}, ${x2} ${y1}`

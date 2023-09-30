@@ -11,7 +11,7 @@ const Puntje = (props) => {
     // x2,
     y1,
     y2,
-    // commonProps,
+    // commonProps, normalize,
     isReversed,
   } = props;
 
@@ -23,7 +23,9 @@ const Puntje = (props) => {
       if (isReversed) {
         strokes.reverse();
       }
-      const processedPath = strokes.slice(0, count + Math.round(setup.thickness)).join(separator);
+      const processedPath = strokes
+        .slice(0, count + Math.round(setup.thickness))
+        .join(separator);
       return processedPath;
     };
     const pathElement = puntjeRef.current.querySelector(".puntje");

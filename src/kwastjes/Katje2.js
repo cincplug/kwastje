@@ -12,6 +12,7 @@ const Katje2 = (props) => {
     y1,
     // y2,
     commonProps,
+    normalize,
   } = props;
 
   const x = `${
@@ -21,8 +22,8 @@ const Katje2 = (props) => {
   return (
     <Katje
       {...props}
-      transform={commonProps.normalize(
-        `translate(${x}, ${y1 / 10 * setup.growth + index}) scale(${Math.min(
+      transform={normalize(
+        `translate(${x}, ${(y1 / 10) * setup.growth + index}) scale(${Math.min(
           1,
           (1 / index) * setup.thickness * setup.growth
         )})`

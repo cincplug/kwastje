@@ -50,7 +50,6 @@ import Katje2 from "./Katje2";
 import Katje3 from "./Katje3";
 import Katje4 from "./Katje4";
 
-
 export const customKwastjes = {
   Luukje,
   Annijtje,
