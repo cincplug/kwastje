@@ -50,7 +50,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
-  const [altBgIndex, setAltBgIndex] = useState(0);
+  const [, setAltBgIndex] = useState(0);
 
   const altBg = [
     "#2233aa",
@@ -65,52 +65,62 @@ const App = () => {
     "#aacc44",
   ];
 
-  const requestRef1 = useRef(null);
-  const requestRef2 = useRef(null);
-  const previousTime1 = useRef(0);
-  const previousTime2 = useRef(0);
-
-  const task1 = (timestamp) => {
-    if (timestamp - previousTime1.current >= 5000) {
-      setSetup((prevSetup) => {
-        return {
-          ...prevSetup,
-          kwastje:
-            prevSetup.kwastje < Object.keys(customKwastjes).length
-              ? prevSetup.kwastje + 1
-              : 1,
-        };
-      });
-      previousTime1.current = timestamp;
-    }
-    requestRef1.current = requestAnimationFrame(task1);
-  };
-
-  const task2 = (timestamp) => {
-    if (timestamp - previousTime2.current >= 7000) {
-      setAltBgIndex((prevAltBgIndex) => {
-        const nextAltBgIndex =
-          prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
-        setSetup((prevSetup) => {
-          return {
-            ...prevSetup,
-            bgColor: altBg[nextAltBgIndex],
-          };
-        });
-        return nextAltBgIndex;
-      });
-      previousTime2.current = timestamp;
-    }
-    requestRef2.current = requestAnimationFrame(task2);
-  };
+  const tasks = [
+    {
+      name: "kwastje",
+      interval: 5000,
+      previousTime: useRef(0),
+      task: (timestamp) => {
+        if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
+          setSetup((prevSetup) => {
+            return {
+              ...prevSetup,
+              kwastje:
+                prevSetup.kwastje < Object.keys(customKwastjes).length
+                  ? parseInt(prevSetup.kwastje) + 1
+                  : 1,
+            };
+          });
+          tasks[0].previousTime.current = timestamp;
+        }
+        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].task);
+      },
+      requestRef: useRef(null),
+    },
+    {
+      name: "bgColor",
+      interval: 7000,
+      previousTime: useRef(0),
+      task: (timestamp) => {
+        if (timestamp - tasks[1].previousTime.current >= tasks[1].interval) {
+          setAltBgIndex((prevAltBgIndex) => {
+            const nextAltBgIndex =
+              prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
+            setSetup((prevSetup) => {
+              return {
+                ...prevSetup,
+                bgColor: altBg[nextAltBgIndex],
+              };
+            });
+            return nextAltBgIndex;
+          });
+          tasks[1].previousTime.current = timestamp;
+        }
+        tasks[1].requestRef.current = requestAnimationFrame(tasks[1].task);
+      },
+      requestRef: useRef(null),
+    },
+  ];
 
   useEffect(() => {
-    requestRef1.current = requestAnimationFrame(task1);
-    requestRef2.current = requestAnimationFrame(task2);
+    tasks.forEach((task) => {
+      task.requestRef.current = requestAnimationFrame(task.task);
+    });
 
     return () => {
-      cancelAnimationFrame(requestRef1.current);
-      cancelAnimationFrame(requestRef2.current);
+      tasks.forEach((task) => {
+        cancelAnimationFrame(task.requestRef.current);
+      });
     };
   }, []);
 
