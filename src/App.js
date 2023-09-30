@@ -224,32 +224,7 @@ const App = () => {
     if (isMouseDown || setup.isFluent) {
       const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
       setPath((prevPath) => {
-        const randomIndex = Math.round(
-          Math.random() * (path.length - 1) +
-            dotsCount / setup.modifier / (dotsCount / setup.modifier + 1)
-        );
-        switch (setup.kwastje) {
-          case 1:
-          case 2:
-          default:
-            prevPath[prevPath.length] = [mouseX, mouseY];
-            break;
-          case 3:
-            const [prevX, prevY] = prevPath[randomIndex];
-            prevPath[randomIndex + 1] = [mouseX, mouseY];
-            prevPath[randomIndex] = [
-              (prevX + mouseX * 5) / 6,
-              (prevY + mouseY * 5) / 6,
-            ];
-            break;
-          case 4:
-            prevPath[randomIndex] = [mouseX, mouseY];
-            prevPath[randomIndex + 1] = [
-              mouseX * setup.modifier,
-              mouseY * setup.modifier,
-            ];
-            break;
-        }
+        prevPath[prevPath.length] = [mouseX, mouseY];
         const nextPath = prevPath.slice(
           prevPath.length - dotsCount,
           prevPath.length
