@@ -166,7 +166,7 @@ button,
     right: 0;
     position: absolute;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: max-content;
+    grid-auto-rows: auto auto auto auto auto auto 1fr;
     @include mobile-landscape {
       width: 30%;
     }
@@ -175,6 +175,11 @@ button,
     }
     &.menu--collapsed {
       display: none;
+    }
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
   &__toggle {
