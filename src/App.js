@@ -75,10 +75,12 @@ const App = () => {
       setSetup((prevSetup) => {
         return {
           ...prevSetup,
-          kwastje: prevSetup.kwastje + 1,
+          kwastje:
+            prevSetup.kwastje < Object.keys(customKwastjes).length
+              ? prevSetup.kwastje + 1
+              : 1,
         };
       });
-      console.log("Iets elke 50 seconden");
       previousTime1.current = timestamp;
     }
     requestRef1.current = requestAnimationFrame(task1);
@@ -97,7 +99,6 @@ const App = () => {
         });
         return nextAltBgIndex;
       });
-      console.log("Iets anders elke 100 seconden");
       previousTime2.current = timestamp;
     }
     requestRef2.current = requestAnimationFrame(task2);
