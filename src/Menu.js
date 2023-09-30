@@ -141,38 +141,41 @@ const Menu = (props) => {
         </button>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        {svgData.map((svgContent, index) => (
-          <button
-            key={index}
-            className={`navaitje ${
-              index === aitjeIndex ? "selected" : "unselected"
-            }`}
-            dangerouslySetInnerHTML={{ __html: svgContent }}
-            onClick={() => handleAitjeClick(svgContent, index)}
+        <div className="aitjes">
+          {svgData.map((svgContent, index) => (
+            <button
+              key={index}
+              className={`navaitje ${
+                index === aitjeIndex ? "selected" : "unselected"
+              }`}
+              dangerouslySetInnerHTML={{ __html: svgContent }}
+              onClick={() => handleAitjeClick(svgContent, index)}
+            />
+          ))}
+          {setup.aitje &&
+            getControls(
+              defaultSetup.filter(
+                (control) => !control.isHidden && control.isRight
+              )
+            )}
+          <input
+            type="file"
+            accept=".svg, .png, .jpg"
+            onChange={handleFileUpload}
+            placeholder="Add an aitje"
+            key={"add-aitje-input"}
+            id="add-aitje"
+            className="add-aitje"
           />
-        ))}
-        {setup.aitje &&
-          getControls(
-            defaultSetup.filter(
-              (control) => !control.isHidden && control.isRight
-            )
-          )}
-        <input
-          type="file"
-          accept=".svg, .png, .jpg"
-          onChange={handleFileUpload}
-          placeholder="Add an aitje"
-          key={"add-aitje-input"}
-          id="add-aitje"
-          className="add-aitje"
-        />
-        <label
-          htmlFor="add-aitje"
-          className="control__button"
-          key={"add-aitje-label"}
-        >
-          Add merger
-        </label>
+          <label
+            htmlFor="add-aitje"
+            className="control__button"
+            key={"add-aitje-label"}
+          >
+            Add merger
+          </label>
+        </div>
+
         <button
           htmlFor="slideshow"
           className="control__button slideshow"
