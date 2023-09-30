@@ -13,6 +13,7 @@ const Menu = (props) => {
     clear,
     shuffle,
     setAitje,
+    setSetup,
     toggleSlideshow,
   } = props;
 
@@ -58,6 +59,12 @@ const Menu = (props) => {
     } else {
       setAitjeIndex(null);
       setAitje(null);
+      setSetup((prevSetup) => {
+        return {
+          ...prevSetup,
+          stencil: 0,
+        };
+      });
     }
   };
 

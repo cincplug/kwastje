@@ -447,6 +447,7 @@ const App = () => {
             fgColor,
             mapje,
             isSlideshow,
+            setSetup,
           }}
         />
       )}
