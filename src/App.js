@@ -64,39 +64,53 @@ const App = () => {
     "#cc55aa",
     "#aacc44",
   ];
-  const [count, setCount] = React.useState(0);
-  const requestRef = React.useRef();
-  const previousTimeRef = React.useRef();
 
-  const animate = (time) => {
-    if (previousTimeRef.current !== undefined) {
-      const deltaTime = time - previousTimeRef.current;
-      setCount((prevCount) => {
-        const nextCount = (prevCount + deltaTime * 0.01) % 100;
-        const nr = Math.round(nextCount);
-        if (nr === 100) {
-          setAltBgIndex((prevAltBgIndex) => {
-            const nextAltBgIndex =
-              prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
-            setSetup((prevSetup) => {
-              return {
-                ...prevSetup,
-                bgColor: altBg[nextAltBgIndex],
-              };
-            });
-            return nextAltBgIndex;
-          });
-        }
-        return nextCount;
+  const requestRef1 = useRef(null);
+  const requestRef2 = useRef(null);
+  const previousTime1 = useRef(0);
+  const previousTime2 = useRef(0);
+
+  const task1 = (timestamp) => {
+    if (timestamp - previousTime1.current >= 5000) {
+      setSetup((prevSetup) => {
+        return {
+          ...prevSetup,
+          kwastje: prevSetup.kwastje + 1,
+        };
       });
+      console.log("Iets elke 50 seconden");
+      previousTime1.current = timestamp;
     }
-    previousTimeRef.current = time;
-    requestRef.current = requestAnimationFrame(animate);
+    requestRef1.current = requestAnimationFrame(task1);
+  };
+
+  const task2 = (timestamp) => {
+    if (timestamp - previousTime2.current >= 7000) {
+      setAltBgIndex((prevAltBgIndex) => {
+        const nextAltBgIndex =
+          prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
+        setSetup((prevSetup) => {
+          return {
+            ...prevSetup,
+            bgColor: altBg[nextAltBgIndex],
+          };
+        });
+        return nextAltBgIndex;
+      });
+      console.log("Iets anders elke 100 seconden");
+      previousTime2.current = timestamp;
+    }
+    requestRef2.current = requestAnimationFrame(task2);
   };
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
+    requestRef1.current = requestAnimationFrame(task1);
+    requestRef2.current = requestAnimationFrame(task2);
+
+    return () => {
+      cancelAnimationFrame(requestRef1.current);
+      cancelAnimationFrame(requestRef2.current);
+    };
   }, []);
 
   const usePrevious = (value) => {
@@ -310,7 +324,7 @@ const App = () => {
           <label className="control__label" htmlFor={id}>
             <span>
               {label}
-              {id === "kwastje" && (
+              {id === "kwastje" && kwastjeName && (
                 <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>
               )}
             </span>
