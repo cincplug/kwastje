@@ -11,7 +11,7 @@ const Pietje = (props) => {
     y1,
     y2,
     commonProps,
-    normalize,
+    // normalize,
   } = props;
 
   return (

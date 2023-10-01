@@ -11,7 +11,7 @@ const Katje4 = (props) => {
     x2,
     // y1,
     y2,
-    commonProps,
+    // commonProps,
     normalize,
   } = props;
 

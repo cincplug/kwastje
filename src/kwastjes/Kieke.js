@@ -16,10 +16,10 @@ const Kieke = (props) => {
 
   return (
     <path
-      d={`M${x1},
+      d={normalize(`M${x1},
       ${y1}
       L${w / 2 - x2 * Math.tan(x1)},
-      ${h - y2 * Math.atan(y1)}`}
+      ${h - y2 * Math.atan(y1)}`)}
       {...commonProps}
     />
   );

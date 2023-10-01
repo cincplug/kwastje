@@ -11,7 +11,7 @@ const Citroentje = (props) => {
     y1,
     // y2,
     commonProps,
-    normalize,
+    // normalize,
   } = props;
   const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
 

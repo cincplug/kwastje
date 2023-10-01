@@ -12,7 +12,7 @@ const Katje = (props) => {
     // y1,
     // y2,
     commonProps,
-    normalize,
+    // normalize,
     style,
     transform,
     isReversed,
