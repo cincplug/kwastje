@@ -45,6 +45,7 @@ import Bonnetje from "./Bonnetje";
 import Bonnetje2 from "./Bonnetje2";
 import Appeltje from "./Appeltje";
 import Citroentje from "./Citroentje";
+import Futurtje from "./Futurtje";
 import Katje from "./Katje";
 import Katje2 from "./Katje2";
 import Katje3 from "./Katje3";
@@ -98,6 +99,7 @@ export const customKwastjes = {
   Bonnetje2,
   Appeltje,
   Citroentje,
+  Futurtje,
   Katje,
   Katje2,
   Katje3,

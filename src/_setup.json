@@ -2,10 +2,10 @@
   {
     "id": "kwastje",
     "description": "Shape and attitude of our graphic tool",
-    "value": 1,
+    "value": 48,
     "type": "range",
     "min": 1,
-    "max": 47,
+    "max": 48,
     "step": 1
   },
   {
@@ -14,7 +14,7 @@
     "value": 50,
     "type": "range",
     "min": 3,
-    "max": 100,
+    "max": 200,
     "step": 1
   },
   {
@@ -105,7 +105,7 @@
   {
     "id": "bgColor",
     "description": "Background color",
-    "value": "#000000",
+    "value": "#000048",
     "type": "color",
     "min": 0,
     "max": 100,
