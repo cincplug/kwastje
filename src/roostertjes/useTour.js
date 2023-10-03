@@ -4,16 +4,16 @@ import { customKwastjes } from "../kwastjes";
 const useTour = (props) => {
   const { setSetup } = props;
   const altBg = [
-    "#2233aa",
-    "#aa3322",
-    "#22aa33",
-    "#22aabb",
-    "#bbaa22",
-    "#4488dd",
-    "#dd4488",
-    "#88dd44",
-    "#cc55aa",
-    "#aacc44",
+    "#224477",
+    "#227744",
+    "#772244",
+    "#774422",
+    "#447722",
+    "#442277",
+    "#447777",
+    "#444477",
+    "#774444",
+    "#777744",
   ];
   const [, setAltBgIndex] = useState(0);
   const tasks = [
