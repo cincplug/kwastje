@@ -52,27 +52,6 @@ const App = () => {
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
   const [isTour, setIsTour] = useState(false);
-
-  const scheduledTasks = roostertjes.useTour({ setSetup });
-  // const scheduledTasks = roostertjes.useFuture({ setSetup });
-
-  const { tasks, subs, activeSub, subDuration } = scheduledTasks;
-
-  const startTour = () => {
-    tasks.forEach((task) => {
-      task.requestRef.current = requestAnimationFrame(task.effort);
-    });
-    return () => {
-      stopTour();
-    };
-  };
-
-  const stopTour = () => {
-    tasks.forEach((task) => {
-      cancelAnimationFrame(task.requestRef.current);
-    });
-  };
-
   const usePrevious = (value) => {
     const ref = useRef();
     useEffect(() => {
@@ -334,6 +313,26 @@ const App = () => {
       return !prevIsTour;
     });
   };
+
+  const startTour = () => {
+    tasks.forEach((task) => {
+      task.requestRef.current = requestAnimationFrame(task.effort);
+    });
+    return () => {
+      stopTour();
+    };
+  };
+
+  const stopTour = () => {
+    tasks.forEach((task) => {
+      cancelAnimationFrame(task.requestRef.current);
+    });
+  };
+
+  const scheduledTasks = roostertjes.useTour({ setSetup });
+  // const scheduledTasks = roostertjes.useFuture({ setSetup });
+
+  const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
   useEffect(() => {
     updateKwastjeName();

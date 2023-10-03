@@ -24,12 +24,16 @@ const Bonnetje = (props) => {
       style={{
         fontSize: (x1 / 10) * setup.modifier,
         letterSpacing: ((w - x1) / 100) * setup.modifier,
-        transform: `rotate(${x2 / 45}deg)`,
         fill: setup.fgColor,
         opacity: setup.opacity / 100 / 3,
       }}
     >
-      {text || defaultText}
+      {(text || defaultText)
+        .toString()
+        .split()
+        .map((t, ti) => (
+          <tspan transform={`translate(0, ${-((t * setup.modifier) * ti * 200)})`}>{t}</tspan>
+        ))}
     </text>
   );
 };

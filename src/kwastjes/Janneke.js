@@ -2,7 +2,7 @@ import React from "react";
 import Ineke from "./Ineke";
 
 const Janneke = (props) => {
-  const { setup, w, x1, commonProps, normalize } = props;
+  const { setup, w, x1, commonProps } = props;
 
   const inekeProps = {
     ...props,
