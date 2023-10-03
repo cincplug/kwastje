@@ -51,7 +51,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
-  const [isTour, setIsTour] = useState(false);
+  const [isRoostertje, setIsRoostertje] = useState(false);
   const usePrevious = (value) => {
     const ref = useRef();
     useEffect(() => {
@@ -303,27 +303,27 @@ const App = () => {
     }
   };
 
-  const toggleTour = () => {
-    setIsTour((prevIsTour) => {
-      if (prevIsTour) {
-        stopTour();
+  const toggleRoostertje = () => {
+    setIsRoostertje((prevIsRoostertje) => {
+      if (prevIsRoostertje) {
+        stopRoostertje();
       } else {
-        startTour();
+        startRoostertje();
       }
-      return !prevIsTour;
+      return !prevIsRoostertje;
     });
   };
 
-  const startTour = () => {
+  const startRoostertje = () => {
     tasks.forEach((task) => {
       task.requestRef.current = requestAnimationFrame(task.effort);
     });
     return () => {
-      stopTour();
+      stopRoostertje();
     };
   };
 
-  const stopTour = () => {
+  const stopRoostertje = () => {
     tasks.forEach((task) => {
       cancelAnimationFrame(task.requestRef.current);
     });
@@ -363,7 +363,7 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {/* {!isTour && ( */}
+      {/* {!isRoostertje && ( */}
       <Menu
         {...{
           isMenuVisible,
@@ -383,7 +383,7 @@ const App = () => {
           setIsLoading,
           setAitje,
           processAitje,
-          toggleTour,
+          toggleRoostertje,
           path,
           setup,
           mouseX,
@@ -392,7 +392,7 @@ const App = () => {
           h,
           fgColor,
           mapje,
-          isTour,
+          isRoostertje,
           setSetup,
         }}
       />
@@ -442,7 +442,7 @@ const App = () => {
             )}
           </g>
         </svg>
-        {isTour && subs && (
+        {isRoostertje && subs && (
           <p
             className={`subtitle--${activeSub}`}
             style={{ animationDuration: `${subDuration}ms` }}

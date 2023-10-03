@@ -14,7 +14,7 @@ const Menu = (props) => {
     shuffle,
     setAitje,
     setSetup,
-    toggleTour,
+    toggleRoostertje,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
@@ -177,12 +177,12 @@ const Menu = (props) => {
         </div>
 
         <button
-          htmlFor="tour"
-          className="control__button tour"
-          key={"tour"}
-          onClick={toggleTour}
+          htmlFor="roostertje"
+          className="control__button roostertje"
+          key={"roostertje"}
+          onClick={toggleRoostertje}
         >
-          Start tour
+          Start roostertje
         </button>
       </nav>
     </>
