@@ -6,7 +6,6 @@ import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
 import { roostertjes } from "./roostertjes";
-import subs from "./roostertjes/useFutureSubs.json";
 import "./App.scss";
 
 const App = () => {
@@ -52,18 +51,16 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
-  const [isSlideshow, setIsSlideshow] = useState(false);
+  const [isTour, setIsSlideshow] = useState(false);
 
-  const [, setAltBgIndex] = useState(0);
-  const scheduledTasks = roostertjes.useTour({ setAltBgIndex, setSetup });
+  // const scheduledTasks = roostertjes.useTour({ setSetup });
+  const scheduledTasks = roostertjes.useFuture({ setSetup });
 
-  const [activeSub, setActiveSub] = useState(0);
-  const subDuration = 7000;
-  // const scheduledTasks = roostertjes.useFuture({setActiveSub, subDuration, setSetup});
+  const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
   const startSlideshow = () => {
-    scheduledTasks.forEach((task) => {
-      task.requestRef.current = requestAnimationFrame(task.task);
+    tasks.forEach((task) => {
+      task.requestRef.current = requestAnimationFrame(task.effort);
     });
     return () => {
       stopSlideshow();
@@ -71,7 +68,7 @@ const App = () => {
   };
 
   const stopSlideshow = () => {
-    scheduledTasks.forEach((task) => {
+    tasks.forEach((task) => {
       cancelAnimationFrame(task.requestRef.current);
     });
   };
@@ -396,7 +393,7 @@ const App = () => {
           h,
           fgColor,
           mapje,
-          isSlideshow,
+          isSlideshow: isTour,
           setSetup,
         }}
       />
@@ -446,7 +443,7 @@ const App = () => {
             )}
           </g>
         </svg>
-        {isSlideshow && (
+        {isTour && subs && (
           <p
             className={`subtitle--${activeSub}`}
             style={{ animationDuration: `${subDuration}ms` }}

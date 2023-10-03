@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { customKwastjes } from "../kwastjes";
 
 const useTour = (props) => {
-  const { setAltBgIndex, setSetup } = props;
+  const { setSetup } = props;
   const altBg = [
     "#2233aa",
     "#aa3322",
@@ -15,16 +15,14 @@ const useTour = (props) => {
     "#cc55aa",
     "#aacc44",
   ];
-  const scheduledTasks = [
+  const [, setAltBgIndex] = useState(0);
+  const tasks = [
     {
       name: "kwastje",
       interval: 5000,
       previousTime: useRef(0),
-      task: (timestamp) => {
-        if (
-          timestamp - scheduledTasks[0].previousTime.current >=
-          scheduledTasks[0].interval
-        ) {
+      effort: (timestamp) => {
+        if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
           setSetup((prevSetup) => {
             return {
               ...prevSetup,
@@ -34,11 +32,9 @@ const useTour = (props) => {
                   : 1,
             };
           });
-          scheduledTasks[0].previousTime.current = timestamp;
+          tasks[0].previousTime.current = timestamp;
         }
-        scheduledTasks[0].requestRef.current = requestAnimationFrame(
-          scheduledTasks[0].task
-        );
+        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].effort);
       },
       requestRef: useRef(null),
     },
@@ -46,11 +42,8 @@ const useTour = (props) => {
       name: "bgColor",
       interval: 7000,
       previousTime: useRef(0),
-      task: (timestamp) => {
-        if (
-          timestamp - scheduledTasks[1].previousTime.current >=
-          scheduledTasks[1].interval
-        ) {
+      effort: (timestamp) => {
+        if (timestamp - tasks[1].previousTime.current >= tasks[1].interval) {
           setAltBgIndex((prevAltBgIndex) => {
             const nextAltBgIndex =
               prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
@@ -62,17 +55,15 @@ const useTour = (props) => {
             });
             return nextAltBgIndex;
           });
-          scheduledTasks[1].previousTime.current = timestamp;
+          tasks[1].previousTime.current = timestamp;
         }
-        scheduledTasks[1].requestRef.current = requestAnimationFrame(
-          scheduledTasks[1].task
-        );
+        tasks[1].requestRef.current = requestAnimationFrame(tasks[1].effort);
       },
       requestRef: useRef(null),
     },
   ];
 
-  return scheduledTasks;
+  return { tasks, setAltBgIndex };
 };
 
 export default useTour;

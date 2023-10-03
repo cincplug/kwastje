@@ -1,17 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import subs from "./useFutureSubs.json";
 
 const useFuture = (props) => {
-  const { setActiveSub, subDuration, setSetup } = props;
-  
-  const scheduledTasks = [
+  const { setSetup } = props;
+  const [activeSub, setActiveSub] = useState(0);
+  const subDuration = 7000;
+
+  const tasks = [
     {
       name: "sub",
       interval: subDuration,
       previousTime: useRef(0),
-      task: (timestamp) => {
+      effort: (timestamp) => {
         if (
-          timestamp - scheduledTasks[0].previousTime.current >=
-          scheduledTasks[0].interval
+          timestamp - tasks[0].previousTime.current >=
+          tasks[0].interval
         ) {
           setSetup((prevSetup) => {
             setActiveSub((prevActiveSub) => prevActiveSub + 1);
@@ -21,17 +24,17 @@ const useFuture = (props) => {
               modifier: (prevSetup.modifier / 1 + 0.1).toFixed(1),
             };
           });
-          scheduledTasks[0].previousTime.current = timestamp;
+          tasks[0].previousTime.current = timestamp;
         }
-        scheduledTasks[0].requestRef.current = requestAnimationFrame(
-          scheduledTasks[0].task
+        tasks[0].requestRef.current = requestAnimationFrame(
+          tasks[0].effort
         );
       },
       requestRef: useRef(null),
     },
   ];
 
-  return scheduledTasks;
+  return { tasks, subs, activeSub, setActiveSub, subDuration };
 };
 
 export default useFuture;
