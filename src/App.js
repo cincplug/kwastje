@@ -5,6 +5,8 @@ import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
+import { roostertjes } from "./roostertjes";
+import subs from "./roostertjes/useFutureSubs.json";
 import "./App.scss";
 
 const App = () => {
@@ -43,78 +45,24 @@ const App = () => {
   const [kwastjeName, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
-  const fgColor = `${setup.fgColor}${parseInt(setup.opacity).toString(16)}`;
+  const fgColor = `${setup.fgColor}${(setup.opacity / 1).toString(16)}`;
   const [promptje, setPromptje] = useState("");
   const [breedtje, setBreedtje] = useState(500);
   const [hoogtje, setHoogtje] = useState(500);
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
-  const [, setAltBgIndex] = useState(0);
   const [isSlideshow, setIsSlideshow] = useState(false);
 
-  const altBg = [
-    "#2233aa",
-    "#aa3322",
-    "#22aa33",
-    "#22aabb",
-    "#bbaa22",
-    "#4488dd",
-    "#dd4488",
-    "#88dd44",
-    "#cc55aa",
-    "#aacc44",
-  ];
+  const [, setAltBgIndex] = useState(0);
+  const scheduledTasks = roostertjes.useTour({ setAltBgIndex, setSetup });
 
-  const tasks = [
-    {
-      name: "kwastje",
-      interval: 5000,
-      previousTime: useRef(0),
-      task: (timestamp) => {
-        if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
-          setSetup((prevSetup) => {
-            return {
-              ...prevSetup,
-              kwastje:
-                prevSetup.kwastje < Object.keys(customKwastjes).length
-                  ? parseInt(prevSetup.kwastje) + 1
-                  : 1,
-            };
-          });
-          tasks[0].previousTime.current = timestamp;
-        }
-        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].task);
-      },
-      requestRef: useRef(null),
-    },
-    {
-      name: "bgColor",
-      interval: 7000,
-      previousTime: useRef(0),
-      task: (timestamp) => {
-        if (timestamp - tasks[1].previousTime.current >= tasks[1].interval) {
-          setAltBgIndex((prevAltBgIndex) => {
-            const nextAltBgIndex =
-              prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
-            setSetup((prevSetup) => {
-              return {
-                ...prevSetup,
-                bgColor: altBg[nextAltBgIndex],
-              };
-            });
-            return nextAltBgIndex;
-          });
-          tasks[1].previousTime.current = timestamp;
-        }
-        tasks[1].requestRef.current = requestAnimationFrame(tasks[1].task);
-      },
-      requestRef: useRef(null),
-    },
-  ];
+  const [activeSub, setActiveSub] = useState(0);
+  const subDuration = 7000;
+  // const scheduledTasks = roostertjes.useFuture({setActiveSub, subDuration, setSetup});
 
   const startSlideshow = () => {
-    tasks.forEach((task) => {
+    scheduledTasks.forEach((task) => {
       task.requestRef.current = requestAnimationFrame(task.task);
     });
     return () => {
@@ -123,7 +71,7 @@ const App = () => {
   };
 
   const stopSlideshow = () => {
-    tasks.forEach((task) => {
+    scheduledTasks.forEach((task) => {
       cancelAnimationFrame(task.requestRef.current);
     });
   };
@@ -268,7 +216,9 @@ const App = () => {
       if (type === "checkbox") {
         nextSetup[id] = !nextSetup[id];
       } else {
-        nextSetup[id] = type === "number" ? parseFloat(value) : value;
+        nextSetup[id] = ["number", "range".includes("type")]
+          ? value / 1
+          : value;
       }
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
@@ -360,7 +310,7 @@ const App = () => {
         setSetup((prevSetup) => {
           return {
             ...prevSetup,
-            kwastje: parseInt(prevSetup.kwastje) - 1,
+            kwastje: prevSetup.kwastje / 1 - 1,
           };
         });
         break;
@@ -368,7 +318,7 @@ const App = () => {
         setSetup((prevSetup) => {
           return {
             ...prevSetup,
-            kwastje: parseInt(prevSetup.kwastje) + 1,
+            kwastje: prevSetup.kwastje / 1 + 1,
           };
         });
         break;
@@ -417,40 +367,40 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {!isSlideshow && (
-        <Menu
-          {...{
-            isMenuVisible,
-            setIsMenuVisible,
-            menuVisibilityClass,
-            getControls,
-            download,
-            clear,
-            shuffle,
-            promptje,
-            setPromptje,
-            hoogtje,
-            setHoogtje,
-            breedtje,
-            setBreedtje,
-            isLoading,
-            setIsLoading,
-            setAitje,
-            processAitje,
-            toggleSlideshow,
-            path,
-            setup,
-            mouseX,
-            mouseY,
-            w,
-            h,
-            fgColor,
-            mapje,
-            isSlideshow,
-            setSetup,
-          }}
-        />
-      )}
+      {/* {!isSlideshow && ( */}
+      <Menu
+        {...{
+          isMenuVisible,
+          setIsMenuVisible,
+          menuVisibilityClass,
+          getControls,
+          download,
+          clear,
+          shuffle,
+          promptje,
+          setPromptje,
+          hoogtje,
+          setHoogtje,
+          breedtje,
+          setBreedtje,
+          isLoading,
+          setIsLoading,
+          setAitje,
+          processAitje,
+          toggleSlideshow,
+          path,
+          setup,
+          mouseX,
+          mouseY,
+          w,
+          h,
+          fgColor,
+          mapje,
+          isSlideshow,
+          setSetup,
+        }}
+      />
+      {/* )} */}
       <main
         ref={mainRef}
         className="content"
@@ -479,21 +429,31 @@ const App = () => {
           )}
           <g className="center-origin" transform-origin={"center"}>
             <Filters {...{ w, h, mouseX, mouseY, setup }} />
-            <Drawing
-              {...{
-                path,
-                setup,
-                mouseX,
-                mouseY,
-                w,
-                h,
-                fgColor,
-                mapje,
-                isReversed,
-              }}
-            />
+            {mouseX && (
+              <Drawing
+                {...{
+                  path,
+                  setup,
+                  mouseX,
+                  mouseY,
+                  w,
+                  h,
+                  fgColor,
+                  mapje,
+                  isReversed,
+                }}
+              />
+            )}
           </g>
         </svg>
+        {isSlideshow && (
+          <p
+            className={`subtitle--${activeSub}`}
+            style={{ animationDuration: `${subDuration}ms` }}
+          >
+            {subs[activeSub]}
+          </p>
+        )}
       </main>
       {isInfoVisible && (
         <Splash

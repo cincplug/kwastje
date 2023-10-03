@@ -432,3 +432,31 @@ button,
   // animation: fade-in 0.2s ease-in;
   font-weight: bold;
 }
+@keyframes subtitle {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+  
+}
+[class*='subtitle--'] {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  max-width: 80%;
+  color: #000048;
+  text-align: center;
+  font-weight: bold;
+  animation-name: subtitle;
+  animation-timing-function: ease-in;
+}
