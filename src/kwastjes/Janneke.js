@@ -9,7 +9,6 @@ const Janneke = (props) => {
     setup: { ...setup, modifier: x1 / w / 2 },
     commonProps: {
       ...commonProps,
-      normalize,
       strokeWidth: setup.thickness / 4,
     },
   };

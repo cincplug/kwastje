@@ -53,8 +53,8 @@ const App = () => {
   const [isReversed, setIsReversed] = useState(false);
   const [isTour, setIsTour] = useState(false);
 
-  // const scheduledTasks = roostertjes.useTour({ setSetup });
-  const scheduledTasks = roostertjes.useFuture({ setSetup });
+  const scheduledTasks = roostertjes.useTour({ setSetup });
+  // const scheduledTasks = roostertjes.useFuture({ setSetup });
 
   const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 

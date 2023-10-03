@@ -6,6 +6,7 @@ const Appeltje = (props) => {
     index,
     x2,
     y1,
+    commonProps,
   } = props;
 
   const food = `(${
@@ -15,7 +16,7 @@ const Appeltje = (props) => {
   })`;
   return (
     <text
-      {...props}
+      {...commonProps}
       x={x2}
       y={y1}
       style={{

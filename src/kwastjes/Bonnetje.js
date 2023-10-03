@@ -11,7 +11,7 @@ const Bonnetje = (props) => {
     y1,
     y2,
     commonProps,
-    normalize,
+    // normalize,
     text,
   } = props;
 
@@ -23,8 +23,8 @@ const Bonnetje = (props) => {
       y={y1}
       style={{
         fontSize: (x1 / 10) * setup.modifier,
-        letterSpacing: (w - x1) / 100,
-        transform: `rotate(${90 - x2}deg)`,
+        letterSpacing: ((w - x1) / 100) * setup.modifier,
+        transform: `rotate(${x2 / 45}deg)`,
         fill: setup.fgColor,
         opacity: setup.opacity / 100 / 3,
       }}
