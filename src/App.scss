@@ -410,11 +410,11 @@ button,
   position: absolute;
   left: -10000px;
 }
-.slideshow {
+.tour {
   align-self: end;
 }
 .add-aitje + label,
-.slideshow {
+.tour {
   grid-column: span 4;
   line-height: $button-height;
   cursor: pointer;

@@ -14,7 +14,7 @@ const Menu = (props) => {
     shuffle,
     setAitje,
     setSetup,
-    toggleSlideshow,
+    toggleTour,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
@@ -177,12 +177,12 @@ const Menu = (props) => {
         </div>
 
         <button
-          htmlFor="slideshow"
-          className="control__button slideshow"
-          key={"slideshow"}
-          onClick={toggleSlideshow}
+          htmlFor="tour"
+          className="control__button tour"
+          key={"tour"}
+          onClick={toggleTour}
         >
-          Start slideshow
+          Start tour
         </button>
       </nav>
     </>

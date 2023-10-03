@@ -51,23 +51,23 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
-  const [isTour, setIsSlideshow] = useState(false);
+  const [isTour, setIsTour] = useState(false);
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
   const scheduledTasks = roostertjes.useFuture({ setSetup });
 
   const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
-  const startSlideshow = () => {
+  const startTour = () => {
     tasks.forEach((task) => {
       task.requestRef.current = requestAnimationFrame(task.effort);
     });
     return () => {
-      stopSlideshow();
+      stopTour();
     };
   };
 
-  const stopSlideshow = () => {
+  const stopTour = () => {
     tasks.forEach((task) => {
       cancelAnimationFrame(task.requestRef.current);
     });
@@ -324,14 +324,14 @@ const App = () => {
     }
   };
 
-  const toggleSlideshow = () => {
-    setIsSlideshow((prevIsSlideshow) => {
-      if (prevIsSlideshow) {
-        stopSlideshow();
+  const toggleTour = () => {
+    setIsTour((prevIsTour) => {
+      if (prevIsTour) {
+        stopTour();
       } else {
-        startSlideshow();
+        startTour();
       }
-      return !prevIsSlideshow;
+      return !prevIsTour;
     });
   };
 
@@ -364,7 +364,7 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {/* {!isSlideshow && ( */}
+      {/* {!isTour && ( */}
       <Menu
         {...{
           isMenuVisible,
@@ -384,7 +384,7 @@ const App = () => {
           setIsLoading,
           setAitje,
           processAitje,
-          toggleSlideshow,
+          toggleTour,
           path,
           setup,
           mouseX,
@@ -393,7 +393,7 @@ const App = () => {
           h,
           fgColor,
           mapje,
-          isSlideshow: isTour,
+          isTour,
           setSetup,
         }}
       />
