@@ -192,9 +192,7 @@ const App = () => {
       if (type === "checkbox") {
         nextSetup[id] = !nextSetup[id];
       } else {
-        nextSetup[id] = ["number", "range".includes("type")]
-          ? value / 1
-          : value;
+        nextSetup[id] = ["number", "range"].includes(type) ? value / 1 : value;
       }
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
       if (id === "kwastje") {
