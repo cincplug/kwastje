@@ -328,8 +328,8 @@ const App = () => {
   };
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
-  const scheduledTasks = roostertjes.useFuture({ setSetup, isRoostertje });
-  const { tasks, subs, activeSub, setActiveSub, subDuration } = scheduledTasks;
+  const scheduledTasks = roostertjes.useFuture({ setSetup, isRoostertje, stopRoostertje });
+  const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
   useEffect(() => {
     updateKwastjeName();
@@ -439,7 +439,7 @@ const App = () => {
             )}
           </g>
         </svg>
-        { isRoostertje && subs && (
+        {isRoostertje && subs && (
           <p
             className={`subtitle--${activeSub}`}
             style={{ animationDuration: `${subDuration}ms` }}

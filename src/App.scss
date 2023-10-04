@@ -445,15 +445,15 @@ button,
   100% {
     opacity: 0;
   }
-  
 }
-[class*='subtitle--'] {
+[class*="subtitle--"] {
   position: absolute;
   bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 3rem;
-  max-width: 80%;
+  width: 200rem;
+  max-width: 80vw;
   color: #000048;
   text-align: center;
   font-weight: bold;
