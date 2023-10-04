@@ -444,7 +444,7 @@ const App = () => {
             className={`subtitle--${activeSub}`}
             style={{ animationDuration: `${subDuration}ms` }}
           >
-            {activeSub} {subs[activeSub]}
+            {subs[activeSub]}
           </p>
         )}
       </main>

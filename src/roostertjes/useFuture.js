@@ -15,6 +15,12 @@ const useFuture = (props) => {
         if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
           tasks[0].previousTime.current = timestamp;
           setActiveSub((prevActiveSub) => {
+            if(prevActiveSub === subs.length) {
+              tasks.forEach((task) => {
+                cancelAnimationFrame(task.requestRef.current);
+              });
+              return -1;
+            }
             return prevActiveSub + 1;
           });
         }
