@@ -328,7 +328,7 @@ const App = () => {
   };
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
-  const scheduledTasks = roostertjes.useFuture({ setSetup, isRoostertje, stopRoostertje });
+  const scheduledTasks = roostertjes.useFuture({ setSetup, isRoostertje, toggleRoostertje });
   const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
   useEffect(() => {

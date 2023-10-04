@@ -15,11 +15,11 @@ const useFuture = (props) => {
         if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
           tasks[0].previousTime.current = timestamp;
           setActiveSub((prevActiveSub) => {
-            if (prevActiveSub === subs.length) {
+            if (prevActiveSub === subs.length - 1) {
               tasks.forEach((task) => {
                 cancelAnimationFrame(task.requestRef.current);
               });
-              // toggleRoostertje();
+              toggleRoostertje();
               return 0;
             } else {
               return prevActiveSub + 1;
