@@ -329,8 +329,8 @@ const App = () => {
     });
   };
 
-  const scheduledTasks = roostertjes.useTour({ setSetup });
-  // const scheduledTasks = roostertjes.useFuture({ setSetup });
+  // const scheduledTasks = roostertjes.useTour({ setSetup });
+  const scheduledTasks = roostertjes.useFuture({ setSetup });
 
   const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
@@ -363,40 +363,40 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {/* {!isRoostertje && ( */}
-      <Menu
-        {...{
-          isMenuVisible,
-          setIsMenuVisible,
-          menuVisibilityClass,
-          getControls,
-          download,
-          clear,
-          shuffle,
-          promptje,
-          setPromptje,
-          hoogtje,
-          setHoogtje,
-          breedtje,
-          setBreedtje,
-          isLoading,
-          setIsLoading,
-          setAitje,
-          processAitje,
-          toggleRoostertje,
-          path,
-          setup,
-          mouseX,
-          mouseY,
-          w,
-          h,
-          fgColor,
-          mapje,
-          isRoostertje,
-          setSetup,
-        }}
-      />
-      {/* )} */}
+      {!isRoostertje && (
+        <Menu
+          {...{
+            isMenuVisible,
+            setIsMenuVisible,
+            menuVisibilityClass,
+            getControls,
+            download,
+            clear,
+            shuffle,
+            promptje,
+            setPromptje,
+            hoogtje,
+            setHoogtje,
+            breedtje,
+            setBreedtje,
+            isLoading,
+            setIsLoading,
+            setAitje,
+            processAitje,
+            toggleRoostertje,
+            path,
+            setup,
+            mouseX,
+            mouseY,
+            w,
+            h,
+            fgColor,
+            mapje,
+            isRoostertje,
+            setSetup,
+          }}
+        />
+      )}
       <main
         ref={mainRef}
         className="content"

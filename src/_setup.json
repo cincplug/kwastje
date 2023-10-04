@@ -126,12 +126,12 @@
   {
     "id": "isFluent",
     "type": "checkbox",
-    "description": "Locks mouse as if constantly pressed, if you are more comfortable that way.\nYou can also turn it on and off by double-click",
+    "description": "Behaves as if the mouse button is constantly pressed.\nYou can also turn this on / off by double-click",
     "value": false
   },
   {
     "id": "stencil",
-    "description": "Superimposes aitje over kwastje",
+    "description": "Superimposes merger over kwastje",
     "value": 0,
     "type": "range",
     "isRight": true,

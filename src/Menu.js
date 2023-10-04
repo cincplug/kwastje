@@ -174,6 +174,7 @@ const Menu = (props) => {
           >
             Add merger
           </label>
+          {setup.fgColor} {setup.bgColor}
         </div>
 
         <button

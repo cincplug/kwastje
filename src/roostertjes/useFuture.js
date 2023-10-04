@@ -29,11 +29,16 @@ const useFuture = (props) => {
   ];
 
   useEffect(() => {
-    console.info("mhm");
     setSetup((prevSetup) => {
-      return { ...prevSetup, kwastje: 48, bgColor: "#000048" };
+      return {
+        ...prevSetup,
+        kwastje: 48,
+        fgColor: "#6aa2dc",
+        bgColor: "#92bbe6",
+        isFluent: true,
+      };
     });
-  }, [setSetup]);
+  }, []);
 
   return { tasks, subs, activeSub, setActiveSub, subDuration };
 };
