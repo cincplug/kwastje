@@ -180,7 +180,9 @@ const Menu = (props) => {
           htmlFor="roostertje"
           className="control__button roostertje"
           key={"roostertje"}
-          onClick={toggleRoostertje}
+          onClick={() => {
+            toggleRoostertje();
+          }}
         >
           Start roostertje
         </button>

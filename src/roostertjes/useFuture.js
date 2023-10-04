@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import subs from "./useFutureSubs.json";
 
 const useFuture = (props) => {
-  const { setSetup } = props;
+  const { setSetup, isRoostertje } = props;
   const [activeSub, setActiveSub] = useState(0);
   const subDuration = 7000;
 
@@ -13,14 +13,10 @@ const useFuture = (props) => {
       previousTime: useRef(0),
       effort: (timestamp) => {
         if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
-          setSetup((prevSetup) => {
-            setActiveSub((prevActiveSub) => prevActiveSub + 1);
-            return {
-              ...prevSetup,
-              modifier: (prevSetup.modifier / 1 + 0.1).toFixed(1),
-            };
-          });
           tasks[0].previousTime.current = timestamp;
+          setActiveSub((prevActiveSub) => {
+            return prevActiveSub + 1;
+          });
         }
         tasks[0].requestRef.current = requestAnimationFrame(tasks[0].effort);
       },
@@ -29,16 +25,17 @@ const useFuture = (props) => {
   ];
 
   useEffect(() => {
-    setSetup((prevSetup) => {
-      return {
-        ...prevSetup,
-        kwastje: 48,
-        fgColor: "#6aa2dc",
-        bgColor: "#92bbe6",
-        isFluent: true,
-      };
-    });
-  }, []);
+    if (isRoostertje)
+      setSetup((prevSetup) => {
+        return {
+          ...prevSetup,
+          kwastje: 48,
+          fgColor: "#6aa2dc",
+          bgColor: "#92bbe6",
+          isFluent: true,
+        };
+      });
+  }, [setSetup, isRoostertje]);
 
   return { tasks, subs, activeSub, setActiveSub, subDuration };
 };

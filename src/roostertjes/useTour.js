@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { customKwastjes } from "../kwastjes";
 
 const useTour = (props) => {
@@ -62,6 +62,16 @@ const useTour = (props) => {
       requestRef: useRef(null),
     },
   ];
+
+  useEffect(() => {
+    setAltBgIndex(0);
+    setSetup((prevSetup) => {
+      return {
+        ...prevSetup,
+        kwastje: 1,
+      };
+    });
+  }, [setSetup]);
 
   return { tasks, setAltBgIndex };
 };

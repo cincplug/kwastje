@@ -30,7 +30,7 @@ async function clearRemoteDirectory() {
     console.log(`Inhoud van de remote directory ${remotePath} is verwijderd.`);
     
     await client.uploadFromDir(buildPath, process.env.FTP_REMOTE_PATH);
-    console.log(`Upload klaar, geef mij een appel.`);
+    console.log(`Upload klaar, geef mij een appel.\n🍎`);
 
   } catch (error) {
     console.error("Er is een fout opgetreden:", error);
