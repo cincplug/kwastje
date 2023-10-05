@@ -488,7 +488,7 @@ const App = () => {
           <p
             className={`subtitle--${activeSub}`}
             style={{
-              background: `${setup.bgColor}dd`,
+              background: `${setup.bgColor}`,
             }}
             dangerouslySetInnerHTML={{ __html: subs[activeSub] }}
           />
