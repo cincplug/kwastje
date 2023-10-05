@@ -15,6 +15,7 @@ const Menu = (props) => {
     setTasje,
     setSetup,
     toggleRoostertje,
+    isRoostertje,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
@@ -87,6 +88,8 @@ const Menu = (props) => {
     loadSvgFiles();
   }, []);
 
+  const isRoostertjeClass = isRoostertje ? "roostertje" : "";
+
   return (
     <>
       <button
@@ -142,7 +145,9 @@ const Menu = (props) => {
           reset
         </button>
       </nav>
-      <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
+      <nav
+        className={`menu menu--filters menu--${menuVisibilityClass} menu--${isRoostertjeClass}`}
+      >
         <div className="tasjes">
           {svgData.map((svgContent, index) => (
             <button
