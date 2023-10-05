@@ -219,7 +219,7 @@ button,
     );
     margin-bottom: 0.5rem;
     &--collapsed {
-      filter: brightness(2)
+      filter: brightness(2);
     }
   }
 }
@@ -455,9 +455,66 @@ button,
   left: 50%;
   transform: translateX(-50%);
   font-size: 3rem;
-  width: 40rem;
+  width: 50rem;
   max-width: 90vw;
-  color: #000048;
+  color: $color-white;
   text-align: center;
   font-weight: bold;
+  .cogni-ddw & {
+    font-family: Gellix, sans-serif;
+    letter-spacing: 2px;
+  }
+}
+
+root {
+  // Cogni imports
+  --black: #000;
+  --off-white: #f8f8f8;
+  --white: #fff;
+  --dark-grey: #53565a;
+  --dark-grey-rgb: 83, 86, 90;
+  --medium-grey: #97999b;
+  --light-grey: #d0d0ce;
+  --plum: #6c70ee;
+  --med-plum: #7373d8;
+  --plum-80: #8b8ee4;
+  --plum-40: #c8c9f1;
+  --plum-20: #e7e8f5;
+  --color-brand: #000048;
+  --plum-300: #2e308e;
+  --plum-300-rgb: 46, 48, 142;
+  --plum-200: #7373d8;
+  --plum-200-rgb: 115, 115, 216;
+  --plum-100: #85a0f9;
+  --plum-100-rgb: 133, 160, 249;
+  --blue-700: #2b318a;
+  --blue-600: #235b9d;
+  --blue-500: #2b6cb2;
+  --blue-400: #2f78c4;
+  --blue-300: #6aa2dc;
+  --blue-300-rgb: 106, 162, 220;
+  --blue-200: #92bbe6;
+  --blue-100: #e4eef9;
+  --teal-400: #06c7cc;
+  --teal-300: #26efe9;
+  --teal-200: #76f8eb;
+  --teal-100: #97f5f7;
+  --red: #b81f2d;
+  --yellow: #e9c71d;
+  --green: #2db81f;
+  --c-text-heading: var(--dark-grey);
+  --text: var(--dark-grey);
+  --text-invert: var(--white);
+  --line: var(--dark-grey);
+  --font: "Gellix", system-ui, -apple-system, "Segoe UI", roboto,
+    "Helvetica Neue", "Noto Sans", "Liberation Sans", arial, sans-serif;
+}
+
+@font-face {
+  font-family: Gellix;
+  src: local("Gellix Regular"), local("Gellix-Regular"),
+    url("./fonts/Gellix-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

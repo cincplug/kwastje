@@ -330,12 +330,17 @@ const App = () => {
   };
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
-  const scheduledTasks = roostertjes.useFuture({
+  // const scheduledTasks = roostertjes.useFuture({
+  //   setSetup,
+  //   isRoostertje,
+  //   stopRoostertje,
+  // });
+  const scheduledTasks = roostertjes.useDdw({
     setSetup,
     isRoostertje,
     stopRoostertje,
   });
-  const { tasks, subs, activeSub, subDuration } = scheduledTasks;
+  const { tasks, subs, activeSub, subDuration, roosterClass } = scheduledTasks;
 
   useEffect(() => {
     updateKwastjeName();
@@ -365,7 +370,10 @@ const App = () => {
   }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
 
   return (
-    <div className="wrapper" style={{ background: setup.bgColor }}>
+    <div
+      className={`wrapper ${roosterClass || ""}`}
+      style={{ background: setup.bgColor }}
+    >
       {
         <Menu
           {...{
@@ -448,7 +456,10 @@ const App = () => {
         {isRoostertje && subs && (
           <p
             className={`subtitle--${activeSub}`}
-            style={{ animationDuration: `${subDuration}ms` }}
+            style={{
+              animationDuration: `${subDuration}ms`,
+              textShadow: `0 0.2rem 0.3rem ${setup.bgColor}`,
+            }}
             dangerouslySetInnerHTML={{ __html: subs[activeSub] }}
           />
         )}

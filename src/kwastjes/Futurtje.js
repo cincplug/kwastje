@@ -12,7 +12,7 @@ const Futurtje = (props) => {
       x={Math.ceil((-x1 - w) / Math.max(setup.growth, 1) + setup.modifier * x2)}
       y={(h + (index + y2) * Math.max(1, setup.thickness) - (h - y1) / 2) - setup.modifier * y2 - 100}
       fill={`${
-        index % 2 === 0 ? setup.fgColor : "#ffffff"
+        index % 2 === 0 ? setup.fgColor : setup.bgColor
       }${setup.opacity.toString(16)}`}
       style={{
         fontSize,
