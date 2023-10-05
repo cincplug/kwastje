@@ -321,7 +321,7 @@ const App = () => {
       stopRoostertje();
     };
   };
-  
+
   const stopRoostertje = () => {
     setIsMenuVisible(true);
     tasks.forEach((task) => {
@@ -330,7 +330,11 @@ const App = () => {
   };
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
-  const scheduledTasks = roostertjes.useFuture({ setSetup, isRoostertje, stopRoostertje });
+  const scheduledTasks = roostertjes.useFuture({
+    setSetup,
+    isRoostertje,
+    stopRoostertje,
+  });
   const { tasks, subs, activeSub, subDuration } = scheduledTasks;
 
   useEffect(() => {
@@ -362,7 +366,7 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {(
+      {
         <Menu
           {...{
             isMenuVisible,
@@ -395,7 +399,7 @@ const App = () => {
             setSetup,
           }}
         />
-      )}
+      }
       <main
         ref={mainRef}
         className="content"
@@ -445,9 +449,8 @@ const App = () => {
           <p
             className={`subtitle--${activeSub}`}
             style={{ animationDuration: `${subDuration}ms` }}
-          >
-            {subs[activeSub]}
-          </p>
+            dangerouslySetInnerHTML={{ __html: subs[activeSub] }}
+          />
         )}
       </main>
       {isInfoVisible && (

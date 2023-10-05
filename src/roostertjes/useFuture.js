@@ -4,7 +4,7 @@ import subs from "./useFutureSubs.json";
 const useFuture = (props) => {
   const { setSetup, isRoostertje, stopRoostertje } = props;
   const [activeSub, setActiveSub] = useState(-1);
-  const subDuration = 3000;
+  const subDuration = 5000;
 
   const tasks = [
     {
