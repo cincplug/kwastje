@@ -87,7 +87,7 @@
   {
     "id": "opacity",
     "description": "Initial opacity of lines in the kwastje",
-    "value": 128,
+    "value": 160,
     "type": "range",
     "min": 0,
     "max": 255,
