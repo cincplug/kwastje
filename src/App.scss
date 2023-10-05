@@ -533,11 +533,12 @@ button,
   left: 50%;
   transform: translateX(-50%);
   font-size: 3rem;
-  width: 50rem;
-  max-width: 90vw;
+  max-width: 50rem;
+  padding: 0.5rem 1rem;
   color: $color-white;
   text-align: center;
   font-weight: bold;
+  transition: background-color 0.5s ease-in;
   .cogni-ddw & {
     font-family: Gellix, sans-serif;
     letter-spacing: 2px;

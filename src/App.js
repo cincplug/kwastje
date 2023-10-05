@@ -488,8 +488,7 @@ const App = () => {
           <p
             className={`subtitle--${activeSub}`}
             style={{
-              animationDuration: `${subDuration}ms`,
-              textShadow: `0 0.2rem 0.3rem ${setup.bgColor}`,
+              background: `${setup.bgColor}dd`,
             }}
             dangerouslySetInnerHTML={{ __html: subs[activeSub] }}
           />
