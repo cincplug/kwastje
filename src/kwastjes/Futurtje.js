@@ -3,7 +3,7 @@ import React from "react";
 const Futurtje = (props) => {
   const { setup, index, w, h, x1, y1, x2, y2 } = props;
   const fontSize = Math.min(
-    Math.ceil(y1 * index * setup.modifier),
+    Math.ceil(y1 * index * setup.modifier / 4),
     h * setup.growth
   );
   return (
