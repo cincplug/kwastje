@@ -90,7 +90,9 @@ const Menu = (props) => {
   return (
     <>
       <button
-        className="menu__toggle"
+        className={`menu__toggle menu__toggle--${
+          isMenuVisible ? "expanded" : "collapsed"
+        }`}
         onClick={() => setIsMenuVisible(!isMenuVisible)}
         title="toggle"
         aria-controls="mainNav"

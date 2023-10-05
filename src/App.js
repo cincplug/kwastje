@@ -313,6 +313,7 @@ const App = () => {
   };
 
   const startRoostertje = () => {
+    setIsMenuVisible(false);
     tasks.forEach((task) => {
       task.requestRef.current = requestAnimationFrame(task.effort);
     });
@@ -320,8 +321,9 @@ const App = () => {
       stopRoostertje();
     };
   };
-
+  
   const stopRoostertje = () => {
+    setIsMenuVisible(true);
     tasks.forEach((task) => {
       cancelAnimationFrame(task.requestRef.current);
     });
@@ -360,7 +362,7 @@ const App = () => {
 
   return (
     <div className="wrapper" style={{ background: setup.bgColor }}>
-      {!isRoostertje && (
+      {(
         <Menu
           {...{
             isMenuVisible,
