@@ -178,16 +178,18 @@ const Menu = (props) => {
           </label>
         </div>
 
-        <button
-          htmlFor="roostertje"
-          className="control__button roostertje"
-          key={"roostertje"}
-          onClick={() => {
-            toggleRoostertje();
-          }}
-        >
-          Start roostertje
-        </button>
+        <div className="roostertje__wrapper">
+          <button
+            htmlFor="roostertje"
+            className="control__button roostertje"
+            key={"roostertje"}
+            onClick={() => {
+              toggleRoostertje();
+            }}
+          >
+            Start roostertje
+          </button>
+        </div>
       </nav>
     </>
   );
