@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import subs from "./useFutureSubs.json";
 
 const useFuture = (props) => {
-  const { setSetup, isRoostertje, toggleRoostertje } = props;
-  const [activeSub, setActiveSub] = useState(0);
-  const subDuration = 3000;
+  const { setSetup, isRoostertje, stopRoostertje } = props;
+  const [activeSub, setActiveSub] = useState(-1);
+  const subDuration = 700;
 
   const tasks = [
     {
@@ -16,11 +16,8 @@ const useFuture = (props) => {
           tasks[0].previousTime.current = timestamp;
           setActiveSub((prevActiveSub) => {
             if (prevActiveSub === subs.length - 1) {
-              tasks.forEach((task) => {
-                cancelAnimationFrame(task.requestRef.current);
-              });
-              toggleRoostertje();
-              return 0;
+              stopRoostertje();
+              return -1;
             } else {
               return prevActiveSub + 1;
             }
