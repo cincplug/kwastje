@@ -15,7 +15,7 @@ const Blijpje2 = (props) => {
     normalize,
   } = props;
 
-  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
   const qG = setup.thickness * setup.growth;
   let tR = qG * Math.max(0, Math.min(dotsCount - index, index));
   const displacementMap = {

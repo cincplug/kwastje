@@ -191,7 +191,7 @@ button,
       justify-content: space-between;
     }
   }
-  .aitjes {
+  .tasjes {
     grid-column: span 4;
     display: grid;
     grid-auto-rows: min-content;
@@ -335,7 +335,7 @@ button,
       grid-column: span 4;
     }
   }
-  &.aitje {
+  &.tasje {
     margin: 0.5rem -1rem 0;
     width: calc(100% + 2rem);
     padding: 0.5rem 1rem 0;
@@ -386,10 +386,10 @@ button,
     width: 40%;
   }
 }
-.aitjes-form {
+.tasjes-form {
   display: none;
 }
-.navaitje {
+.navtasje {
   // width: 33.333%;
   margin: 5% 3%;
   display: flex;
@@ -409,14 +409,14 @@ button,
     }
   }
 }
-.add-aitje {
+.add-tasje {
   position: absolute;
   left: -10000px;
 }
 .roostertje {
   align-self: end;
 }
-.add-aitje + label,
+.add-tasje + label,
 .roostertje {
   grid-column: span 4;
   line-height: $button-height;

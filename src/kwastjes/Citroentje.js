@@ -9,7 +9,7 @@ const Citroentje = (props) => {
     commonProps,
   } = props;
   
-  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
 
   return (
     <text

@@ -131,7 +131,7 @@
   },
   {
     "id": "stencil",
-    "description": "Superimposes merger over kwastje",
+    "description": "Superimposes tasje over kwastje",
     "value": 0,
     "type": "range",
     "isRight": true,

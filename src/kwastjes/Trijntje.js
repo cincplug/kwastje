@@ -3,7 +3,7 @@ import React from "react";
 const Trijntje = (props) => {
   const { setup, index, w, h, x1, x2, y1, y2, commonProps, normalize } = props;
 
-  const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
 
   return (
     <>

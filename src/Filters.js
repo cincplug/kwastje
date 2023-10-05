@@ -4,8 +4,8 @@ const Filters = (props) => {
   const { setup, w, h } = props;
   // Base64-coderen van de SVG-afbeelding
   let encodedSVG, dataUri;
-  if (setup.aitje) {
-    encodedSVG = btoa(setup.aitje);
+  if (setup.tasje) {
+    encodedSVG = btoa(setup.tasje);
     dataUri = `data:image/svg+xml;base64,${encodedSVG}`;
   }
   return (

@@ -12,13 +12,13 @@ const Menu = (props) => {
     download,
     clear,
     shuffle,
-    setAitje,
+    setTasje,
     setSetup,
     toggleRoostertje,
   } = props;
 
   const [svgData, setSvgData] = useState([]);
-  const [aitjeIndex, setAitjeIndex] = useState(null);
+  const [tasjeIndex, setTasjeIndex] = useState(null);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -27,7 +27,7 @@ const Menu = (props) => {
       const reader = new FileReader();
       reader.onload = () => {
         const svgContent = reader.result;
-        setAitje(svgContent);
+        setTasje(svgContent);
       };
       reader.readAsText(file);
     } else {
@@ -45,20 +45,20 @@ const Menu = (props) => {
             return;
           }
           const svg = trace.getSVG();
-          setAitje(svg);
+          setTasje(svg);
         });
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleAitjeClick = (svgContent, index) => {
-    if (aitjeIndex !== index) {
-      setAitje(svgContent);
-      setAitjeIndex(index);
+  const handleTasjeClick = (svgContent, index) => {
+    if (tasjeIndex !== index) {
+      setTasje(svgContent);
+      setTasjeIndex(index);
     } else {
-      setAitjeIndex(null);
-      setAitje(null);
+      setTasjeIndex(null);
+      setTasje(null);
       setSetup((prevSetup) => {
         return {
           ...prevSetup,
@@ -72,12 +72,12 @@ const Menu = (props) => {
     const importAll = (r) => {
       return r.keys().map(r);
     };
-    const aitjes = importAll(
-      require.context("./aitjes/", false, /\.(png|jpe?g|svg)$/)
+    const tasjes = importAll(
+      require.context("./tasjes/", false, /\.(png|jpe?g|svg)$/)
     );
 
     const loadSvgFiles = async () => {
-      const svgPromises = aitjes.map((fileNumber) =>
+      const svgPromises = tasjes.map((fileNumber) =>
         fetch(fileNumber).then((response) => response.text())
       );
       const loadedSvgData = await Promise.all(svgPromises);
@@ -143,18 +143,18 @@ const Menu = (props) => {
         </button>
       </nav>
       <nav className={`menu menu--filters menu--${menuVisibilityClass}`}>
-        <div className="aitjes">
+        <div className="tasjes">
           {svgData.map((svgContent, index) => (
             <button
               key={index}
-              className={`navaitje ${
-                index === aitjeIndex ? "selected" : "unselected"
+              className={`navtasje ${
+                index === tasjeIndex ? "selected" : "unselected"
               }`}
               dangerouslySetInnerHTML={{ __html: svgContent }}
-              onClick={() => handleAitjeClick(svgContent, index)}
+              onClick={() => handleTasjeClick(svgContent, index)}
             />
           ))}
-          {setup.aitje &&
+          {setup.tasje &&
             getControls(
               defaultSetup.filter(
                 (control) => !control.isHidden && control.isRight
@@ -164,17 +164,17 @@ const Menu = (props) => {
             type="file"
             accept=".svg, .png, .jpg"
             onChange={handleFileUpload}
-            placeholder="Add an aitje"
-            key={"add-aitje-input"}
-            id="add-aitje"
-            className="add-aitje"
+            placeholder="Add an tasje"
+            key={"add-tasje-input"}
+            id="add-tasje"
+            className="add-tasje"
           />
           <label
-            htmlFor="add-aitje"
+            htmlFor="add-tasje"
             className="control__button"
-            key={"add-aitje-label"}
+            key={"add-tasje-label"}
           >
-            Add merger
+            Add tasje
           </label>
         </div>
 

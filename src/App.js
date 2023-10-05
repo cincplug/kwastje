@@ -19,9 +19,9 @@ const App = () => {
   defaultSetup.forEach((item) => {
     initialSetup[item.id] = storedSetup ? storedSetup[item.id] : item.value;
   });
-  if (storedSetup && storedSetup.aitje) {
-    initialSetup.aitje = new DOMParser().parseFromString(
-      storedSetup.aitje,
+  if (storedSetup && storedSetup.tasje) {
+    initialSetup.tasje = new DOMParser().parseFromString(
+      storedSetup.tasje,
       "text/html"
     ).body.firstChild;
   }
@@ -63,11 +63,11 @@ const App = () => {
   const prevMouseX = usePrevious(mouseX);
   const prevMouseY = usePrevious(mouseY);
 
-  const processAitje = (svg) => {
+  const processTasje = (svg) => {
     const parser = new DOMParser();
-    const aitje = parser.parseFromString(svg, "text/html").body.firstChild;
+    const tasje = parser.parseFromString(svg, "text/html").body.firstChild;
     const coordinates = [];
-    aitje.querySelectorAll("path").forEach((pathElement) => {
+    tasje.querySelectorAll("path").forEach((pathElement) => {
       const dAttribute = pathElement.getAttribute("d");
       const strippedPath = dAttribute
         .replace(/[A-Za-z]\s*[\d\s,]*/g, (match) => {
@@ -95,23 +95,23 @@ const App = () => {
     return filteredCoordinates;
   };
 
-  const setAitje = (aitje) => {
+  const setTasje = (tasje) => {
     setSetup((prevSetup) => {
       let nextSetup;
-      if (aitje) {
-        const coordinates = processAitje(aitje);
-        const aitjeDotsCount = Math.min(Math.max(coordinates.length, 50), 300);
+      if (tasje) {
+        const coordinates = processTasje(tasje);
+        const tasjeDotsCount = Math.min(Math.max(coordinates.length, 50), 300);
         nextSetup = {
           ...prevSetup,
-          aitje,
-          aitjeDotsCount,
+          tasje,
+          tasjeDotsCount,
         };
       } else {
         nextSetup = {
           ...prevSetup,
-          aitje: null,
+          tasje: null,
           stencil: 0,
-          aitjeDotsCount: null,
+          tasjeDotsCount: null,
         };
         setMapje(null);
       }
@@ -168,7 +168,7 @@ const App = () => {
         if (event.movementX > 0 && isReversed) setIsReversed(false);
       }
       if (isMouseDown || setup.isFluent) {
-        const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+        const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
         setPath((prevPath) => {
           prevPath[prevPath.length] = [mouseX, mouseY];
           const nextPath = prevPath.slice(
@@ -187,7 +187,7 @@ const App = () => {
       mouseY,
       prevMouseX,
       prevMouseY,
-      setup.aitjeDotsCount,
+      setup.tasjeDotsCount,
       setup.dotsCount,
       setup.isFluent,
       setup.kwastje,
@@ -206,8 +206,8 @@ const App = () => {
             return prevPath.concat(fillPath(value - prevPath.length));
           }
         });
-        if (setup.aitjeDotsCount) {
-          nextSetup.aitjeDotsCount = null;
+        if (setup.tasjeDotsCount) {
+          nextSetup.tasjeDotsCount = null;
         }
       }
       if (type === "checkbox") {
@@ -242,8 +242,8 @@ const App = () => {
       const { id, type, min, max, step, description } = item;
       const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
       let value = setup[id] || 0;
-      if (id === "dotsCount" && setup.aitjeDotsCount) {
-        value = setup.aitjeDotsCount;
+      if (id === "dotsCount" && setup.tasjeDotsCount) {
+        value = setup.tasjeDotsCount;
       }
       const checked = value === true;
       return (
@@ -423,8 +423,8 @@ const App = () => {
             setBreedtje,
             isLoading,
             setIsLoading,
-            setAitje,
-            processAitje,
+            setTasje,
+            processTasje,
             toggleRoostertje,
             path,
             setup,

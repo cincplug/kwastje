@@ -46,24 +46,24 @@ const Drawing = (props) => {
       />
     ));
     const Kwastje = kwastjes[setup.kwastje - 1];
-    let KwastjeMetAitje,
+    let KwastjeMetTasje,
       [x, y] = [mouseX, mouseY];
     if (mapje) {
       x += mapje[Math.min(index, mapje.length - 1)][0] - w / 2;
       y += mapje[Math.min(index, mapje.length - 1)][1] - h / 2;
-      KwastjeMetAitje = (
+      KwastjeMetTasje = (
         <g
           strokeWidth={setup.thickness}
           stroke={setup.fgColor}
           opacity={setup.opacity / 255}
-          className="aitje-outer"
+          className="tasje-outer"
           transform={`translate(${x || 0}, ${y || 0})`}
         >
           {Kwastje}
         </g>
       );
     }
-    return <>{mapje ? KwastjeMetAitje : Kwastje}</>;
+    return <>{mapje ? KwastjeMetTasje : Kwastje}</>;
   };
 
   return path.map((coords, index) => (
