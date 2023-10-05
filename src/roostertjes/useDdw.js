@@ -97,7 +97,7 @@ const useTour = (props) => {
         };
       });
     }
-  }, [setSetup]);
+  }, [setSetup, isRoostertje]);
 
   return {
     tasks,
