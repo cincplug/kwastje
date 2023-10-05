@@ -471,17 +471,18 @@ button,
   .cogni-ddw & {
     @include center;
     position: fixed;
-    background: var(--blue-400);
+    background: var(--blue-600);
     height: $button-height-big;
     border-radius: $button-height-big / 2;
     padding: 0 3rem;
     font-size: 1.2rem;
     line-height: 1.8rem;
     font-family: Gellix, sans-serif;
+    font-weight: bold;
     text-transform: none;
     &:hover {
       filter: none;
-      background: var(--blue-500);
+      background: var(--blue-400);
     }
     &__wrapper {
       position: fixed;
