@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
 import { customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
@@ -120,58 +120,79 @@ const App = () => {
     });
   };
 
-  const handleMouseDown = (event) => {
-    if (event.pointerType === "mouse") {
-      event.preventDefault();
-    }
-    if (!isMouseDown) {
-      setIsMouseDown(true);
-    }
-  };
+  const handleMouseDown = useCallback(
+    (event) => {
+      if (event.pointerType === "mouse") {
+        event.preventDefault();
+      }
+      if (!isMouseDown) {
+        setIsMouseDown(true);
+      }
+    },
+    [isMouseDown]
+  );
 
-  const handleMouseUp = (event) => {
-    if (event.pointerType === "mouse") {
-      event.preventDefault();
-    }
-    // Check if previous path is finished, to avoid connecting the new path with the old one
-    // If it wasn't finished, mark it as finished by adding arbitrary string as a third member
-    const isPrevPathFinished = path[path.length - 1].length > 2;
-    if (!isPrevPathFinished) {
-      setPath((prevPath) => {
-        const nextPath = prevPath.slice();
-        nextPath[nextPath.length - 1].push("stop");
-        return nextPath;
-      });
-    }
-    if (isMouseDown) {
-      setIsMouseDown(false);
-    }
-  };
+  const handleMouseUp = useCallback(
+    (event) => {
+      if (event.pointerType === "mouse") {
+        event.preventDefault();
+      }
+      // Check if previous path is finished, to avoid connecting the new path with the old one
+      // If it wasn't finished, mark it as finished by adding arbitrary string as a third member
+      const isPrevPathFinished = path[path.length - 1].length > 2;
+      if (!isPrevPathFinished) {
+        setPath((prevPath) => {
+          const nextPath = prevPath.slice();
+          nextPath[nextPath.length - 1].push("stop");
+          return nextPath;
+        });
+      }
+      if (isMouseDown) {
+        setIsMouseDown(false);
+      }
+    },
+    [isMouseDown, path]
+  );
 
-  const handleMouseMove = (event) => {
-    if (
-      isMouseDown ||
-      setup.isFluent ||
-      (setup.kwastje === 1 &&
-        (prevMouseX === mouseX || prevMouseY === mouseY || !mapje))
-    ) {
-      setMouseX(event.pageX || event.touches[0].pageX);
-      setMouseY(event.pageY || event.touches[0].pageY);
-      if (event.movementX < 0 && !isReversed) setIsReversed(true);
-      if (event.movementX > 0 && isReversed) setIsReversed(false);
-    }
-    if (isMouseDown || setup.isFluent) {
-      const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
-      setPath((prevPath) => {
-        prevPath[prevPath.length] = [mouseX, mouseY];
-        const nextPath = prevPath.slice(
-          prevPath.length - dotsCount,
-          prevPath.length
-        );
-        return nextPath;
-      });
-    }
-  };
+  const handleMouseMove = useCallback(
+    (event) => {
+      if (
+        isMouseDown ||
+        setup.isFluent ||
+        (setup.kwastje === 1 &&
+          (prevMouseX === mouseX || prevMouseY === mouseY || !mapje))
+      ) {
+        setMouseX(event.pageX || event.touches[0].pageX);
+        setMouseY(event.pageY || event.touches[0].pageY);
+        if (event.movementX < 0 && !isReversed) setIsReversed(true);
+        if (event.movementX > 0 && isReversed) setIsReversed(false);
+      }
+      if (isMouseDown || setup.isFluent) {
+        const dotsCount = setup.aitjeDotsCount || setup.dotsCount;
+        setPath((prevPath) => {
+          prevPath[prevPath.length] = [mouseX, mouseY];
+          const nextPath = prevPath.slice(
+            prevPath.length - dotsCount,
+            prevPath.length
+          );
+          return nextPath;
+        });
+      }
+    },
+    [
+      isMouseDown,
+      isReversed,
+      mapje,
+      mouseX,
+      mouseY,
+      prevMouseX,
+      prevMouseY,
+      setup.aitjeDotsCount,
+      setup.dotsCount,
+      setup.isFluent,
+      setup.kwastje,
+    ]
+  );
 
   const handleInputChange = (event) => {
     setSetup((prevSetup) => {
@@ -208,10 +229,13 @@ const App = () => {
     });
   };
 
-  const updateKwastjeName = (value = setup.kwastje) => {
-    const kwastjeNames = Object.keys(customKwastjes);
-    setKwastjeName(kwastjeNames[value - 1]);
-  };
+  const updateKwastjeName = useCallback(
+    (value = setup.kwastje) => {
+      const kwastjeNames = Object.keys(customKwastjes);
+      setKwastjeName(kwastjeNames[value - 1]);
+    },
+    [setup.kwastje]
+  );
 
   const getControls = (controls) => {
     return controls.map((item, index) => {
@@ -367,7 +391,14 @@ const App = () => {
       document.removeEventListener("keyup", handleKeyUp);
       document.removeEventListener("dblclick", handleDoubleClick);
     };
-  }, [handleMouseMove, mouseX, mouseY, updateKwastjeName]);
+  }, [
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    mouseX,
+    mouseY,
+    updateKwastjeName,
+  ]);
 
   return (
     <div
