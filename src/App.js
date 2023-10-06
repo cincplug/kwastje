@@ -354,17 +354,19 @@ const App = () => {
   };
 
   // const scheduledTasks = roostertjes.useTour({ setSetup });
+
   // const scheduledTasks = roostertjes.useFuture({
   //   setSetup,
   //   isRoostertje,
   //   stopRoostertje,
   // });
+  
   const scheduledTasks = roostertjes.useDdw({
     setSetup,
     isRoostertje,
     stopRoostertje,
   });
-  const { tasks, subs, activeSub, subDuration, roosterClass } = scheduledTasks;
+  const { tasks, subs, activeSub, roosterClass } = scheduledTasks;
 
   useEffect(() => {
     updateKwastjeName();

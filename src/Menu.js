@@ -182,19 +182,18 @@ const Menu = (props) => {
             Add tasje
           </label>
         </div>
-
-        <div className="roostertje__wrapper">
-          <button
-            htmlFor="roostertje"
-            className="control__button roostertje"
-            key={"roostertje"}
-            onClick={() => {
-              toggleRoostertje();
-            }}
-          >
-            Start roostertje
-          </button>
-        </div>
+      </nav>
+      <nav className={`roostertje__wrapper roostertje__wrapper--${isRoostertjeClass}`}>
+        <button
+          htmlFor="roostertje"
+          className="control__button roostertje"
+          key={"roostertje"}
+          onClick={() => {
+            toggleRoostertje();
+          }}
+        >
+          Start roostertje
+        </button>
       </nav>
     </>
   );
