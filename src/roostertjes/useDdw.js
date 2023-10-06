@@ -69,7 +69,7 @@ const useTour = (props) => {
         if (timestamp - tasks[2].previousTime.current >= tasks[2].interval) {
           tasks[2].previousTime.current = timestamp;
           setActiveSub((prevActiveSub) => {
-            if (prevActiveSub === subs.length - 1) {
+            if (prevActiveSub === subs.length - 2) {
               tasks.forEach((task) => {
                 cancelAnimationFrame(task.requestRef.current);
               });
