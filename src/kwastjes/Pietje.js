@@ -23,13 +23,15 @@ const Pietje = (props) => {
         ry={y2 / setup.modifier / 2}
         {...commonProps}
       />
-      <line
-        {...commonProps}
-        x1={w * Math.sin(x1 * (Math.PI / index))}
-        x2={x2}
-        y1={h * Math.cos(y1 * (Math.PI / index))}
-        y2={y2}
-      />
+      {index === Math.round(setup.dotsCount / 2) && (
+        <line
+          {...commonProps}
+          x1={w * Math.sin(x1 * (Math.PI / index)) * 200}
+          x2={x2}
+          y1={h * Math.cos(y1 * (Math.PI / index)) * 200}
+          y2={y2}
+        />
+      )}
     </>
   );
 };
