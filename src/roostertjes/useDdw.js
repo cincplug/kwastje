@@ -5,7 +5,7 @@ import subs from "./useDdwSubs.json";
 const useTour = (props) => {
   const { setSetup, isRoostertje, stopRoostertje } = props;
   const [activeSub, setActiveSub] = useState(-1);
-  const subDuration = 5000;
+  const subDuration = 300;
   const roosterClass = "cogni-ddw";
   const altBg = [
     "#06c7cc",
@@ -32,18 +32,19 @@ const useTour = (props) => {
                   : 1,
             };
           });
-          tasks[0].previousTime.current = timestamp;
-        }
-        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].effort);
-      },
-      requestRef: useRef(null),
-    },
-    {
-      name: "bgColor",
-      interval: subDuration,
-      previousTime: useRef(0),
-      effort: (timestamp) => {
-        if (timestamp - tasks[1].previousTime.current >= tasks[1].interval) {
+
+          setActiveSub((prevActiveSub) => {
+            if (prevActiveSub === subs.length - 1) {
+              tasks.forEach((task) => {
+                cancelAnimationFrame(task.requestRef.current);
+              });
+              stopRoostertje();
+              return -1;
+            } else {
+              return prevActiveSub + 1;
+            }
+          });
+
           setAltBgIndex((prevAltBgIndex) => {
             const nextAltBgIndex =
               prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
@@ -55,32 +56,10 @@ const useTour = (props) => {
             });
             return nextAltBgIndex;
           });
-          tasks[1].previousTime.current = timestamp;
+
+          tasks[0].previousTime.current = timestamp;
         }
-        tasks[1].requestRef.current = requestAnimationFrame(tasks[1].effort);
-      },
-      requestRef: useRef(null),
-    },
-    {
-      name: "sub",
-      interval: subDuration,
-      previousTime: useRef(0),
-      effort: (timestamp) => {
-        if (timestamp - tasks[2].previousTime.current >= tasks[2].interval) {
-          tasks[2].previousTime.current = timestamp;
-          setActiveSub((prevActiveSub) => {
-            if (prevActiveSub === subs.length - 2) {
-              tasks.forEach((task) => {
-                cancelAnimationFrame(task.requestRef.current);
-              });
-              stopRoostertje();
-              return -1;
-            } else {
-              return prevActiveSub + 1;
-            }
-          });
-        }
-        tasks[2].requestRef.current = requestAnimationFrame(tasks[2].effort);
+        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].effort);
       },
       requestRef: useRef(null),
     },
