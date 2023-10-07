@@ -1,20 +1,18 @@
 import React from "react";
-import Ineke from "./Ineke";
 
 const Janneke = (props) => {
-  const { setup, w, x1, commonProps } = props;
+  const { index, x1, y1, commonProps } = props;
 
-  const inekeProps = {
-    ...props,
-    setup: { ...setup, modifier: x1 / w / 2 },
-    commonProps: {
-      ...commonProps,
-      strokeWidth: setup.thickness / 4,
-    },
-  };
   return (
     <>
-      <Ineke {...inekeProps} />
+      {[...Array(index).keys()].map((step) => (
+        <circle
+          {...commonProps}
+          cx={x1 + 200 + step}
+          cy={y1 + 100 + index}
+          r={step * index}
+        ></circle>
+      ))}
     </>
   );
 };

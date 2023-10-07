@@ -11,7 +11,7 @@ const Colintje = (props) => {
     y1,
     y2,
     commonProps,
-    normalize,
+    // normalize,
   } = props;
 
   // const x3 = x2 + index * 2
