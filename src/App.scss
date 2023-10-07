@@ -468,7 +468,7 @@ button,
 }
 .roostertje {
   align-self: end;
-  .cogni-ddw & {
+  .cogni-ddw-overlay & {
     @include center;
     position: fixed;
     background: var(--blue-600);

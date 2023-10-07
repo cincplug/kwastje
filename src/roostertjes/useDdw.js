@@ -3,16 +3,11 @@ import { customKwastjes } from "../kwastjes";
 import subs from "./useDdwSubs.json";
 
 const useTour = (props) => {
-  const { setSetup, stopRoostertje } = props;
+  const { setSetup, isRoostertje, stopRoostertje } = props;
   const [activeSub, setActiveSub] = useState(0);
   const subDuration = 5000;
   const roosterClass = "cogni-ddw";
-  const altBg = [
-    "#2b318a",
-    "#7373d8",
-    "#2b6cb2",
-    "#2e308e",
-  ];
+  const altBg = ["#000048", "#2b318a", "#7373d8", "#2b6cb2", "#2e308e"];
   const [, setAltBgIndex] = useState(0);
   const tasks = [
     {
@@ -64,14 +59,16 @@ const useTour = (props) => {
   ];
 
   useEffect(() => {
-    setSetup((prevSetup) => {
-      return {
-        ...prevSetup,
-        kwastje: 1,
-        isFluent: true,
-      };
-    });
-  }, [setSetup]);
+    if (isRoostertje) {
+      setSetup((prevSetup) => {
+        return {
+          ...prevSetup,
+          kwastje: 1,
+          isFluent: true,
+        };
+      });
+    }
+  }, [isRoostertje, setSetup]);
 
   return {
     tasks,

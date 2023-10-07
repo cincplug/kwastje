@@ -182,8 +182,6 @@ const Menu = (props) => {
             Add tasje
           </label>
         </div>
-      </nav>
-      <nav className={`roostertje__wrapper roostertje__wrapper--${isRoostertjeClass}`}>
         <button
           htmlFor="roostertje"
           className="control__button roostertje"
@@ -192,9 +190,12 @@ const Menu = (props) => {
             toggleRoostertje();
           }}
         >
-          Start roostertje
+          {isRoostertje ? "Stop" : "Start"} roostertje
         </button>
       </nav>
+      <nav
+        className={`roostertje__wrapper roostertje__wrapper--${isRoostertjeClass}`}
+      ></nav>
     </>
   );
 };

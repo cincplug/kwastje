@@ -332,7 +332,7 @@ const App = () => {
       } else {
         startRoostertje();
       }
-      return true;
+      return !prevIsRoostertje;
     });
   };
 
@@ -360,9 +360,10 @@ const App = () => {
   //   isRoostertje,
   //   stopRoostertje,
   // });
-
+  
   const scheduledTasks = roostertjes.useDdw({
     setSetup,
+    isRoostertje,
     stopRoostertje,
   });
   const { tasks, subs, activeSub, roosterClass } = scheduledTasks;
