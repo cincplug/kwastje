@@ -3,7 +3,7 @@ import { customKwastjes } from "../kwastjes";
 import subs from "./useDdwSubs.json";
 
 const useTour = (props) => {
-  const { setSetup, isRoostertje, stopRoostertje } = props;
+  const { setSetup, isRoostertje } = props;
   const [activeSub, setActiveSub] = useState(0);
   const subDuration = 5000;
   const roosterClass = "cogni-ddw";
@@ -27,15 +27,7 @@ const useTour = (props) => {
           });
 
           setActiveSub((prevActiveSub) => {
-            if (prevActiveSub === subs.length - 1) {
-              tasks.forEach((task) => {
-                cancelAnimationFrame(task.requestRef.current);
-              });
-              stopRoostertje();
-              return -1;
-            } else {
-              return prevActiveSub + 1;
-            }
+            return prevActiveSub === subs.length - 1 ? 0 : prevActiveSub + 1;
           });
 
           setAltBgIndex((prevAltBgIndex) => {
