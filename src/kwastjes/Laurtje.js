@@ -7,34 +7,33 @@ const Laurtje = (props) => {
     // w,
     // h,
     x1,
-    x2,
+    // x2,
     y1,
     y2,
     commonProps,
     normalize,
   } = props;
 
-  // const x3 = x2 + index * 2;
-  // const y3 = y2 * index * setup.modifier;
+  const modifier = 50 * setup.modifier;
+  const stemHeight = 3 * modifier;
+  const threshold = 3;
+
   return (
     <>
       <path
         d={normalize(
-          `M${x1},${y1} v${x2 / 2} l${y2} 200 ${
-            index > 15 && index < setup.dotsCount - 15 ? `v-200 h${-y2} Z` : `h100 v20 h${-y2 - 300} Z`
+          `M${x1},${y1} ${
+            index > setup.dotsCount / threshold &&
+            index < (setup.dotsCount * (threshold - 1)) / threshold
+              ? `h${-y2} v${-stemHeight} h${y2} v${modifier} h${-stemHeight} v${modifier} h${stemHeight} v${modifier}` : `h${modifier} v${stemHeight} h${y2} v${modifier} h${
+                  -y2 - modifier
+                } v${-stemHeight - modifier}`
+              
           }`
         )}
         {...commonProps}
+        fill={setup.bgColor}
       />
-      {[...Array(index).keys()].map((step) => (
-        <circle
-          {...commonProps}
-          opacity="0.05"
-          cx={x1 - 100 + step}
-          cy={y1 + 300 + index}
-          r={step}
-        ></circle>
-      ))}
     </>
   );
 };
