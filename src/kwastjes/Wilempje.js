@@ -14,15 +14,16 @@ const Wilempje = (props) => {
     normalize,
   } = props;
 
+  const arrowHeadHeight = 20;
   const offset = setup.modifier * 10;
   return (
     <path
       d={normalize(
         `M${x1},${y1} ${[...Array(index).keys()].map(
           (step) =>
-            `h${offset - step} v${offset / (step - 1) / 2} z m${offset * 3},${
-              Math.sin(index) * offset
-            }`
+            `l${arrowHeadHeight}, ${-arrowHeadHeight} v${
+              arrowHeadHeight * 2
+            } z m${offset * 3},${Math.sin(index) * offset}`
         )} Z`
       )}
       {...commonProps}
