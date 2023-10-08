@@ -20,9 +20,11 @@ const Truusje = (props) => {
       d={normalize(
         `M${x1},${y1}  ${[...Array(index).keys()].map(
           (step) =>
-            `h${offset - step} v${offset / (step + 1)} m${offset * 3},${
-              Math.sin(index) * offset
-            } h${-offset + step * 2}, v${-offset + step * 2}`
+            ` ${
+              index > 30 ? `h${offset - step} v${offset / (step + 1)}` : ``
+            } m${offset * 3},${Math.sin(index) * offset} h${
+              -offset + step * 2
+            }, v${-offset + step * 2}`
         )}`
       )}
       {...commonProps}

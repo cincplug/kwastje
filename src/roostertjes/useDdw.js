@@ -7,7 +7,7 @@ const useDdw = (props) => {
   const [activeSlide, setactiveSlide] = useState(0);
   const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
-  const altBg = ["#000048", "#2b318a", "#7373d8", "#2b6cb2", "#2e308e"];
+  const altBg = ["#2b318a", "#7373d8", "#2b6cb2", "#2e308e"];
   const [, setAltBgIndex] = useState(0);
   const tasks = [
     {
@@ -19,19 +19,25 @@ const useDdw = (props) => {
           setactiveSlide((prevActiveSlide) => {
             const isLastSlide = prevActiveSlide === slides.length - 1;
             if (isLastSlide) {
+              const { modifySetup } = slides[prevActiveSlide + 1];
               setSetup((prevSetup) => {
                 return {
                   ...prevSetup,
+                  ...modifySetup,
                   kwastje: 0,
                 };
               });
             } else {
               setSetup((prevSetup) => {
-                const newKwastjeIndex = Object.keys(customKwastjes).findIndex(
-                  (currentKwastje) => currentKwastje === slides[prevActiveSlide + 1].kwastje
-                ) + 1;
+                const { modifySetup } = slides[prevActiveSlide + 1];
+                const newKwastjeIndex =
+                  Object.keys(customKwastjes).findIndex(
+                    (currentKwastje) =>
+                      currentKwastje === slides[prevActiveSlide + 1].kwastje
+                  ) + 1;
                 return {
                   ...prevSetup,
+                  ...modifySetup,
                   kwastje: newKwastjeIndex,
                 };
               });

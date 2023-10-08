@@ -27,7 +27,7 @@ const Sybje = (props) => {
                 ? `m${langje - kortje},${langje - kortje}`
                 : `h${kortje} v${-kortje + index}`
             } v${-langje + (index * step) / 2}`
-        )} Z`
+        )}`
       )}
       {...commonProps}
     />
