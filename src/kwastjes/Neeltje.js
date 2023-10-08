@@ -7,10 +7,10 @@ const Neeltje = (props) => {
   return (
     <path
       d={normalize(
-        `M${y2 * index - w},${x2} v-${step} ${
-          index < 10
+        `M${y2 * index - w},${x2} h${step} v${step} h-${step} v-${step} ${
+          index < setup.dotsCount / 2
             ? `Q${x2} ${y2}, ${y1} ${x1 / 2}`
-            : `h${step} m${-step}, ${-step}`
+            : `h-${step} m${-step}, ${-step}`
         }`
       )}
       {...commonProps}

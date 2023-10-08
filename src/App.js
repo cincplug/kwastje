@@ -366,7 +366,7 @@ const App = () => {
     isRoostertje,
     stopRoostertje,
   });
-  const { tasks, subs, activeSub, roosterClass } = scheduledTasks;
+  const { tasks, slides, activeSlide, roosterClass } = scheduledTasks;
 
   useEffect(() => {
     updateKwastjeName();
@@ -486,13 +486,13 @@ const App = () => {
             )}
           </g>
         </svg>
-        {isRoostertje && subs && (
+        {isRoostertje && slides && (
           <p
-            className={`subtitle--${activeSub}`}
+            className={`subtitle--${activeSlide}`}
             style={{
               background: `${setup.bgColor}`,
             }}
-            dangerouslySetInnerHTML={{ __html: subs[activeSub] }}
+            dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
           />
         )}
       </main>

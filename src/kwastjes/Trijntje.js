@@ -11,19 +11,23 @@ const Trijntje = (props) => {
         d={normalize(
           `M${x1},${y1} L${Math.max(w / 2, Math.cos(y2) * index)},${y2} ${
             index % 2 === 0 &&
-            `Q${Math.sin(x2 * index) + w * setup.modifier} ${x1}, ${x2} ${y1}`
+            `Q${
+              Math.sin(x2 * index) + w * setup.modifier
+            } ${x1}, ${x2} ${y1} M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1 / 2} z`
           }`
         )}
         {...commonProps}
       />
-      {index === dotsCount - 1 && (
+      {[...Array(index).keys()].map((step) => (
         <>
-          <circle
-            cx={x1 - setup.growth * setup.thickness}
-            cy={y1}
-            r={(w / x2) * setup.thickness * setup.growth + index}
-            {...commonProps}
-          ></circle>
+          {index < dotsCount / 2 && (
+            <circle
+              cx={(x1 / step) * index * setup.thickness}
+              cy={y1}
+              r={(w / x2) * setup.thickness * setup.growth + index}
+              {...commonProps}
+            ></circle>
+          )}
           <circle
             cx={x1 + setup.growth * setup.thickness}
             cy={y1}
@@ -31,7 +35,7 @@ const Trijntje = (props) => {
             {...commonProps}
           ></circle>
         </>
-      )}
+      ))}
     </>
   );
 };
