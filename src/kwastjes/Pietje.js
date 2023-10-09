@@ -17,22 +17,22 @@ const Pietje = (props) => {
   const modifier = Math.max(1, setup.modifier * 10);
 
   return (
-    <>
+    y1 > 0 && (
       <ellipse
         cx={x1}
         cy={y1}
-        rx={x2 / modifier}
-        ry={y2 / modifier}
+        rx={x2 / modifier + index}
+        ry={Math.max(1, y2 / modifier - index / 2)}
         transform={
-          index > setup.dotsCount / 2
+          index > (setup.dotsCount * 2) / 3
             ? `rotate(${(360 / setup.dotsCount) * index} ${x2 / modifier} ${
                 y2 / modifier
               }) translate(0 -${x2 / modifier})`
-            : ""
+            : `translate(0 100)`
         }
         {...commonProps}
       />
-    </>
+    )
   );
 };
 
