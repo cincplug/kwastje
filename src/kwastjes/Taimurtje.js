@@ -19,9 +19,9 @@ const Taimurtje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1} L${x1 * 21},${y1} L${y2 * 41},${
+        `M${x1},${y1} L${x1 * 2.1},${y1} L${y2 * 4.1},${
           y2 * Math.sin(index)
-        } L${x3},${y3 * Math.sin(90)}`
+        } L${x3},${y3 * Math.sin(90)} Z`
       )}
       {...commonProps}
     />

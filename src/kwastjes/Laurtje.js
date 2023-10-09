@@ -5,7 +5,7 @@ const Laurtje = (props) => {
     setup,
     index,
     // w,
-    // h,
+    h,
     x1,
     // x2,
     y1,
@@ -25,14 +25,13 @@ const Laurtje = (props) => {
           `M${x1},${y1} ${
             index > setup.dotsCount / threshold &&
             index < (setup.dotsCount * (threshold - 1)) / threshold
-              ? `h${-y2} v${-stemHeight} h${y2} v${modifier} h${-stemHeight} v${modifier} h${stemHeight} v${modifier}` : `h${modifier} v${stemHeight} h${y2} v${modifier} h${
-                  -y2 - modifier
+              ? `h${-y2/2} v${-stemHeight} h${y2/2} v${modifier} h${-stemHeight} v${modifier} h${stemHeight} v${modifier}`
+              : `h${modifier} v${stemHeight} h${(-h + y2) / 2} v${modifier} h${
+                  (h - y2) / 2 - modifier
                 } v${-stemHeight - modifier}`
-              
           }`
         )}
         {...commonProps}
-        fill={setup.bgColor}
       />
     </>
   );

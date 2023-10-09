@@ -45,7 +45,10 @@
   },
   {
     "kwastje": "Liesje",
-    "title": "Sailing through possibilities"
+    "title": "Sailing through possibilities",
+    "modifySetup": {
+      "isShaded": true
+    }
   },
   {
     "kwastje": "Colintje",
@@ -53,7 +56,7 @@
   },
   {
     "kwastje": "Taimurtje",
-    "title": "Being on the same page"
+    "title": "Harboring the optimism"
   },
   {
     "kwastje": "Laurtje",
@@ -69,19 +72,22 @@
   },
   {
     "kwastje": "Sylweitje",
-    "title": "Giving it a purpose"
+    "title": "Being on the same page"
   },
   {
     "kwastje": "Truusje",
-    "title": "Diversifying our strength"
-  },
-  {
-    "kwastje": "Bonnetje2",
-    "title": "Exceeding expectations"
+    "title": "Fostering team spirit",
+    "modifySetup": {
+      "isShaded": false
+    }
   },
   {
     "kwastje": "Wilempje",
     "title": "Shifting left"
+  },
+  {
+    "kwastje": "Bonnetje2",
+    "title": "Exceeding expectations"
   },
   {
     "kwastje": "Citroentje",
