@@ -15,12 +15,12 @@ const Timmetje = (props) => {
   } = props;
 
   const x3 = x2 + index * 2;
-  const y3 = y2 * index * setup.modifier * Math.random() * 10;
+  const y3 = y2 * index * setup.modifier;
 
   return (
     <path
       d={normalize(
-        `M${x1},${y1} L${x1},${x2} L${x1 * y3 * 1000},${x3 * Math.random() * 1} Z`
+        `M${x1},${y1} L${x1},${x2} L${x1 * y3},${x3} Z`
       )}
       {...commonProps}
     />
