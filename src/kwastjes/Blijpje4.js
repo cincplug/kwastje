@@ -16,8 +16,8 @@ const Blijpje4 = (props) => {
     normalize,
   } = props;
 
-  const qG = setup.thickness * setup.growth;
-  const tR = qG * index - (x2 + y2) / 3;
+  const qG = setup.thickness * setup.growth / 2;
+  const tR = qG * index - (x2 + y2) / 5;
   return (
     <>
       {index % 2 === 0 ? (
