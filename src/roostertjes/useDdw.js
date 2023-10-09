@@ -19,12 +19,12 @@ const useDdw = (props) => {
           setactiveSlide((prevActiveSlide) => {
             const isLastSlide = prevActiveSlide === slides.length - 1;
             if (isLastSlide) {
-              const { modifySetup } = slides[prevActiveSlide + 1];
+              const { modifySetup } = slides[0];
               setSetup((prevSetup) => {
                 return {
                   ...prevSetup,
                   ...modifySetup,
-                  kwastje: 0,
+                  kwastje: 1,
                 };
               });
             } else {
