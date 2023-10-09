@@ -20,7 +20,9 @@ const Sybje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1 / 2},${y1} l${-kortje}${-langje} ${[...Array(10).keys()].map(
+        `M${x1 / 2},${y1} l${-kortje}${-langje} ${[
+          ...Array(Math.min(10, index)).keys(),
+        ].map(
           (step) =>
             `l${langje},${-langje} ${
               index < step
