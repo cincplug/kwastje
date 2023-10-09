@@ -28,9 +28,10 @@ const Pietje = (props) => {
             ? `rotate(${(360 / setup.dotsCount) * index} ${x2 / modifier} ${
                 y2 / modifier
               }) translate(0 -${x2 / modifier})`
-            : `translate(0 100)`
+            : `translate(100 100)`
         }
         {...commonProps}
+        strokeWidth={6 - commonProps.strokeWidth }
       />
     )
   );
