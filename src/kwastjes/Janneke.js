@@ -1,16 +1,15 @@
 import React from "react";
 
 const Janneke = (props) => {
-  const { index, x1, y1, commonProps } = props;
-
+  const { index, h, x1, y1, commonProps } = props;
   return (
     <>
-      {[...Array(index).keys()].map((step) => (
+      {[...Array(Math.ceil(index / 3)).keys()].map((step) => (
         <circle
           {...commonProps}
-          cx={x1 + 200 + step}
-          cy={y1 + 100 + index}
-          r={step * index}
+          cx={x1 + step}
+          cy={y1 + step}
+          r={Math.min(h, step * (index + 1))}
         ></circle>
       ))}
     </>
