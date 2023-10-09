@@ -18,7 +18,7 @@ const Truusje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1}  ${[...Array(10).keys()].map(
+        `M${x1},${y1}  ${[...Array(8).keys()].map(
           (step) =>
             ` ${
               index < setup.dotsCount / 2

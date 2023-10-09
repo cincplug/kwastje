@@ -25,7 +25,7 @@ const Bonnetje = (props) => {
         fontSize: x1 / 10 * setup.modifier,
         letterSpacing: ((w - x1) / 10) * setup.modifier,
         fill: setup.fgColor,
-        opacity: (setup.opacity + index) / 1000,
+        opacity: (setup.opacity + index) / 500,
       }}
     >
       {(text || defaultText)
