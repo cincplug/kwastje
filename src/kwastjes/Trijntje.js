@@ -3,8 +3,6 @@ import React from "react";
 const Trijntje = (props) => {
   const { setup, index, w, h, x1, x2, y1, y2, commonProps, normalize } = props;
 
-  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
-
   return (
     <>
       <path
@@ -13,27 +11,22 @@ const Trijntje = (props) => {
             index % 2 === 0 &&
             `Q${
               Math.sin(x2 * index) + w * setup.modifier
-            } ${x1}, ${x2} ${y1} M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1 / 2} z`
+            } ${x1 * 2}, ${x2} ${y1} M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1 / 2} z`
           }`
         )}
         {...commonProps}
       />
       {[...Array(index).keys()].map((step) => (
         <>
-          {index < dotsCount / 2 && (
+          {index % 5 === 0 && (
             <circle
-              cx={(x1 / step) * index * setup.thickness}
+              cx={x1 + setup.growth * setup.thickness}
               cy={y1}
-              r={(w / x2) * setup.thickness * setup.growth + index}
+              r={(h / y2) * setup.thickness * setup.growth + index}
               {...commonProps}
-            ></circle>
+              fill={setup.bgColor}
+            />
           )}
-          <circle
-            cx={x1 + setup.growth * setup.thickness}
-            cy={y1}
-            r={(h / y2) * setup.thickness * setup.growth + index}
-            {...commonProps}
-          ></circle>
         </>
       ))}
     </>
