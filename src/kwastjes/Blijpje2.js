@@ -19,10 +19,10 @@ const Blijpje2 = (props) => {
   const qG = setup.thickness * setup.growth;
   let tR = qG * Math.max(0, Math.min(dotsCount - index, index));
   const displacementMap = {
-    14: [10, -20],
-    15: [-20, -20],
-    16: [10, -20],
-    17: [-20, -20],
+    14: [10, -22],
+    15: [-20, -22],
+    16: [10, -21],
+    17: [-20, -21],
   };
   let [deltaX, deltaY] = [0, 0];
   const displacement = displacementMap[dotsCount - index];
@@ -30,7 +30,6 @@ const Blijpje2 = (props) => {
     [deltaX, deltaY] = displacement;
     deltaX *= qG;
     deltaY *= qG;
-    commonProps.opacity *= 2;
     tR /= 2.5;
   }
   return (

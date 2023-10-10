@@ -14,7 +14,7 @@ const Sybje = (props) => {
     normalize,
   } = props;
 
-  const langje = index * setup.modifier;
+  const langje = (index + 1) * setup.modifier;
   const kortje = Math.min(index - 20, 1) * setup.modifier;
 
   return (

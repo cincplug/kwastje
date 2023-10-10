@@ -21,6 +21,7 @@ const Blijpje = (props) => {
       {[0, 1, 2, 3].map((quadrant) => (
         <path
           {...commonProps}
+          key={quadrant}
           transform={`translate(${x1 - tR}, ${y1 - tR}) rotate(${
             quadrant * 90 + index * setup.modifier
           }, ${tR}, ${tR})`}
