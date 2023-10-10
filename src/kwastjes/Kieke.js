@@ -10,7 +10,7 @@ const Kieke = (props) => {
        m${-index * 10}, ${index * 10} 
       l${Math.max(
         -w / 2,
-        Math.min(w / 2, x1 / (setup.dotsCount / setup.modifier - index * 2))
+        Math.min(w / 2, x1 / (setup.dotsCount / setup.modifier - index * setup.growth))
       )}, ${y1 / (setup.dotsCount * setup.modifier - index)} L${x2},
       ${y2} z`)}
       {...commonProps}
