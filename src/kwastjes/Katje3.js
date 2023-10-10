@@ -21,7 +21,7 @@ const Katje3 = (props) => {
         {...props}
         transform={`rotate(${
           (welkeKatje * x1) / y1 / ((1 / setup.modifier) * setup.thickness)
-        }) scale(${1 - (1 / index) * setup.growth})`}
+        }) scale(${1 - (1 / (index + 1)) * setup.growth})`}
         style={{
           opacity:
             index === welkeKatje

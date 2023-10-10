@@ -8,7 +8,7 @@ const Lonneke = (props) => {
       d={normalize(
         `M${x1},${y1} T${Math.round(Math.sin(x1 * index) + w / 2)},${Math.round(
           Math.cos(y1 * index) + h / 2
-        )} ${x1 * setup.modifier},${(y2 * setup.modifier) / index}`
+        )} ${x1 * setup.modifier},${(y2 * setup.modifier) / (index + 1)}`
       )}
       {...commonProps}
     />

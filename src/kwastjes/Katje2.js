@@ -29,7 +29,7 @@ const Katje2 = (props) => {
         )})`
       )}
       style={{
-        opacity: Math.min(1, 256 / setup.opacity / index),
+        opacity: Math.min(1, 256 / setup.opacity / (index + 1)),
       }}
     />
   );

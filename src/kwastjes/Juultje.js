@@ -10,7 +10,7 @@ const Juultje = (props) => {
           index % 4 === 0 && `L${w / 2}, ${Math.sqrt(y2 * index) + h / 2}`
         } ${
           index % 8 === 0 &&
-          `Q${Math.pow(x2, 1 / index) * setup.modifier} ${x1 / 2}, ${y2} ${y1}`
+          `Q${Math.pow(x2, 1 / (index + 1)) * setup.modifier} ${x1 / 2}, ${y2} ${y1}`
         } Z`
       )}
       {...commonProps}
