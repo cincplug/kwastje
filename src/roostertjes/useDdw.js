@@ -64,7 +64,6 @@ const useDdw = (props) => {
       setSetup((prevSetup) => {
         return {
           ...prevSetup,
-          kwastje: 1,
           isFluent: true,
         };
       });
