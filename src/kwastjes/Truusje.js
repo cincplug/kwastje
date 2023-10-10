@@ -25,7 +25,7 @@ const Truusje = (props) => {
                 ? `l${offset - step},${offset - step}`
                 : `h${offset} m${offset},0 h${offset} m${
                     -offset * 1.5
-                  },${offset} v${offset * 3} m${-offset},${-offset} a${offset},${offset} 0 1 0 ${2 * offset},0`
+                  },${offset} v${offset * 3} m${-offset * 2},${-offset} a${offset},${offset} 0 1 0 ${2 * offset},0 a${offset},${offset} 0 1 0 ${2 * offset},0 `
             } m${offset * 3},${Math.sin(index) * offset} h${
               -offset + step * 2
             }, v${-offset + step * 2}`
