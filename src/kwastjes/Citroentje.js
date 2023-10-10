@@ -13,7 +13,6 @@ const Citroentje = (props) => {
 
   return (
     <text
-      {...props}
       x={x1}
       y={y1}
       {...commonProps}

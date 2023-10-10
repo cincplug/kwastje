@@ -8,10 +8,10 @@ const Trijntje = (props) => {
       <path
         d={normalize(
           `M${x1},${y1} L${Math.max(w / 2, Math.cos(y2) * index)},${y2} ${
-            index % 2 === 0 &&
+            index % 2 === 0 ?
             `Q${
               Math.sin(x2 * index) + w * setup.modifier
-            } ${x1 / 2}, ${x2} ${y1} M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1 / 2} z`
+            } ${x1 / 2}, ${x2} ${y1} M${x1},${y1} Q${x2} ${y2}, ${y1} ${x1 / 2} z` : ""
           }`
         )}
         {...commonProps}
