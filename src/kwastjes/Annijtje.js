@@ -3,9 +3,9 @@ import React from "react";
 const Annijtje = (props) => {
   const {
     // setup,
-    // index,
-    // w,
-    // h,
+    index,
+    w,
+    h,
     x1,
     x2,
     y1,
@@ -16,7 +16,14 @@ const Annijtje = (props) => {
 
   return (
     <path
-      d={normalize(`M${x1},${y2} C${y1},${x2} ${x1},${y1} ${x2},${y2}`)}
+      d={normalize(
+        `M${x1},${y2} C
+        ${Math.min(w / 2, y2 * (index + 1))},
+        ${Math.min(h / 2, x2 * (index + 1))}
+         ${Math.min(w / 2, x1 * (index + 1))},
+         ${y1} 
+         ${x2},${y2} z`
+      )}
       {...commonProps}
     />
   );
