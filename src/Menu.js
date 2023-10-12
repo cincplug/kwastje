@@ -10,8 +10,6 @@ const Menu = (props) => {
     menuVisibilityClass,
     getControls,
     download,
-    clear,
-    shuffle,
     setTasje,
     setSetup,
     toggleRoostertje,
@@ -119,21 +117,7 @@ const Menu = (props) => {
             download();
           }}
         >
-          save
-        </button>
-        <button
-          className="control__input control__button control__button--save"
-          onClick={() => shuffle()}
-        >
-          shuffle
-        </button>
-        <button
-          className="control__input control__button control__button--clear"
-          onClick={() => {
-            clear();
-          }}
-        >
-          clear
+          Save
         </button>
         <button
           className="control__input control__button control__button--clear"
@@ -142,7 +126,7 @@ const Menu = (props) => {
             window.location.reload();
           }}
         >
-          reset
+          Reset
         </button>
       </nav>
       <nav

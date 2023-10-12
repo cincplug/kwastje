@@ -268,11 +268,6 @@ const App = () => {
     });
   };
 
-  const clear = () => {
-    const initialPath = fillPath();
-    setPath(initialPath);
-  };
-
   const download = () => {
     const link = document.createElement("a");
     link.download = "download.svg";
@@ -281,20 +276,6 @@ const App = () => {
     const e = new MouseEvent("click");
     link.href = "data:image/svg+xml;base64," + base64doc;
     link.dispatchEvent(e);
-  };
-
-  const getRandomInteger = (x, y) => {
-    return (
-      Math.floor(Math.random() * (Math.floor(y) - Math.ceil(x) + 1)) +
-      Math.ceil(x)
-    );
-  };
-
-  const shuffle = () => {
-    setSetup((prevSetup) => {
-      const { min, max } = defaultSetup.find((item) => item.id === "kwastje");
-      return { ...prevSetup, kwastje: getRandomInteger(min, max) };
-    });
   };
 
   const handleKeyUp = (event) => {
@@ -411,8 +392,6 @@ const App = () => {
             menuVisibilityClass,
             getControls,
             download,
-            clear,
-            shuffle,
             setTasje,
             setSetup,
             toggleRoostertje,
