@@ -3,7 +3,7 @@ import React from "react";
 const Doetje = (props) => {
   const {
     setup,
-    // index,
+    index,
     // w,
     // h,
     x1,
@@ -15,12 +15,22 @@ const Doetje = (props) => {
   } = props;
 
   return (
-    <circle
-      cx={x1}
-      cy={y1}
-      r={Math.abs(y2 - x2 / setup.modifier)}
-      {...commonProps}
-    />
+    <>
+      <circle
+        cx={x1}
+        cy={y1}
+        r={Math.abs((y2 - x2) / setup.modifier)}
+        {...commonProps}
+      />
+      {index >= setup.dotsCount - 4 && (
+        <circle
+          cx={x1 + (index > setup.dotsCount - 3 ? -index : index)}
+          cy={y1}
+          r={index % 2 === 0 ? index / 3 : index / 2}
+          {...commonProps}
+        />
+      )}
+    </>
   );
 };
 

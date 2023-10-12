@@ -19,7 +19,14 @@ const Kieke = (props) => {
         ${y2} z`)}
         {...commonProps}
       />
-      {index >= setup.dotsCount - 4 && <circle cx={x1 + (index > setup.dotsCount - 3 ? -index : index)} cy={y1} r={index % 2 === 0 ? index / 3 : index / 2} {...commonProps} />}
+      {index >= setup.dotsCount - 4 && (
+        <circle
+          cx={x1 + (index > setup.dotsCount - 3 ? -index : index)}
+          cy={y1}
+          r={index % 2 === 0 ? index / 3 : index / 2}
+          {...commonProps}
+        />
+      )}
     </>
   );
 };

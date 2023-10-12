@@ -15,6 +15,7 @@ const Pietje = (props) => {
   } = props;
 
   const modifier = Math.max(1, setup.modifier * 10);
+  const eyeModifier = modifier * 4;
 
   return (
     y1 > 0 && (
@@ -22,16 +23,18 @@ const Pietje = (props) => {
         cx={x1}
         cy={y1}
         rx={x2 / modifier + index}
-        ry={Math.max(1, y2 / modifier - index / 2)}
+        ry={Math.max(1, y2 / modifier - index)}
         transform={
           index > (setup.dotsCount * 2) / 3
             ? `rotate(${(360 / setup.dotsCount) * index} ${x2 / modifier} ${
                 y2 / modifier
               }) translate(0 -${x2 / modifier})`
-            : `translate(100 100)`
+            : index < 2
+            ? `translate(${index % 2 === 0 ? eyeModifier : -eyeModifier}, ${-eyeModifier})`
+            : ""
         }
         {...commonProps}
-        strokeWidth={6 - commonProps.strokeWidth }
+        strokeWidth={6 - commonProps.strokeWidth}
       />
     )
   );
