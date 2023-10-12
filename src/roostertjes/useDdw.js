@@ -5,7 +5,7 @@ import slides from "./useDdwSlides.json";
 const useDdw = (props) => {
   const { setSetup, isRoostertje } = props;
   const [activeSlide, setActiveSlide] = useState(0);
-  const slideDuration = 1000;
+  const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
   const altBg = ["#2b318a", "#7373d8", "#2b6cb2", "#2e308e"];
   const [, setAltBgIndex] = useState(0);
