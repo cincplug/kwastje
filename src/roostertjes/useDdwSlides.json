@@ -32,6 +32,10 @@
     "title": "Design atomically"
   },
   {
+    "kwastje": "Colintje",
+    "title": "Optimize the funnel flow"
+  },
+  {
     "kwastje": "Sybje",
     "title": "Harvest responsibly"
   },
@@ -45,10 +49,6 @@
     "modifySetup": {
       "isShaded": true
     }
-  },
-  {
-    "kwastje": "Colintje",
-    "title": "Optimize the funnel flow"
   },
   {
     "kwastje": "Taimurtje",
@@ -99,7 +99,7 @@
   },
   {
     "kwastje": "Appeltje",
-    "title": "Go data-driven"
+    "title": "Drive the data"
   },
   {
     "kwastje": "Juultje",

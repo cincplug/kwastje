@@ -21,6 +21,8 @@ const Appeltje = (props) => {
       y={y1}
       style={{
         fontSize: (y1 / 2) * setup.modifier,
+        fontFamily: "serif",
+        transform: "translate(-30vw)",
       }}
     >
       {food}

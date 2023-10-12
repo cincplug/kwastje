@@ -18,7 +18,8 @@ const Citroentje = (props) => {
       {...commonProps}
       style={{
         fontSize: index * 10 * setup.modifier,
-        fontFamily: "serif"
+        fontFamily: "serif",
+        textAnchor: "middle"
       }}
     >
       {index >= dotsCount - 2 ? ",,ö,," : ".._.."}
