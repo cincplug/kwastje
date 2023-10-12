@@ -44,11 +44,6 @@ const App = () => {
   const [kwastjeName, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
-  const fgColor = `${setup.fgColor}${(setup.opacity / 1).toString(16)}`;
-  const [promptje, setPromptje] = useState("");
-  const [breedtje, setBreedtje] = useState(500);
-  const [hoogtje, setHoogtje] = useState(500);
-  const [isLoading, setIsLoading] = useState(false);
   const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
   const [isRoostertje, setIsRoostertje] = useState(false);
@@ -360,7 +355,7 @@ const App = () => {
   //   isRoostertje,
   //   stopRoostertje,
   // });
-  
+
   const scheduledTasks = roostertjes.useDdw({
     setSetup,
     isRoostertje,
@@ -410,6 +405,7 @@ const App = () => {
       {
         <Menu
           {...{
+            setup,
             isMenuVisible,
             setIsMenuVisible,
             menuVisibilityClass,
@@ -417,27 +413,10 @@ const App = () => {
             download,
             clear,
             shuffle,
-            promptje,
-            setPromptje,
-            hoogtje,
-            setHoogtje,
-            breedtje,
-            setBreedtje,
-            isLoading,
-            setIsLoading,
             setTasje,
-            processTasje,
-            toggleRoostertje,
-            path,
-            setup,
-            mouseX,
-            mouseY,
-            w,
-            h,
-            fgColor,
-            mapje,
-            isRoostertje,
             setSetup,
+            toggleRoostertje,
+            isRoostertje,
           }}
         />
       }
@@ -478,7 +457,6 @@ const App = () => {
                   mouseY,
                   w,
                   h,
-                  fgColor,
                   mapje,
                   isReversed,
                 }}

@@ -2,7 +2,7 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, fgColor, mapje, isReversed } =
+  const { path, setup, mouseX, mouseY, w, h, mapje, isReversed } =
     props;
   const normalize = (dAttribute) => {
     if (!dAttribute) return null;
@@ -17,9 +17,9 @@ const Drawing = (props) => {
       setup.kwastje > 1
         ? [mouseX + index * setup.modifier, mouseY + index * setup.modifier]
         : coords;
-    const stroke = fgColor;
+    const stroke = `${setup.fgColor}${(setup.opacity / 1).toString(16)}`;
     const fill = setup.isShaded
-      ? `${setup.bgColor}${(setup.opacity).toString(16).padStart(2, "0")}`
+      ? `${setup.bgColor}${setup.opacity.toString(16).padStart(2, "0")}`
       : "none";
     const style = null;
     const strokeWidth = Math.max(
