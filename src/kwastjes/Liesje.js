@@ -19,7 +19,7 @@ const Liesje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1} h${x1 - y1 * setup.modifier} v${-y1 / (index + 1)} Z`
+        `M${x1},${y1 + setup.eyesOffset} h${x1 - y1 * setup.modifier} v${y1 / (index + 1 - setup.eyesOffset)} Z`
       )}
       {...commonProps}
     />

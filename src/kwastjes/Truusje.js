@@ -4,7 +4,7 @@ const Truusje = (props) => {
   const {
     setup,
     index,
-    // w,
+    w,
     // h,
     x1,
     // x2,
@@ -18,7 +18,7 @@ const Truusje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1}  ${[...Array(8).keys()].map(
+        `M${x1 + setup.eyesOffset * setup.modifier},${y1 + setup.eyesOffset * 3}  ${x1 > w / 3 && [...Array(3).keys()].map(
           (step) =>
             ` ${
               index < setup.dotsCount / 2

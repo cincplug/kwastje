@@ -20,7 +20,7 @@ const Timmetje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1} L${x1},${x2} L${x1 * y3},${x3} Z`
+        `M${x1},${y1 - setup.eyesOffset} L${x1},${x2} L${x1 * y3},${x3} Z`
       )}
       {...commonProps}
     />

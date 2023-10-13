@@ -20,7 +20,7 @@ const Floortje = (props) => {
   return (
     <path
       d={normalize(
-        `M${x1},${y1} ${[...Array(index).keys()].map(
+        `M${x1},${y1 + setup.eyesOffset} ${[...Array(index).keys()].map(
           (step) =>
             ` l${
               modifier *
