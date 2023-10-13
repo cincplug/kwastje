@@ -30,7 +30,7 @@ const Blijpje2 = (props) => {
     [deltaX, deltaY] = displacement;
     deltaX *= qG;
     deltaY *= qG;
-    tR /= 2.5;
+    tR /= 3;
   }
   return (
     <>

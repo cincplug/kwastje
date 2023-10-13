@@ -2,8 +2,7 @@ import React from "react";
 import { customKwastjes } from "./kwastjes";
 
 const Drawing = (props) => {
-  const { path, setup, mouseX, mouseY, w, h, mapje, isReversed } =
-    props;
+  const { path, setup, mouseX, mouseY, w, h, mapje, isReversed } = props;
   const normalize = (dAttribute) => {
     if (!dAttribute) return null;
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
@@ -45,7 +44,22 @@ const Drawing = (props) => {
         }}
       />
     ));
-    const Kwastje = kwastjes[setup.kwastje - 1];
+    const eyeFill = index % 2 === 0 ? { fill: setup.bgColor } : null;
+    const Kwastje = (
+      <>
+        {kwastjes[setup.kwastje - 1]}{" "}
+        {index >= setup.dotsCount - 4 && (
+          <circle
+            className="eyes"
+            cx={x1 + (index > setup.dotsCount - 3 ? -index : index)}
+            cy={y1}
+            r={index % 2 === 0 ? index / 3 : index / 2}
+            {...commonProps}
+            {...eyeFill}
+          />
+        )}
+      </>
+    );
     let KwastjeMetTasje,
       [x, y] = [mouseX, mouseY];
     if (mapje) {

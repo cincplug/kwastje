@@ -19,6 +19,7 @@ const Aafje = (props) => {
   const modifier = setup.modifier - stepSize;
   return (
     <path
+    transform="rotate(-15)"
       d={normalize(
         `M${x1},${y1} ${[...Array(stepCount).keys()].map(
           (step) => `h${stepSize * modifier} v${-stepSize * modifier}`
