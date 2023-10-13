@@ -47,7 +47,7 @@ const Drawing = (props) => {
     const eyeFill = index % 2 === 0 ? { fill: setup.bgColor } : null;
     const Kwastje = (
       <>
-        {kwastjes[setup.kwastje - 1]}{" "}
+        {kwastjes[setup.kwastje - 1]}
         {index >= setup.dotsCount - 4 && (
           <circle
             className="eyes"

@@ -14,15 +14,15 @@ const Citroentje = (props) => {
   return (
     <text
       x={x1}
-      y={y1}
+      y={y1 + 200 * setup.modifier}
       {...commonProps}
       style={{
-        fontSize: index * 10 * setup.modifier,
+        fontSize: index * 7 * setup.modifier,
         fontFamily: "serif",
         textAnchor: "middle"
       }}
     >
-      {index >= dotsCount - 2 ? ",,ö,," : ".._.."}
+      {index >= dotsCount - 2 ? ",,o,," : ".._.."}
     </text>
   );
 };
