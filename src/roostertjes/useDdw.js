@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { customKwastjes } from "../kwastjes";
 import slides from "./useDdwSlides.json";
 
 const useDdw = (props) => {
-  const { setSetup, isRoostertje } = props;
+  const { setSetup } = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
@@ -59,23 +59,12 @@ const useDdw = (props) => {
     },
   ];
 
-  useEffect(() => {
-    if (isRoostertje) {
-      setSetup((prevSetup) => {
-        return {
-          ...prevSetup,
-          isFluent: true,
-        };
-      });
-    }
-  }, [isRoostertje, setSetup]);
-
   return {
     tasks,
     setAltBgIndex,
     slides,
     activeSlide,
-    setactiveSlide: setActiveSlide,
+    setActiveSlide,
     slideDuration,
     roosterClass,
   };

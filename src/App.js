@@ -308,6 +308,12 @@ const App = () => {
       } else {
         startRoostertje();
       }
+      setSetup(prevSetup => {
+        return {
+          ...prevSetup,
+          isFluent: !prevIsRoostertje
+        }
+      });
       return !prevIsRoostertje;
     });
   };
