@@ -1,13 +1,12 @@
 import React from "react";
-import Blijpje from "./Blijpje";
+// import Blijpje from "./Blijpje";
 import Blijpje2 from "./Blijpje2";
 
 const Blijpje4 = (props) => {
   const {
     setup,
     index,
-    // w,
-    // h,
+    h,
     x1,
     x2,
     y1,
@@ -16,38 +15,25 @@ const Blijpje4 = (props) => {
     normalize,
   } = props;
 
-  const qG = setup.thickness * setup.growth / 2;
+  const qG = setup.thickness * setup.growth / (index+1);
   const tR = qG * index - (x2 + y2) / 5;
   return (
     <>
-      {index % 2 === 0 ? (
-        <Blijpje
-          {...{
-            setup,
-            index: index - 10,
-            x1,
-            y1,
-            commonProps,
-            normalize,
-            tR,
-          }}
-        />
-      ) : (
+
         <Blijpje2
           {...{
             setup,
-            index: (x2 + y2) / 100,
-            x1,
-            y1,
+            index,
+            x1: x1,
+            y1: y1 * index / 2 / setup.growth - h,
             commonProps: {
               ...commonProps,
               strokeWidth: setup.thickness / setup.modifier,
             },
             normalize,
-            tR,
+            tR: tR * index,
           }}
         />
-      )}
     </>
   );
 };
