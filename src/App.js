@@ -453,7 +453,7 @@ const App = () => {
           <p
             className={`subtitle--${activeSlide}`}
             style={{
-              background: `${setup.bgColor}`,
+              textShadow: `0 3px 7px ${setup.bgColor}`,
             }}
             dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
           />
