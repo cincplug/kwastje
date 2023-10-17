@@ -51,11 +51,11 @@ const Drawing = (props) => {
         {setup.hasEyes && index >= setup.dotsCount - 4 && (
           <circle
             className="eyes"
-            cx={x1 + (index > setup.dotsCount - 3 ? -index : index)}
+            cx={x1 + (index >= setup.dotsCount - 2 ? -index : index)}
             cy={y1}
-            r={index % 2 === 0 ? index / 3 : index / 2}
+            r={index % 2 === 0 ? index / 2 : index / 3}
             {...commonProps}
-            {...{ fill: processColor(setup.bgColor, index) }}
+            {...{ fill: processColor(setup.bgColor, index * 2) }}
           />
         )}
       </>
