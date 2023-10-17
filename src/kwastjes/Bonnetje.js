@@ -22,21 +22,15 @@ const Bonnetje = (props) => {
       x={x1}
       y={y1}
       style={{
-        fontSize: x1 / 10 * setup.modifier,
-        letterSpacing: ((w - x1) / 10) * setup.modifier,
+        textAnchor: "middle",
+        fontSize: (x1 / 10) * setup.modifier,
+        letterSpacing: Math.min(10, ((w - x1) / 10) * setup.modifier),
         fill: setup.fgColor,
-        opacity: (setup.opacity + index) / 500,
+        opacity: (setup.opacity + index) / w,
       }}
     >
-      {(text || defaultText)
-        .toString()
-        .slice(0, 10)
-        .split()
-        .map((t, ti) => (
-          <tspan key={ti}>{t}</tspan>
-        ))}
+      {text || defaultText}
     </text>
   );
 };
-
 export default Bonnetje;
