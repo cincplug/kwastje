@@ -22,7 +22,7 @@ const Citroentje = (props) => {
         textAnchor: "middle"
       }}
     >
-      {index >= dotsCount - 2 ? ",,o,," : ".._.."}
+      {index >= dotsCount * 2 / 3 ? ",,o,," : ".._.."}
     </text>
   );
 };

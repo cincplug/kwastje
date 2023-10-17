@@ -49,8 +49,7 @@ const Drawing = (props) => {
     ));
     const Kwastje = (
       <>
-        {kwastjes[setup.kwastje - 1]}
-        {setup.hasEyes && index >= setup.dotsCount - 4 && (
+        {setup.hasEyes && index >= setup.dotsCount - 4 ? (
           <circle
             className="eyes"
             cx={x1 + (index >= setup.dotsCount - 2 ? -index : index)}
@@ -58,10 +57,12 @@ const Drawing = (props) => {
             r={index % 2 === 0 ? index / 2 : index / 3}
             {...commonProps}
             {...{
-              fill: processColor(setup.bgColor, index * 2),
+              fill: processColor(setup.bgColor, index * 3),
               stroke: processColor(setup.fgColor, index * 4),
             }}
           />
+        ) : (
+          kwastjes[setup.kwastje - 1]
         )}
       </>
     );
