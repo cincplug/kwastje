@@ -7,6 +7,8 @@ const Drawing = (props) => {
     if (!dAttribute) return null;
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
+  const processColor = (color) =>
+    `${color}${setup.opacity.toString(16).padStart(2, "0")}`;
   const getKwastje = (coords, index) => {
     const isPrevPathFinished = index > 0 && path[index - 1].length > 2;
     // x1 and y1 are starting coordinates
@@ -16,10 +18,8 @@ const Drawing = (props) => {
       setup.kwastje > 1
         ? [mouseX + index * setup.modifier, mouseY + index * setup.modifier]
         : coords;
-    const stroke = `${setup.fgColor}${(setup.opacity / 1).toString(16)}`;
-    const fill = setup.isShaded
-      ? `${setup.bgColor}${setup.opacity.toString(16).padStart(2, "0")}`
-      : "none";
+    const stroke = processColor(setup.fgColor);
+    const fill = setup.isShaded ? processColor(setup.bgColor) : "none";
     const style = null;
     const strokeWidth = Math.max(
       (setup.thickness * index * setup.growth) / path.length,
