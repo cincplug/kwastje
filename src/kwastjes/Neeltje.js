@@ -9,7 +9,7 @@ const Neeltje = (props) => {
       d={normalize(
         `M${y2 * index - w},${x2} h${step} v${step} h-${step} v-${step} ${
           index < setup.dotsCount / 2
-            ? `Q${x2} ${y2}, ${y1} ${x1 / 2}`
+            ? `Q${x2} ${y2}, ${x1} ${y1}`
             : `h-${step} m${-step}, ${-step}`
         }`
       )}
