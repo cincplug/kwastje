@@ -8,7 +8,9 @@ const Drawing = (props) => {
     return dAttribute.replace(/undefined|NaN|Infinity/g, "0");
   };
   const processColor = (color, opacity = setup.opacity) =>
-    `${color}${opacity.toString(16).padStart(2, "0")}`;
+    `${color}${Math.min(255, Math.max(16, opacity))
+      .toString(16)
+      .padStart(2, "0")}`;
   const getKwastje = (coords, index) => {
     const isPrevPathFinished = index > 0 && path[index - 1].length > 2;
     // x1 and y1 are starting coordinates
@@ -55,7 +57,10 @@ const Drawing = (props) => {
             cy={y1}
             r={index % 2 === 0 ? index / 2 : index / 3}
             {...commonProps}
-            {...{ fill: processColor(setup.bgColor, index * 2) }}
+            {...{
+              fill: processColor(setup.bgColor, index * 2),
+              stroke: processColor(setup.fgColor, index * 4),
+            }}
           />
         )}
       </>
