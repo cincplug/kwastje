@@ -4,14 +4,11 @@ const Bertje = (props) => {
   const {
     setup,
     index,
-    // w,
-    // h,
-    // x1,
     x2,
     y1,
     y2,
     commonProps,
-    // normalize,
+    processColor,
   } = props;
 
   const x3 = x2 * index * 2;
@@ -24,7 +21,7 @@ const Bertje = (props) => {
         cy={y2 / 2}
         r={(y1 * setup.modifier) / 2}
         {...commonProps}
-        fill={`${setup.fgColor}${parseInt(setup.opacity).toString(16)}`}
+        fill={processColor(setup.fgColor)}
       />
       <path d={`M${x3},${y3} L${y3},${x3}`} {...commonProps} />
     </>

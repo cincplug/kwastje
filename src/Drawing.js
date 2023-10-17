@@ -40,6 +40,7 @@ const Drawing = (props) => {
           y2,
           commonProps,
           normalize,
+          processColor,
           isReversed,
         }}
       />
