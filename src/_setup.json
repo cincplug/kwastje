@@ -133,6 +133,7 @@
   {
     "id": "hasEyes",
     "type": "checkbox",
+    "isHidden": true,
     "description": "Gives eyes to kwastjes",
     "value": true
   },
@@ -152,5 +153,11 @@
     "isHidden": true,
     "description": "Offsets eyes if necessary",
     "value": 50
-  }
+  },
+  {
+    "id": "isInverted",
+    "type": "checkbox",
+    "description": "Alternates fg instead of bg color for roostertje",
+    "value": false
+  }  
 ]

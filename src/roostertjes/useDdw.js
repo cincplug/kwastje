@@ -3,17 +3,26 @@ import { customKwastjes } from "../kwastjes";
 import slides from "./useDdwSlides.json";
 
 const useDdw = (props) => {
-  const { setSetup } = props;
+  const { setup, setSetup } = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
-  const altColor = [
+  const altBg = [
     "#2b318a", // blue-700
     "#6c70ee", // plum
     "#2b6cb2", // blue-500
     "#2e308e", // plum-300
+    "#000048", // brand basic
   ];
-  const [, setAltColorIndex] = useState(0);
+  const altFg = [
+    "#85a0f9", // plum-100
+    "#6aa2dc", // blue-300
+    "#06c7cc", // teal-400
+    "#2db81f", // green
+    "#e9c71d", // yellow
+  ];
+
+  const [, setAltColorsIndex] = useState(0);
   const tasks = [
     {
       name: "kwastje",
@@ -44,16 +53,30 @@ const useDdw = (props) => {
             return isLastSlide ? 0 : prevActiveSlide + 1;
           });
 
-          setAltColorIndex((prevAltColorIndex) => {
-            const nextAltColorIndex =
-              prevAltColorIndex < altColor.length - 1 ? prevAltColorIndex + 1 : 0;
+          setAltColorsIndex((prevAltColorsIndex) => {
+            const altColors = setup.isInverted ? altFg : altBg;
+            const nextAltColorsIndex =
+              prevAltColorsIndex < altColors.length - 1
+                ? prevAltColorsIndex + 1
+                : 0;
             setSetup((prevSetup) => {
+              const flavour = setup.isInverted
+                ? {
+                    fgColor: altFg[nextAltColorsIndex],
+                    bgColor: "#000000",
+                    opacity: 212,
+                  }
+                : {
+                    fgColor: "#ffffff",
+                    bgColor: altBg[nextAltColorsIndex],
+                    opacity: 164,
+                  };
               return {
                 ...prevSetup,
-                bgColor: altColor[nextAltColorIndex],
+                ...flavour,
               };
             });
-            return nextAltColorIndex;
+            return nextAltColorsIndex;
           });
 
           tasks[0].previousTime.current = timestamp;
@@ -66,7 +89,7 @@ const useDdw = (props) => {
 
   return {
     tasks,
-    setAltColorIndex,
+    setAltColorsIndex,
     slides,
     activeSlide,
     setActiveSlide,

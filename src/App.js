@@ -336,6 +336,7 @@ const App = () => {
   };
 
   const scheduledTasks = roostertjes.useDdw({
+    setup,
     setSetup,
     isRoostertje,
     stopRoostertje,
