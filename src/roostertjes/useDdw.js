@@ -7,8 +7,13 @@ const useDdw = (props) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
-  const altBg = ["#2b318a", "#7373d8", "#2b6cb2", "#2e308e"];
-  const [, setAltBgIndex] = useState(0);
+  const altColor = [
+    "#2b318a", // blue-700
+    "#6c70ee", // plum
+    "#2b6cb2", // blue-500
+    "#2e308e", // plum-300
+  ];
+  const [, setAltColorIndex] = useState(0);
   const tasks = [
     {
       name: "kwastje",
@@ -39,16 +44,16 @@ const useDdw = (props) => {
             return isLastSlide ? 0 : prevActiveSlide + 1;
           });
 
-          setAltBgIndex((prevAltBgIndex) => {
-            const nextAltBgIndex =
-              prevAltBgIndex < altBg.length - 1 ? prevAltBgIndex + 1 : 0;
+          setAltColorIndex((prevAltColorIndex) => {
+            const nextAltColorIndex =
+              prevAltColorIndex < altColor.length - 1 ? prevAltColorIndex + 1 : 0;
             setSetup((prevSetup) => {
               return {
                 ...prevSetup,
-                bgColor: altBg[nextAltBgIndex],
+                bgColor: altColor[nextAltColorIndex],
               };
             });
-            return nextAltBgIndex;
+            return nextAltColorIndex;
           });
 
           tasks[0].previousTime.current = timestamp;
@@ -61,7 +66,7 @@ const useDdw = (props) => {
 
   return {
     tasks,
-    setAltBgIndex,
+    setAltColorIndex,
     slides,
     activeSlide,
     setActiveSlide,
