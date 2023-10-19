@@ -24,7 +24,6 @@ const Trijntje = (props) => {
               cy={y1}
               r={(h / y2) * setup.thickness * setup.growth + index}
               {...commonProps}
-              fill={setup.bgColor}
             />
           )}
         </>
