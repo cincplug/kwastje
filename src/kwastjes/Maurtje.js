@@ -5,7 +5,7 @@ const Maurtje = (props) => {
     setup,
     index,
     w,
-    h,
+    // h,
     x1,
     x2,
     y1,
