@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import defaultSetup from "./_setup.json";
-import { Potrace } from "potrace";
+// import { Potrace } from "potrace";
 
 const Menu = (props) => {
   const {
@@ -19,37 +19,37 @@ const Menu = (props) => {
   const [svgData, setSvgData] = useState([]);
   const [tasjeIndex, setTasjeIndex] = useState(null);
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
+  // const handleFileUpload = (event) => {
+  //   const file = event.target.files[0];
 
-    if (file && file.type === "image/svg+xml") {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const svgContent = reader.result;
-        setTasje(svgContent);
-      };
-      reader.readAsText(file);
-    } else {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageSrc = e.target.result;
-        const trace = new Potrace();
-        trace.setParameters({
-          turdSize: 1020,
-          optTolerance: 800,
-        });
-        trace.loadImage(imageSrc, (error) => {
-          if (error) {
-            console.error("Error loading image:", error);
-            return;
-          }
-          const svg = trace.getSVG();
-          setTasje(svg);
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  //   if (file && file.type === "image/svg+xml") {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const svgContent = reader.result;
+  //       setTasje(svgContent);
+  //     };
+  //     reader.readAsText(file);
+  //   } else {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       const imageSrc = e.target.result;
+  //       const trace = new Potrace();
+  //       trace.setParameters({
+  //         turdSize: 1020,
+  //         optTolerance: 800,
+  //       });
+  //       trace.loadImage(imageSrc, (error) => {
+  //         if (error) {
+  //           console.error("Error loading image:", error);
+  //           return;
+  //         }
+  //         const svg = trace.getSVG();
+  //         setTasje(svg);
+  //       });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleTasjeClick = (svgContent, index) => {
     if (tasjeIndex !== index) {
@@ -149,7 +149,7 @@ const Menu = (props) => {
                 (control) => !control.isHidden && control.isRight
               )
             )}
-          <input
+          {/* <input
             type="file"
             accept=".svg, .png, .jpg"
             onChange={handleFileUpload}
@@ -164,7 +164,7 @@ const Menu = (props) => {
             key={"add-tasje-label"}
           >
             Add tasje
-          </label>
+          </label> */}
         </div>
         <button
           htmlFor="roostertje"

@@ -308,11 +308,11 @@ const App = () => {
       } else {
         startRoostertje();
       }
-      setSetup(prevSetup => {
+      setSetup((prevSetup) => {
         return {
           ...prevSetup,
-          isFluent: !prevIsRoostertje
-        }
+          isFluent: !prevIsRoostertje,
+        };
       });
       return !prevIsRoostertje;
     });
@@ -382,7 +382,7 @@ const App = () => {
       className={`wrapper ${roosterClass || ""}`}
       style={{ background: setup.bgColor }}
     >
-      {
+      {!isRoostertje && (
         <Menu
           {...{
             setup,
@@ -397,7 +397,7 @@ const App = () => {
             isRoostertje,
           }}
         />
-      }
+      )}
       <main
         ref={mainRef}
         className="content"
