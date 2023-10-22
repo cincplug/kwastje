@@ -5,7 +5,7 @@ const Pietje = (props) => {
     setup,
     index,
     // w,
-    // h,
+    h,
     x1,
     x2,
     y1,
@@ -16,6 +16,7 @@ const Pietje = (props) => {
 
   const modifier = Math.max(1, setup.modifier * 10);
   const eyeModifier = modifier * 4;
+  const yOffset = -Math.min(-h / 3, -x2 / modifier);
 
   return (
     y1 > 0 && (
@@ -25,12 +26,14 @@ const Pietje = (props) => {
         rx={x2 / modifier + index}
         ry={Math.max(1, y2 / modifier - index)}
         transform={
-          index > (setup.dotsCount * 2) / 3
+          index > setup.dotsCount
             ? `rotate(${(360 / setup.dotsCount) * index} ${x2 / modifier} ${
                 y2 / modifier
-              }) translate(0 -${x2 / modifier})`
+              }) translate(0 ${yOffset})`
             : index < 2
-            ? `translate(${index % 2 === 0 ? eyeModifier : -eyeModifier}, ${-eyeModifier})`
+            ? `translate(${
+                index % 2 === 0 ? eyeModifier : -eyeModifier
+              }, -${yOffset})`
             : ""
         }
         {...commonProps}
