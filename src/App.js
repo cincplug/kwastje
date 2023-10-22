@@ -218,11 +218,11 @@ const App = () => {
     });
   };
 
-  const handleDoubleClick = () => {
-    setSetup((prevSetup) => {
-      return { ...prevSetup, isFluent: !prevSetup.isFluent };
-    });
-  };
+  // const handleDoubleClick = () => {
+  //   setSetup((prevSetup) => {
+  //     return { ...prevSetup, isFluent: !prevSetup.isFluent };
+  //   });
+  // };
 
   const updateKwastjeName = useCallback(
     (value = setup.kwastje) => {
@@ -355,9 +355,9 @@ const App = () => {
     mainElement.addEventListener("pointerup", handleMouseUp, {
       passive: false,
     });
-    document.addEventListener("dblclick", handleDoubleClick, {
-      passive: false,
-    });
+    // document.addEventListener("dblclick", handleDoubleClick, {
+    //   passive: false,
+    // });
     document.addEventListener("keyup", handleKeyUp, {
       passive: false,
     });
@@ -366,7 +366,7 @@ const App = () => {
       mainElement.removeEventListener("pointermove", handleMouseMove);
       mainElement.removeEventListener("pointerup", handleMouseUp);
       document.removeEventListener("keyup", handleKeyUp);
-      document.removeEventListener("dblclick", handleDoubleClick);
+      // document.removeEventListener("dblclick", handleDoubleClick);
     };
   }, [
     handleMouseDown,
