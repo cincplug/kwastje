@@ -8,10 +8,10 @@ const useDdw = (props) => {
   const slideDuration = 5000;
   const roosterClass = "cogni-ddw";
   const altBg = [
-    "#2b318a", // blue-700
-    "#6c70ee", // plum
-    "#2b6cb2", // blue-500
     "#2e308e", // plum-300
+    "#2b318a", // blue-700
+    "#5c60de", // plum
+    "#2b6cb2", // blue-500
     "#000048", // brand basic
   ];
   const altFg = [
