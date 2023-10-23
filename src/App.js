@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
-import { customKwastjes } from "./kwastjes";
 import Menu from "./Menu";
 import Filters from "./Filters";
 import Drawing from "./Drawing";
@@ -41,7 +40,6 @@ const App = () => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
-  const [, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const [mapje, setMapje] = useState(null);
@@ -155,7 +153,7 @@ const App = () => {
         isMouseDown ||
         setup.isFluent ||
         (setup.kwastje === 1 &&
-          (prevMouseX === mouseX || prevMouseY === mouseY || !mapje))
+          (prevMouseX === mouseX || prevMouseY === mouseY))
       ) {
         setMouseX(event.pageX || event.touches[0].pageX);
         setMouseY(event.pageY || event.touches[0].pageY);
@@ -177,7 +175,6 @@ const App = () => {
     [
       isMouseDown,
       isReversed,
-      mapje,
       mouseX,
       mouseY,
       prevMouseX,
@@ -211,9 +208,6 @@ const App = () => {
         nextSetup[id] = ["number", "range"].includes(type) ? value / 1 : value;
       }
       sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
-      if (id === "kwastje") {
-        updateKwastjeName(value);
-      }
       return nextSetup;
     });
   };
@@ -223,14 +217,6 @@ const App = () => {
   //     return { ...prevSetup, isFluent: !prevSetup.isFluent };
   //   });
   // };
-
-  const updateKwastjeName = useCallback(
-    (value = setup.kwastje) => {
-      const kwastjeNames = Object.keys(customKwastjes);
-      setKwastjeName(kwastjeNames[value - 1]);
-    },
-    [setup.kwastje]
-  );
 
   const getControls = (controls) => {
     return controls.map((item, index) => {
@@ -255,12 +241,7 @@ const App = () => {
             }}
           />
           <label className="control__label" htmlFor={id}>
-            <span>
-              {label}
-              {/* {id === "kwastje" && kwastjeName && (
-                <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>
-              )} */}
-            </span>
+            <span>{label}</span>
             {type === "range" && <span>{value}</span>}
           </label>
         </fieldset>
@@ -344,7 +325,6 @@ const App = () => {
   const { tasks, slides, activeSlide, roosterClass } = scheduledTasks;
 
   useEffect(() => {
-    updateKwastjeName();
     const mainElement = mainRef.current;
     mainElement.addEventListener("pointerdown", handleMouseDown, {
       passive: false,
@@ -374,7 +354,6 @@ const App = () => {
     handleMouseUp,
     mouseX,
     mouseY,
-    updateKwastjeName,
   ]);
 
   return (
