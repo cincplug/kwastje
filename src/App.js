@@ -41,7 +41,7 @@ const App = () => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
-  const [kwastjeName, setKwastjeName] = useState("");
+  const [, setKwastjeName] = useState("");
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const [mapje, setMapje] = useState(null);
@@ -257,9 +257,9 @@ const App = () => {
           <label className="control__label" htmlFor={id}>
             <span>
               {label}
-              {id === "kwastje" && kwastjeName && (
+              {/* {id === "kwastje" && kwastjeName && (
                 <span>: {kwastjeName.replace(/(\d)/g, " $1")}</span>
-              )}
+              )} */}
             </span>
             {type === "range" && <span>{value}</span>}
           </label>

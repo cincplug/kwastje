@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import defaultSetup from "./_setup.json";
 // import { Potrace } from "potrace";
 
 const Menu = (props) => {
   const {
-    setup,
+    // setup,
     isMenuVisible,
     setIsMenuVisible,
     menuVisibilityClass,
     getControls,
     download,
-    setTasje,
-    setSetup,
+    // setTasje,
+    // setSetup,
     toggleRoostertje,
     isRoostertje,
   } = props;
 
-  const [svgData, setSvgData] = useState([]);
-  const [tasjeIndex, setTasjeIndex] = useState(null);
+  // const [svgData, setSvgData] = useState([]);
+  // const [tasjeIndex, setTasjeIndex] = useState(null);
 
   // const handleFileUpload = (event) => {
   //   const file = event.target.files[0];
@@ -51,42 +51,42 @@ const Menu = (props) => {
   //   }
   // };
 
-  const handleTasjeClick = (svgContent, index) => {
-    if (tasjeIndex !== index) {
-      setTasje(svgContent);
-      setTasjeIndex(index);
-    } else {
-      setTasjeIndex(null);
-      setTasje(null);
-      setSetup((prevSetup) => {
-        return {
-          ...prevSetup,
-          stencil: 0,
-        };
-      });
-    }
-  };
+  // const handleTasjeClick = (svgContent, index) => {
+  //   if (tasjeIndex !== index) {
+  //     setTasje(svgContent);
+  //     setTasjeIndex(index);
+  //   } else {
+  //     setTasjeIndex(null);
+  //     setTasje(null);
+  //     setSetup((prevSetup) => {
+  //       return {
+  //         ...prevSetup,
+  //         stencil: 0,
+  //       };
+  //     });
+  //   }
+  // };
 
-  useEffect(() => {
-    const importAll = (r) => {
-      return r.keys().map(r);
-    };
-    const tasjes = importAll(
-      require.context("./tasjes/", false, /\.(png|jpe?g|svg)$/)
-    );
+  // useEffect(() => {
+  //   const importAll = (r) => {
+  //     return r.keys().map(r);
+  //   };
+  //   const tasjes = importAll(
+  //     require.context("./tasjes/", false, /\.(png|jpe?g|svg)$/)
+  //   );
 
-    const loadSvgFiles = async () => {
-      const svgPromises = tasjes.map((fileNumber) =>
-        fetch(fileNumber).then((response) => response.text())
-      );
-      const loadedSvgData = await Promise.all(svgPromises);
-      setSvgData(loadedSvgData);
-    };
+  //   const loadSvgFiles = async () => {
+  //     const svgPromises = tasjes.map((fileNumber) =>
+  //       fetch(fileNumber).then((response) => response.text())
+  //     );
+  //     const loadedSvgData = await Promise.all(svgPromises);
+  //     setSvgData(loadedSvgData);
+  //   };
 
-    loadSvgFiles();
-  }, []);
+  //   loadSvgFiles();
+  // }, []);
 
-  const isRoostertjeClass = isRoostertje ? "roostertje" : "";
+  // const isRoostertjeClass = isRoostertje ? "roostertje" : "";
 
   return (
     <>
@@ -128,8 +128,18 @@ const Menu = (props) => {
         >
           Reset
         </button>
+        <button
+          htmlFor="roostertje"
+          className="control__button roostertje"
+          key={"roostertje"}
+          onClick={() => {
+            toggleRoostertje();
+          }}
+        >
+          <span className="roostertje__icon">{isRoostertje ? "Stop" : "Start"}</span> ddw slides
+        </button>
       </nav>
-      <nav
+      {/* <nav
         className={`menu menu--filters menu--${menuVisibilityClass} menu--${isRoostertjeClass}`}
       >
         <div className="tasjes">
@@ -149,7 +159,7 @@ const Menu = (props) => {
                 (control) => !control.isHidden && control.isRight
               )
             )}
-          {/* <input
+          <input
             type="file"
             accept=".svg, .png, .jpg"
             onChange={handleFileUpload}
@@ -164,22 +174,9 @@ const Menu = (props) => {
             key={"add-tasje-label"}
           >
             Add tasje
-          </label> */}
+          </label>
         </div>
-        <button
-          htmlFor="roostertje"
-          className="control__button roostertje"
-          key={"roostertje"}
-          onClick={() => {
-            toggleRoostertje();
-          }}
-        >
-          {isRoostertje ? "Stop" : "Start"} roostertje
-        </button>
-      </nav>
-      <nav
-        className={`roostertje__wrapper roostertje__wrapper--${isRoostertjeClass}`}
-      ></nav>
+      </nav> */}
     </>
   );
 };

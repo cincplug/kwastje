@@ -49,7 +49,7 @@ const Drawing = (props) => {
     ));
     const Kwastje = (
       <>
-        {setup.hasEyes && index >= setup.dotsCount - 4 ? (
+        {setup.hasEyes && !mapje && index >= setup.dotsCount - 4 ? (
           <circle
             className="eyes"
             cx={x1 + (index >= setup.dotsCount - 2 ? -index : index)}
