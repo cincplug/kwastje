@@ -382,22 +382,6 @@ const App = () => {
       className={`wrapper ${roosterClass || ""}`}
       style={{ background: setup.bgColor }}
     >
-      {!isRoostertje && (
-        <Menu
-          {...{
-            setup,
-            isMenuVisible,
-            setIsMenuVisible,
-            menuVisibilityClass,
-            getControls,
-            download,
-            setTasje,
-            setSetup,
-            toggleRoostertje,
-            isRoostertje,
-          }}
-        />
-      )}
       <main
         ref={mainRef}
         className="content"
@@ -452,6 +436,22 @@ const App = () => {
           />
         )}
       </main>
+      {!isRoostertje && (
+        <Menu
+          {...{
+            setup,
+            isMenuVisible,
+            setIsMenuVisible,
+            menuVisibilityClass,
+            getControls,
+            download,
+            setTasje,
+            setSetup,
+            toggleRoostertje,
+            isRoostertje,
+          }}
+        />
+      )}
       {isInfoVisible && (
         <Splash
           setIsInfoVisible={() => setIsInfoVisible((prevState) => !prevState)}

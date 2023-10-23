@@ -202,7 +202,7 @@ button,
   width: 12rem;
   height: 100vh;
   padding: 1rem;
-  z-index: 1;
+  // z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 0.8rem;
@@ -257,7 +257,7 @@ button,
     position: absolute;
     left: 1rem;
     top: 1rem;
-    z-index: 2;
+    z-index: 1;
     background: linear-gradient(
       $color-input 0%,
       $color-input 20%,
@@ -297,7 +297,7 @@ button,
   }
   &--fgColor {
     bottom: 0.5rem;
-    z-index: 2;
+    z-index: 1;
   }
   &--bgColor {
     right: 1.5rem;
@@ -312,7 +312,7 @@ button,
     padding: 0.3rem 0.4rem;
     font-size: $base-font-size;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     &[type="color"] {
       padding: 0;
       background: none;
@@ -468,7 +468,7 @@ button,
 }
 .roostertje {
   align-self: end;
-  .cogni-ddw-overlay & {
+  .cogni-ddw & {
     @include center;
     position: fixed;
     background: var(--blue-600);
@@ -480,18 +480,19 @@ button,
     font-family: Gellix, sans-serif;
     font-weight: bold;
     text-transform: none;
+    z-index: 1;
     &:hover {
       filter: none;
       background: var(--blue-400);
     }
-    &__wrapper {
+    &__overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: var(--color-brand);
-      z-index: 2;
+      z-index: 1;
       &--roostertje {
         display: none;
       }

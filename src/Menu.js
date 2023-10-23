@@ -86,7 +86,7 @@ const Menu = (props) => {
   //   loadSvgFiles();
   // }, []);
 
-  // const isRoostertjeClass = isRoostertje ? "roostertje" : "";
+  const isRoostertjeClass = isRoostertje ? "roostertje" : "";
 
   return (
     <>
@@ -128,6 +128,9 @@ const Menu = (props) => {
         >
           Reset
         </button>
+        <div
+          className={`roostertje__overlay roostertje__overlay--${isRoostertjeClass}`}
+        />
         <button
           htmlFor="roostertje"
           className="control__button roostertje"
@@ -136,7 +139,7 @@ const Menu = (props) => {
             toggleRoostertje();
           }}
         >
-          <span className="roostertje__icon">{isRoostertje ? "Stop" : "Start"}</span> ddw slides
+          {isRoostertje ? "Stop" : "Start"} ddw slides
         </button>
       </nav>
       {/* <nav
