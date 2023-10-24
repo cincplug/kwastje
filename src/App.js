@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
 import Menu from "./Menu";
 import Filters from "./Filters";
-import Drawing from "./Drawing";
+import Brushstroke from "./Brushstroke";
 import Splash from "./Splash";
 import { roostertjes } from "./roostertjes";
-import { customKwastjes } from "./kwastjes";
+import { kwastjes } from "./kwastjes";
 import "./App.scss";
 
 const App = () => {
@@ -243,7 +243,9 @@ const App = () => {
           />
           <label className="control__label" htmlFor={id}>
             <span>{label}</span>
-            {id === "kwastje" ? Object.keys(customKwastjes)[setup.kwastje - 1] : null}
+            {id === "kwastje"
+              ? Object.keys(kwastjes)[setup.kwastje - 1]
+              : null}
             {type === "range" && <span>{value}</span>}
           </label>
         </fieldset>
@@ -350,13 +352,7 @@ const App = () => {
       document.removeEventListener("keyup", handleKeyUp);
       // document.removeEventListener("dblclick", handleDoubleClick);
     };
-  }, [
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-    mouseX,
-    mouseY,
-  ]);
+  }, [handleMouseDown, handleMouseMove, handleMouseUp, mouseX, mouseY]);
 
   return (
     <div
@@ -392,7 +388,7 @@ const App = () => {
           <g className="center-origin" transform-origin={"center"}>
             <Filters {...{ w, h, mouseX, mouseY, setup }} />
             {mouseX && (
-              <Drawing
+              <Brushstroke
                 {...{
                   path,
                   setup,

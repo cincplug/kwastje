@@ -1,7 +1,7 @@
 import React from "react";
 import Bristle from "./Bristle";
 
-const Drawing = (props) => {
+const Brushstroke = (props) => {
   const { setup, path, w, h, mouseX, mouseY } = props;
   const pathLength = path.length;
   return path.map((coords, index) => {
@@ -31,4 +31,4 @@ const Drawing = (props) => {
   });
 };
 
-export default Drawing;
+export default Brushstroke;

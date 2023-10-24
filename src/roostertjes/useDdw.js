@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { customKwastjes } from "../kwastjes";
+import { kwastjes } from "../kwastjes";
 import slides from "./useDdwSlides.json";
 
 const useDdw = (props) => {
@@ -36,7 +36,7 @@ const useDdw = (props) => {
             const getNextSlideSetup = (currentIndex) => {
               const { modifySetup } = slides[currentIndex];
               const newKwastjeIndex =
-                Object.keys(customKwastjes).findIndex(
+                Object.keys(kwastjes).findIndex(
                   (currentKwastje) =>
                     currentKwastje === slides[currentIndex].kwastje
                 ) + 1;

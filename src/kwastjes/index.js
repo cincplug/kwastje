@@ -51,7 +51,7 @@ import Futurtje from "./Futurtje";
 // import Katje3 from "./Katje3";
 // import Katje4 from "./Katje4";
 
-export const customKwastjes = {
+export const kwastjes = {
   Luukje,
   Annijtje,
   Kieke,

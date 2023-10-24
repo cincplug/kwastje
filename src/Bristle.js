@@ -1,5 +1,5 @@
 import React from "react";
-import { customKwastjes } from "./kwastjes";
+import { kwastjes } from "./kwastjes";
 import { normalize, processColor } from "./utils";
 
 const Bristle = (props) => {
@@ -38,7 +38,7 @@ const Bristle = (props) => {
     0.5
   );
   const commonProps = { stroke, strokeWidth, fill, style };
-  const Kwastje = Object.values(customKwastjes)[setup.kwastje - 1];
+  const Kwastje = Object.values(kwastjes)[setup.kwastje - 1];
 
   return (
     <>
