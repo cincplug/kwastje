@@ -5,7 +5,7 @@ import Filters from "./Filters";
 import Drawing from "./Drawing";
 import Splash from "./Splash";
 import { roostertjes } from "./roostertjes";
-// import { customKwastjes } from "./kwastjes";
+import { customKwastjes } from "./kwastjes";
 import "./App.scss";
 
 const App = () => {
@@ -243,7 +243,7 @@ const App = () => {
           />
           <label className="control__label" htmlFor={id}>
             <span>{label}</span>
-            {/* {id === "kwastje" ? Object.keys(customKwastjes)[setup.kwastje - 1] : null} */}
+            {id === "kwastje" ? Object.keys(customKwastjes)[setup.kwastje - 1] : null}
             {type === "range" && <span>{value}</span>}
           </label>
         </fieldset>
