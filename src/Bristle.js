@@ -38,25 +38,8 @@ const Bristle = (props) => {
     0.5
   );
   const commonProps = { stroke, strokeWidth, fill, style };
+  const Kwastje = Object.values(customKwastjes)[setup.kwastje - 1];
 
-  const kwastjes = Object.values(customKwastjes).map((Kwastje) => (
-    <Kwastje
-      {...{
-        setup,
-        index,
-        w,
-        h,
-        x1,
-        x2,
-        y1,
-        y2,
-        commonProps,
-        normalize,
-        processColor,
-        // isReversed,
-      }}
-    />
-  ));
   return (
     <>
       {setup.hasEyes && index >= setup.dotsCount - 4 ? (
@@ -74,7 +57,22 @@ const Bristle = (props) => {
           }}
         />
       ) : (
-        kwastjes[setup.kwastje - 1]
+        <Kwastje
+          {...{
+            setup,
+            index,
+            w,
+            h,
+            x1,
+            x2,
+            y1,
+            y2,
+            commonProps,
+            normalize,
+            processColor,
+            // isReversed,
+          }}
+        />
       )}
     </>
   );
