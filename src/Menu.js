@@ -1,14 +1,15 @@
 // import React, { useEffect, useState } from "react";
 import defaultSetup from "./_setup.json";
+import ControlGroup from "./ControlGroup";
 // import { Potrace } from "potrace";
 
 const Menu = (props) => {
   const {
-    // setup,
+    setup,
     isMenuVisible,
     setIsMenuVisible,
     menuVisibilityClass,
-    getControls,
+    handleInputChange,
     download,
     // setTasje,
     // setSetup,
@@ -106,11 +107,12 @@ const Menu = (props) => {
         aria-label="Main menu"
         hidden={!isMenuVisible}
       >
-        {getControls(
-          defaultSetup.filter(
+        <ControlGroup
+          {...{ setup, handleInputChange }}
+          controls={defaultSetup.filter(
             (control) => !control.isHidden && !control.isRight
-          )
-        )}
+          )}
+        />
         <button
           className="control__input control__button control__button--save"
           onClick={() => {
@@ -156,12 +158,14 @@ const Menu = (props) => {
               onClick={() => handleTasjeClick(svgContent, index)}
             />
           ))}
-          {setup.tasje &&
-            getControls(
-              defaultSetup.filter(
+          {setup.tasje && (
+            <ControlGroup
+              {...{ setup, handleInputChange }}
+              controls={defaultSetup.filter(
                 (control) => !control.isHidden && control.isRight
-              )
-            )}
+              )}
+            />
+          )}
           <input
             type="file"
             accept=".svg, .png, .jpg"

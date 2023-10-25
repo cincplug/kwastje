@@ -221,15 +221,6 @@ const App = () => {
   //   });
   // };
 
-  const getControls = (controls) => {
-    return controls.map((item, index) => (
-      <Control
-        {...{ item, index, setup, handleInputChange }}
-        key={`m-${index}`}
-      />
-    ));
-  };
-
   const handleKeyUp = (event) => {
     switch (event.key) {
       case ",":
@@ -386,8 +377,8 @@ const App = () => {
             setup,
             isMenuVisible,
             setIsMenuVisible,
+            handleInputChange,
             menuVisibilityClass,
-            getControls,
             download,
             setTasje,
             setSetup,
