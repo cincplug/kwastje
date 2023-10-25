@@ -23,7 +23,7 @@ const Trijntje = (props) => {
             <circle
               cx={x1 + setup.growth * setup.thickness}
               cy={y1}
-              r={(h / y2) * setup.thickness * setup.growth + index}
+              r={Math.abs((h / y2) * setup.thickness * setup.growth + index)}
               {...commonProps}
               key={`tr-${step}`}
             />
