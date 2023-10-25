@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Filters from "./Filters";
 import Brushstroke from "./Brushstroke";
 import Splash from "./Splash";
+import { download } from "./utils";
 import { roostertjes } from "./roostertjes";
 // import { kwastjes } from "./kwastjes";
 import "./App.scss";
@@ -251,16 +252,6 @@ const App = () => {
         </fieldset>
       );
     });
-  };
-
-  const download = () => {
-    const link = document.createElement("a");
-    link.download = "download.svg";
-    const svg = document.querySelector(".drawing");
-    const base64doc = btoa(unescape(encodeURIComponent(svg.outerHTML)));
-    const e = new MouseEvent("click");
-    link.href = "data:image/svg+xml;base64," + base64doc;
-    link.dispatchEvent(e);
   };
 
   const handleKeyUp = (event) => {
