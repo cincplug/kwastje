@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import defaultSetup from "./_setup.json";
 import Menu from "./Menu";
-import Control from "./Control";
 import Filters from "./Filters";
 import Brushstroke from "./Brushstroke";
 import Splash from "./Splash";
 import { download } from "./utils";
 import { roostertjes } from "./roostertjes";
-// import { kwastjes } from "./kwastjes";
 import "./App.scss";
 
 const App = () => {
@@ -45,7 +43,6 @@ const App = () => {
   const [isInfoVisible, setIsInfoVisible] = useState(false);
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
-  const [mapje, setMapje] = useState(null);
   const [isReversed, setIsReversed] = useState(false);
   const [isRoostertje, setIsRoostertje] = useState(false);
   const usePrevious = (value) => {
@@ -58,63 +55,6 @@ const App = () => {
 
   const prevMouseX = usePrevious(mouseX);
   const prevMouseY = usePrevious(mouseY);
-
-  const processTasje = (svg) => {
-    const parser = new DOMParser();
-    const tasje = parser.parseFromString(svg, "text/html").body.firstChild;
-    const coordinates = [];
-    tasje.querySelectorAll("path").forEach((pathElement) => {
-      const dAttribute = pathElement.getAttribute("d");
-      const strippedPath = dAttribute
-        .replace(/[A-Za-z]\s*[\d\s,]*/g, (match) => {
-          return match
-            .trim()
-            .split(/[A-Za-z,\s]+/)
-            .join(" ");
-        })
-        .trim();
-      const pairs = strippedPath
-        .split(/\s+/)
-        .reduce((acc, val, index, array) => {
-          if (index % 2 === 0) {
-            acc.push([
-              parseFloat(val),
-              parseFloat(array[Math.min(index + 1, array.length)]),
-            ]);
-          }
-          return acc;
-        }, []);
-      coordinates.push(pairs);
-    });
-    const filteredCoordinates = coordinates.flat();
-    setMapje(filteredCoordinates);
-    return filteredCoordinates;
-  };
-
-  const setTasje = (tasje) => {
-    setSetup((prevSetup) => {
-      let nextSetup;
-      if (tasje) {
-        const coordinates = processTasje(tasje);
-        const tasjeDotsCount = Math.min(Math.max(coordinates.length, 50), 300);
-        nextSetup = {
-          ...prevSetup,
-          tasje,
-          tasjeDotsCount,
-        };
-      } else {
-        nextSetup = {
-          ...prevSetup,
-          tasje: null,
-          stencil: 0,
-          tasjeDotsCount: null,
-        };
-        setMapje(null);
-      }
-      sessionStorage.setItem(storageSetupItem, JSON.stringify(nextSetup));
-      return nextSetup;
-    });
-  };
 
   const handleMouseDown = useCallback(
     (event) => {
@@ -354,7 +294,6 @@ const App = () => {
                   mouseY,
                   w,
                   h,
-                  mapje,
                   isReversed,
                 }}
               />
@@ -380,7 +319,6 @@ const App = () => {
             handleInputChange,
             menuVisibilityClass,
             download,
-            setTasje,
             setSetup,
             toggleRoostertje,
             isRoostertje,
