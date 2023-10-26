@@ -1,7 +1,6 @@
-// import React, { useEffect, useState } from "react";
 import defaultSetup from "./_setup.json";
 import ControlGroup from "./ControlGroup";
-// import { Potrace } from "potrace";
+import { download } from "./utils";
 
 const Menu = (props) => {
   const {
@@ -10,7 +9,6 @@ const Menu = (props) => {
     setIsMenuVisible,
     menuVisibilityClass,
     handleInputChange,
-    download,
     toggleRoostertje,
     isRoostertje,
   } = props;

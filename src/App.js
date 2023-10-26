@@ -4,7 +4,6 @@ import Menu from "./Menu";
 import Filters from "./Filters";
 import Brushstroke from "./Brushstroke";
 import Splash from "./Splash";
-import { download } from "./utils";
 import { roostertjes } from "./roostertjes";
 import "./App.scss";
 
@@ -318,7 +317,6 @@ const App = () => {
             setIsMenuVisible,
             handleInputChange,
             menuVisibilityClass,
-            download,
             setSetup,
             toggleRoostertje,
             isRoostertje,

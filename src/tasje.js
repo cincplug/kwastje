@@ -1,3 +1,5 @@
+// import { Potrace } from "potrace";
+
 // const processTasje = (svg) => {
 //     const parser = new DOMParser();
 //     const tasje = parser.parseFromString(svg, "text/html").body.firstChild;
