@@ -103,11 +103,10 @@ const App = () => {
         if (event.movementX > 0 && isReversed) setIsReversed(false);
       }
       if (isMouseDown || setup.isFluent) {
-        const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
         setPath((prevPath) => {
           prevPath[prevPath.length] = [mouseX, mouseY];
           const nextPath = prevPath.slice(
-            prevPath.length - dotsCount,
+            prevPath.length - setup.dotsCount,
             prevPath.length
           );
           return nextPath;
@@ -121,7 +120,6 @@ const App = () => {
       mouseY,
       prevMouseX,
       prevMouseY,
-      setup.tasjeDotsCount,
       setup.dotsCount,
       setup.isFluent,
       setup.kwastje,
@@ -140,9 +138,6 @@ const App = () => {
             return prevPath.concat(fillPath(value - prevPath.length));
           }
         });
-        if (setup.tasjeDotsCount) {
-          nextSetup.tasjeDotsCount = null;
-        }
       }
       if (type === "checkbox") {
         nextSetup[id] = !nextSetup[id];

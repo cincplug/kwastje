@@ -2,9 +2,6 @@ const Control = ({item, index, setup, handleInputChange}) => {
   const { id, type, min, max, step, description } = item;
   const label = id.replace(/.+([A-Z])/g, " $1").toLowerCase();
   let value = setup[id] || 0;
-  if (id === "dotsCount" && setup.tasjeDotsCount) {
-    value = setup.tasjeDotsCount;
-  }
   const checked = value === true;
   return (
     <fieldset

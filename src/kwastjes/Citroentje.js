@@ -9,8 +9,6 @@ const Citroentje = (props) => {
     commonProps,
   } = props;
   
-  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
-
   return (
     <text
       x={x1}
@@ -22,7 +20,7 @@ const Citroentje = (props) => {
         textAnchor: "middle"
       }}
     >
-      {index >= dotsCount * 2 / 3 ? ",,o,," : ".._.."}
+      {index >= setup.dotsCount * 2 / 3 ? ",,o,," : ".._.."}
     </text>
   );
 };

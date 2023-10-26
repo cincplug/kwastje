@@ -15,15 +15,14 @@ const Blijpje2 = (props) => {
     normalize,
   } = props;
 
-  const dotsCount = setup.tasjeDotsCount || setup.dotsCount;
   const qG = setup.thickness * setup.growth;
-  let tR = qG * Math.max(0, Math.min(dotsCount - index, index));
+  let tR = qG * Math.max(0, Math.min( setup.dotsCount - index, index));
   const displacementMap = {
     14: [11, -22],
     15: [-11, -22],
   };
   let [deltaX, deltaY] = [0, 0];
-  const displacement = displacementMap[dotsCount - index];
+  const displacement = displacementMap[ setup.dotsCount - index];
   if (displacement) {
     [deltaX, deltaY] = displacement;
     deltaX *= qG;
