@@ -197,9 +197,7 @@ const App = () => {
 
   const startRoostertje = () => {
     setIsMenuVisible(false);
-    tasks.forEach((task) => {
-      task.requestRef.current = requestAnimationFrame(task.effort);
-    });
+    task.requestRef.current = requestAnimationFrame(task.effort);
     return () => {
       stopRoostertje();
     };
@@ -207,18 +205,16 @@ const App = () => {
 
   const stopRoostertje = () => {
     setIsMenuVisible(true);
-    tasks.forEach((task) => {
-      cancelAnimationFrame(task.requestRef.current);
-    });
+    cancelAnimationFrame(task.requestRef.current);
   };
 
-  const scheduledTasks = roostertjes.useDdw({
+  const scheduledTask = roostertjes.useDdw({
     setup,
     setSetup,
     isRoostertje,
     stopRoostertje,
   });
-  const { tasks, slides, activeSlide, roosterClass } = scheduledTasks;
+  const { task, slides, activeSlide, roosterClass } = scheduledTask;
 
   useEffect(() => {
     const mainElement = mainRef.current;

@@ -23,72 +23,70 @@ const useDdw = (props) => {
   ];
 
   const [, setAltColorsIndex] = useState(0);
-  const tasks = [
-    {
-      name: "kwastje",
-      interval: slideDuration,
-      previousTime: useRef(0),
-      effort: (timestamp) => {
-        if (timestamp - tasks[0].previousTime.current >= tasks[0].interval) {
-          
-          setActiveSlide((prevActiveSlide) => {
-            const isLastSlide = prevActiveSlide === slides.length - 1;
-            const getNextSlideSetup = (currentIndex) => {
-              const { modifySetup } = slides[currentIndex];
-              const newKwastjeIndex =
-                Object.keys(kwastjes).findIndex(
-                  (currentKwastje) =>
-                    currentKwastje === slides[currentIndex].kwastje
-                ) + 1;
-              return {
-                ...modifySetup,
-                kwastje: newKwastjeIndex,
-              };
+  const task = {
+    name: "kwastje",
+    interval: slideDuration,
+    previousTime: useRef(0),
+    effort: (timestamp) => {
+      if (timestamp - task.previousTime.current >= task.interval) {
+
+        setActiveSlide((prevActiveSlide) => {
+          const isLastSlide = prevActiveSlide === slides.length - 1;
+          const getNextSlideSetup = (currentIndex) => {
+            const { modifySetup } = slides[currentIndex];
+            const newKwastjeIndex =
+              Object.keys(kwastjes).findIndex(
+                (currentKwastje) =>
+                  currentKwastje === slides[currentIndex].kwastje
+              ) + 1;
+            return {
+              ...modifySetup,
+              kwastje: newKwastjeIndex,
             };
-            const currentIndex = isLastSlide ? 0 : prevActiveSlide + 1;
-            setSetup((prevSetup) => ({
+          };
+          const currentIndex = isLastSlide ? 0 : prevActiveSlide + 1;
+          setSetup((prevSetup) => ({
+            ...prevSetup,
+            ...getNextSlideSetup(currentIndex),
+          }));
+          return isLastSlide ? 0 : prevActiveSlide + 1;
+        });
+
+        setAltColorsIndex((prevAltColorsIndex) => {
+          const altColors = setup.isInverted ? altFg : altBg;
+          const nextAltColorsIndex =
+            prevAltColorsIndex < altColors.length - 1
+              ? prevAltColorsIndex + 1
+              : 0;
+          setSetup((prevSetup) => {
+            const flavour = setup.isInverted
+              ? {
+                  fgColor: altFg[nextAltColorsIndex],
+                  bgColor: "#000000",
+                  opacity: 212,
+                }
+              : {
+                  fgColor: "#ffffff",
+                  bgColor: altBg[nextAltColorsIndex],
+                  opacity: 164,
+                };
+            return {
               ...prevSetup,
-              ...getNextSlideSetup(currentIndex),
-            }));
-            return isLastSlide ? 0 : prevActiveSlide + 1;
+              ...flavour,
+            };
           });
+          return nextAltColorsIndex;
+        });
 
-          setAltColorsIndex((prevAltColorsIndex) => {
-            const altColors = setup.isInverted ? altFg : altBg;
-            const nextAltColorsIndex =
-              prevAltColorsIndex < altColors.length - 1
-                ? prevAltColorsIndex + 1
-                : 0;
-            setSetup((prevSetup) => {
-              const flavour = setup.isInverted
-                ? {
-                    fgColor: altFg[nextAltColorsIndex],
-                    bgColor: "#000000",
-                    opacity: 212,
-                  }
-                : {
-                    fgColor: "#ffffff",
-                    bgColor: altBg[nextAltColorsIndex],
-                    opacity: 164,
-                  };
-              return {
-                ...prevSetup,
-                ...flavour,
-              };
-            });
-            return nextAltColorsIndex;
-          });
-
-          tasks[0].previousTime.current = timestamp;
-        }
-        tasks[0].requestRef.current = requestAnimationFrame(tasks[0].effort);
-      },
-      requestRef: useRef(null),
+        task.previousTime.current = timestamp;
+      }
+      task.requestRef.current = requestAnimationFrame(task.effort);
     },
-  ];
+    requestRef: useRef(null),
+  };
 
   return {
-    tasks,
+    task,
     setAltColorsIndex,
     slides,
     activeSlide,
