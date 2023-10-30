@@ -13,7 +13,7 @@ const Menu = (props) => {
     isRoostertje,
   } = props;
 
-  const isRoostertjeClass = isRoostertje ? "roostertje" : "";
+  const isRoostertjeClass = isRoostertje ? "roostertje" : "geen-rostertje";
 
   return (
     <>
@@ -60,8 +60,7 @@ const Menu = (props) => {
           className={`roostertje__overlay roostertje__overlay--${isRoostertjeClass}`}
         >
           <p>
-            Welcome to my interactive pattern tool Kwastje — a proud
-            part of Cognizant showcase at Dutch Design Week 2023, hosted in our
+            Welcome to Kwastje — my sixpence to the Cognizant showcase at Dutch Design Week 2023, hosted in our
             Eindhoven office.
           </p>
           <p>
@@ -69,7 +68,10 @@ const Menu = (props) => {
             design, a place where design "goes to".
           </p>
           <p>
-            But there is also a specific sort of design ideas that emerge <strong>from</strong> the development!
+            But there is also a specific sort of design ideas that emerge <strong>from</strong> the development! 
+          </p>
+          <p>
+            Here's one such idea. Move your cursor and follow these creatures, which are fundamentally nothing but simple SVG shapes replicated in all sorts of sequences, ending with a pair of eyes.
           </p>
           <button
             htmlFor="roostertje"
@@ -79,7 +81,7 @@ const Menu = (props) => {
               toggleRoostertje();
             }}
           >
-            {isRoostertje ? "Stop the demo" : "Here's one!"}
+            {isRoostertje ? "Stop the demo" : "Start the demo"}
           </button>
         </div>
       </nav>

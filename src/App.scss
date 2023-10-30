@@ -481,8 +481,8 @@ button,
     height: $button-height-big;
     border-radius: $button-height-big / 2;
     padding: 0 3rem;
-    font-size: 1.5rem;
-    line-height: 1.8rem;
+    font-size: 1.4rem;
+    line-height: 3rem;
     font-family: Gellix, sans-serif;
     font-weight: bold;
     text-transform: none;
@@ -495,35 +495,50 @@ button,
     }
   }
   &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-brand);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5% 20%;
-    @include until {
-      padding: 10%;
-    }
     p {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
+      font-size: 1.1rem;
+      line-height: 1.6rem;
       margin: 1rem auto;
       max-width: 760px;
       strong {
         font-size: 1.4rem;
       }
     }
+    &--geen-rostertje {
+      width: 100%;
+      .roostertje {
+        width: $menu-width;
+        .cogni-ddw & {
+          width: auto;
+        }
+      }
+      p {
+        display: none;
+      }
+    }
     &--roostertje {
       display: none;
     }
+    .cogni-ddw & {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-brand);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5% 20%;
+      @include until {
+        padding: 10%;
+      }
+    }
   }
 }
+
 .add-tasje + label,
 .roostertje {
   grid-column: span 4;
