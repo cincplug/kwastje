@@ -292,7 +292,7 @@ const App = () => {
         </svg>
         {isRoostertje && slides && (
           <p
-            className={`subtitle--${activeSlide}`}
+            className={`subtitle subtitle--${activeSlide}`}
             style={{
               textShadow: `0 3px 7px ${setup.bgColor}`,
             }}
