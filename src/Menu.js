@@ -58,17 +58,30 @@ const Menu = (props) => {
         </button>
         <div
           className={`roostertje__overlay roostertje__overlay--${isRoostertjeClass}`}
-        />
-        <button
-          htmlFor="roostertje"
-          className="control__button roostertje"
-          key={"roostertje"}
-          onClick={() => {
-            toggleRoostertje();
-          }}
         >
-          {isRoostertje ? "Stop" : "Start"} ddw slides
-        </button>
+          <p>
+            Welcome to my interactive pattern tool Kwastje — a proud
+            part of Cognizant showcase at Dutch Design Week 2023, hosted in our
+            Eindhoven office.
+          </p>
+          <p>
+            Usually, the front-end development is the final destination of visual
+            design, a place where design "goes to".
+          </p>
+          <p>
+            But there is also a specific sort of design ideas that emerge <strong>from</strong> the development!
+          </p>
+          <button
+            htmlFor="roostertje"
+            className="control__button roostertje"
+            key={"roostertje"}
+            onClick={() => {
+              toggleRoostertje();
+            }}
+          >
+            {isRoostertje ? "Stop the demo" : "Here's one!"}
+          </button>
+        </div>
       </nav>
     </>
   );

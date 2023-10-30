@@ -82,13 +82,19 @@ $menu-width: 10rem;
 $filters-mobile-height: 3rem;
 $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
 $button-height: 2rem;
-$button-height-big: 3.2rem;
+$button-height-big: 4rem;
 
 @mixin center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@mixin until($breakpoint: 768px) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
 }
 
 @mixin mobile-landscape($breakpoint: 844px) {
@@ -467,35 +473,54 @@ button,
   left: -10000px;
 }
 .roostertje {
-  align-self: end;
+  align-self: flex-end;
   .cogni-ddw & {
-    @include center;
-    position: fixed;
+    // @include center;
+    // position: fixed;
     background: var(--blue-600);
     height: $button-height-big;
     border-radius: $button-height-big / 2;
     padding: 0 3rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.8rem;
     font-family: Gellix, sans-serif;
     font-weight: bold;
     text-transform: none;
     z-index: 1;
+    margin: 2rem auto;
+    align-self: center;
     &:hover {
       filter: none;
       background: var(--blue-400);
     }
-    &__overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--color-brand);
-      z-index: 1;
-      &--roostertje {
-        display: none;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-brand);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 20%;
+    @include until {
+      padding: 10%;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      margin: 1rem auto;
+      max-width: 760px;
+      strong {
+        font-size: 1.4rem;
       }
+    }
+    &--roostertje {
+      display: none;
     }
   }
 }
