@@ -82,7 +82,7 @@ $menu-width: 10rem;
 $filters-mobile-height: 3rem;
 $menu-mobile-height: calc(100vh - $filters-mobile-height * 2);
 $button-height: 2rem;
-$button-height-big: 4rem;
+$button-height-big: 3rem;
 
 @mixin center {
   position: absolute;
@@ -481,6 +481,7 @@ button,
     font-size: 1.1rem;
     line-height: 1.6rem;
     margin: 1rem auto;
+    width: 100%;
     max-width: 760px;
     strong {
       font-size: 1.4rem;
@@ -492,7 +493,7 @@ button,
     height: $button-height-big;
     border-radius: $button-height-big / 2;
     padding: 0 3rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 3rem;
     font-family: Gellix, sans-serif;
     font-weight: bold;
@@ -500,6 +501,10 @@ button,
     z-index: 1;
     margin: 2rem auto;
     align-self: center;
+    @include until {
+      font-size: 1.1rem;
+      height: $button-height;
+    }
     &:hover {
       filter: none;
       background: var(--plum);

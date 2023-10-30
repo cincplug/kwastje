@@ -10,17 +10,14 @@ const Splash = (props) => {
         Design Week 2023, hosted in our Eindhoven office.
       </p>
       <p>
-        Usually, the front-end development is the final destination of visual
-        design, a place where design "goes to".
-      </p>
-      <p>
+        Usually, front-end development is the final destination of the design.
         But there is also a specific sort of design ideas that emerge{" "}
-        <strong>from</strong> the development!
+        <strong>from</strong> the development. Here's one such idea!
       </p>
       <p>
-        Here's one such idea. Move your cursor and follow these creatures, which
-        are fundamentally nothing but simple SVG shapes replicated in all sorts
-        of sequences, ending with a pair of eyes.
+        Move your cursor and follow these creatures, which are fundamentally
+        nothing but simple SVG shapes replicated in all sorts of sequences,
+        ending with a pair of eyes.
       </p>
       <button
         className="splash__button"
@@ -28,7 +25,7 @@ const Splash = (props) => {
           toggleRoostertje();
         }}
       >
-        Start the demo
+        Start the idea
       </button>
     </div>
   );
