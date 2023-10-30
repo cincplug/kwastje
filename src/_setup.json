@@ -165,6 +165,6 @@
     "type": "checkbox",
     "isHidden": true,
     "description": "Used for DDW",
-    "value": false
+    "value": true
   }  
 ]
