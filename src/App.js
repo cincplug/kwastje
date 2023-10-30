@@ -25,12 +25,12 @@ const App = () => {
     ).body.firstChild;
   }
   const [setup, setSetup] = useState(initialSetup);
-  const [mouseX, setMouseX] = useState(0);
-  const [mouseY, setMouseY] = useState(0);
+  const [mouseX, setMouseX] = useState(w / 2);
+  const [mouseY, setMouseY] = useState(h / 2);
 
   const fillPath = (
     length = setup.dotsCount,
-    defaultValue = [w / 2, h / 2]
+    defaultValue = [mouseX || w / 2, mouseY || h / 2]
   ) => {
     return new Array(length + 1).fill(defaultValue);
   };
