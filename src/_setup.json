@@ -159,5 +159,12 @@
     "isHidden": true,
     "description": "Alternates fg instead of bg color for roostertje",
     "value": false
+  },
+  {
+    "id": "isDdwTheme",
+    "type": "checkbox",
+    "isHidden": true,
+    "description": "Used for DDW",
+    "value": true
   }  
 ]

@@ -6,7 +6,7 @@ const useDdw = (props) => {
   const { setup, setSetup } = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const slideDuration = 5000;
-  const roosterClass = "cogni-ddw";
+  const roosterClass = setup.isDdwTheme ? "cogni-ddw" : "";
   const altBg = [
     "#2e308e", // plum-300
     "#2b318a", // blue-700

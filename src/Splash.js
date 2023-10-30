@@ -2,24 +2,33 @@ import React from "react";
 import "./App.scss";
 
 const Splash = (props) => {
+  const { toggleRoostertje } = props;
   return (
     <div className="splash">
-      <iframe
-        title="Briefjes"
-        src="https://docs.google.com/forms/d/e/1FAIpQLScq3gkUfsWiUm0tV2XKQdcLOkSgxpQKJ8W1T0WHS7XyE9W2nA/viewform?embedded=true"
-        width="640"
-        height="480"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-      >
-        Loading…
-      </iframe>
+      <p>
+        Welcome to Kwastje — my sixpence to the Cognizant showcase at Dutch
+        Design Week 2023, hosted in our Eindhoven office.
+      </p>
+      <p>
+        Usually, the front-end development is the final destination of visual
+        design, a place where design "goes to".
+      </p>
+      <p>
+        But there is also a specific sort of design ideas that emerge{" "}
+        <strong>from</strong> the development!
+      </p>
+      <p>
+        Here's one such idea. Move your cursor and follow these creatures, which
+        are fundamentally nothing but simple SVG shapes replicated in all sorts
+        of sequences, ending with a pair of eyes.
+      </p>
       <button
-        className="control__button control__button--close splash__close"
-        onClick={props.setIsInfoVisible}
+        className="splash__button"
+        onClick={() => {
+          toggleRoostertje();
+        }}
       >
-        Won't do :)
+        Start the demo
       </button>
     </div>
   );

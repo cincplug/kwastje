@@ -65,7 +65,7 @@ $color-red: #d44;
 $color-dark-blue: #024;
 
 $color-bg: $color-dark;
-$color-fg: $color-green;
+$color-fg: $color-white;
 $color-brand: $color-green;
 $color-event: $color-white;
 $color-text: $color-neutral;
@@ -414,18 +414,6 @@ button,
     display: inline-block;
   }
 }
-.splash {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1rem;
-  color: $color-white;
-  font-size: 1rem;
-  &__close {
-    width: auto;
-  }
-}
 .promptje {
   border: 1px solid $color-green;
   background: $color-dark;
@@ -472,12 +460,35 @@ button,
   position: absolute;
   left: -10000px;
 }
-.roostertje {
-  align-self: flex-end;
-  .cogni-ddw & {
-    // @include center;
-    // position: fixed;
-    background: var(--blue-600);
+
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-brand);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 20%;
+  @include until {
+    padding: 10%;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    margin: 1rem auto;
+    max-width: 760px;
+    strong {
+      font-size: 1.4rem;
+    }
+  }
+  &__button {
+    background: var(--blue-400);
+    color: $color-white;
     height: $button-height-big;
     border-radius: $button-height-big / 2;
     padding: 0 3rem;
@@ -491,56 +502,12 @@ button,
     align-self: center;
     &:hover {
       filter: none;
-      background: var(--blue-400);
-    }
-  }
-  &__overlay {
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6rem;
-      margin: 1rem auto;
-      max-width: 760px;
-      strong {
-        font-size: 1.4rem;
-      }
-    }
-    &--geen-rostertje {
-      width: 100%;
-      .roostertje {
-        width: $menu-width;
-        .cogni-ddw & {
-          width: auto;
-        }
-      }
-      p {
-        display: none;
-      }
-    }
-    &--roostertje {
-      display: none;
-    }
-    .cogni-ddw & {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--color-brand);
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 5% 20%;
-      @include until {
-        padding: 10%;
-      }
+      background: var(--plum);
     }
   }
 }
 
-.add-tasje + label,
-.roostertje {
+.add-tasje + label {
   grid-column: span 4;
   line-height: $button-height;
   cursor: pointer;

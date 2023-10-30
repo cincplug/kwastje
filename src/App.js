@@ -39,7 +39,6 @@ const App = () => {
   const [path, setPath] = useState(initialPath);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
-  const [isInfoVisible, setIsInfoVisible] = useState(false);
   const menuVisibilityClass = isMenuVisible ? "expanded" : "collapsed";
   const bgClass = setup.hasBg ? "has-bg" : "no-bg";
   const [isReversed, setIsReversed] = useState(false);
@@ -314,9 +313,9 @@ const App = () => {
           }}
         />
       )}
-      {isInfoVisible && (
+      {!isRoostertje && setup.isDdwTheme && (
         <Splash
-          setIsInfoVisible={() => setIsInfoVisible((prevState) => !prevState)}
+          toggleRoostertje={toggleRoostertje}
         />
       )}
     </div>
