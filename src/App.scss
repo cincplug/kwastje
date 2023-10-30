@@ -507,7 +507,7 @@ button,
   }
 }
 
-.add-tasje + label {
+.add-tasje + label, .control__button--roostertje {
   grid-column: span 4;
   line-height: $button-height;
   cursor: pointer;
