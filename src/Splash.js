@@ -11,8 +11,8 @@ const Splash = (props) => {
         Dutch Design Week 2023, hosted in our Eindhoven office.
       </p>
       <p>
-        Are these shapes just <strong>creations</strong> or they
-        qualify as <strong>creatures</strong>?
+        Are these shapes just <strong>creations</strong> or they qualify as{" "}
+        <strong>creatures</strong>?
       </p>
       <p>Move your cursor around and see for yourself.</p>
       <button
@@ -22,8 +22,8 @@ const Splash = (props) => {
         }}
       >
         See the idea
+        <img className="splashje" src={splashje} alt="" />
       </button>
-      <img className="splashje" src={splashje} alt="" />
     </div>
   );
 };
