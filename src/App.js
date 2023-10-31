@@ -211,7 +211,7 @@ const App = () => {
     setup,
     setSetup,
   });
-  const { task, slides, activeSlide, roosterClass } = scheduledTask;
+  const { task, activeSlide, roosterClass } = scheduledTask;
 
   useEffect(() => {
     const mainElement = mainRef.current;
@@ -287,13 +287,13 @@ const App = () => {
             )}
           </g>
         </svg>
-        {isRoostertje && slides && (
+        {isRoostertje && setup.subtitle && (
           <p
             className={`subtitle subtitle--${activeSlide}`}
             style={{
               textShadow: `0 3px 7px ${setup.bgColor}`,
             }}
-            dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
+            dangerouslySetInnerHTML={{ __html: setup.subtitle }}
           />
         )}
       </main>

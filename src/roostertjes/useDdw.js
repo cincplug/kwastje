@@ -4,7 +4,7 @@ import slides from "./useDdwSlides.json";
 
 const useDdw = (props) => {
   const { setup, setSetup } = props;
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(-1);
   const slideDuration = 5000;
   const roosterClass = setup.isDdwTheme ? "cogni-ddw" : "";
   const altBg = [
@@ -25,10 +25,9 @@ const useDdw = (props) => {
   const [, setAltColorsIndex] = useState(0);
   const task = {
     name: "kwastje",
-    interval: slideDuration,
     previousTime: useRef(0),
     effort: (timestamp) => {
-      if (timestamp - task.previousTime.current >= task.interval) {
+      if (timestamp - task.previousTime.current >= slideDuration) {
         setActiveSlide((prevActiveSlide) => {
           const isLastSlide = prevActiveSlide === slides.length - 1;
           const getNextSlideSetup = (currentIndex) => {
@@ -41,6 +40,7 @@ const useDdw = (props) => {
             return {
               ...modifySetup,
               kwastje: newKwastjeIndex,
+              subtitle: slides[currentIndex].title
             };
           };
           const currentIndex = isLastSlide ? 0 : prevActiveSlide + 1;
@@ -86,7 +86,6 @@ const useDdw = (props) => {
 
   return {
     task,
-    slides,
     activeSlide,
     roosterClass,
   };
