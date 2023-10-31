@@ -472,7 +472,6 @@ button,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 5% 20%;
   @include until {
     padding: 10%;
@@ -483,6 +482,7 @@ button,
     margin: 1rem auto;
     width: 100%;
     max-width: 35rem;
+    text-align: center;
     strong {
       font-size: 1.4rem;
     }
@@ -509,6 +509,17 @@ button,
       filter: none;
       background: var(--plum);
     }
+  }
+}
+
+.splashje {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  @include until {
+    left: 5%;
+    width: 90%;
   }
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import splashje from "./img/splashje.svg";
 import "./App.scss";
 
 const Splash = (props) => {
@@ -9,7 +10,10 @@ const Splash = (props) => {
         Welcome to Kwastje — my grain of salt for the Cognizant showcase at
         Dutch Design Week 2023, hosted in our Eindhoven office.
       </p>
-      <p>Are these interactive shapes <strong>creatures</strong> or just <strong>creations</strong>?</p>
+      <p>
+        Are these shapes just <strong>creations</strong> or they
+        qualify as <strong>creatures</strong>?
+      </p>
       <p>Move your cursor around and see for yourself.</p>
       <button
         className="splash__button"
@@ -17,8 +21,9 @@ const Splash = (props) => {
           toggleRoostertje();
         }}
       >
-        Start the idea
+        See the idea
       </button>
+      <img className="splashje" src={splashje} alt="" />
     </div>
   );
 };

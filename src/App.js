@@ -314,7 +314,7 @@ const App = () => {
         />
       )}
       {!isRoostertje && setup.isDdwTheme && (
-        <Splash toggleRoostertje={toggleRoostertje} />
+        <Splash toggleRoostertje={toggleRoostertje} w={w} />
       )}
     </div>
   );
