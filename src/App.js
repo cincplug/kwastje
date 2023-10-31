@@ -210,8 +210,6 @@ const App = () => {
   const scheduledTask = roostertjes.useDdw({
     setup,
     setSetup,
-    isRoostertje,
-    stopRoostertje,
   });
   const { task, slides, activeSlide, roosterClass } = scheduledTask;
 

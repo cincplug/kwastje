@@ -58,7 +58,7 @@ const useDdw = (props) => {
               ? prevAltColorsIndex + 1
               : 0;
           setSetup((prevSetup) => {
-            const flavour = setup.isInverted
+            const flavour = prevSetup.isInverted
               ? {
                   fgColor: altFg[nextAltColorsIndex],
                   bgColor: "#000000",
@@ -86,11 +86,8 @@ const useDdw = (props) => {
 
   return {
     task,
-    setAltColorsIndex,
     slides,
     activeSlide,
-    setActiveSlide,
-    slideDuration,
     roosterClass,
   };
 };
