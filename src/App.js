@@ -239,7 +239,7 @@ const App = () => {
       document.removeEventListener("keyup", handleKeyUp);
       // document.removeEventListener("dblclick", handleDoubleClick);
     };
-  }, [handleMouseDown, handleMouseMove, handleMouseUp, mouseX, mouseY]);
+  }, [handleMouseDown, handleMouseMove, handleMouseUp]);
 
   return (
     <div
@@ -314,9 +314,7 @@ const App = () => {
         />
       )}
       {!isRoostertje && setup.isDdwTheme && (
-        <Splash
-          toggleRoostertje={toggleRoostertje}
-        />
+        <Splash toggleRoostertje={toggleRoostertje} />
       )}
     </div>
   );

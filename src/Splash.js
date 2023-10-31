@@ -6,19 +6,11 @@ const Splash = (props) => {
   return (
     <div className="splash">
       <p>
-        Welcome to Kwastje — my sixpence to the Cognizant showcase at Dutch
-        Design Week 2023, hosted in our Eindhoven office.
+        Welcome to Kwastje — my grain of salt for the Cognizant showcase at
+        Dutch Design Week 2023, hosted in our Eindhoven office.
       </p>
-      <p>
-        Usually, front-end development is the final destination of the design.
-        But there is also a specific sort of design ideas that emerge{" "}
-        <strong>from</strong> the development. Here's one such idea!
-      </p>
-      <p>
-        Move your cursor and follow these creatures, which are fundamentally
-        nothing but simple SVG shapes replicated in all sorts of sequences,
-        ending with a pair of eyes.
-      </p>
+      <p>Are these interactive shapes <strong>creatures</strong> or just <strong>creations</strong>?</p>
+      <p>Move your cursor around and see for yourself.</p>
       <button
         className="splash__button"
         onClick={() => {
