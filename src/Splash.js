@@ -3,7 +3,7 @@ import splashje from "./img/splashje.svg";
 import "./App.scss";
 
 const Splash = (props) => {
-  const { toggleRoostertje } = props;
+  const { setSetup, toggleRoostertje } = props;
   return (
     <div className="splash">
       <p>
@@ -15,15 +15,27 @@ const Splash = (props) => {
         <strong>creatures</strong>?
       </p>
       <p>Move your cursor around and see for yourself.</p>
-      <button
-        className="splash__button"
-        onClick={() => {
-          toggleRoostertje();
-        }}
-      >
-        See the idea
-        <img className="splashje" src={splashje} alt="" />
-      </button>
+      <section>
+        <button
+          className="splash__button"
+          onClick={() => {
+            toggleRoostertje();
+          }}
+        >
+          See the demo
+        </button>
+        <button
+          className="splash__button"
+          onClick={() => {
+            setSetup((prevSetup) => {
+              return { ...prevSetup, isDdwTheme: false };
+            });
+          }}
+        >
+          Explore the tool
+        </button>
+      </section>
+      <img className="splashje" src={splashje} alt="" />
     </div>
   );
 };
